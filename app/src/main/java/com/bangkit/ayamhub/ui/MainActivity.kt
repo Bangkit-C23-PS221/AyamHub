@@ -1,8 +1,9 @@
-package com.bangkit.ayamhub
+package com.bangkit.ayamhub.ui
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import com.bangkit.ayamhub.ui.login.umkm.LoginU
 import com.bangkit.ayamhub.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
@@ -18,7 +19,5 @@ class MainActivity : AppCompatActivity() {
             startActivity(Intent(this, LoginU::class.java))
             finish()
         }
-
-
     }
 }

@@ -1,7 +1,8 @@
-package com.bangkit.ayamhub
+package com.bangkit.ayamhub.ui.login.peternak
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import com.bangkit.ayamhub.R
 
 class LoginP : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {

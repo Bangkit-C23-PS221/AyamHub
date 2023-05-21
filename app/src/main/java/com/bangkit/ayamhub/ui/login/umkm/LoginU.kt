@@ -1,10 +1,9 @@
-package com.bangkit.ayamhub
+package com.bangkit.ayamhub.ui.login.umkm
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import com.bangkit.ayamhub.databinding.ActivityLoginUBinding
-import com.bangkit.ayamhub.databinding.ActivityMainBinding
 
 class LoginU : AppCompatActivity() {
 

@@ -12,13 +12,13 @@
         android:theme="@style/Theme.AyamHub"
         tools:targetApi="31">
         <activity
-            android:name=".LoginP"
+            android:name=".ui.login.peternak.LoginP"
             android:exported="false" />
         <activity
-            android:name=".LoginU"
+            android:name=".ui.login.umkm.LoginU"
             android:exported="false" />
         <activity
-            android:name=".MainActivity"
+            android:name=".ui.MainActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

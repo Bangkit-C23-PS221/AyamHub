@@ -1,3 +1,15 @@
 <resources>
     <string name="app_name">AyamHub</string>
+    <string name="umkm">UMKM</string>
+    <string name="atau">Atau</string>
+    <string name="peternak">Peternak</string>
+    <string name="siapa_anda">Siapa Anda?</string>
+    <string name="masuk">Masuk</string>
+    <string name="belum_punya_akun">Belum Punya Akun?</string>
+    <string name="halo_workers">Halo Workers</string>
+    <string name="bangkit_2023">Bangkit 2023</string>
+    <string name="kata_sandi">Kata Sandi</string>
+    <string name="welcome">Selamat Datang di AyamHub</string>
+    <string name="email">Email</string>
+    <string name="daftar">Daftar</string>
 </resources>

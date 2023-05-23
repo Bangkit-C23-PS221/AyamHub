@@ -6,6 +6,7 @@ import androidx.datastore.preferences.core.Preferences
 
 class UserPreference (private val dataStore: DataStore<Preferences>){
 
+
     companion object {
         const val SESSION_SETTING = "session_setting"
         const val TOKEN_SETTING = "token_setting"

@@ -1,10 +1,7 @@
 package com.bangkit.ayamhub.data.repository
 
-import com.bangkit.ayamhub.data.local.datastore.UserPreference
-import com.bangkit.ayamhub.data.online.retrofit.ApiService
+import com.bangkit.ayamhub.data.online.retrofit.ApiConfig
 
-class FarmRepository(apiService: ApiService) {
-
-
+class FarmRepository(apiConfig: ApiConfig) {
 
 }

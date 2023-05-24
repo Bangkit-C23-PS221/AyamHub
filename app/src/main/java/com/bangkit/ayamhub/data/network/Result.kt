@@ -1,4 +1,4 @@
-package com.bangkit.ayamhub.data.online
+package com.bangkit.ayamhub.data.network
 
 sealed class Result<out R> private constructor() {
     data class Success<T>(val data: T) : Result<T>()

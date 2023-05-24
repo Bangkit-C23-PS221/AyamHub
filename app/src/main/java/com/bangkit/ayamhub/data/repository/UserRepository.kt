@@ -1,12 +1,11 @@
 package com.bangkit.ayamhub.data.repository
 
-import android.content.SharedPreferences
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.asLiveData
 import androidx.lifecycle.liveData
 import com.bangkit.ayamhub.data.local.datastore.UserPreference
-import com.bangkit.ayamhub.data.online.Result
-import com.bangkit.ayamhub.data.online.retrofit.ApiConfig
+import com.bangkit.ayamhub.data.network.Result
+import com.bangkit.ayamhub.data.network.retrofit.ApiConfig
 
 class UserRepository(
     private val apiConfig: ApiConfig,

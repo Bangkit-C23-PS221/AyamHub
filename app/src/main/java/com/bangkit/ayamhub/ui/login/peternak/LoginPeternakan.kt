@@ -5,7 +5,7 @@ import android.os.Bundle
 import androidx.activity.viewModels
 import com.bangkit.ayamhub.databinding.ActivityLoginPBinding
 import com.bangkit.ayamhub.helpers.viewmodelfactory.ViewModelFactory
-import com.bangkit.ayamhub.data.online.Result
+import com.bangkit.ayamhub.data.network.Result
 import com.bangkit.ayamhub.helpers.Reusable
 
 class LoginPeternakan : AppCompatActivity() {

@@ -3,7 +3,7 @@ package com.bangkit.ayamhub.ui.register.peternak
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.activity.viewModels
-import com.bangkit.ayamhub.data.online.Result
+import com.bangkit.ayamhub.data.network.Result
 import com.bangkit.ayamhub.databinding.ActivityRegisterPeternakBinding
 import com.bangkit.ayamhub.helpers.Reusable
 import com.bangkit.ayamhub.helpers.viewmodelfactory.ViewModelFactory

@@ -1,7 +1,7 @@
-package com.bangkit.ayamhub.data.online.retrofit
+package com.bangkit.ayamhub.data.network.retrofit
 
-import com.bangkit.ayamhub.data.online.response.LoginResponse
-import com.bangkit.ayamhub.data.online.response.RegisterResponse
+import com.bangkit.ayamhub.data.network.response.LoginResponse
+import com.bangkit.ayamhub.data.network.response.RegisterResponse
 import retrofit2.http.Field
 import retrofit2.http.POST
 

@@ -5,7 +5,7 @@ import androidx.datastore.core.DataStore
 import androidx.datastore.preferences.core.Preferences
 import androidx.datastore.preferences.preferencesDataStore
 import com.bangkit.ayamhub.data.local.datastore.UserPreference
-import com.bangkit.ayamhub.data.online.retrofit.ApiConfig
+import com.bangkit.ayamhub.data.network.retrofit.ApiConfig
 import com.bangkit.ayamhub.data.repository.FarmRepository
 import com.bangkit.ayamhub.data.repository.UserRepository
 

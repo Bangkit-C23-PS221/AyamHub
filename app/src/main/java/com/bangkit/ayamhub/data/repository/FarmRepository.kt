@@ -1,6 +1,6 @@
 package com.bangkit.ayamhub.data.repository
 
-import com.bangkit.ayamhub.data.online.retrofit.ApiConfig
+import com.bangkit.ayamhub.data.network.retrofit.ApiConfig
 
 class FarmRepository(apiConfig: ApiConfig) {
 

@@ -8,6 +8,8 @@ import com.bangkit.ayamhub.data.repository.UserRepository
 import com.bangkit.ayamhub.helpers.injection.Injection
 import com.bangkit.ayamhub.ui.login.peternak.LoginPeternakanViewModel
 import com.bangkit.ayamhub.ui.login.umkm.LoginUMKMViewModel
+import com.bangkit.ayamhub.ui.register.peternak.RegisterPeternakViewModel
+import com.bangkit.ayamhub.ui.register.umkm.RegisterUMKMViewModel
 
 class ViewModelFactory(
     private val farmRepository: FarmRepository,
@@ -18,6 +20,8 @@ class ViewModelFactory(
         when {
             modelClass.isAssignableFrom(LoginPeternakanViewModel::class.java) -> return LoginPeternakanViewModel(userRepository) as T
             modelClass.isAssignableFrom(LoginUMKMViewModel::class.java) -> return LoginUMKMViewModel(userRepository) as T
+            modelClass.isAssignableFrom(RegisterUMKMViewModel::class.java) -> return RegisterUMKMViewModel(userRepository) as T
+            modelClass.isAssignableFrom(RegisterPeternakViewModel::class.java) -> return RegisterPeternakViewModel(userRepository) as T
         }
         throw IllegalArgumentException("Unknown ViewModel Class: ${modelClass.name}")
     }

@@ -6,6 +6,7 @@ import androidx.activity.viewModels
 import com.bangkit.ayamhub.databinding.ActivityLoginPBinding
 import com.bangkit.ayamhub.helpers.viewmodelfactory.ViewModelFactory
 import com.bangkit.ayamhub.data.online.Result
+import com.bangkit.ayamhub.helpers.Reusable
 
 class LoginPeternakan : AppCompatActivity() {
 
@@ -25,22 +26,24 @@ class LoginPeternakan : AppCompatActivity() {
             if (result != null) {
                 when (result) {
                     is Result.Loading -> {
-                        /*TODO:
-                        *  1. add loading*/
+                        showLoading(true)
                     }
                     is Result.Success -> {
+                        showLoading(false)
+                        viewModel.saveToken(result.data.accessToken)
                         /*TODO:
-                        *  1. stop loading
-                        *  2. intent to home */
-                        viewModel.saveToken(result.data.accessToken.toString())
+                        *  1. intent to home */
                     }
                     is Result.Error -> {
-                        /*TODO:
-                        *  1. stop loading
-                        *  2. show toast error*/
+                        showLoading(false)
+                        Reusable.showToast(this, "Oops gagal login")
                     }
                 }
             }
         }
+    }
+
+    private fun showLoading(show: Boolean) {
+
     }
 }

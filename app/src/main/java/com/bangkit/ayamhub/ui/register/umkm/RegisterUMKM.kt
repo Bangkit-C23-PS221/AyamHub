@@ -36,10 +36,12 @@ class RegisterUMKM : AppCompatActivity() {
                     }
                     is Result.Success -> {
                         showLoading(false)
+                        /*TODO:
+                        *  1. intent to somewhere else */
                     }
                     is Result.Error -> {
                         showLoading(false)
-                        Reusable.showToast(this, "Fail to Register")
+                        Reusable.showToast(this, "Oops gagal mendaftar")
                     }
                 }
             }

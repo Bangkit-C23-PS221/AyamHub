@@ -4,4 +4,13 @@ import com.bangkit.ayamhub.data.online.retrofit.ApiConfig
 
 class FarmRepository(apiConfig: ApiConfig) {
 
+    companion object {
+        private var INSTANCE:  FarmRepository? = null
+        fun getInstance(
+            apiConfig: ApiConfig
+        ) = INSTANCE ?: synchronized(this) {
+            INSTANCE ?: FarmRepository(apiConfig)
+        }.also { INSTANCE = it }
+    }
+
 }

@@ -14,12 +14,12 @@ private val Context.datastore: DataStore<Preferences> by preferencesDataStore("u
 object Injection {
     fun provideFarmRepository(): FarmRepository {
         val apiConfig = ApiConfig
-        return FarmRepository(apiConfig)
+        return FarmRepository.getInstance(apiConfig)
     }
 
     fun provideUserRepository(context: Context): UserRepository {
         val pref = UserPreference.getInstance(context.datastore)
         val apiConfig = ApiConfig
-        return UserRepository(apiConfig, pref)
+        return UserRepository.getInstance(pref, apiConfig)
     }
 }

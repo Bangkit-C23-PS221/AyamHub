@@ -1,5 +1,6 @@
 package com.bangkit.ayamhub.data.repository
 
+import android.content.SharedPreferences
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.asLiveData
 import androidx.lifecycle.liveData
@@ -80,5 +81,15 @@ class UserRepository(
         } catch (e: Exception) {
             emit(Result.Error(e.message.toString()))
         }
+    }
+
+    companion object {
+        private var instance: UserRepository? = null
+        fun getInstance(
+            sharedPreferences: UserPreference,
+            apiConfig: ApiConfig
+        ) = instance ?: synchronized(this) {
+            instance ?: UserRepository(apiConfig, sharedPreferences)
+        }.also { instance = it }
     }
 }

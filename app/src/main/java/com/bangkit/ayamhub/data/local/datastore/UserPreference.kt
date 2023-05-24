@@ -2,14 +2,33 @@ package com.bangkit.ayamhub.data.local.datastore
 
 import androidx.datastore.core.DataStore
 import androidx.datastore.preferences.core.Preferences
+import androidx.datastore.preferences.core.edit
+import androidx.datastore.preferences.core.stringPreferencesKey
+import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.flow.map
 
+class UserPreference private constructor(private val dataStore: DataStore<Preferences>){
 
-class UserPreference (private val dataStore: DataStore<Preferences>){
+    suspend fun saveToken(token: String) {
+        dataStore.edit {
+            it[TOKEN] = token
+        }
+    }
 
+    fun getToken(): Flow<String> {
+        return dataStore.data.map {setting ->
+            setting[TOKEN] ?: ""
+        }
+    }
+
+    suspend fun deleteToken() {
+        dataStore.edit {
+            it[TOKEN] = ""
+        }
+    }
 
     companion object {
-        const val SESSION_SETTING = "session_setting"
-        const val TOKEN_SETTING = "token_setting"
+        private val TOKEN = stringPreferencesKey("token")
 
         @Volatile
         private var INSTANCE: UserPreference? = null

@@ -2,8 +2,8 @@ package com.bangkit.ayamhub.data.online.response
 
 import com.google.gson.annotations.SerializedName
 
-data class LoginPeternakResponse(
+data class RegisterResponse(
 
-	@field:SerializedName("accessToken")
-	val accessToken: String
+	@field:SerializedName("message")
+	val message: String
 )

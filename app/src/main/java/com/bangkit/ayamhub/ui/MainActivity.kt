@@ -3,7 +3,7 @@ package com.bangkit.ayamhub.ui
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import com.bangkit.ayamhub.ui.login.umkm.LoginU
+import com.bangkit.ayamhub.ui.login.umkm.LoginUMKM
 import com.bangkit.ayamhub.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
@@ -16,7 +16,7 @@ class MainActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         binding.loginButton.setOnClickListener {
-            startActivity(Intent(this, LoginU::class.java))
+            startActivity(Intent(this, LoginUMKM::class.java))
             finish()
         }
     }

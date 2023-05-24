@@ -19,7 +19,7 @@ class UserRepository(
 
     suspend fun saveToken(token: String) = preference.saveToken(token)
 
-    suspend fun signInPeternak (email: String, password: String) = liveData {
+    fun signInPeternak (email: String, password: String) = liveData {
         emit(Result.Loading)
         try {
             val response = apiConfig.getApiService().signInPeternak(email, password)
@@ -29,7 +29,7 @@ class UserRepository(
         }
     }
 
-    suspend fun signUpPeternak (
+    fun signUpPeternak (
         name: String,
         username: String,
         password: String,
@@ -51,7 +51,7 @@ class UserRepository(
         }
     }
 
-    suspend fun signInUmkm (email: String, password: String) = liveData {
+    fun signInUmkm (email: String, password: String) = liveData {
         emit(Result.Loading)
         try {
             val response = apiConfig.getApiService().signInUMKM(email, password)
@@ -61,7 +61,7 @@ class UserRepository(
         }
     }
 
-    suspend fun signUpUmkm (
+    fun signUpUmkm (
         name: String,
         username: String,
         password: String,

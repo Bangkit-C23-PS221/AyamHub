@@ -6,6 +6,7 @@ import androidx.lifecycle.ViewModelProvider
 import com.bangkit.ayamhub.data.repository.FarmRepository
 import com.bangkit.ayamhub.data.repository.UserRepository
 import com.bangkit.ayamhub.helpers.injection.Injection
+import com.bangkit.ayamhub.ui.login.peternak.LoginPeternakanViewModel
 
 class ViewModelFactory(
     private val farmRepository: FarmRepository,
@@ -13,7 +14,7 @@ class ViewModelFactory(
 
     override fun <T : ViewModel> create(modelClass: Class<T>): T {
         when {
-//            modelClass.isAssignableFrom(LoginViewModel::class.java) -> return LoginViewModel(repository) as T
+            modelClass.isAssignableFrom(LoginPeternakanViewModel::class.java) -> return LoginPeternakanViewModel(userRepository) as T
         }
         throw IllegalArgumentException("Unknown ViewModel Class: ${modelClass.name}")
     }

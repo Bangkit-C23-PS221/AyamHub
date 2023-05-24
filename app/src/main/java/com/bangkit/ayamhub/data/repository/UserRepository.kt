@@ -49,4 +49,36 @@ class UserRepository(
             emit(Result.Error(e.message.toString()))
         }
     }
+
+    suspend fun signInUmkm (email: String, password: String) = liveData {
+        emit(Result.Loading)
+        try {
+            val response = apiConfig.getApiService().signInUMKM(email, password)
+            emit(Result.Success(response))
+        } catch (e: Exception) {
+            emit(Result.Error(e.message.toString()))
+        }
+    }
+
+    suspend fun signUpUmkm (
+        name: String,
+        username: String,
+        password: String,
+        email: String,
+        phoneNumber: String
+    ) = liveData {
+        emit(Result.Loading)
+        try {
+            val response = apiConfig.getApiService().signUpUMKKM(
+                name,
+                username,
+                password,
+                email,
+                phoneNumber
+            )
+            emit(Result.Success(response))
+        } catch (e: Exception) {
+            emit(Result.Error(e.message.toString()))
+        }
+    }
 }

@@ -1,4 +1,4 @@
-package com.bangkit.ayamhub.data.online.retrofit
+package com.bangkit.ayamhub.data.network.retrofit
 
 import okhttp3.Interceptor
 import okhttp3.OkHttpClient
@@ -7,7 +7,7 @@ import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
 object ApiConfig {
-    private const val BASE_URL = "Insert Base URL"
+    private const val BASE_URL = "https://ayamhub.et.r.appspot.com"
     fun getApiService(token: String = ""): ApiService {
         val loggingInterceptor = HttpLoggingInterceptor().setLevel(HttpLoggingInterceptor.Level.BODY)
 

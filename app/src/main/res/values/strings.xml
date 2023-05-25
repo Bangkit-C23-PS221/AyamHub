@@ -12,4 +12,16 @@
     <string name="welcome">Selamat Datang di AyamHub</string>
     <string name="email">Email</string>
     <string name="daftar">Daftar</string>
+    <string name="daftarkan_diri_kamu_yuk">Daftarkan diri kamu yuk!</string>
+    <string name="sudah_punya">Sudah punya akun?</string>
+    <string name="nope">Nomor Telepon</string>
+    <string name="mulai">Mulai</string>
+    <string name="hello_kamu">Hello Kamu, yuk mulai</string>
+    <string name="kg">/Kg</string>
+    <string name="title_activity_home">Home</string>
+    <string name="title_home">Home</string>
+    <string name="title_dashboard">Dashboard</string>
+    <string name="title_notifications">Notifications</string>
+    <string name="form_email_error">Form nama tolong diisi ya</string>
+    <string name="form_password_error">Password harus lebih dari 8 karakter ya</string>
 </resources>

@@ -3,6 +3,7 @@ package com.bangkit.ayamhub.ui.register.peternak
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.util.Patterns
 import android.view.View
 import androidx.activity.viewModels
@@ -49,6 +50,7 @@ class RegisterPeternakActivity : AppCompatActivity() {
                     }
                     is Result.Error -> {
                         showLoading(false)
+                        Log.e( "RegisterPeternakActivity","OnFailure: ${result.error}")
                         Reusable.showToast(this, "Oops gagal mendaftar")
                     }
                 }
@@ -81,7 +83,7 @@ class RegisterPeternakActivity : AppCompatActivity() {
 //                    etPhone.error = "Tolong isi nomor handphone dengan benar ya"
 //                }
                 else -> {
-//                    signUp(name, username, password, email, phone)
+//                    signUp(name, "dapaasha", password, email, "1234567890")
                 }
             }
         }

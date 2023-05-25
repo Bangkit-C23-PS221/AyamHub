@@ -36,7 +36,7 @@ class RegisterUMKMActivity : AppCompatActivity() {
         email: String,
         phoneNumber: String
     ) {
-        viewModel.signUp(name, username, password, email, phoneNumber).observe(this){result ->
+        viewModel.signUp(name, username, password, email, phoneNumber).observe(this){ result ->
             if (result != null) {
                 when (result) {
                     is Result.Loading -> {
@@ -83,7 +83,7 @@ class RegisterUMKMActivity : AppCompatActivity() {
 //                    etPhone.error = "Tolong isi nomor handphone dengan benar ya"
 //                }
                 else -> {
-//                    signUp(name, username, password, email, phone)
+//                    signUp(name, "dapaasha12", password, email, "1234567890")
                 }
             }
         }

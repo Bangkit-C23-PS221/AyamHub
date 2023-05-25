@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import com.bangkit.ayamhub.ui.login.umkm.LoginUMKMActivity
 import com.bangkit.ayamhub.databinding.ActivityMainBinding
+import com.bangkit.ayamhub.ui.login.peternak.LoginP
 
 class MainActivity : AppCompatActivity() {
 
@@ -18,6 +19,10 @@ class MainActivity : AppCompatActivity() {
         binding.loginButton.setOnClickListener {
             startActivity(Intent(this, LoginUMKMActivity::class.java))
             finish()
+        }
+
+        binding.peternak.setOnClickListener {
+            startActivity(Intent(this, LoginP::class.java))
         }
     }
 }

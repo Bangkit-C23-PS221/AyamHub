@@ -17,16 +17,10 @@
             android:name=".ui.home.HomeActivity"
             android:exported="false" />
         <activity
-            android:name=".ui.register.umkm.RegisterUMKMActivity"
+            android:name=".ui.register.RegisterActivity"
             android:exported="false" />
         <activity
-            android:name=".ui.register.peternak.RegisterPeternakActivity"
-            android:exported="false" />
-        <activity
-            android:name=".ui.login.peternak.LoginPeternakanActivity"
-            android:exported="false" />
-        <activity
-            android:name=".ui.login.umkm.LoginUMKMActivity"
+            android:name=".ui.login.LoginActivity"
             android:exported="false" />
         <activity
             android:name=".ui.MainActivity"

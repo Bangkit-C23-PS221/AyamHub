@@ -1,4 +1,4 @@
-package com.bangkit.ayamhub.ui.login.umkm
+package com.bangkit.ayamhub.ui.login
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
@@ -11,13 +11,12 @@ import com.bangkit.ayamhub.databinding.ActivityLoginUBinding
 import com.bangkit.ayamhub.helpers.Reusable
 import com.bangkit.ayamhub.helpers.viewmodelfactory.ViewModelFactory
 import com.bangkit.ayamhub.ui.home.HomeActivity
-import com.bangkit.ayamhub.ui.register.peternak.RegisterPeternakActivity
-import com.bangkit.ayamhub.ui.register.umkm.RegisterUMKMActivity
+import com.bangkit.ayamhub.ui.register.RegisterActivity
 
-class LoginUMKMActivity : AppCompatActivity() {
+class LoginActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityLoginUBinding
-    private val viewModel: LoginUMKMViewModel by viewModels {
+    private val viewModel: LoginViewModel by viewModels {
         ViewModelFactory.getInstance(this)
     }
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -31,7 +30,7 @@ class LoginUMKMActivity : AppCompatActivity() {
     }
 
     private fun toRegister() {
-        val intent = Intent(this, RegisterUMKMActivity::class.java)
+        val intent = Intent(this, RegisterActivity::class.java)
         startActivity(intent)
     }
 

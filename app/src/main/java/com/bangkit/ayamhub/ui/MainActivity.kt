@@ -3,9 +3,8 @@ package com.bangkit.ayamhub.ui
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import com.bangkit.ayamhub.ui.login.umkm.LoginUMKMActivity
+import com.bangkit.ayamhub.ui.login.LoginActivity
 import com.bangkit.ayamhub.databinding.ActivityMainBinding
-import com.bangkit.ayamhub.ui.login.peternak.LoginPeternakanActivity
 
 class MainActivity : AppCompatActivity() {
 
@@ -17,12 +16,9 @@ class MainActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         binding.loginButton.setOnClickListener {
-            startActivity(Intent(this, LoginUMKMActivity::class.java))
+            startActivity(Intent(this, LoginActivity::class.java))
             finish()
         }
 
-        binding.peternak.setOnClickListener {
-            startActivity(Intent(this, LoginPeternakanActivity::class.java))
-        }
     }
 }

@@ -1,4 +1,4 @@
-package com.bangkit.ayamhub.ui.register.peternak
+package com.bangkit.ayamhub.ui.register
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
@@ -8,22 +8,22 @@ import android.util.Patterns
 import android.view.View
 import androidx.activity.viewModels
 import com.bangkit.ayamhub.data.network.Result
-import com.bangkit.ayamhub.databinding.ActivityRegisterPeternakBinding
+import com.bangkit.ayamhub.databinding.ActivityRegisterUmkmBinding
 import com.bangkit.ayamhub.helpers.Reusable
 import com.bangkit.ayamhub.helpers.viewmodelfactory.ViewModelFactory
-import com.bangkit.ayamhub.ui.login.peternak.LoginPeternakanActivity
+import com.bangkit.ayamhub.ui.login.LoginActivity
 
-class RegisterPeternakActivity : AppCompatActivity() {
+class RegisterActivity : AppCompatActivity() {
 
-    private lateinit var binding: ActivityRegisterPeternakBinding
-    private val viewModel: RegisterPeternakViewModel by viewModels {
+    private lateinit var binding: ActivityRegisterUmkmBinding
+    private val viewModel: RegisterViewModel by viewModels {
         ViewModelFactory.getInstance(this)
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         supportActionBar?.hide();
-        binding = ActivityRegisterPeternakBinding.inflate(layoutInflater)
+        binding = ActivityRegisterUmkmBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
         binding.signupButton.setOnClickListener { validateInput() }
@@ -44,13 +44,13 @@ class RegisterPeternakActivity : AppCompatActivity() {
                     }
                     is Result.Success -> {
                         showLoading(false)
-                        val intent = Intent(this, LoginPeternakanActivity::class.java)
+                        val intent = Intent(this, LoginActivity::class.java)
                         startActivity(intent)
                         finish()
                     }
                     is Result.Error -> {
                         showLoading(false)
-                        Log.e( "RegisterPeternakActivity","OnFailure: ${result.error}")
+                        Log.e( "RegisterUMKMActivity","OnFailure: ${result.error}")
                         Reusable.showToast(this, "Oops gagal mendaftar")
                     }
                 }
@@ -64,7 +64,7 @@ class RegisterPeternakActivity : AppCompatActivity() {
 //            val username = etUsername.text.toString()
             val password = edRegisterPassword.text.toString()
             val email = edRegisterEmail.text.toString()
-//            val phone = etPhone.text.toString()
+            val phone = edRegisterPhone.text.toString()
 
             when {
                 name.isEmpty() -> {
@@ -79,11 +79,11 @@ class RegisterPeternakActivity : AppCompatActivity() {
                 email.isEmpty() || !Patterns.EMAIL_ADDRESS.matcher(email).matches() -> {
                     edRegisterEmail.error = "Tolong isi email dengan benar ya"
                 }
-//                phone.isEmpty() -> {
-//                    etPhone.error = "Tolong isi nomor handphone dengan benar ya"
-//                }
+                phone.isEmpty() -> {
+                    edRegisterPhone.error = "Tolong isi nomor handphone dengan benar ya"
+                }
                 else -> {
-//                    signUp(name, "dapaasha", password, email, "1234567890")
+//                    signUp(name, "dapaasha12", password, email, "1234567890")
                 }
             }
         }
@@ -96,4 +96,5 @@ class RegisterPeternakActivity : AppCompatActivity() {
             binding.progress.visibility = View.GONE
         }
     }
+
 }

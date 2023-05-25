@@ -1,9 +1,9 @@
-package com.bangkit.ayamhub.ui.register.peternak
+package com.bangkit.ayamhub.ui.register
 
 import androidx.lifecycle.ViewModel
 import com.bangkit.ayamhub.data.repository.UserRepository
 
-class RegisterPeternakViewModel(private val repository: UserRepository) : ViewModel() {
+class RegisterViewModel(private val repository: UserRepository) : ViewModel() {
 
     fun signUp(
         name: String,
@@ -11,6 +11,6 @@ class RegisterPeternakViewModel(private val repository: UserRepository) : ViewMo
         password: String,
         email: String,
         phoneNumber: String
-    ) = repository.signUpPeternak(name, username, password, email, phoneNumber)
+    ) = repository.signUpUmkm(name, username, password, email, phoneNumber)
 
 }

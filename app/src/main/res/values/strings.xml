@@ -15,4 +15,6 @@
     <string name="daftarkan_diri_kamu_yuk">Daftarkan diri kamu yuk!</string>
     <string name="sudah_punya">Sudah punya akun?</string>
     <string name="nope">Nomor Telepon</string>
+    <string name="mulai">Mulai</string>
+    <string name="hello_kamu">Hello Kamu, yuk mulai</string>
 </resources>

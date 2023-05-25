@@ -1,23 +1,23 @@
-package com.bangkit.ayamhub.ui.register.peternak
+package com.bangkit.ayamhub.ui.register.umkm
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.activity.viewModels
 import com.bangkit.ayamhub.data.network.Result
-import com.bangkit.ayamhub.databinding.ActivityRegisterPeternakBinding
+import com.bangkit.ayamhub.databinding.ActivityRegisterUmkmBinding
 import com.bangkit.ayamhub.helpers.Reusable
 import com.bangkit.ayamhub.helpers.viewmodelfactory.ViewModelFactory
 
-class RegisterPeternak : AppCompatActivity() {
+class RegisterUMKMActivity : AppCompatActivity() {
 
-    private lateinit var binding: ActivityRegisterPeternakBinding
-    private val viewModel: RegisterPeternakViewModel by viewModels {
+    private lateinit var binding: ActivityRegisterUmkmBinding
+    private val viewModel: RegisterUMKMViewModel by viewModels {
         ViewModelFactory.getInstance(this)
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding = ActivityRegisterPeternakBinding.inflate(layoutInflater)
+        binding = ActivityRegisterUmkmBinding.inflate(layoutInflater)
         setContentView(binding.root)
     }
 
@@ -51,4 +51,5 @@ class RegisterPeternak : AppCompatActivity() {
     private fun showLoading(show: Boolean) {
 
     }
+
 }

@@ -8,7 +8,7 @@ import com.bangkit.ayamhub.helpers.viewmodelfactory.ViewModelFactory
 import com.bangkit.ayamhub.data.network.Result
 import com.bangkit.ayamhub.helpers.Reusable
 
-class LoginPeternakan : AppCompatActivity() {
+class LoginPeternakanActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityLoginPBinding
     private val viewModel: LoginPeternakanViewModel by viewModels {

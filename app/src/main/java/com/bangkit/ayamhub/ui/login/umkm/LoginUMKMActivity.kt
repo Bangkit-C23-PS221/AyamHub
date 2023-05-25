@@ -8,7 +8,7 @@ import com.bangkit.ayamhub.databinding.ActivityLoginUBinding
 import com.bangkit.ayamhub.helpers.Reusable
 import com.bangkit.ayamhub.helpers.viewmodelfactory.ViewModelFactory
 
-class LoginUMKM : AppCompatActivity() {
+class LoginUMKMActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityLoginUBinding
     private val viewModel: LoginUMKMViewModel by viewModels {

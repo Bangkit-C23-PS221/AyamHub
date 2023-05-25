@@ -18,4 +18,8 @@
     <string name="mulai">Mulai</string>
     <string name="hello_kamu">Hello Kamu, yuk mulai</string>
     <string name="kg">/Kg</string>
+    <string name="title_activity_home">Home</string>
+    <string name="title_home">Home</string>
+    <string name="title_dashboard">Dashboard</string>
+    <string name="title_notifications">Notifications</string>
 </resources>

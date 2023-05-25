@@ -22,6 +22,7 @@ class RegisterUMKMActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        supportActionBar?.hide();
         binding = ActivityRegisterUmkmBinding.inflate(layoutInflater)
         setContentView(binding.root)
 

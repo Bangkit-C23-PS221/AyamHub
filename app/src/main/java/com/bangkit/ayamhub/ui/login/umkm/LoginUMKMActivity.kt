@@ -11,6 +11,8 @@ import com.bangkit.ayamhub.databinding.ActivityLoginUBinding
 import com.bangkit.ayamhub.helpers.Reusable
 import com.bangkit.ayamhub.helpers.viewmodelfactory.ViewModelFactory
 import com.bangkit.ayamhub.ui.home.HomeActivity
+import com.bangkit.ayamhub.ui.register.peternak.RegisterPeternakActivity
+import com.bangkit.ayamhub.ui.register.umkm.RegisterUMKMActivity
 
 class LoginUMKMActivity : AppCompatActivity() {
 
@@ -24,7 +26,13 @@ class LoginUMKMActivity : AppCompatActivity() {
         binding = ActivityLoginUBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        binding.daftar.setOnClickListener { validateInput() }
+        binding.daftar.setOnClickListener { toRegister() }
+        binding.loginButton.setOnClickListener { validateInput() }
+    }
+
+    private fun toRegister() {
+        val intent = Intent(this, RegisterUMKMActivity::class.java)
+        startActivity(intent)
     }
 
     private fun validateInput() {

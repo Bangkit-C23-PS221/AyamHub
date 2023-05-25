@@ -34,7 +34,7 @@ class RegisterPeternakActivity : AppCompatActivity() {
         email: String,
         phoneNumber: String
     ) {
-        viewModel.signUp(name, username, password, email, phoneNumber).observe(this){result ->
+        viewModel.signUp(name, username, password, email, phoneNumber).observe(this){ result ->
             if (result != null) {
                 when (result) {
                     is Result.Loading -> {

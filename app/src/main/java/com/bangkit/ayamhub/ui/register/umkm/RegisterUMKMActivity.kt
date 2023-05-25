@@ -3,6 +3,7 @@ package com.bangkit.ayamhub.ui.register.umkm
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.util.Patterns
 import android.view.View
 import androidx.activity.viewModels
@@ -48,6 +49,7 @@ class RegisterUMKMActivity : AppCompatActivity() {
                     }
                     is Result.Error -> {
                         showLoading(false)
+                        Log.e( "RegisterUMKMActivity","OnFailure: ${result.error}")
                         Reusable.showToast(this, "Oops gagal mendaftar")
                     }
                 }

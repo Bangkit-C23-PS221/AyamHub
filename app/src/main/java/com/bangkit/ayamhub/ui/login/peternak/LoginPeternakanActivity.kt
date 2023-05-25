@@ -11,6 +11,7 @@ import com.bangkit.ayamhub.helpers.viewmodelfactory.ViewModelFactory
 import com.bangkit.ayamhub.data.network.Result
 import com.bangkit.ayamhub.helpers.Reusable
 import com.bangkit.ayamhub.ui.home.HomeActivity
+import com.bangkit.ayamhub.ui.register.peternak.RegisterPeternakActivity
 
 class LoginPeternakanActivity : AppCompatActivity() {
 
@@ -25,6 +26,12 @@ class LoginPeternakanActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         binding.btnLogin.setOnClickListener { validateInput() }
+        binding.btnToRegist.setOnClickListener { toRegister() }
+    }
+
+    private fun toRegister() {
+        val intent = Intent(this, RegisterPeternakActivity::class.java)
+        startActivity(intent)
     }
 
     private fun validateInput() {

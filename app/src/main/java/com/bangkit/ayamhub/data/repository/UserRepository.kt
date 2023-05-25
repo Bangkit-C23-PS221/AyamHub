@@ -69,7 +69,7 @@ class UserRepository(
     ) = liveData {
         emit(Result.Loading)
         try {
-            val response = apiConfig.getApiService().signUpUMKKM(
+            val response = apiConfig.getApiService().signUpUMKM(
                 name,
                 username,
                 password,

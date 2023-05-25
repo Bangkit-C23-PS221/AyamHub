@@ -5,7 +5,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import com.bangkit.ayamhub.ui.login.umkm.LoginUMKMActivity
 import com.bangkit.ayamhub.databinding.ActivityMainBinding
-import com.bangkit.ayamhub.ui.login.peternak.LoginP
+import com.bangkit.ayamhub.ui.login.peternak.LoginPeternakanActivity
 
 class MainActivity : AppCompatActivity() {
 
@@ -22,7 +22,7 @@ class MainActivity : AppCompatActivity() {
         }
 
         binding.peternak.setOnClickListener {
-            startActivity(Intent(this, LoginP::class.java))
+            startActivity(Intent(this, LoginPeternakanActivity::class.java))
         }
     }
 }

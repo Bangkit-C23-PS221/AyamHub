@@ -25,8 +25,8 @@ class LoginPeternakanActivity : AppCompatActivity() {
         binding = ActivityLoginPBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        binding.btnLogin.setOnClickListener { validateInput() }
-        binding.btnToRegist.setOnClickListener { toRegister() }
+        binding.loginButton.setOnClickListener { validateInput() }
+        binding.daftar.setOnClickListener { toRegister() }
     }
 
     private fun toRegister() {
@@ -36,14 +36,14 @@ class LoginPeternakanActivity : AppCompatActivity() {
 
     private fun validateInput() {
         with (binding) {
-            val email = etEmail.text.toString()
-            val password = etPassword.text.toString()
+            val email = loginEmail.text.toString()
+            val password = loginPassword.text.toString()
             when {
                 email.isEmpty() || !Patterns.EMAIL_ADDRESS.matcher(email).matches() -> {
-                    etEmail.error = "Masukkan Email Dengan Benar"
+                    loginEmail.error = "Masukkan Email Dengan Benar"
                 }
                 password.isEmpty() || password.length < 8 -> {
-                    etPassword.error = "Masukkan Password Dengan Benar"
+                    loginPassword.error = "Masukkan Password Dengan Benar"
                 }
                 else -> {
                     signIn(email, password)
@@ -77,9 +77,9 @@ class LoginPeternakanActivity : AppCompatActivity() {
 
     private fun showLoading(show: Boolean) {
         if (show) {
-            binding.progressBar.visibility = View.VISIBLE
+            binding.progress.visibility = View.VISIBLE
         } else {
-            binding.progressBar.visibility = View.GONE
+            binding.progress.visibility = View.GONE
         }
     }
 }

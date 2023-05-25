@@ -24,7 +24,7 @@ class RegisterPeternakActivity : AppCompatActivity() {
         binding = ActivityRegisterPeternakBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        binding.btnRegister.setOnClickListener { validateInput() }
+        binding.signupButton.setOnClickListener { validateInput() }
     }
 
     private fun signUp(
@@ -57,30 +57,30 @@ class RegisterPeternakActivity : AppCompatActivity() {
 
     private fun validateInput() {
         with (binding) {
-            val name = etName.text.toString()
-            val username = etUsername.text.toString()
-            val password = etPassword.text.toString()
-            val email = etEmail.text.toString()
-            val phone = etPhone.text.toString()
+            val name = edRegisterName.text.toString()
+//            val username = etUsername.text.toString()
+            val password = edRegisterPassword.text.toString()
+            val email = edRegisterEmail.text.toString()
+//            val phone = etPhone.text.toString()
 
             when {
                 name.isEmpty() -> {
-                    etName.error = "Tolong isi namanya ya"
+                    edRegisterName.error = "Tolong isi namanya ya"
                 }
-                username.isEmpty() -> {
-                    etUsername.error = "Tolong isi usernamenya"
-                }
+//                username.isEmpty() -> {
+//                    etUsername.error = "Tolong isi usernamenya"
+//                }
                 password.isEmpty() || password.length < 8 -> {
-                    etPassword.error = "Tolong isi passwordnya dengan benar ya"
+                    edRegisterPassword.error = "Tolong isi passwordnya dengan benar ya"
                 }
                 email.isEmpty() || !Patterns.EMAIL_ADDRESS.matcher(email).matches() -> {
-                    etEmail.error = "Tolong isi email dengan benar ya"
+                    edRegisterEmail.error = "Tolong isi email dengan benar ya"
                 }
-                phone.isEmpty() -> {
-                    etPhone.error = "Tolong isi nomor handphone dengan benar ya"
-                }
+//                phone.isEmpty() -> {
+//                    etPhone.error = "Tolong isi nomor handphone dengan benar ya"
+//                }
                 else -> {
-                    signUp(name, username, password, email, phone)
+//                    signUp(name, username, password, email, phone)
                 }
             }
         }
@@ -88,9 +88,9 @@ class RegisterPeternakActivity : AppCompatActivity() {
 
     private fun showLoading(show: Boolean) {
         if (show) {
-            binding.progressBar.visibility = View.VISIBLE
+            binding.progress.visibility = View.VISIBLE
         } else {
-            binding.progressBar.visibility = View.GONE
+            binding.progress.visibility = View.GONE
         }
     }
 }

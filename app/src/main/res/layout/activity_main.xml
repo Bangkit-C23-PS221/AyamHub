@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView
+<androidx.constraintlayout.widget.ConstraintLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
@@ -7,10 +7,6 @@
     android:layout_height="match_parent"
     android:background="@drawable/back"
     tools:context=".ui.MainActivity">
-
-   <androidx.constraintlayout.widget.ConstraintLayout
-       android:layout_width="match_parent"
-       android:layout_height="wrap_content">
 
        <ImageView
            android:id="@+id/sun"
@@ -65,15 +61,11 @@
            android:id="@+id/copyrightTextView"
            android:layout_width="wrap_content"
            android:layout_height="wrap_content"
-           android:layout_marginTop="20dp"
-           android:layout_marginBottom="8dp"
            android:text="@string/bangkit_2023"
+           android:layout_marginBottom="20dp"
            android:textSize="14sp"
-           app:layout_constraintTop_toBottomOf="@id/peternak"
+           app:layout_constraintBottom_toBottomOf="parent"
            app:layout_constraintEnd_toEndOf="parent"
-           app:layout_constraintStart_toStartOf="parent"/>
+           app:layout_constraintStart_toStartOf="parent" />
 
-   </androidx.constraintlayout.widget.ConstraintLayout>
-
-
-</ScrollView>
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -6,6 +6,7 @@ import android.os.Bundle
 import android.util.Patterns
 import android.view.View
 import androidx.activity.viewModels
+import com.bangkit.ayamhub.R
 import com.bangkit.ayamhub.data.network.Result
 import com.bangkit.ayamhub.databinding.ActivityLoginBinding
 import com.bangkit.ayamhub.helpers.Reusable
@@ -40,10 +41,10 @@ class LoginActivity : AppCompatActivity() {
             val password = loginPassword.text.toString()
             when {
                 email.isEmpty() || !Patterns.EMAIL_ADDRESS.matcher(email).matches() -> {
-                    loginEmail.error = "Masukkan Email Dengan Benar"
+                    loginEmail.error = getString(R.string.form_email_error)
                 }
                 password.isEmpty() || password.length < 8 -> {
-                    loginPassword.error = "Masukkan Password Dengan Benar"
+                    loginPassword.error = getString(R.string.form_password_error)
                 }
                 else -> {
                     signIn(email, password)

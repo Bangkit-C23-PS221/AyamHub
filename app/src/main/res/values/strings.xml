@@ -22,4 +22,6 @@
     <string name="title_home">Home</string>
     <string name="title_dashboard">Dashboard</string>
     <string name="title_notifications">Notifications</string>
+    <string name="form_email_error">Form nama tolong diisi ya</string>
+    <string name="form_password_error">Password harus lebih dari 8 karakter ya</string>
 </resources>

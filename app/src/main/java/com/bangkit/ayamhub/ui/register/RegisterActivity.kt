@@ -7,6 +7,7 @@ import android.util.Log
 import android.util.Patterns
 import android.view.View
 import androidx.activity.viewModels
+import com.bangkit.ayamhub.R
 import com.bangkit.ayamhub.data.network.Result
 import com.bangkit.ayamhub.databinding.ActivityRegisterBinding
 import com.bangkit.ayamhub.helpers.Reusable
@@ -68,19 +69,19 @@ class RegisterActivity : AppCompatActivity() {
 
             when {
                 name.isEmpty() -> {
-                    edRegisterName.error = "Tolong isi namanya ya"
+                    edRegisterName.error = getString(R.string.form_email_error)
                 }
 //                username.isEmpty() -> {
 //                    etUsername.error = "Tolong isi usernamenya"
 //                }
                 email.isEmpty() || !Patterns.EMAIL_ADDRESS.matcher(email).matches() -> {
-                    edRegisterEmail.error = "Tolong isi email dengan benar ya"
+                    edRegisterEmail.error = "Form email tolong diisi dengan benar ya"
                 }
-                phone.isEmpty() -> {
-                    edRegisterPhone.error = "Tolong isi nomor handphone dengan benar ya"
+                phone.isEmpty() || phone.length < 10 -> {
+                    edRegisterPhone.error = "Form nomor telepon mohon diisi dengan benar ya"
                 }
                 password.isEmpty() || password.length < 8 -> {
-                    edRegisterPassword.error = "Tolong isi passwordnya dengan benar ya"
+                    edRegisterPassword.error = getString(R.string.form_password_error)
                 }
                 else -> {
                     signUp(name, name, password, email, phone)
@@ -96,5 +97,4 @@ class RegisterActivity : AppCompatActivity() {
             binding.progress.visibility = View.GONE
         }
     }
-
 }

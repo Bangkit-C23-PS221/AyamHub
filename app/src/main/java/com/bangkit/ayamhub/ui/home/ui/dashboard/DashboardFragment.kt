@@ -7,7 +7,7 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
-import com.bangkit.ayamhub.ui.home.databinding.FragmentDashboardBinding
+import com.bangkit.ayamhub.databinding.FragmentDashboardBinding
 
 class DashboardFragment : Fragment() {
 

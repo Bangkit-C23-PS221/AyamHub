@@ -17,7 +17,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            app:layout_constraintGuide_begin="8dp" />
+            app:layout_constraintGuide_end="363dp" />
 
         <androidx.constraintlayout.widget.Guideline
             android:id="@+id/endGuidelineVertical"
@@ -109,15 +109,18 @@
             android:id="@+id/status"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginTop="15dp"
             android:backgroundTint="@color/orange2"
             android:fontFamily="@font/roboto_regular"
             android:textAlignment="center"
             android:textAllCaps="false"
             android:textColor="#D10000"
+            android:paddingVertical="7dp"
+            android:shadowRadius="@integer/material_motion_duration_long_1"
+            android:background="#FFFF00"
             app:layout_constraintEnd_toEndOf="@id/kg"
             app:layout_constraintStart_toStartOf="@id/price"
-            app:layout_constraintTop_toBottomOf="@id/kg"
+            app:layout_constraintTop_toTopOf="@id/chickenType"
+            app:layout_constraintBottom_toBottomOf="@id/chickenType"
             tools:text="Siap Panen" />
 
         <ImageView
@@ -130,6 +133,7 @@
             app:layout_constraintStart_toEndOf="@id/startGuidelineVertical"
             app:layout_constraintTop_toBottomOf="@id/locFarm"
             app:srcCompat="@drawable/ic_chicken" />
+
 
         <TextView
             android:id="@+id/chickenType"

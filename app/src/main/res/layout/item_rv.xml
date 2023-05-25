@@ -1,157 +1,151 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout xmlns:android="http://schemas.android.com/apk/res/android"
+<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools">
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="20dp"
+    app:cardCornerRadius="20dp"
+    app:cardElevation="5dp">
 
-
-    <com.google.android.material.card.MaterialCardView
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="20dp"
-        app:cardCornerRadius="20dp"
-        app:cardElevation="5dp">
+        android:layout_height="wrap_content">
 
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/startGuidelineVertical"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_begin="8dp" />
 
-            <androidx.constraintlayout.widget.Guideline
-                android:id="@+id/startGuidelineVertical"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:orientation="vertical"
-                app:layout_constraintGuide_begin="8dp" />
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/endGuidelineVertical"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_end="8dp" />
 
-            <androidx.constraintlayout.widget.Guideline
-                android:id="@+id/endGuidelineVertical"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:orientation="vertical"
-                app:layout_constraintGuide_end="8dp" />
+        <ImageView
+            android:id="@+id/storyImageView"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:cropToPadding="false"
+            android:scaleType="centerCrop"
+            app:layout_constraintDimensionRatio="16:9"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:srcCompat="@tools:sample/backgrounds/scenic" />
 
-            <ImageView
-                android:id="@+id/storyImageView"
-                android:layout_width="0dp"
-                android:layout_height="0dp"
-                android:cropToPadding="false"
-                android:scaleType="centerCrop"
-                app:imageUrl="@{story.photoUrl}"
-                app:layout_constraintDimensionRatio="16:9"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                tools:srcCompat="@tools:sample/backgrounds/scenic" />
+        <TextView
+            android:id="@+id/farmName"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="14dp"
+            android:fontFamily="@font/roboto_bold"
+            android:paddingVertical="6dp"
+            android:textColor="@color/black"
+            app:layout_constraintEnd_toStartOf="@id/endGuidelineVertical"
+            app:layout_constraintStart_toEndOf="@id/startGuidelineVertical"
+            app:layout_constraintTop_toBottomOf="@id/storyImageView"
+            tools:text="Peternakan Rindang Jaya" />
 
-            <TextView
-                android:id="@+id/farmName"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:fontFamily="@font/roboto_bold"
-                android:textColor="@color/black"
-                android:layout_marginTop="14dp"
-                android:paddingVertical="6dp"
-                app:layout_constraintEnd_toStartOf="@id/endGuidelineVertical"
-                app:layout_constraintStart_toEndOf="@id/startGuidelineVertical"
-                app:layout_constraintTop_toBottomOf="@id/storyImageView"
-                tools:text="Peternakan Rindang Jaya" />
+        <ImageView
+            android:id="@+id/location"
+            android:layout_width="25dp"
+            android:layout_height="25dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginBottom="16dp"
+            app:layout_constraintStart_toEndOf="@id/startGuidelineVertical"
+            app:layout_constraintTop_toBottomOf="@id/farmName"
+            app:srcCompat="@drawable/ic_location" />
 
-            <ImageView
-                android:id="@+id/location"
-                android:layout_width="25dp"
-                android:layout_height="25dp"
-                android:layout_marginTop="8dp"
-                android:layout_marginBottom="16dp"
+        <TextView
+            android:id="@+id/locFarm"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="4dp"
+            android:fontFamily="@font/roboto_regular"
+            android:textAlignment="viewStart"
+            android:textAllCaps="false"
+            android:textColor="@color/black"
+            app:layout_constraintBottom_toBottomOf="@id/location"
+            app:layout_constraintEnd_toStartOf="@id/endGuidelineVertical"
+            app:layout_constraintStart_toEndOf="@id/location"
+            app:layout_constraintTop_toTopOf="@id/location"
+            tools:text="Tangerang Selatan" />
 
-                app:layout_constraintStart_toEndOf="@id/startGuidelineVertical"
-                app:layout_constraintTop_toBottomOf="@id/farmName"
-                app:srcCompat="@drawable/ic_location" />
+        <TextView
+            android:id="@+id/kg"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/roboto_regular"
+            android:text="@string/kg"
+            android:textAlignment="viewStart"
+            android:textAllCaps="false"
+            android:textColor="#D10000"
+            app:layout_constraintBottom_toBottomOf="@id/location"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintEnd_toStartOf="@id/endGuidelineVertical"
+            app:layout_constraintTop_toTopOf="@id/location" />
 
-            <TextView
-                android:id="@+id/locFarm"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="4dp"
-                android:textAlignment="viewStart"
-                android:fontFamily="@font/roboto_regular"
-                android:textAllCaps="false"
-                android:textColor="@color/black"
-                app:layout_constraintBottom_toBottomOf="@id/location"
-                app:layout_constraintEnd_toStartOf="@id/endGuidelineVertical"
-                app:layout_constraintStart_toEndOf="@id/location"
-                app:layout_constraintTop_toTopOf="@id/location"
-                tools:text="Tangerang Selatan" />
+        <TextView
+            android:id="@+id/price"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="4dp"
+            android:fontFamily="@font/roboto_regular"
+            android:paddingEnd="3dp"
+            android:textAlignment="viewStart"
+            android:textAllCaps="false"
+            android:textColor="#D10000"
+            app:layout_constraintEnd_toStartOf="@id/kg"
+            app:layout_constraintTop_toBottomOf="@id/kg"
+            app:layout_constraintTop_toTopOf="@id/kg"
+            tools:text="Rp. 23.000" />
 
-            <TextView
-                android:id="@+id/kg"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:textAlignment="viewStart"
-                android:fontFamily="@font/roboto_regular"
-                android:textAllCaps="false"
-                android:textColor="#D10000"
-                app:layout_constraintBottom_toBottomOf="@id/location"
-                app:layout_constraintEnd_toStartOf="@id/endGuidelineVertical"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toTopOf="@id/location"
-                android:text="@string/kg" />
-            <TextView
-                android:id="@+id/price"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="4dp"
-                android:textAlignment="viewStart"
-                android:fontFamily="@font/roboto_regular"
-                android:textAllCaps="false"
-                android:paddingEnd="3dp"
-                android:textColor="#D10000"
-                app:layout_constraintEnd_toStartOf="@id/kg"
-                app:layout_constraintTop_toBottomOf="@id/kg"
-                app:layout_constraintTop_toTopOf="@id/kg"
-                tools:text="Rp. 23.000" />
+        <TextView
+            android:id="@+id/status"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="15dp"
+            android:backgroundTint="@color/orange2"
+            android:fontFamily="@font/roboto_regular"
+            android:textAlignment="center"
+            android:textAllCaps="false"
+            android:textColor="#D10000"
+            app:layout_constraintEnd_toEndOf="@id/kg"
+            app:layout_constraintStart_toStartOf="@id/price"
+            app:layout_constraintTop_toBottomOf="@id/kg"
+            tools:text="Siap Panen" />
 
-            <TextView
-                android:id="@+id/status"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:backgroundTint="@color/orange2"
-                android:textAlignment="center"
-                android:fontFamily="@font/roboto_regular"
-                android:textAllCaps="false"
-                android:layout_marginTop="15dp"
-                android:textColor="#D10000"
-                app:layout_constraintEnd_toEndOf="@id/kg"
-                app:layout_constraintStart_toStartOf="@id/price"
-                app:layout_constraintTop_toBottomOf="@id/kg"
-                tools:text="Siap Panen" />
+        <ImageView
+            android:id="@+id/icAyam"
+            android:layout_width="25dp"
+            android:layout_height="25dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginBottom="16dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toEndOf="@id/startGuidelineVertical"
+            app:layout_constraintTop_toBottomOf="@id/locFarm"
+            app:srcCompat="@drawable/ic_chicken" />
 
-            <ImageView
-                android:id="@+id/icAyam"
-                android:layout_width="25dp"
-                android:layout_height="25dp"
-                android:layout_marginTop="8dp"
-                android:layout_marginBottom="16dp"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintStart_toEndOf="@id/startGuidelineVertical"
-                app:layout_constraintTop_toBottomOf="@id/locFarm"
-                app:srcCompat="@drawable/ic_chicken" />
+        <TextView
+            android:id="@+id/chickenType"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="4dp"
+            android:fontFamily="@font/roboto_regular"
+            android:textAlignment="viewStart"
+            android:textAllCaps="false"
+            android:textColor="@color/black"
+            app:layout_constraintBottom_toBottomOf="@id/icAyam"
+            app:layout_constraintEnd_toStartOf="@id/endGuidelineVertical"
+            app:layout_constraintStart_toEndOf="@id/icAyam"
+            app:layout_constraintTop_toTopOf="@id/icAyam"
+            tools:text="Broiler" />
 
-            <TextView
-                android:id="@+id/chickenType"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="4dp"
-                android:textAlignment="viewStart"
-                android:fontFamily="@font/roboto_regular"
-                android:textAllCaps="false"
-                android:textColor="@color/black"
-                app:layout_constraintBottom_toBottomOf="@id/icAyam"
-                app:layout_constraintEnd_toStartOf="@id/endGuidelineVertical"
-                app:layout_constraintStart_toEndOf="@id/icAyam"
-                app:layout_constraintTop_toTopOf="@id/icAyam"
-                tools:text="Broiler" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
-        </androidx.constraintlayout.widget.ConstraintLayout>
-
-    </com.google.android.material.card.MaterialCardView>
-
-</layout>
+</com.google.android.material.card.MaterialCardView>

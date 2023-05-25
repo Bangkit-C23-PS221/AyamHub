@@ -8,14 +8,14 @@ import android.util.Patterns
 import android.view.View
 import androidx.activity.viewModels
 import com.bangkit.ayamhub.data.network.Result
-import com.bangkit.ayamhub.databinding.ActivityRegisterUmkmBinding
+import com.bangkit.ayamhub.databinding.ActivityRegisterBinding
 import com.bangkit.ayamhub.helpers.Reusable
 import com.bangkit.ayamhub.helpers.viewmodelfactory.ViewModelFactory
 import com.bangkit.ayamhub.ui.login.LoginActivity
 
 class RegisterActivity : AppCompatActivity() {
 
-    private lateinit var binding: ActivityRegisterUmkmBinding
+    private lateinit var binding: ActivityRegisterBinding
     private val viewModel: RegisterViewModel by viewModels {
         ViewModelFactory.getInstance(this)
     }
@@ -23,7 +23,7 @@ class RegisterActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         supportActionBar?.hide();
-        binding = ActivityRegisterUmkmBinding.inflate(layoutInflater)
+        binding = ActivityRegisterBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
         binding.signupButton.setOnClickListener { validateInput() }
@@ -73,17 +73,17 @@ class RegisterActivity : AppCompatActivity() {
 //                username.isEmpty() -> {
 //                    etUsername.error = "Tolong isi usernamenya"
 //                }
-                password.isEmpty() || password.length < 8 -> {
-                    edRegisterPassword.error = "Tolong isi passwordnya dengan benar ya"
-                }
                 email.isEmpty() || !Patterns.EMAIL_ADDRESS.matcher(email).matches() -> {
                     edRegisterEmail.error = "Tolong isi email dengan benar ya"
                 }
                 phone.isEmpty() -> {
                     edRegisterPhone.error = "Tolong isi nomor handphone dengan benar ya"
                 }
+                password.isEmpty() || password.length < 8 -> {
+                    edRegisterPassword.error = "Tolong isi passwordnya dengan benar ya"
+                }
                 else -> {
-//                    signUp(name, "dapaasha12", password, email, "1234567890")
+                    signUp(name, name, password, email, phone)
                 }
             }
         }

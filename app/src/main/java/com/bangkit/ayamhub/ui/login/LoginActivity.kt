@@ -7,7 +7,7 @@ import android.util.Patterns
 import android.view.View
 import androidx.activity.viewModels
 import com.bangkit.ayamhub.data.network.Result
-import com.bangkit.ayamhub.databinding.ActivityLoginUBinding
+import com.bangkit.ayamhub.databinding.ActivityLoginBinding
 import com.bangkit.ayamhub.helpers.Reusable
 import com.bangkit.ayamhub.helpers.viewmodelfactory.ViewModelFactory
 import com.bangkit.ayamhub.ui.home.HomeActivity
@@ -15,14 +15,14 @@ import com.bangkit.ayamhub.ui.register.RegisterActivity
 
 class LoginActivity : AppCompatActivity() {
 
-    private lateinit var binding: ActivityLoginUBinding
+    private lateinit var binding: ActivityLoginBinding
     private val viewModel: LoginViewModel by viewModels {
         ViewModelFactory.getInstance(this)
     }
     override fun onCreate(savedInstanceState: Bundle?) {
         supportActionBar?.hide()
         super.onCreate(savedInstanceState)
-        binding = ActivityLoginUBinding.inflate(layoutInflater)
+        binding = ActivityLoginBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
         binding.daftar.setOnClickListener { toRegister() }

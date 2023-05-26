@@ -114,7 +114,6 @@
             android:id="@+id/status"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:backgroundTint="@color/orange2"
             android:fontFamily="@font/roboto_regular"
             android:textAlignment="center"
             android:textAllCaps="false"

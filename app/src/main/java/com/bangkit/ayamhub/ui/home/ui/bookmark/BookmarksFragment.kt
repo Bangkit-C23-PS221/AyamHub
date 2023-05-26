@@ -7,12 +7,14 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
-import com.bangkit.ayamhub.databinding.FragmentNotificationsBinding
+import androidx.recyclerview.widget.RecyclerView
+import com.bangkit.ayamhub.databinding.FragmentBookmarkBinding
+
 
 
 class BookmarksFragment : Fragment() {
 
-    private var _binding: FragmentNotificationsBinding? = null
+    private var _binding: FragmentBookmarkBinding? = null
 
     // This property is only valid between onCreateView and
     // onDestroyView.
@@ -26,12 +28,12 @@ class BookmarksFragment : Fragment() {
         val notificationsViewModel =
             ViewModelProvider(this).get(BookmarksViewModel::class.java)
 
-        _binding = FragmentNotificationsBinding.inflate(inflater, container, false)
+        _binding = FragmentBookmarkBinding.inflate(inflater, container, false)
         val root: View = binding.root
 
-        val textView: TextView = binding.textNotifications
+        val recyclerView: RecyclerView = binding.rvBookmark
         notificationsViewModel.text.observe(viewLifecycleOwner) {
-            textView.text = it
+
         }
         return root
     }

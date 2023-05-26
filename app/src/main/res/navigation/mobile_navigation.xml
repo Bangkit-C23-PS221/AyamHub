@@ -12,16 +12,16 @@
         tools:layout="@layout/fragment_home" />
 
     <fragment
-        android:id="@+id/navigation_dashboard"
+        android:id="@+id/navigation_detection"
         android:name="com.bangkit.ayamhub.ui.home.ui.detection.DetectionFragment"
         android:label="@string/title_detection"
-        tools:layout="@layout/fragment_dashboard" />
+        tools:layout="@layout/fragment_detection" />
 
     <fragment
-        android:id="@+id/navigation_notifications"
+        android:id="@+id/navigation_bookmark"
         android:name="com.bangkit.ayamhub.ui.home.ui.bookmark.BookmarksFragment"
         android:label="@string/title_bookmark"
-        tools:layout="@layout/fragment_notifications" />
+        tools:layout="@layout/fragment_bookmark" />
 
     <fragment
         android:id="@+id/navigation_profile"

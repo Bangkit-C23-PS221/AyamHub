@@ -7,6 +7,7 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
+import androidx.recyclerview.widget.RecyclerView
 import com.bangkit.ayamhub.databinding.FragmentHomeBinding
 
 class HomeFragment : Fragment() {
@@ -28,9 +29,11 @@ class HomeFragment : Fragment() {
         _binding = FragmentHomeBinding.inflate(inflater, container, false)
         val root: View = binding.root
 
-        val textView: TextView = binding.textHome
+        val recyclerView: RecyclerView = binding.rvPeternak
+
         homeViewModel.text.observe(viewLifecycleOwner) {
-            textView.text = it
+
+
         }
         return root
     }

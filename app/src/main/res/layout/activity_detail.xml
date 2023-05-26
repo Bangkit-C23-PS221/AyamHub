@@ -237,7 +237,7 @@
             android:layout_height="wrap_content"
             android:paddingHorizontal="8dp"
             android:paddingVertical="20dp"
-            android:text="halo disini catatan bla bla bla" />
+            android:text="halo disini catatan bla bla bl" />
 
     </androidx.cardview.widget.CardView>
 

@@ -164,8 +164,8 @@
         android:layout_height="64dp"
         android:orientation="horizontal"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintGuide_percent="0.32"
-        app:layout_constraintStart_toStartOf="parent"/>
+        app:layout_constraintGuide_percent="0.31986532"
+        app:layout_constraintStart_toStartOf="parent" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guidelineHorizontal2"

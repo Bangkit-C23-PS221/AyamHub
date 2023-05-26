@@ -13,7 +13,7 @@
 
     <fragment
         android:id="@+id/navigation_detection"
-        android:name="com.bangkit.ayamhub.ui.home.ui.detection.DetectionFragment"
+        android:name="com.bangkit.ayamhub.ui.homepage.ui.detection.DetectionFragment"
         android:label="@string/title_detection"
         tools:layout="@layout/fragment_detection" />
 

@@ -37,7 +37,7 @@
             android:layout_height="0dp"
             android:cropToPadding="false"
             android:scaleType="centerCrop"
-            app:layout_constraintDimensionRatio="16:8.5"
+            app:layout_constraintDimensionRatio="16:8"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"

@@ -40,4 +40,6 @@
     <string name="passw">********</string>
     <string name="buat_peternakan">Buat Peternakan</string>
     <string name="cari_peternakan">Cari Peternakan</string>
+    <string name="ayam">Ayam</string>
+    <string name="hub">Hub</string>
 </resources>

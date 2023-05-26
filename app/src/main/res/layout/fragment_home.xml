@@ -50,9 +50,9 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="20dp"
-                    android:layout_marginBottom="10dp"
+                    android:layout_marginBottom="20dp"
                     android:fontFamily="@font/roboto_bold"
-                    android:text="Ayam"
+                    android:text="@string/ayam"
                     android:textColor="@color/white"
                     android:textSize="35sp"
                     app:layout_constraintBottom_toBottomOf="parent"
@@ -60,15 +60,16 @@
 
                 <TextView
                     android:id="@+id/hub"
+                    android:layout_marginBottom="20dp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="bottom"
-                    android:layout_marginBottom="10dp"
                     android:fontFamily="@font/roboto_bold"
-                    android:text="Hub"
+                    android:text="@string/hub"
                     android:textColor="#FFFF00"
                     android:textSize="35sp"
                     app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintTop_toTopOf="@id/ayam"
                     app:layout_constraintStart_toEndOf="@+id/ayam" />
 
             </androidx.constraintlayout.widget.ConstraintLayout>

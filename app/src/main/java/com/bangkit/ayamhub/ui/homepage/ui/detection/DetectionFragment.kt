@@ -1,4 +1,6 @@
-package com.bangkit.ayamhub.ui.home.ui.detection
+package com.bangkit.ayamhub.ui.homepage.ui.detection
+
+
 
 import android.app.Activity.RESULT_OK
 import android.content.Intent
@@ -17,9 +19,10 @@ import androidx.fragment.app.viewModels
 import com.bangkit.ayamhub.databinding.FragmentDetectionBinding
 import com.bangkit.ayamhub.helpers.uriToFile
 import com.bangkit.ayamhub.helpers.viewmodelfactory.ViewModelFactory
-import com.bangkit.ayamhub.ui.homepage.ui.detection.DetectionViewModel
 
-class DetectionFragment : Fragment() {
+
+open class DetectionFragment : Fragment() {
+    private var imageSize = 32
 
     private var _binding: FragmentDetectionBinding? = null
     private val binding get() = _binding!!
@@ -89,4 +92,6 @@ class DetectionFragment : Fragment() {
             }
         }
     }
+
+
 }

@@ -13,14 +13,14 @@
 
     <fragment
         android:id="@+id/navigation_dashboard"
-        android:name="com.bangkit.ayamhub.ui.home.ui.dashboard.DashboardFragment"
-        android:label="@string/title_dashboard"
+        android:name="com.bangkit.ayamhub.ui.home.ui.detection.DetectionFragment"
+        android:label="@string/title_detection"
         tools:layout="@layout/fragment_dashboard" />
 
     <fragment
         android:id="@+id/navigation_notifications"
-        android:name="com.bangkit.ayamhub.ui.home.ui.notifications.NotificationsFragment"
-        android:label="@string/title_notifications"
+        android:name="com.bangkit.ayamhub.ui.home.ui.bookmark.BookmarksFragment"
+        android:label="@string/title_bookmark"
         tools:layout="@layout/fragment_notifications" />
 
     <fragment

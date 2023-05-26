@@ -23,10 +23,10 @@
         android:id="@+id/farmName"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:textSize="20sp"
         android:fontFamily="@font/roboto_bold"
         android:paddingVertical="6dp"
         android:textColor="@color/black"
+        android:textSize="20sp"
         app:layout_constraintEnd_toStartOf="@id/endGuidelineVertical"
         app:layout_constraintStart_toEndOf="@id/startGuidelineVertical"
         app:layout_constraintTop_toBottomOf="@id/ImageView"
@@ -34,78 +34,80 @@
 
     <androidx.cardview.widget.CardView
         android:id="@+id/cardView"
-        android:layout_marginTop="20dp"
         android:layout_width="0dp"
-        android:elevation="4dp"
-        android:backgroundTint="@color/orange2"
-        app:cardCornerRadius="5dp"
         android:layout_height="wrap_content"
-        app:layout_constraintStart_toStartOf="@id/startGuidelineVertical"
+        android:layout_marginTop="15dp"
+        android:backgroundTint="@color/orange2"
+        android:elevation="4dp"
+        app:cardCornerRadius="5dp"
         app:layout_constraintEnd_toEndOf="@id/endGuidelineVertical"
+        app:layout_constraintStart_toStartOf="@id/startGuidelineVertical"
         app:layout_constraintTop_toBottomOf="@id/farmName">
+
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:paddingVertical="10dp">
+
             <TextView
                 android:id="@+id/berat"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintEnd_toStartOf="@+id/line1"
-                android:fontFamily="@font/roboto_bold"
-                android:textColor="@color/white"
-                android:textSize="18sp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Berat Ayam"/>
+                android:fontFamily="@font/roboto_bold"
+                android:text="Berat Ayam"
+                android:textColor="@color/white"
+                android:textSize="18sp"
+                app:layout_constraintEnd_toStartOf="@+id/line1"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
 
             <TextView
                 android:id="@+id/height"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_margin="20dp"
                 android:fontFamily="@font/roboto_bold"
+                android:text="100 KG"
                 android:textColor="@color/white"
                 android:textSize="18sp"
-                app:layout_constraintTop_toBottomOf="@id/berat"
-                app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintEnd_toStartOf="@+id/line1"
-                android:layout_margin="20dp"
-                android:text="100 KG"/>
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/berat" />
 
             <androidx.appcompat.widget.AppCompatImageView
                 android:id="@+id/line1"
                 android:layout_width="2.5dp"
                 android:layout_height="0dp"
                 android:background="#FFFFFF"
-                app:layout_constraintStart_toEndOf="@id/berat"
+                app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toStartOf="@id/umur"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintBottom_toBottomOf="parent"/>
+                app:layout_constraintStart_toEndOf="@id/berat"
+                app:layout_constraintTop_toTopOf="parent" />
 
             <TextView
                 android:id="@+id/umur"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/roboto_bold"
+                android:text="@string/umur_ayam"
                 android:textColor="@color/white"
                 android:textSize="18sp"
-                app:layout_constraintTop_toTopOf="@+id/berat"
-                app:layout_constraintStart_toEndOf="@id/line1"
                 app:layout_constraintEnd_toEndOf="parent"
-                android:text="@string/umur_ayam"/>
+                app:layout_constraintStart_toEndOf="@id/line1"
+                app:layout_constraintTop_toTopOf="@+id/berat" />
 
             <TextView
                 android:id="@+id/age"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_margin="20dp"
                 android:fontFamily="@font/roboto_bold"
+                android:text="28 Hari"
                 android:textColor="@color/white"
                 android:textSize="18sp"
-                app:layout_constraintTop_toBottomOf="@+id/umur"
-                app:layout_constraintStart_toEndOf="@id/line1"
                 app:layout_constraintEnd_toEndOf="parent"
-                android:layout_margin="20dp"
-                android:text="28 Hari"/>
+                app:layout_constraintStart_toEndOf="@id/line1"
+                app:layout_constraintTop_toBottomOf="@+id/umur" />
 
 
         </androidx.constraintlayout.widget.ConstraintLayout>
@@ -163,6 +165,32 @@
         app:layout_constraintTop_toTopOf="@id/icAyam"
         tools:text="Tipe: Broiler" />
 
+    <ImageView
+        android:id="@+id/icStock"
+        android:layout_width="25dp"
+        android:layout_height="25dp"
+        android:layout_marginTop="6dp"
+        android:layout_marginBottom="16dp"
+        app:layout_constraintStart_toEndOf="@id/startGuidelineVertical"
+        app:layout_constraintTop_toBottomOf="@id/icAyam"
+        app:srcCompat="@drawable/timbang" />
+
+
+    <TextView
+        android:id="@+id/stock"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="4dp"
+        android:fontFamily="@font/roboto_regular"
+        android:textAlignment="viewStart"
+        android:textAllCaps="false"
+        android:textColor="@color/black"
+        app:layout_constraintBottom_toBottomOf="@id/icStock"
+        app:layout_constraintEnd_toStartOf="@id/endGuidelineVertical"
+        app:layout_constraintStart_toEndOf="@id/icStock"
+        app:layout_constraintTop_toTopOf="@id/icStock"
+        tools:text="Stock: 2000Kg" />
+
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/startGuidelineVertical"
         android:layout_width="wrap_content"
@@ -180,6 +208,52 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintGuide_percent="0.975"
         app:layout_constraintStart_toStartOf="parent" />
+
+
+
+    <TextView
+        android:id="@+id/catatanP"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:fontFamily="@font/roboto_bold"
+        android:textColor="@color/black"
+        android:text="Catatan dari Peternak"
+        app:layout_constraintEnd_toStartOf="@+id/endGuidelineVertical"
+        app:layout_constraintStart_toStartOf="@+id/startGuidelineVertical"
+        app:layout_constraintTop_toBottomOf="@+id/icStock"
+        />
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cardView2"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:backgroundTint="#F3F3F3"
+        app:layout_constraintEnd_toStartOf="@+id/endGuidelineVertical"
+        app:layout_constraintStart_toStartOf="@+id/startGuidelineVertical"
+        app:layout_constraintTop_toBottomOf="@+id/catatanP">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingHorizontal="8dp"
+            android:paddingVertical="20dp"
+            tools:text="halo disini catatan bla bla bla" />
+
+    </androidx.cardview.widget.CardView>
+
+    <TextView
+        android:layout_marginTop="20dp"
+        android:id="@+id/harga"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/roboto_bold"
+        android:text="@string/harga_rp_23_000_kg"
+        android:textColor="#DC0000"
+        android:textSize="25sp"
+        app:layout_constraintEnd_toStartOf="@+id/endGuidelineVertical"
+        app:layout_constraintStart_toStartOf="@+id/startGuidelineVertical"
+        app:layout_constraintTop_toBottomOf="@+id/cardView2" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

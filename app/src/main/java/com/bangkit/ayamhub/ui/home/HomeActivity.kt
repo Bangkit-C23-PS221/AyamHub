@@ -18,21 +18,20 @@ class HomeActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         supportActionBar?.hide()
-
         binding = ActivityHomeBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        val navView: BottomNavigationView = binding.navView
+        setNavbar()
+    }
 
+    private fun setNavbar() {
         val navController = findNavController(R.id.nav_host_fragment_activity_home)
-        // Passing each menu ID as a set of Ids because each
-        // menu should be considered as top level destinations.
-        val appBarConfiguration = AppBarConfiguration(
-            setOf(
+
+        val appBarConfiguration = AppBarConfiguration( setOf(
                 R.id.navigation_home, R.id.navigation_detection, R.id.navigation_bookmark, R.id.navigation_profile
             )
         )
         setupActionBarWithNavController(navController, appBarConfiguration)
-        navView.setupWithNavController(navController)
+        binding.navView.setupWithNavController(navController)
     }
 }

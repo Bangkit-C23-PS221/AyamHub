@@ -20,7 +20,7 @@
             android:orientation="vertical"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintGuide_percent="0.025"
-            app:layout_constraintStart_toStartOf="parent"/>
+            app:layout_constraintStart_toStartOf="parent" />
 
         <androidx.constraintlayout.widget.Guideline
             android:id="@+id/endGuidelineVertical"
@@ -29,7 +29,7 @@
             android:orientation="vertical"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintGuide_percent="0.975"
-            app:layout_constraintStart_toStartOf="parent"/>
+            app:layout_constraintStart_toStartOf="parent" />
 
         <ImageView
             android:id="@+id/storyImageView"
@@ -39,6 +39,7 @@
             android:scaleType="centerCrop"
             app:layout_constraintDimensionRatio="16:9"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             tools:srcCompat="@tools:sample/backgrounds/scenic" />
@@ -114,16 +115,16 @@
             android:id="@+id/status"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:background="#FFFF00"
             android:fontFamily="@font/roboto_regular"
+            android:paddingVertical="7dp"
             android:textAlignment="center"
             android:textAllCaps="false"
             android:textColor="#D10000"
-            android:paddingVertical="7dp"
-            android:background="#FFFF00"
+            app:layout_constraintBottom_toBottomOf="@id/chickenType"
             app:layout_constraintEnd_toEndOf="@id/kg"
             app:layout_constraintStart_toStartOf="@id/price"
             app:layout_constraintTop_toTopOf="@id/chickenType"
-            app:layout_constraintBottom_toBottomOf="@id/chickenType"
             tools:text="Siap Panen" />
 
         <ImageView

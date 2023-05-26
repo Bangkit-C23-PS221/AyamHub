@@ -3,11 +3,16 @@ package com.bangkit.ayamhub.ui.homepage.ui.home
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import com.bangkit.ayamhub.data.repository.FarmRepository
+import com.bangkit.ayamhub.data.repository.UserRepository
 
-class HomeViewModel : ViewModel() {
+class HomeViewModel(
+    private val farmRepo: FarmRepository,
+    private val userRepo: UserRepository
+) : ViewModel() {
 
-    private val _text = MutableLiveData<String>().apply {
-        value = "This is home Fragment"
-    }
-    val text: LiveData<String> = _text
+    fun getToken() = userRepo.getToken()
+
+    fun getAllFarm(token: String) = farmRepo.getAllFarm(token)
+
 }

@@ -67,4 +67,19 @@
         app:layout_constraintEnd_toEndOf="@id/btnGalery"
         android:text="@string/galeri"/>
 
+    <Button
+        android:id="@+id/loginButton"
+        android:layout_width="0dp"
+        android:layout_height="64dp"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="32dp"
+        android:backgroundTint="@color/orange2"
+        android:text="@string/deteksi_sekarang"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/kamera"/>
+
+
+
 </androidx.constraintlayout.widget.ConstraintLayout>

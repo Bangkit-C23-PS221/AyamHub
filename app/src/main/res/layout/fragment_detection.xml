@@ -1,85 +1,92 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".ui.home.HomeActivity">
+    android:layout_height="match_parent">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        >
 
 
-    <ImageView
-        android:id="@+id/pvImage"
-        android:layout_width="350dp"
-        android:layout_height="350dp"
-        android:src="#00FFFFFF"
-        android:layout_marginTop="70dp"
-        android:background="@drawable/border"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        <ImageView
+            android:id="@+id/pvImage"
+            android:layout_width="350dp"
+            android:layout_height="350dp"
+            android:src="#00FFFFFF"
+            android:layout_marginTop="70dp"
+            android:background="@drawable/border"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
 
-    <ImageButton
-        android:id="@+id/btnCamera"
-        android:layout_width="100dp"
-        android:layout_marginTop="20dp"
-        android:layout_height="100dp"
-        app:layout_constraintEnd_toStartOf="@+id/btnGalery"
-        android:background="@drawable/camera"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/pvImage" />
+        <ImageButton
+            android:id="@+id/btnCamera"
+            android:layout_width="100dp"
+            android:layout_marginTop="20dp"
+            android:layout_height="100dp"
+            app:layout_constraintEnd_toStartOf="@+id/btnGalery"
+            android:background="@drawable/camera"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/pvImage" />
 
 
-    <ImageButton
-        android:id="@+id/btnGalery"
-        android:layout_width="100dp"
-        android:layout_height="100dp"
-        android:background="@drawable/gallery"
-        android:text="@string/galeri"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@id/btnCamera"
-        app:layout_constraintTop_toBottomOf="@id/btnCamera"
-        app:layout_constraintTop_toTopOf="@id/btnCamera" />
+        <ImageButton
+            android:id="@+id/btnGalery"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:background="@drawable/gallery"
+            android:text="@string/galeri"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/btnCamera"
+            app:layout_constraintTop_toBottomOf="@id/btnCamera"
+            app:layout_constraintTop_toTopOf="@id/btnCamera" />
 
-    <TextView
-        android:id="@+id/kamera"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:fontFamily="@font/roboto_bold"
-        android:textColor="@color/orange2"
-        android:textSize="16sp"
-        android:layout_marginTop="-10dp"
-        app:layout_constraintTop_toBottomOf="@id/btnCamera"
-        app:layout_constraintStart_toStartOf="@id/btnCamera"
-        app:layout_constraintEnd_toEndOf="@id/btnCamera"
-        android:text="@string/kamera"/>
+        <TextView
+            android:id="@+id/kamera"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/roboto_bold"
+            android:textColor="@color/orange2"
+            android:textSize="16sp"
+            android:layout_marginTop="-10dp"
+            app:layout_constraintTop_toBottomOf="@id/btnCamera"
+            app:layout_constraintStart_toStartOf="@id/btnCamera"
+            app:layout_constraintEnd_toEndOf="@id/btnCamera"
+            android:text="@string/kamera"/>
 
-    <TextView
-        android:id="@+id/galeri"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:fontFamily="@font/roboto_bold"
-        android:textColor="@color/orange2"
-        android:textSize="16sp"
-        android:layout_marginTop="-10dp"
-        app:layout_constraintTop_toBottomOf="@id/btnGalery"
-        app:layout_constraintStart_toStartOf="@id/btnGalery"
-        app:layout_constraintEnd_toEndOf="@id/btnGalery"
-        android:text="@string/galeri"/>
+        <TextView
+            android:id="@+id/galeri"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/roboto_bold"
+            android:textColor="@color/orange2"
+            android:textSize="16sp"
+            android:layout_marginTop="-10dp"
+            app:layout_constraintTop_toBottomOf="@id/btnGalery"
+            app:layout_constraintStart_toStartOf="@id/btnGalery"
+            app:layout_constraintEnd_toEndOf="@id/btnGalery"
+            android:text="@string/galeri"/>
 
-    <Button
-        android:id="@+id/loginButton"
-        android:layout_width="0dp"
-        android:layout_height="64dp"
-        android:layout_marginStart="32dp"
-        android:layout_marginTop="20dp"
-        android:layout_marginEnd="32dp"
-        android:backgroundTint="@color/orange2"
-        android:text="@string/deteksi_sekarang"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/kamera"/>
+        <Button
+            android:id="@+id/loginButton"
+            android:layout_width="0dp"
+            android:layout_height="64dp"
+            android:layout_marginStart="32dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginEnd="32dp"
+            android:backgroundTint="@color/orange2"
+            android:text="@string/deteksi_sekarang"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/kamera"/>
 
 
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+    
+</ScrollView>

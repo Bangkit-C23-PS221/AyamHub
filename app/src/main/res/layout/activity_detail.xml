@@ -17,7 +17,7 @@
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        tools:srcCompat="@tools:sample/backgrounds/scenic" />
+        android:src="@drawable/background_profile" />
 
     <TextView
         android:id="@+id/farmName"
@@ -30,15 +30,15 @@
         app:layout_constraintEnd_toStartOf="@id/endGuidelineVertical"
         app:layout_constraintStart_toEndOf="@id/startGuidelineVertical"
         app:layout_constraintTop_toBottomOf="@id/ImageView"
-        tools:text="Peternakan Rindang Jaya" />
+        android:text="Peternakan Rindang Jaya" />
 
     <androidx.cardview.widget.CardView
         android:id="@+id/cardView"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="15dp"
-        android:backgroundTint="@color/orange2"
-        android:elevation="4dp"
+        android:backgroundTint="#FFFFFF"
+        android:elevation="1dp"
         app:cardCornerRadius="5dp"
         app:layout_constraintEnd_toEndOf="@id/endGuidelineVertical"
         app:layout_constraintStart_toStartOf="@id/startGuidelineVertical"
@@ -55,7 +55,7 @@
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/roboto_bold"
                 android:text="Berat Ayam"
-                android:textColor="@color/white"
+                android:textColor="#232323"
                 android:textSize="18sp"
                 app:layout_constraintEnd_toStartOf="@+id/line1"
                 app:layout_constraintStart_toStartOf="parent"
@@ -65,10 +65,10 @@
                 android:id="@+id/height"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_margin="20dp"
-                android:fontFamily="@font/roboto_bold"
+                android:layout_margin="14dp"
+                android:fontFamily="@font/roboto_regular"
                 android:text="100 KG"
-                android:textColor="@color/white"
+                android:textColor="#232323"
                 android:textSize="18sp"
                 app:layout_constraintEnd_toStartOf="@+id/line1"
                 app:layout_constraintStart_toStartOf="parent"
@@ -90,7 +90,7 @@
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/roboto_bold"
                 android:text="@string/umur_ayam"
-                android:textColor="@color/white"
+                android:textColor="#232323"
                 android:textSize="18sp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toEndOf="@id/line1"
@@ -100,10 +100,10 @@
                 android:id="@+id/age"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_margin="20dp"
-                android:fontFamily="@font/roboto_bold"
+                android:layout_margin="14dp"
+                android:fontFamily="@font/roboto_regular"
                 android:text="28 Hari"
-                android:textColor="@color/white"
+                android:textColor="#232323"
                 android:textSize="18sp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toEndOf="@id/line1"
@@ -227,6 +227,7 @@
     <androidx.cardview.widget.CardView
         android:id="@+id/cardView2"
         android:layout_width="0dp"
+        android:layout_marginTop="10dp"
         android:layout_height="wrap_content"
         android:backgroundTint="#F3F3F3"
         app:layout_constraintEnd_toStartOf="@+id/endGuidelineVertical"
@@ -238,7 +239,7 @@
             android:layout_height="wrap_content"
             android:paddingHorizontal="8dp"
             android:paddingVertical="20dp"
-            tools:text="halo disini catatan bla bla bla" />
+            android:text="halo disini catatan bla bla bla" />
 
     </androidx.cardview.widget.CardView>
 
@@ -250,10 +251,48 @@
         android:fontFamily="@font/roboto_bold"
         android:text="@string/harga_rp_23_000_kg"
         android:textColor="#DC0000"
-        android:textSize="25sp"
+        android:textSize="20sp"
         app:layout_constraintEnd_toStartOf="@+id/endGuidelineVertical"
         app:layout_constraintStart_toStartOf="@+id/startGuidelineVertical"
-        app:layout_constraintTop_toBottomOf="@+id/cardView2" />
+        app:layout_constraintBottom_toTopOf="@+id/WA" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/WA"
+        android:layout_width="0dp"
+        android:layout_height="85dp"
+        android:textAllCaps="false"
+        android:text="@string/whatsapp"
+        android:elevation="4dp"
+        android:textSize="18sp"
+        app:cornerRadius="0dp"
+        app:strokeColor="@color/white"
+        app:strokeWidth="1dp"
+        android:layout_marginBottom="-5dp"
+        android:backgroundTint="@color/orange2"
+        android:drawableEnd="@drawable/iconwasize"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@id/maps"
+        />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/maps"
+        android:layout_width="0dp"
+        android:layout_height="85dp"
+        android:backgroundTint="@color/orange2"
+        android:drawableEnd="@drawable/iconmapssize"
+        app:cornerRadius="0dp"
+        android:text="@string/maps"
+        android:elevation="4dp"
+        android:layout_marginBottom="-5dp"
+        app:strokeColor="@color/white"
+        app:strokeWidth="1dp"
+        android:textAllCaps="false"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/WA" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

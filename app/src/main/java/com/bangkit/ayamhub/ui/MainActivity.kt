@@ -5,7 +5,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import com.bangkit.ayamhub.ui.login.LoginActivity
 import com.bangkit.ayamhub.databinding.ActivityMainBinding
-import com.bangkit.ayamhub.ui.home.HomeActivity
+import com.bangkit.ayamhub.ui.homepage.HomeActivity
 
 class MainActivity : AppCompatActivity() {
 
@@ -17,6 +17,11 @@ class MainActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         binding.loginButton.setOnClickListener {
+            startActivity(Intent(this, LoginActivity::class.java))
+            finish()
+        }
+
+        binding.cek.setOnClickListener {
             startActivity(Intent(this, HomeActivity::class.java))
             finish()
         }

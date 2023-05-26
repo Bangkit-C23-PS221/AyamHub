@@ -1,4 +1,4 @@
-package com.bangkit.ayamhub.ui.home.ui.bookmark
+package com.bangkit.ayamhub.ui.homepage.ui.detection
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -7,14 +7,11 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
-import androidx.recyclerview.widget.RecyclerView
-import com.bangkit.ayamhub.databinding.FragmentBookmarkBinding
+import com.bangkit.ayamhub.databinding.FragmentDashboardBinding
 
+class DetectionFragment : Fragment() {
 
-
-class BookmarksFragment : Fragment() {
-
-    private var _binding: FragmentBookmarkBinding? = null
+    private var _binding: FragmentDashboardBinding? = null
 
     // This property is only valid between onCreateView and
     // onDestroyView.
@@ -25,15 +22,15 @@ class BookmarksFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        val notificationsViewModel =
-            ViewModelProvider(this).get(BookmarksViewModel::class.java)
+        val detectionViewModel =
+            ViewModelProvider(this).get(DetectionViewModel::class.java)
 
-        _binding = FragmentBookmarkBinding.inflate(inflater, container, false)
+        _binding = FragmentDashboardBinding.inflate(inflater, container, false)
         val root: View = binding.root
 
-        val recyclerView: RecyclerView = binding.rvBookmark
-        notificationsViewModel.text.observe(viewLifecycleOwner) {
-
+        val textView: TextView = binding.textDashboard
+        detectionViewModel.text.observe(viewLifecycleOwner) {
+            textView.text = it
         }
         return root
     }

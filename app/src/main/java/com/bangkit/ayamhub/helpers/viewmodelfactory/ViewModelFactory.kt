@@ -6,7 +6,7 @@ import androidx.lifecycle.ViewModelProvider
 import com.bangkit.ayamhub.data.repository.FarmRepository
 import com.bangkit.ayamhub.data.repository.UserRepository
 import com.bangkit.ayamhub.helpers.injection.Injection
-import com.bangkit.ayamhub.ui.home.ui.detection.DetectionViewModel
+import com.bangkit.ayamhub.ui.homepage.ui.detection.DetectionViewModel
 import com.bangkit.ayamhub.ui.login.LoginViewModel
 import com.bangkit.ayamhub.ui.register.RegisterViewModel
 

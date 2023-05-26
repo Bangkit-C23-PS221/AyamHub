@@ -5,7 +5,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import com.bangkit.ayamhub.ui.login.LoginActivity
 import com.bangkit.ayamhub.databinding.ActivityMainBinding
-import com.bangkit.ayamhub.ui.homepage.HomeActivity
+import com.bangkit.ayamhub.ui.home.HomeActivity
 
 class MainActivity : AppCompatActivity() {
 

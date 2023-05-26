@@ -17,6 +17,7 @@ import androidx.fragment.app.viewModels
 import com.bangkit.ayamhub.databinding.FragmentDetectionBinding
 import com.bangkit.ayamhub.helpers.uriToFile
 import com.bangkit.ayamhub.helpers.viewmodelfactory.ViewModelFactory
+import com.bangkit.ayamhub.ui.homepage.ui.detection.DetectionViewModel
 
 class DetectionFragment : Fragment() {
 

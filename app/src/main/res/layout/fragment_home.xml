@@ -32,7 +32,7 @@
             android:layout_height="0dp"
             android:background="@color/orange2"
             android:foregroundGravity="center_horizontal"
-            app:layout_constraintDimensionRatio="2.3"
+            android:paddingTop="120dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent">
@@ -48,8 +48,8 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintBottom_toBottomOf="parent"
                 android:textColor="@color/white"
-                android:textSize="30sp"
-                android:layout_marginBottom="40dp"
+                android:textSize="35sp"
+                android:layout_marginBottom="10dp"
                 />
 
             <TextView
@@ -58,15 +58,17 @@
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/roboto_bold"
                 android:text="Hub"
+                android:layout_marginBottom="10dp"
                 app:layout_constraintStart_toEndOf="@+id/ayam"
                 app:layout_constraintBottom_toBottomOf="parent"
                 android:layout_gravity="bottom"
-                android:textColor="#FFE500"
-                android:textSize="30sp"
-                android:layout_marginBottom="40dp"
+                android:textColor="#FFFF00"
+                android:textSize="35sp"
                 />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
+
+
 
 
         <com.google.android.material.textfield.TextInputLayout
@@ -94,6 +96,21 @@
         </com.google.android.material.textfield.TextInputLayout>
 
 
+
+
+        <ImageView
+            android:id="@+id/logo"
+            android:layout_width="200dp"
+            android:layout_height="150dp"
+            android:layout_marginTop="50dp"
+            android:scaleType="centerInside"
+            app:layout_constraintBottom_toBottomOf="@id/topItem"
+            app:layout_constraintTop_toBottomOf="@id/searchLayout"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:background="@drawable/farmer"
+            />
+
+
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rv_peternak"
             android:layout_width="0dp"
@@ -101,7 +118,7 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/topItem"
+            app:layout_constraintTop_toBottomOf="@+id/logo"
             tools:listitem="@layout/item_rv"/>
 
 

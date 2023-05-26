@@ -1,111 +1,125 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+
+<androidx.constraintlayout.widget.ConstraintLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
     tools:context=".ui.home.HomeActivity">
 
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+    <ProgressBar
+        android:id="@+id/progressBar"
+        style="?android:attr/progressBarStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:visibility="gone"
+        android:elevation="1dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:visibility="visible" />
 
-        <ProgressBar
-            android:id="@+id/progress"
-            style="?android:attr/progressBarStyle"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:visibility="gone"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            tools:visibility="visible" />
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        >
 
         <androidx.constraintlayout.widget.ConstraintLayout
-            android:id="@+id/topItem"
             android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:background="@color/orange2"
-            android:foregroundGravity="center_horizontal"
-            android:paddingTop="120dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent">
+            android:layout_height="wrap_content">
 
 
-            <TextView
-                android:id="@+id/ayam"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/topItem"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:background="@color/orange2"
+                android:foregroundGravity="center_horizontal"
+                android:paddingTop="120dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
+
+
+                <TextView
+                    android:id="@+id/ayam"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="20dp"
+                    android:layout_marginBottom="10dp"
+                    android:fontFamily="@font/roboto_bold"
+                    android:text="Ayam"
+                    android:textColor="@color/white"
+                    android:textSize="35sp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="parent" />
+
+                <TextView
+                    android:id="@+id/hub"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="bottom"
+                    android:layout_marginBottom="10dp"
+                    android:fontFamily="@font/roboto_bold"
+                    android:text="Hub"
+                    android:textColor="#FFFF00"
+                    android:textSize="35sp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toEndOf="@+id/ayam" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+            <EditText
+                android:id="@+id/search"
+                android:layout_width="0dp"
+                android:layout_height="40dp"
                 android:layout_marginStart="20dp"
-                android:layout_marginBottom="10dp"
-                android:fontFamily="@font/roboto_bold"
-                android:text="Ayam"
-                android:textColor="@color/white"
-                android:textSize="35sp"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintStart_toStartOf="parent" />
+                android:background="@drawable/back_search"
+                android:layout_marginTop="20dp"
+                android:backgroundTint="@color/white"
+                android:layout_marginEnd="20dp"
+                android:inputType="text"
+                android:hint="@string/cari_peternakan"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                android:drawableStart="@drawable/search"
+                android:drawablePadding="8dp"
+                app:layout_constraintTop_toTopOf="parent"/>
 
-            <TextView
-                android:id="@+id/hub"
-                android:layout_width="wrap_content"
+
+
+
+            <ImageView
+                android:id="@+id/logo"
+                android:layout_width="200dp"
+                android:layout_height="150dp"
+                android:layout_marginTop="50dp"
+                android:background="@drawable/farmer"
+                android:scaleType="centerInside"
+                app:layout_constraintBottom_toBottomOf="@id/topItem"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/search" />
+
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rv_peternak"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_gravity="bottom"
-                android:layout_marginBottom="10dp"
-                android:fontFamily="@font/roboto_bold"
-                android:text="Hub"
-                android:textColor="#FFFF00"
-                android:textSize="35sp"
                 app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintStart_toEndOf="@+id/ayam" />
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/logo"
+                tools:listitem="@layout/item_rv" />
+
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
-
-        <EditText
-            android:id="@+id/search"
-            android:layout_width="0dp"
-            android:layout_height="45dp"
-            android:layout_marginStart="20dp"
-            android:background="@drawable/back_search"
-            android:layout_marginTop="20dp"
-            android:backgroundTint="@color/white"
-            android:layout_marginEnd="20dp"
-            android:hint="@string/cari_peternakan"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            android:drawableStart="@drawable/search"
-            android:drawablePadding="8dp"
-            app:layout_constraintTop_toTopOf="parent"/>
+    </androidx.core.widget.NestedScrollView>
 
 
-
-
-        <ImageView
-            android:id="@+id/logo"
-            android:layout_width="200dp"
-            android:layout_height="150dp"
-            android:layout_marginTop="50dp"
-            android:background="@drawable/farmer"
-            android:scaleType="centerInside"
-            app:layout_constraintBottom_toBottomOf="@id/topItem"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/search" />
-
-
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/rv_peternak"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/logo"
-            tools:listitem="@layout/item_rv" />
-
-
-    </androidx.constraintlayout.widget.ConstraintLayout>
-
-</androidx.core.widget.NestedScrollView>
+</androidx.constraintlayout.widget.ConstraintLayout>

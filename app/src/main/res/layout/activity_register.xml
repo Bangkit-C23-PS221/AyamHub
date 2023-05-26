@@ -12,7 +12,7 @@
 
 <androidx.constraintlayout.widget.ConstraintLayout
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="wrap_content">
 
 
     <ProgressBar
@@ -142,7 +142,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/phoneTextView"
-        app:startIconDrawable="@drawable/email">
+        app:startIconDrawable="@drawable/phone">
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/ed_register_phone"

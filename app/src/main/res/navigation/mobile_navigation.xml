@@ -14,18 +14,18 @@
     <fragment
         android:id="@+id/navigation_detection"
         android:name="com.bangkit.ayamhub.ui.home.ui.detection.DetectionFragment"
-        android:label="@string/title_dashboard"
+        android:label="@string/title_detection"
         tools:layout="@layout/fragment_detection" />
 
     <fragment
         android:id="@+id/navigation_bookmark"
         android:name="com.bangkit.ayamhub.ui.homepage.ui.bookmarks.BookmarksFragment"
-        android:label="@string/title_notifications"
+        android:label="@string/title_bookmark"
         tools:layout="@layout/fragment_bookmarks" />
 
     <fragment
         android:id="@+id/navigation_profile"
-        android:name="com.bangkit.ayamhub.ui.homepage.ui.bookmarks.BookmarksFragment"
-        android:label="@string/title_notifications"
-        tools:layout="@layout/fragment_bookmarks" />
+        android:name="com.bangkit.ayamhub.ui.homepage.ui.profile.ProfileFragment"
+        android:label="@string/title_profile"
+        tools:layout="@layout/fragment_profile" />
 </navigation>

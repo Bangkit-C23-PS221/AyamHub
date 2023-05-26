@@ -32,7 +32,7 @@
             app:layout_constraintStart_toStartOf="parent" />
 
         <ImageView
-            android:id="@+id/storyImageView"
+            android:id="@+id/ImageView"
             android:layout_width="0dp"
             android:layout_height="0dp"
             android:cropToPadding="false"
@@ -54,7 +54,7 @@
             android:textColor="@color/black"
             app:layout_constraintEnd_toStartOf="@id/endGuidelineVertical"
             app:layout_constraintStart_toEndOf="@id/startGuidelineVertical"
-            app:layout_constraintTop_toBottomOf="@id/storyImageView"
+            app:layout_constraintTop_toBottomOf="@id/ImageView"
             tools:text="Peternakan Rindang Jaya" />
 
         <ImageView

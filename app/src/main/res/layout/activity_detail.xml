@@ -1,0 +1,185 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.detail.DetailActivity">
+
+    <ImageView
+        android:id="@+id/ImageView"
+        android:layout_width="0dp"
+        android:layout_height="241dp"
+        android:cropToPadding="false"
+        android:scaleType="centerCrop"
+        app:layout_constraintDimensionRatio="16:8"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:srcCompat="@tools:sample/backgrounds/scenic" />
+
+    <TextView
+        android:id="@+id/farmName"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:textSize="20sp"
+        android:fontFamily="@font/roboto_bold"
+        android:paddingVertical="6dp"
+        android:textColor="@color/black"
+        app:layout_constraintEnd_toStartOf="@id/endGuidelineVertical"
+        app:layout_constraintStart_toEndOf="@id/startGuidelineVertical"
+        app:layout_constraintTop_toBottomOf="@id/ImageView"
+        tools:text="Peternakan Rindang Jaya" />
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cardView"
+        android:layout_marginTop="20dp"
+        android:layout_width="0dp"
+        android:elevation="4dp"
+        android:backgroundTint="@color/orange2"
+        app:cardCornerRadius="5dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="@id/startGuidelineVertical"
+        app:layout_constraintEnd_toEndOf="@id/endGuidelineVertical"
+        app:layout_constraintTop_toBottomOf="@id/farmName">
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingVertical="10dp">
+            <TextView
+                android:id="@+id/berat"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toStartOf="@+id/line1"
+                android:fontFamily="@font/roboto_bold"
+                android:textColor="@color/white"
+                android:textSize="18sp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Berat Ayam"/>
+
+            <TextView
+                android:id="@+id/height"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/roboto_bold"
+                android:textColor="@color/white"
+                android:textSize="18sp"
+                app:layout_constraintTop_toBottomOf="@id/berat"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toStartOf="@+id/line1"
+                android:layout_margin="20dp"
+                android:text="100 KG"/>
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/line1"
+                android:layout_width="2.5dp"
+                android:layout_height="0dp"
+                android:background="#FFFFFF"
+                app:layout_constraintStart_toEndOf="@id/berat"
+                app:layout_constraintEnd_toStartOf="@id/umur"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"/>
+
+            <TextView
+                android:id="@+id/umur"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/roboto_bold"
+                android:textColor="@color/white"
+                android:textSize="18sp"
+                app:layout_constraintTop_toTopOf="@+id/berat"
+                app:layout_constraintStart_toEndOf="@id/line1"
+                app:layout_constraintEnd_toEndOf="parent"
+                android:text="@string/umur_ayam"/>
+
+            <TextView
+                android:id="@+id/age"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/roboto_bold"
+                android:textColor="@color/white"
+                android:textSize="18sp"
+                app:layout_constraintTop_toBottomOf="@+id/umur"
+                app:layout_constraintStart_toEndOf="@id/line1"
+                app:layout_constraintEnd_toEndOf="parent"
+                android:layout_margin="20dp"
+                android:text="28 Hari"/>
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.cardview.widget.CardView>
+
+    <ImageView
+        android:id="@+id/location"
+        android:layout_width="25dp"
+        android:layout_height="25dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginBottom="16dp"
+        app:layout_constraintStart_toEndOf="@id/startGuidelineVertical"
+        app:layout_constraintTop_toBottomOf="@id/cardView"
+        app:srcCompat="@drawable/ic_location" />
+
+    <TextView
+        android:id="@+id/locFarm"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="4dp"
+        android:fontFamily="@font/roboto_regular"
+        android:textAlignment="viewStart"
+        android:textAllCaps="false"
+        android:textColor="@color/black"
+        app:layout_constraintBottom_toBottomOf="@id/location"
+        app:layout_constraintEnd_toStartOf="@id/endGuidelineVertical"
+        app:layout_constraintStart_toEndOf="@id/location"
+        app:layout_constraintTop_toTopOf="@id/location"
+        tools:text="Tangerang Selatan" />
+
+
+    <ImageView
+        android:id="@+id/icAyam"
+        android:layout_width="25dp"
+        android:layout_height="25dp"
+        android:layout_marginTop="6dp"
+        android:layout_marginBottom="16dp"
+        app:layout_constraintStart_toEndOf="@id/startGuidelineVertical"
+        app:layout_constraintTop_toBottomOf="@id/locFarm"
+        app:srcCompat="@drawable/ic_chicken" />
+
+
+    <TextView
+        android:id="@+id/chickenType"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="4dp"
+        android:fontFamily="@font/roboto_regular"
+        android:textAlignment="viewStart"
+        android:textAllCaps="false"
+        android:textColor="@color/black"
+        app:layout_constraintBottom_toBottomOf="@id/icAyam"
+        app:layout_constraintEnd_toStartOf="@id/endGuidelineVertical"
+        app:layout_constraintStart_toEndOf="@id/icAyam"
+        app:layout_constraintTop_toTopOf="@id/icAyam"
+        tools:text="Tipe: Broiler" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/startGuidelineVertical"
+        android:layout_width="wrap_content"
+        android:layout_height="64dp"
+        android:orientation="vertical"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintGuide_percent="0.025"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/endGuidelineVertical"
+        android:layout_width="wrap_content"
+        android:layout_height="64dp"
+        android:orientation="vertical"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintGuide_percent="0.975"
+        app:layout_constraintStart_toStartOf="parent" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

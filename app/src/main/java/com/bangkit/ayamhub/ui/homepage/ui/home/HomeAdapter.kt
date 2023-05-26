@@ -28,7 +28,7 @@ class HomeAdapter(
         with(holder.binding) {
             Glide.with(holder.itemView.context)
                 .load(photo)
-                .into(storyImageView)
+                .into(ImageView)
             farmName.text = title
             locFarm.text = location
             chickenType.text = "Ayam Goreng"

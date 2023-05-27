@@ -1,4 +1,4 @@
-package com.bangkit.ayamhub.ui.home
+package com.bangkit.ayamhub.ui.homepage
 
 import android.os.Bundle
 import com.google.android.material.bottomnavigation.BottomNavigationView
@@ -27,7 +27,8 @@ class HomeActivity : AppCompatActivity() {
     private fun setNavbar() {
         val navController = findNavController(R.id.nav_host_fragment_activity_home)
 
-        val appBarConfiguration = AppBarConfiguration( setOf(
+        val appBarConfiguration = AppBarConfiguration(
+            setOf(
                 R.id.navigation_home, R.id.navigation_detection, R.id.navigation_bookmark, R.id.navigation_profile
             )
         )

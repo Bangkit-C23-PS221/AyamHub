@@ -7,8 +7,14 @@ import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
 object ApiConfig {
-    private const val BASE_URL = "https://ayamhub.et.r.appspot.com"
-    fun getApiService(token: String = ""): ApiService {
+    const val FARM_URL = "https://ayamhub.et.r.appspot.com"
+    const val LOCATION_URL = "https://ibnux.github.io/data-indonesia"
+
+    fun getAyamHubApiService(token: String = ""): ApiService = provideApiService(token, FARM_URL)
+
+    fun getLocationApiService():ApiService = provideApiService("", LOCATION_URL)
+
+    private fun provideApiService(token: String = "", baserUrl: String): ApiService {
         val loggingInterceptor = HttpLoggingInterceptor().setLevel(HttpLoggingInterceptor.Level.BODY)
 
         val headerInterceptor = Interceptor {
@@ -25,7 +31,7 @@ object ApiConfig {
             .build()
 
         val retrofit = Retrofit.Builder()
-            .baseUrl(BASE_URL)
+            .baseUrl(baserUrl)
             .addConverterFactory(GsonConverterFactory.create())
             .client(client)
             .build()

@@ -21,7 +21,7 @@ class UserRepository(
     fun signInPeternak (email: String, password: String) = liveData {
         emit(Result.Loading)
         try {
-            val response = apiConfig.getApiService().signInPeternak(email, password)
+            val response = apiConfig.getAyamHubApiService().signInPeternak(email, password)
             emit(Result.Success(response))
         } catch (e: Exception) {
             emit(Result.Error(e.message.toString()))
@@ -37,7 +37,7 @@ class UserRepository(
     ) = liveData {
         emit(Result.Loading)
         try {
-            val response = apiConfig.getApiService().signUpPeternak(
+            val response = apiConfig.getAyamHubApiService().signUpPeternak(
                 name,
                 username,
                 password,
@@ -53,7 +53,7 @@ class UserRepository(
     fun signInUmkm (email: String, password: String) = liveData {
         emit(Result.Loading)
         try {
-            val response = apiConfig.getApiService().signInUMKM(email, password)
+            val response = apiConfig.getAyamHubApiService().signInUMKM(email, password)
             emit(Result.Success(response))
         } catch (e: Exception) {
             emit(Result.Error(e.message.toString()))
@@ -69,7 +69,7 @@ class UserRepository(
     ) = liveData {
         emit(Result.Loading)
         try {
-            val response = apiConfig.getApiService().signUpUMKM(
+            val response = apiConfig.getAyamHubApiService().signUpUMKM(
                 name,
                 username,
                 password,

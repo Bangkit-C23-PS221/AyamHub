@@ -75,18 +75,18 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerHorizontal="true"
-            android:text=""
             android:textColor="#C30000"
             android:textStyle="bold"
             android:textSize="27sp"
             android:id="@+id/result"
-            app:layout_constraintTop_toBottomOf="@+id/loginButton"
+            android:text="@string/galeri"
+            app:layout_constraintTop_toBottomOf="@+id/btnClassify"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             />
 
         <Button
-            android:id="@+id/loginButton"
+            android:id="@+id/btnClassify"
             android:layout_width="0dp"
             android:layout_height="64dp"
             android:layout_marginStart="32dp"
@@ -97,6 +97,8 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/kamera"/>
+
+
 
     </androidx.constraintlayout.widget.ConstraintLayout>
     

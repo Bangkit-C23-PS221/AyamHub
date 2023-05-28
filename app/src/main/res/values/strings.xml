@@ -46,4 +46,5 @@
     <string name="kecamatan">Kecamatan</string>
     <string name="kabupaten">Kabupaten</string>
     <string name="provinsi">Provinsi</string>
+    <string name="deteksi_gambar">Deteksi Gambar</string>
 </resources>

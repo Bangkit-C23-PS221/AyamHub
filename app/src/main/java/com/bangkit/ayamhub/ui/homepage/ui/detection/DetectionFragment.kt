@@ -70,7 +70,7 @@ class DetectionFragment : Fragment() {
     }
 
     private fun loadModelFile(): ByteBuffer {
-        val fileDescriptor = requireContext().assets.openFd("newmodel.tflite")
+        val fileDescriptor = requireContext().assets.openFd("ayamHub.tflite")
         val inputStream = FileInputStream(fileDescriptor.fileDescriptor)
         val fileChannel = inputStream.channel
         val startOffset = fileDescriptor.startOffset

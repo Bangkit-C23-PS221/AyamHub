@@ -8,7 +8,7 @@ import retrofit2.converter.gson.GsonConverterFactory
 
 object ApiConfig {
     const val FARM_URL = "https://ayamhub.et.r.appspot.com"
-    const val LOCATION_URL = "https://ibnux.github.io/data-indonesia"
+    const val LOCATION_URL = "https://ibnux.github.io/data-indonesia/"
 
     fun getAyamHubApiService(token: String = ""): ApiService = provideApiService(token, FARM_URL)
 

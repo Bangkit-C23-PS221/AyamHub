@@ -2,9 +2,12 @@ package com.bangkit.ayamhub.data.network.retrofit
 
 import com.bangkit.ayamhub.data.network.response.LoginResponse
 import com.bangkit.ayamhub.data.network.response.RegisterResponse
+import com.bangkit.ayamhub.experimental.dropdown.LocationResponse
 import retrofit2.http.Field
 import retrofit2.http.FormUrlEncoded
+import retrofit2.http.GET
 import retrofit2.http.POST
+import retrofit2.http.Path
 
 interface ApiService {
 
@@ -13,7 +16,7 @@ interface ApiService {
     suspend fun signInPeternak (
         @Field("email_farm") email: String,
         @Field("pass_farm") password: String
-    ) : LoginResponse
+    ): LoginResponse
 
     @FormUrlEncoded
     @POST("/regist-farms")
@@ -23,14 +26,14 @@ interface ApiService {
         @Field("pass_farm") password: String,
         @Field("email_farm") email: String,
         @Field("tlp_farm") phone: String
-    ) : RegisterResponse
+    ): RegisterResponse
 
     @FormUrlEncoded
     @POST("/login-umkm")
     suspend fun signInUMKM (
         @Field("email_umkm") email: String,
         @Field("pass_umkm") password: String
-    ) : LoginResponse
+    ): LoginResponse
 
     @FormUrlEncoded
     @POST("/regist-umkm")
@@ -40,6 +43,19 @@ interface ApiService {
         @Field("pass_umkm") password: String,
         @Field("email_umkm") email: String,
         @Field("tlp_umkm") phone: String
-    ) : RegisterResponse
+    ): RegisterResponse
+
+    @GET("provinsi.json")
+    suspend fun getProvince(): List<LocationResponse>
+
+    @GET("kabupaten/{id}.json")
+    suspend fun getKabupaten(
+        @Path("id") id: Int
+    ): List<LocationResponse>
+
+    @GET("kecamatan/{id}.json")
+    suspend fun getKecamatan(
+        @Path("id") id: Int
+    ): List<LocationResponse>
 
 }

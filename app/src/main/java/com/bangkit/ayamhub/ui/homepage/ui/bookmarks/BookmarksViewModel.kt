@@ -3,11 +3,14 @@ package com.bangkit.ayamhub.ui.homepage.ui.bookmarks
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import com.bangkit.ayamhub.data.repository.FarmRepository
+import com.bangkit.ayamhub.data.repository.UserRepository
 
-class BookmarksViewModel : ViewModel() {
+class BookmarksViewModel(
+    farmRepository: FarmRepository,
+    userRepository: UserRepository
+) : ViewModel() {
 
-    private val _text = MutableLiveData<String>().apply {
-        value = "This is notifications Fragment"
-    }
-    val text: LiveData<String> = _text
+
+
 }

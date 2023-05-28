@@ -5,8 +5,9 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import com.bangkit.ayamhub.ui.login.LoginActivity
 import com.bangkit.ayamhub.databinding.ActivityMainBinding
+import com.bangkit.ayamhub.experimental.dropdown.LocationDropDownActivity
 import com.bangkit.ayamhub.ui.detail.DetailActivity
-import com.bangkit.ayamhub.ui.home.HomeActivity
+import com.bangkit.ayamhub.ui.homepage.HomeActivity
 
 class MainActivity : AppCompatActivity() {
 
@@ -19,17 +20,18 @@ class MainActivity : AppCompatActivity() {
 
         binding.loginButton.setOnClickListener {
             startActivity(Intent(this, LoginActivity::class.java))
-            finish()
         }
 
         binding.cek.setOnClickListener {
             startActivity(Intent(this, HomeActivity::class.java))
-            finish()
         }
 
         binding.cek2.setOnClickListener {
             startActivity(Intent(this, DetailActivity::class.java))
-            finish()
+        }
+
+        binding.cek4.setOnClickListener {
+            startActivity(Intent(this, LocationDropDownActivity::class.java))
         }
 
     }

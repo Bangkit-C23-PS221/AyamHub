@@ -14,10 +14,13 @@
         android:theme="@style/Theme.AyamHub"
         tools:targetApi="31">
         <activity
+            android:name=".experimental.dropdown.LocationDropDownActivity"
+            android:exported="false" />
+        <activity
             android:name=".ui.detail.DetailActivity"
             android:exported="false" />
         <activity
-            android:name=".ui.home.HomeActivity"
+            android:name=".ui.homepage.HomeActivity"
             android:exported="false"
             android:label="@string/title_activity_home"
             android:windowSoftInputMode="adjustPan" />

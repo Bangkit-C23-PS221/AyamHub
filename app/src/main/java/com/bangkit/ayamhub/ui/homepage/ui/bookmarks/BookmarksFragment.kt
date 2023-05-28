@@ -4,36 +4,49 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.TextView
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.viewModels
 import androidx.lifecycle.ViewModelProvider
+import androidx.recyclerview.widget.LinearLayoutManager
+import com.bangkit.ayamhub.data.local.DummyFlameChaser
 import com.bangkit.ayamhub.databinding.FragmentBookmarksBinding
+import com.bangkit.ayamhub.helpers.Reusable
+import com.bangkit.ayamhub.helpers.viewmodelfactory.ViewModelFactory
+import com.bangkit.ayamhub.ui.homepage.ui.home.HomeAdapter
 
 class BookmarksFragment : Fragment() {
 
     private var _binding: FragmentBookmarksBinding? = null
-
-    // This property is only valid between onCreateView and
-    // onDestroyView.
     private val binding get() = _binding!!
+    private val flameChaser = DummyFlameChaser.myFlameChaser
+    private val viewModel: BookmarksViewModel by viewModels {
+        ViewModelFactory.getInstance(requireContext())
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        val bookmarksViewModel =
-            ViewModelProvider(this).get(BookmarksViewModel::class.java)
-
         _binding = FragmentBookmarksBinding.inflate(inflater, container, false)
-        val root: View = binding.root
+        return binding.root
+    }
 
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
 
-        return root
+        setupAdapter()
     }
 
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null
+    }
+
+    private fun setupAdapter() {
+        binding.rvBookmark.adapter = HomeAdapter(flameChaser) {
+            Reusable.showToast(requireContext(), it.name)
+        }
+        binding.rvBookmark.layoutManager = LinearLayoutManager(requireContext())
     }
 }

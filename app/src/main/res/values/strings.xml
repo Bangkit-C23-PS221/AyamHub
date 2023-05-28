@@ -43,4 +43,7 @@
     <string name="harga_rp_23_000_kg">Harga: Rp. 23.000/Kg</string>
     <string name="whatsapp">WhatsApp</string>
     <string name="maps">Maps</string>
+    <string name="kecamatan">Kecamatan</string>
+    <string name="kabupaten">Kabupaten</string>
+    <string name="provinsi">Provinsi</string>
 </resources>

@@ -134,7 +134,7 @@
         app:layout_constraintEnd_toStartOf="@id/endGuidelineVertical"
         app:layout_constraintStart_toEndOf="@id/location"
         app:layout_constraintTop_toTopOf="@id/location"
-        tools:text="Tangerang Selatan" />
+        android:text="Tangerang Selatan" />
 
 
     <ImageView
@@ -161,7 +161,7 @@
         app:layout_constraintEnd_toStartOf="@id/endGuidelineVertical"
         app:layout_constraintStart_toEndOf="@id/icAyam"
         app:layout_constraintTop_toTopOf="@id/icAyam"
-        tools:text="Tipe: Broiler" />
+        android:text="Tipe: Broiler" />
 
     <ImageView
         android:id="@+id/icStock"
@@ -187,7 +187,7 @@
         app:layout_constraintEnd_toStartOf="@id/endGuidelineVertical"
         app:layout_constraintStart_toEndOf="@id/icStock"
         app:layout_constraintTop_toTopOf="@id/icStock"
-        tools:text="Stock: 2000Kg" />
+        android:text="Stock: 2000Kg" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/startGuidelineVertical"

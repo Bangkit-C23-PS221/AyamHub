@@ -7,7 +7,7 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    tools:context=".ui.home.HomeActivity">
+    tools:context=".ui.homepage.HomeActivity">
 
     <ProgressBar
         android:id="@+id/progressBar"
@@ -74,7 +74,6 @@
 
             </androidx.constraintlayout.widget.ConstraintLayout>
 
-
             <EditText
                 android:id="@+id/search"
                 android:layout_width="0dp"
@@ -85,15 +84,13 @@
                 android:backgroundTint="@color/white"
                 android:layout_marginEnd="20dp"
                 android:inputType="text"
+                android:imeOptions="actionDone"
                 android:hint="@string/cari_peternakan"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 android:drawableStart="@drawable/search"
                 android:drawablePadding="8dp"
                 app:layout_constraintTop_toTopOf="parent"/>
-
-
-
 
             <ImageView
                 android:id="@+id/logo"

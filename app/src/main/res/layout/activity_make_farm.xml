@@ -14,12 +14,19 @@
         <com.google.android.material.textfield.TextInputLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Username">
+            android:hint="Username"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/usernameEditText"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
+                android:layout_height="wrap_content"
+                android:textColor="#ffffff"
+                android:textColorHint="#a9a9a9"
+                android:backgroundTint="#ffffff"
+                android:paddingStart="12dp"
+                android:paddingEnd="12dp"
+                android:textSize="16sp"/>
 
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -30,11 +37,15 @@
         <com.google.android.material.textfield.TextInputLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Harga">
+            android:hint="Harga"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/hargaEditText"
                 android:layout_width="match_parent"
+                android:textColor="#ffffff"
+                android:textColorHint="#a9a9a9"
+                android:backgroundTint="#ffffff"
                 android:layout_height="wrap_content" />
 
         </com.google.android.material.textfield.TextInputLayout>
@@ -46,27 +57,38 @@
         <com.google.android.material.textfield.TextInputLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Umur">
+            android:hint="Umur"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+            >
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/umurEditText"
                 android:layout_width="match_parent"
+                android:textColor="#ffffff"
+                android:textColorHint="#a9a9a9"
+                android:backgroundTint="#ffffff"
                 android:layout_height="wrap_content" />
 
         </com.google.android.material.textfield.TextInputLayout>
 
         <Space
             android:layout_width="match_parent"
-            android:layout_height="16dp" />
+            android:layout_height="16dp"
+            />
 
         <com.google.android.material.textfield.TextInputLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Berat">
+            android:hint="Berat"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+            >
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/beratEditText"
                 android:layout_width="match_parent"
+                android:textColor="#ffffff"
+                android:textColorHint="#a9a9a9"
+                android:backgroundTint="#ffffff"
                 android:layout_height="wrap_content" />
 
         </com.google.android.material.textfield.TextInputLayout>
@@ -78,11 +100,16 @@
         <com.google.android.material.textfield.TextInputLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Stock">
+            android:hint="Stock"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+            >
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/stockEditText"
                 android:layout_width="match_parent"
+                android:textColor="#ffffff"
+                android:textColorHint="#a9a9a9"
+                android:backgroundTint="#ffffff"
                 android:layout_height="wrap_content" />
 
         </com.google.android.material.textfield.TextInputLayout>
@@ -206,7 +233,11 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:backgroundTint="@color/orange2"
+            android:textAllCaps="false"
             android:text="Register"
+            android:textColor="#ffffff"
+            android:textSize="18sp"
+            android:padding="12dp"
             style="@style/Widget.MaterialComponents.Button" />
 
     </LinearLayout>

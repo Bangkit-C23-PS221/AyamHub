@@ -11,15 +11,16 @@ import androidx.lifecycle.liveData
 import androidx.lifecycle.switchMap
 import com.bangkit.ayamhub.data.network.retrofit.ApiConfig
 import com.bangkit.ayamhub.databinding.ActivityLocationDropDownBinding
+import com.bangkit.ayamhub.databinding.ActivityMakeFarmBinding
 import com.bangkit.ayamhub.helpers.Reusable
 
 class MakeFarmActivity : AppCompatActivity() {
 
-    private lateinit var binding: ActivityLocationDropDownBinding
+    private lateinit var binding: ActivityMakeFarmBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding = ActivityLocationDropDownBinding.inflate(layoutInflater)
+        binding = ActivityMakeFarmBinding.inflate(layoutInflater)
         setContentView(binding.root)
         binding.spKabupaten.isEnabled = false
         binding.spKecamatan.isEnabled = false

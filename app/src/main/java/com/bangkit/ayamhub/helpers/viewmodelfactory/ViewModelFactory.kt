@@ -10,6 +10,7 @@ import com.bangkit.ayamhub.ui.homepage.ui.bookmarks.BookmarksViewModel
 import com.bangkit.ayamhub.ui.homepage.ui.detection.DetectionViewModel
 import com.bangkit.ayamhub.ui.homepage.ui.home.HomeViewModel
 import com.bangkit.ayamhub.ui.login.LoginViewModel
+import com.bangkit.ayamhub.ui.makefarm.MakeFarmViewModel
 import com.bangkit.ayamhub.ui.register.RegisterViewModel
 
 class ViewModelFactory(
@@ -19,13 +20,12 @@ class ViewModelFactory(
 
     override fun <T : ViewModel> create(modelClass: Class<T>): T {
         when {
-//            modelClass.isAssignableFrom(LoginPeternakanViewModel::class.java) -> return LoginPeternakanViewModel(userRepository) as T
             modelClass.isAssignableFrom(LoginViewModel::class.java) -> return LoginViewModel(userRepository) as T
             modelClass.isAssignableFrom(RegisterViewModel::class.java) -> return RegisterViewModel(userRepository) as T
             modelClass.isAssignableFrom(DetectionViewModel::class.java) -> return DetectionViewModel(farmRepository ,userRepository) as T
             modelClass.isAssignableFrom(HomeViewModel::class.java) -> return HomeViewModel(farmRepository ,userRepository) as T
             modelClass.isAssignableFrom(BookmarksViewModel::class.java) -> return BookmarksViewModel(farmRepository ,userRepository) as T
-//            modelClass.isAssignableFrom(RegisterPeternakViewModel::class.java) -> return RegisterPeternakViewModel(userRepository) as T
+            modelClass.isAssignableFrom(MakeFarmViewModel::class.java) -> return MakeFarmViewModel(farmRepository) as T
         }
         throw IllegalArgumentException("Unknown ViewModel Class: ${modelClass.name}")
     }

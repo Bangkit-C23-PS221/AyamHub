@@ -1,4 +1,4 @@
-package com.bangkit.ayamhub.experimental.dropdown
+package com.bangkit.ayamhub.data.network.response
 
 import com.google.gson.annotations.SerializedName
 

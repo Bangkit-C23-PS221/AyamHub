@@ -2,7 +2,7 @@ package com.bangkit.ayamhub.data.network.retrofit
 
 import com.bangkit.ayamhub.data.network.response.LoginResponse
 import com.bangkit.ayamhub.data.network.response.RegisterResponse
-import com.bangkit.ayamhub.experimental.dropdown.LocationResponse
+import com.bangkit.ayamhub.data.network.response.LocationResponse
 import retrofit2.http.Field
 import retrofit2.http.FormUrlEncoded
 import retrofit2.http.GET

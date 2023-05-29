@@ -1,5 +1,6 @@
 package com.bangkit.ayamhub.ui.homepage.ui.home
 
+import android.content.Context
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
@@ -12,6 +13,7 @@ import java.util.*
 
 class HomeAdapter(
     private val data: List<FlameChaser>,
+    private val context: Context,
     private val onClick: (FlameChaser) -> Unit
 
 ) : RecyclerView.Adapter<HomeAdapter.MyViewHolder>() {
@@ -49,13 +51,15 @@ class HomeAdapter(
         dataDummy.clear()
         if (text.isEmpty()) {
             dataDummy.addAll(data)
-            Log.d("HomeAdapter", "UwohUwoh")
         } else {
             dataDummy.addAll( data.filter {
                 it.name.toLowerCase(Locale.ROOT).contains(text.toLowerCase(Locale.ROOT))
             })
-            Log.d("HomeAdapter", "UwohUwohFiltered $dataDummy")
         }
         notifyDataSetChanged()
+    }
+
+    fun filterByLocation(location: String) {
+        Reusable.showToast(context, location)
     }
 }

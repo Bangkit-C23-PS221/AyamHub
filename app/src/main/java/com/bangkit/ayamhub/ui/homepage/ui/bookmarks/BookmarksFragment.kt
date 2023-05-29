@@ -44,9 +44,9 @@ class BookmarksFragment : Fragment() {
     }
 
     private fun setupAdapter() {
-        binding.rvBookmark.adapter = HomeAdapter(flameChaser) {
-            Reusable.showToast(requireContext(), it.name)
-        }
-        binding.rvBookmark.layoutManager = LinearLayoutManager(requireContext())
+//        binding.rvBookmark.adapter = HomeAdapter(flameChaser) {
+//            Reusable.showToast(requireContext(), it.name)
+//        }
+//        binding.rvBookmark.layoutManager = LinearLayoutManager(requireContext())
     }
 }

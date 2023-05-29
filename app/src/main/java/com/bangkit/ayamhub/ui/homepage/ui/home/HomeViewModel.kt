@@ -11,6 +11,16 @@ class HomeViewModel(
     private val userRepo: UserRepository
 ) : ViewModel() {
 
+    val provinceId = farmRepo.provinsiId
+
+    val kabupatenId = farmRepo.kabupatenId
+
+    val getProvinsi = farmRepo.getProvinsi()
+
+    val getKabupaten = farmRepo.getKabupaten()
+
+    val getKecamatan = farmRepo.getKecamatan()
+
     fun getToken() = userRepo.getToken()
 
     fun getAllFarm(token: String) = farmRepo.getAllFarm(token)

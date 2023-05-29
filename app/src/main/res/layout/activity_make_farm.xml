@@ -181,6 +181,7 @@
         <Button
             android:id="@+id/gambarButton"
             android:layout_width="wrap_content"
+            android:layout_gravity="end"
             android:layout_height="wrap_content"
             android:text="Pilih Gambar"
             style="@style/Widget.MaterialComponents.Button.OutlinedButton" />
@@ -190,8 +191,8 @@
             android:layout_height="16dp" />
 
         <ImageView
-            android:id="@+id/gambarImageView"
-            android:layout_width="200dp"
+            android:id="@+id/gambarPeternakan"
+            android:layout_width="300dp"
             android:layout_height="200dp"
             android:layout_gravity="center_horizontal"
             android:scaleType="centerCrop" />

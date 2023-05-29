@@ -6,6 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.view.inputmethod.EditorInfo
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.bangkit.ayamhub.data.local.DummyFlameChaser
@@ -13,6 +14,7 @@ import com.bangkit.ayamhub.databinding.FragmentHomeBinding
 import com.bangkit.ayamhub.helpers.Reusable
 import com.bangkit.ayamhub.helpers.viewmodelfactory.ViewModelFactory
 import com.bangkit.ayamhub.ui.homepage.ui.home.HomeViewModel
+import com.bangkit.ayamhub.ui.homepage.ui.home.filter.LocationFilterFragment
 
 class HomeFragment : Fragment() {
 
@@ -38,6 +40,7 @@ class HomeFragment : Fragment() {
 
         setupAdapter()
         processSearchBar()
+        binding.btnFilter.setOnClickListener { showFilter() }
     }
 
     override fun onDestroyView() {
@@ -58,7 +61,7 @@ class HomeFragment : Fragment() {
     }
 
     private fun setupAdapter() {
-        homeAdapter = HomeAdapter(flameChaser) {
+        homeAdapter = HomeAdapter(flameChaser, requireContext()) {
             Reusable.showToast(requireContext(), it.name)
         }
         binding.rvPeternak.adapter = homeAdapter
@@ -68,5 +71,16 @@ class HomeFragment : Fragment() {
     private fun setSearchFilter(filter: String) {
         homeAdapter.filterBySearch(filter)
         Reusable.showToast(requireContext(), "Uyeah")
+    }
+
+    private fun showFilter() {
+        val fragment = LocationFilterFragment {
+            homeFilter(it)
+        }
+        fragment.show(childFragmentManager, "tag")
+    }
+
+    private fun homeFilter(location: String) {
+        homeAdapter.filterByLocation(location)
     }
 }

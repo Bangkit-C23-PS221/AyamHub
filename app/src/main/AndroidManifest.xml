@@ -23,9 +23,6 @@
             android:name=".ui.makefarm.MakeFarmActivity"
             android:exported="false" />
         <activity
-            android:name=".experimental.dropdown.LocationDropDownActivity"
-            android:exported="false" />
-        <activity
             android:name=".ui.detail.DetailActivity"
             android:exported="false" />
         <activity

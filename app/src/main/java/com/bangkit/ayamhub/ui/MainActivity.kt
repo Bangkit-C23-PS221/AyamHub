@@ -5,7 +5,6 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import com.bangkit.ayamhub.ui.login.LoginActivity
 import com.bangkit.ayamhub.databinding.ActivityMainBinding
-import com.bangkit.ayamhub.experimental.dropdown.LocationDropDownActivity
 import com.bangkit.ayamhub.ui.detail.DetailActivity
 import com.bangkit.ayamhub.ui.homepage.HomeActivity
 
@@ -31,7 +30,6 @@ class MainActivity : AppCompatActivity() {
         }
 
         binding.cek4.setOnClickListener {
-            startActivity(Intent(this, LocationDropDownActivity::class.java))
         }
 
     }

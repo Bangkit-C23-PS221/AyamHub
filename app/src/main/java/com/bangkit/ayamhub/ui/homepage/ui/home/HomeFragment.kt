@@ -74,13 +74,7 @@ class HomeFragment : Fragment() {
     }
 
     private fun showFilter() {
-        val fragment = LocationFilterFragment {
-            homeFilter(it)
-        }
+        val fragment = LocationFilterFragment(homeAdapter)
         fragment.show(childFragmentManager, "tag")
-    }
-
-    private fun homeFilter(location: String) {
-        homeAdapter.filterByLocation(location)
     }
 }

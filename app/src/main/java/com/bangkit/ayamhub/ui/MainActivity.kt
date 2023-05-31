@@ -20,17 +20,17 @@ class MainActivity : AppCompatActivity() {
         binding.loginButton.setOnClickListener {
             startActivity(Intent(this, LoginActivity::class.java))
         }
-
-        binding.cek.setOnClickListener {
-            startActivity(Intent(this, HomeActivity::class.java))
-        }
-
-        binding.cek2.setOnClickListener {
-            startActivity(Intent(this, DetailActivity::class.java))
-        }
-
-        binding.cek4.setOnClickListener {
-        }
+//
+//        binding.cek.setOnClickListener {
+//            startActivity(Intent(this, HomeActivity::class.java))
+//        }
+//
+//        binding.cek2.setOnClickListener {
+//            startActivity(Intent(this, DetailActivity::class.java))
+//        }
+//
+//        binding.cek4.setOnClickListener {
+//        }
 
     }
 }

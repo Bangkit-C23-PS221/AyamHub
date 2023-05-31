@@ -62,7 +62,7 @@ class LoginActivity : AppCompatActivity() {
                     }
                     is Result.Success -> {
                         showLoading(false)
-                        viewModel.saveToken(result.data.accessToken)
+//                        viewModel.saveToken(result.data.accessToken)
                         val intent = Intent(this, HomeActivity::class.java)
                         startActivity(intent)
                         finish()

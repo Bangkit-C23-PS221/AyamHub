@@ -28,6 +28,15 @@ class RegisterActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         binding.signupButton.setOnClickListener { validateInput() }
+
+        binding.daftar.setOnClickListener {
+            toRegister()
+        }
+    }
+
+    private fun toRegister() {
+        val intent = Intent(this, LoginActivity::class.java)
+        startActivity(intent)
     }
 
     private fun signUp(

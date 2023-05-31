@@ -7,7 +7,9 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.viewModels
 import com.bangkit.ayamhub.databinding.FragmentProfileBinding
+import com.bangkit.ayamhub.helpers.viewmodelfactory.ViewModelFactory
 import com.bangkit.ayamhub.ui.makefarm.MakeFarmActivity
 
 
@@ -15,6 +17,9 @@ class ProfileFragment : Fragment() {
 
     private var _binding: FragmentProfileBinding? = null
     private val binding get() = _binding!!
+    private val viewModel: ProfileViewModel by viewModels {
+        ViewModelFactory.getInstance(requireContext())
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -28,10 +33,8 @@ class ProfileFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-
-        binding.makeFarm.setOnClickListener {
-            moveToNewActivity()
-        }
+        profileSetup()
+        buttonSetup()
     }
 
     override fun onDestroyView() {
@@ -39,11 +42,26 @@ class ProfileFragment : Fragment() {
         _binding = null
     }
 
-    private fun moveToNewActivity() {
-        val i = Intent(activity, MakeFarmActivity::class.java)
-        startActivity(i)
-        (activity as Activity?)!!.overridePendingTransition(0, 0)
+    private fun buttonSetup() {
+        binding.makeFarm.setOnClickListener {
+            startActivity(Intent(requireContext(), MakeFarmActivity::class.java))
+        }
     }
 
+    private fun profileSetup() {
+        with(binding) {
+            viewModel.getName.observe(viewLifecycleOwner) {
+                tvName.text = it
+            }
+
+            viewModel.getEmail.observe(viewLifecycleOwner) {
+                tvEmail.text = it
+            }
+
+            viewModel.getPhone.observe(viewLifecycleOwner) {
+                tvPhone.text = it
+            }
+        }
+    }
 
 }

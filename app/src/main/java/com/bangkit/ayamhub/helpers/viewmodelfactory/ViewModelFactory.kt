@@ -9,6 +9,7 @@ import com.bangkit.ayamhub.helpers.injection.Injection
 import com.bangkit.ayamhub.ui.homepage.ui.bookmarks.BookmarksViewModel
 import com.bangkit.ayamhub.ui.homepage.ui.detection.DetectionViewModel
 import com.bangkit.ayamhub.ui.homepage.ui.home.HomeViewModel
+import com.bangkit.ayamhub.ui.homepage.ui.profile.ProfileViewModel
 import com.bangkit.ayamhub.ui.login.LoginViewModel
 import com.bangkit.ayamhub.ui.makefarm.MakeFarmViewModel
 import com.bangkit.ayamhub.ui.register.RegisterViewModel
@@ -26,6 +27,7 @@ class ViewModelFactory(
             modelClass.isAssignableFrom(HomeViewModel::class.java) -> return HomeViewModel(farmRepository ,userRepository) as T
             modelClass.isAssignableFrom(BookmarksViewModel::class.java) -> return BookmarksViewModel(farmRepository ,userRepository) as T
             modelClass.isAssignableFrom(MakeFarmViewModel::class.java) -> return MakeFarmViewModel(farmRepository) as T
+            modelClass.isAssignableFrom(ProfileViewModel::class.java) -> return ProfileViewModel(userRepository) as T
         }
         throw IllegalArgumentException("Unknown ViewModel Class: ${modelClass.name}")
     }

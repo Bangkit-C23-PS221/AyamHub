@@ -21,7 +21,7 @@
                 android:id="@+id/usernameEditText"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:textColor="#ffffff"
+                android:textColor="#000000"
                 android:textColorHint="#a9a9a9"
                 android:backgroundTint="#ffffff"
                 android:paddingStart="12dp"
@@ -44,7 +44,7 @@
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/chickenType"
                 android:layout_width="match_parent"
-                android:textColor="#ffffff"
+                android:textColor="#000000"
                 android:textColorHint="#a9a9a9"
                 android:backgroundTint="#ffffff"
                 android:layout_height="wrap_content" />
@@ -64,7 +64,7 @@
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/hargaEditText"
                 android:layout_width="match_parent"
-                android:textColor="#ffffff"
+                android:textColor="#000000"
                 android:textColorHint="#a9a9a9"
                 android:backgroundTint="#ffffff"
                 android:layout_height="wrap_content" />
@@ -85,7 +85,7 @@
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/umurEditText"
                 android:layout_width="match_parent"
-                android:textColor="#ffffff"
+                android:textColor="#000000"
                 android:textColorHint="#a9a9a9"
                 android:backgroundTint="#ffffff"
                 android:layout_height="wrap_content" />
@@ -107,7 +107,7 @@
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/beratEditText"
                 android:layout_width="match_parent"
-                android:textColor="#ffffff"
+                android:textColor="#000000"
                 android:textColorHint="#a9a9a9"
                 android:backgroundTint="#ffffff"
                 android:layout_height="wrap_content" />
@@ -128,7 +128,7 @@
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/stockEditText"
                 android:layout_width="match_parent"
-                android:textColor="#ffffff"
+                android:textColor="#000000"
                 android:textColorHint="#a9a9a9"
                 android:backgroundTint="#ffffff"
                 android:layout_height="wrap_content" />

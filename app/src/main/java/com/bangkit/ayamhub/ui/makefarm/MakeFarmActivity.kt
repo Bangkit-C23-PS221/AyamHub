@@ -1,5 +1,6 @@
 package com.bangkit.ayamhub.ui.makefarm
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
@@ -9,6 +10,7 @@ import androidx.activity.viewModels
 import com.bangkit.ayamhub.databinding.ActivityMakeFarmBinding
 import com.bangkit.ayamhub.helpers.Reusable
 import com.bangkit.ayamhub.helpers.viewmodelfactory.ViewModelFactory
+import com.bangkit.ayamhub.ui.farmer.FarmerActivity
 
 class MakeFarmActivity : AppCompatActivity() {
 
@@ -31,6 +33,11 @@ class MakeFarmActivity : AppCompatActivity() {
         getInputedLocation()
 
         binding.gambarButton.setOnClickListener { getInputedLocation() }
+
+        binding.registerButton.setOnClickListener {
+            startActivity(Intent(this, FarmerActivity::class.java))
+
+        }
     }
 
     private fun locationSetup() {
@@ -153,4 +160,6 @@ class MakeFarmActivity : AppCompatActivity() {
     private fun getInputedLocation() {
         Reusable.showToast(this, "$provinsi, $kabupaten, $kecamatan")
     }
+
+
 }

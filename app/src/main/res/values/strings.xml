@@ -49,4 +49,6 @@
     <string name="deteksi_gambar">Deteksi Gambar</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="edit_data_peternakan">Edit Peternakan</string>
+    <string name="simpan_data">Simpan Data</string>
 </resources>

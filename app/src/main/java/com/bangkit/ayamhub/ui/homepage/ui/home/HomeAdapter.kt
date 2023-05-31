@@ -62,4 +62,10 @@ class HomeAdapter(
     fun filterByLocation(location: String) {
         Reusable.showToast(context, location)
     }
+
+    fun removeFilter() {
+        dataDummy.clear()
+        dataDummy.addAll(data)
+        notifyDataSetChanged()
+    }
 }

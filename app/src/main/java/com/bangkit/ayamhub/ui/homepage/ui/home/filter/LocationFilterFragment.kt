@@ -13,11 +13,12 @@ import com.bangkit.ayamhub.databinding.FragmentHomeBinding
 import com.bangkit.ayamhub.databinding.FragmentLocationFilterBinding
 import com.bangkit.ayamhub.helpers.Reusable
 import com.bangkit.ayamhub.helpers.viewmodelfactory.ViewModelFactory
+import com.bangkit.ayamhub.ui.homepage.ui.home.HomeAdapter
 import com.bangkit.ayamhub.ui.homepage.ui.home.HomeViewModel
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 
 class LocationFilterFragment(
-    private val onClick: (location: String) -> Unit
+    private val adapter: HomeAdapter
 ) : BottomSheetDialogFragment() {
 
     private var _binding: FragmentLocationFilterBinding? = null
@@ -41,7 +42,7 @@ class LocationFilterFragment(
         super.onViewCreated(view, savedInstanceState)
 
         locationSetup()
-        binding.btnDialog.setOnClickListener { onClick(getInputedLocation()) }
+        binding.btnDialog.setOnClickListener { setFilter() }
     }
 
     override fun onDestroyView() {
@@ -49,14 +50,19 @@ class LocationFilterFragment(
         _binding = null
     }
 
-    private fun locationSetup() {
+    private fun setFilter() {
+        adapter.filterByLocation(getInputedLocation())
+    }
 
+    private fun removeFilter() {
+        adapter.removeFilter()
+    }
+
+    private fun locationSetup() {
         val provinceAdapter = provideArrayAdapter()
         binding.spProvince.adapter = provinceAdapter
-
         val kabupatenAdapter = provideArrayAdapter()
         binding.spKabupaten.adapter = kabupatenAdapter
-
         val kecamatanAdapter = provideArrayAdapter()
         binding.spKecamatan.adapter = kecamatanAdapter
 

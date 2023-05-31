@@ -1,7 +1,7 @@
 package com.bangkit.ayamhub.data.network.retrofit
 
 import com.bangkit.ayamhub.data.network.response.LoginResponse
-import com.bangkit.ayamhub.data.network.response.RegisterResponse
+import com.bangkit.ayamhub.data.network.response.MessageResponse
 import com.bangkit.ayamhub.data.network.response.LocationResponse
 import retrofit2.http.Field
 import retrofit2.http.FormUrlEncoded
@@ -26,7 +26,7 @@ interface ApiService {
         @Field("pass_farm") password: String,
         @Field("email_farm") email: String,
         @Field("tlp_farm") phone: String
-    ): RegisterResponse
+    ): MessageResponse
 
     @FormUrlEncoded
     @POST("/login-umkm")
@@ -43,7 +43,7 @@ interface ApiService {
         @Field("pass_umkm") password: String,
         @Field("email_umkm") email: String,
         @Field("tlp_umkm") phone: String
-    ): RegisterResponse
+    ): MessageResponse
 
     @GET("provinsi.json")
     suspend fun getProvince(): List<LocationResponse>

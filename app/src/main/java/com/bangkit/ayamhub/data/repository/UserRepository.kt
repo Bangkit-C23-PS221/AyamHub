@@ -13,10 +13,18 @@ class UserRepository(
 ) {
 
     fun getToken(): LiveData<String> = preference.getToken().asLiveData()
+    fun getId(): LiveData<String> = preference.getId().asLiveData()
+    fun getName(): LiveData<String> = preference.getName().asLiveData()
+    fun getEmail(): LiveData<String> = preference.getEmail().asLiveData()
+    fun getPhone(): LiveData<String> = preference.getPhone().asLiveData()
+    fun getLevel(): LiveData<String> = preference.getLevel().asLiveData()
 
-    suspend fun deleteToken() = preference.deleteToken()
-
-    suspend fun saveToken(token: String) = preference.saveToken(token)
+    suspend fun setToken(token: String) = preference.setToken(token)
+    suspend fun setId(id: String) = preference.setId(id)
+    suspend fun setName(name: String) = preference.setName(name)
+    suspend fun setEmail(email: String) = preference.setEmail(email)
+    suspend fun setPhone(phoneNumber: String) = preference.setPhone(phoneNumber)
+    suspend fun setLevel(level: String) = preference.setLevel(level)
 
     fun signInPeternak (email: String, password: String) = liveData {
         emit(Result.Loading)

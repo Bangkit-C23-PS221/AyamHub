@@ -1,17 +1,18 @@
 package com.bangkit.ayamhub.ui.makefarm
 
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
 import androidx.activity.viewModels
+import androidx.appcompat.app.AppCompatActivity
 import com.bangkit.ayamhub.databinding.ActivityEditFarmerBinding
-import com.bangkit.ayamhub.databinding.ActivityMakeFarmBinding
 import com.bangkit.ayamhub.helpers.Reusable
 import com.bangkit.ayamhub.helpers.viewmodelfactory.ViewModelFactory
 import com.bangkit.ayamhub.ui.farmer.FarmerActivity
+import com.bangkit.ayamhub.ui.register.RegisterActivity
+
 
 class EditFarmer : AppCompatActivity() {
 
@@ -36,8 +37,8 @@ class EditFarmer : AppCompatActivity() {
         binding.gambarButton.setOnClickListener { getInputedLocation() }
 
         binding.saveButton.setOnClickListener {
-            startActivity(Intent(this, FarmerActivity::class.java))
-
+            val intent = Intent(this@EditFarmer, FarmerActivity::class.java)
+            startActivity(intent)
         }
     }
 

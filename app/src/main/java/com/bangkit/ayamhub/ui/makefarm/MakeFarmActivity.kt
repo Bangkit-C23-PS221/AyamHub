@@ -1,5 +1,6 @@
 package com.bangkit.ayamhub.ui.makefarm
 
+import android.annotation.SuppressLint
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -38,6 +39,8 @@ class MakeFarmActivity : AppCompatActivity() {
             startActivity(Intent(this, FarmerActivity::class.java))
 
         }
+
+
     }
 
     private fun locationSetup() {
@@ -130,16 +133,18 @@ class MakeFarmActivity : AppCompatActivity() {
             kecamatanAdapter.notifyDataSetChanged()
 
             binding.spKecamatan.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
+                @SuppressLint("SetTextI18n")
                 override fun onItemSelected(
                     parent: AdapterView<*>?,
                     view: View?,
                     position: Int,
                     id: Long
                 ) {
-                    kecamatan = if (position != 0) {
-                        sortedKec[position-1].nama
+                    if (position != 0) {
+                        kecamatan = sortedKec[position-1].nama
+                        binding.tvLocation.text = "$provinsi, $kabupaten, $kecamatan"
                     } else {
-                        ""
+                        "Alamat"
                     }
                 }
 
@@ -159,6 +164,10 @@ class MakeFarmActivity : AppCompatActivity() {
 
     private fun getInputedLocation() {
         Reusable.showToast(this, "$provinsi, $kabupaten, $kecamatan")
+    }
+
+    private fun statusDropdown(){
+
     }
 
 

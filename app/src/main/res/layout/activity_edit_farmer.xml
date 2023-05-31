@@ -3,7 +3,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:tools="http://schemas.android.com/tools"
-    tools:context=".ui.farmer.EditFarmer">
+    tools:context=".ui.makefarm.EditFarmer">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -27,6 +27,27 @@
                 android:paddingStart="12dp"
                 android:paddingEnd="12dp"
                 android:textSize="16sp"/>
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="16dp" />
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/jenis_ayam"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+            >
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/chickenType"
+                android:layout_width="match_parent"
+                android:textColor="#ffffff"
+                android:textColorHint="#a9a9a9"
+                android:backgroundTint="#ffffff"
+                android:layout_height="wrap_content" />
 
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -137,12 +158,10 @@
                 android:hint="Pilih Provinsi" />
 
         </LinearLayout>
-        <TextView
-            android:id="@+id/provinsiTextView"
+        <Space
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:layout_marginEnd="16dp" />
+            android:layout_height="16dp" />
+
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -163,12 +182,10 @@
                 android:hint="Pilih Kabupaten" />
 
         </LinearLayout>
-        <TextView
-            android:id="@+id/kabupatenTextView"
+        <Space
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:layout_marginEnd="16dp" />
+            android:layout_height="16dp" />
+
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -205,6 +222,32 @@
             android:text="TextView"
             />
 
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="16dp" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Status Panen: "
+                android:textStyle="bold" />
+
+            <Spinner
+                android:id="@+id/statusDropdown"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:hint="Pilih Kecamatan" />
+
+        </LinearLayout>
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="16dp" />
         <Button
             android:id="@+id/gambarButton"
             android:layout_width="wrap_content"
@@ -227,6 +270,7 @@
         <Space
             android:layout_width="match_parent"
             android:layout_height="16dp" />
+
 
         <Button
             android:id="@+id/saveButton"

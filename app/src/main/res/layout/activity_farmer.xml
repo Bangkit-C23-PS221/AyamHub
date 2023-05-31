@@ -1,0 +1,319 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.farmer.FarmerActivity">
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <ImageView
+                android:id="@+id/ImageView"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:cropToPadding="false"
+                android:scaleType="centerCrop"
+                app:layout_constraintDimensionRatio="16:8"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                android:src="@drawable/background_profile" />
+
+            <ImageButton
+                android:layout_width="40dp"
+                android:layout_height="45dp"
+                android:backgroundTint="@color/white"
+                android:layout_marginBottom="10dp"
+                app:layout_constraintEnd_toEndOf="@id/endGuidelineVertical"
+                app:layout_constraintBottom_toBottomOf="@id/ImageView"
+                android:background="@drawable/ic_bookmark_before"/>
+
+            <TextView
+                android:id="@+id/farmName"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/roboto_bold"
+                android:paddingVertical="6dp"
+                android:textColor="@color/black"
+                android:textSize="20sp"
+                app:layout_constraintEnd_toStartOf="@id/endGuidelineVertical"
+                app:layout_constraintStart_toEndOf="@id/startGuidelineVertical"
+                app:layout_constraintTop_toBottomOf="@id/ImageView"
+                android:text="Peternakan Rindang Jaya" />
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/cardView"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="15dp"
+                android:backgroundTint="#FFFFFF"
+                android:elevation="1dp"
+                app:cardCornerRadius="5dp"
+                app:layout_constraintEnd_toEndOf="@id/endGuidelineVertical"
+                app:layout_constraintStart_toStartOf="@id/startGuidelineVertical"
+                app:layout_constraintTop_toBottomOf="@id/farmName">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:paddingVertical="6dp">
+
+                    <TextView
+                        android:id="@+id/berat"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/roboto_bold"
+                        android:text="Berat Ayam"
+                        android:textColor="#232323"
+                        android:textSize="15sp"
+                        app:layout_constraintEnd_toStartOf="@+id/line1"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <TextView
+                        android:id="@+id/height"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/roboto_regular"
+                        android:text="100 KG"
+                        android:textColor="#232323"
+                        android:textSize="15sp"
+                        app:layout_constraintEnd_toStartOf="@+id/line1"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/berat" />
+
+                    <androidx.appcompat.widget.AppCompatImageView
+                        android:id="@+id/line1"
+                        android:layout_width="2.5dp"
+                        android:layout_height="0dp"
+                        android:background="#F4F4F4"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toStartOf="@id/umur"
+                        app:layout_constraintStart_toEndOf="@id/berat"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <TextView
+                        android:id="@+id/umur"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/roboto_bold"
+                        android:text="@string/umur_ayam"
+                        android:textColor="#232323"
+                        android:textSize="15sp"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toEndOf="@id/line1"
+                        app:layout_constraintTop_toTopOf="@+id/berat" />
+
+                    <TextView
+                        android:id="@+id/age"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/roboto_regular"
+                        android:text="28 Hari"
+                        android:textColor="#232323"
+                        android:textSize="15sp"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toEndOf="@id/line1"
+                        app:layout_constraintTop_toBottomOf="@+id/umur" />
+
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+            </androidx.cardview.widget.CardView>
+
+            <ImageView
+                android:id="@+id/location"
+                android:layout_width="25dp"
+                android:layout_height="25dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginBottom="16dp"
+                app:layout_constraintStart_toEndOf="@id/startGuidelineVertical"
+                app:layout_constraintTop_toBottomOf="@id/cardView"
+                app:srcCompat="@drawable/ic_location" />
+
+            <TextView
+                android:id="@+id/locFarm"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="4dp"
+                android:fontFamily="@font/roboto_regular"
+                android:textAlignment="viewStart"
+                android:textAllCaps="false"
+                android:textColor="@color/black"
+                app:layout_constraintBottom_toBottomOf="@id/location"
+                app:layout_constraintEnd_toStartOf="@id/endGuidelineVertical"
+                app:layout_constraintStart_toEndOf="@id/location"
+                app:layout_constraintTop_toTopOf="@id/location"
+                android:text="Tangerang Selatan" />
+
+
+            <ImageView
+                android:id="@+id/icAyam"
+                android:layout_width="25dp"
+                android:layout_height="25dp"
+                android:layout_marginTop="6dp"
+                android:layout_marginBottom="16dp"
+                app:layout_constraintStart_toEndOf="@id/startGuidelineVertical"
+                app:layout_constraintTop_toBottomOf="@id/locFarm"
+                app:srcCompat="@drawable/ic_chicken" />
+
+
+            <TextView
+                android:id="@+id/chickenType"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="4dp"
+                android:fontFamily="@font/roboto_regular"
+                android:textAlignment="viewStart"
+                android:textAllCaps="false"
+                android:textColor="@color/black"
+                app:layout_constraintBottom_toBottomOf="@id/icAyam"
+                app:layout_constraintEnd_toStartOf="@id/endGuidelineVertical"
+                app:layout_constraintStart_toEndOf="@id/icAyam"
+                app:layout_constraintTop_toTopOf="@id/icAyam"
+                android:text="Tipe: Broiler" />
+
+            <ImageView
+                android:id="@+id/icStock"
+                android:layout_width="25dp"
+                android:layout_height="25dp"
+                android:layout_marginTop="6dp"
+                android:layout_marginBottom="16dp"
+                app:layout_constraintStart_toEndOf="@id/startGuidelineVertical"
+                app:layout_constraintTop_toBottomOf="@id/icAyam"
+                app:srcCompat="@drawable/timbang" />
+
+
+            <TextView
+                android:id="@+id/stock"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="4dp"
+                android:fontFamily="@font/roboto_regular"
+                android:textAlignment="viewStart"
+                android:textAllCaps="false"
+                android:textColor="@color/black"
+                app:layout_constraintBottom_toBottomOf="@id/icStock"
+                app:layout_constraintEnd_toStartOf="@id/endGuidelineVertical"
+                app:layout_constraintStart_toEndOf="@id/icStock"
+                app:layout_constraintTop_toTopOf="@id/icStock"
+                android:text="Stock: 2000Kg" />
+
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/startGuidelineVertical"
+                android:layout_width="wrap_content"
+                android:layout_height="64dp"
+                android:orientation="vertical"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintGuide_begin="15dp"
+                app:layout_constraintStart_toStartOf="parent" />
+
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/endGuidelineVertical"
+                android:layout_width="wrap_content"
+                android:layout_height="64dp"
+                android:orientation="vertical"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintGuide_end="15dp"
+                app:layout_constraintStart_toStartOf="parent" />
+
+
+
+            <TextView
+                android:id="@+id/catatanP"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="24dp"
+                android:fontFamily="@font/roboto_bold"
+                android:textColor="@color/black"
+                android:text="Catatan dari Peternak"
+                app:layout_constraintEnd_toStartOf="@+id/endGuidelineVertical"
+                app:layout_constraintStart_toStartOf="@+id/startGuidelineVertical"
+                app:layout_constraintTop_toBottomOf="@+id/icStock"
+                />
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/catatanView"
+                android:layout_width="0dp"
+                android:layout_marginTop="10dp"
+                android:layout_height="wrap_content"
+                android:background="@drawable/bgcatatan"
+                app:layout_constraintEnd_toStartOf="@+id/endGuidelineVertical"
+                app:layout_constraintStart_toStartOf="@+id/startGuidelineVertical"
+                app:layout_constraintTop_toBottomOf="@+id/catatanP">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="4dp"
+                    android:layout_marginTop="2dp"
+                    android:paddingHorizontal="8dp"
+                    android:paddingVertical="20dp"
+                    android:text="halo disini catatan bla bla bl"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <Space
+                app:layout_constraintTop_toBottomOf="@id/catatanView"
+                app:layout_constraintStart_toStartOf="parent"
+                android:layout_width="match_parent"
+                android:layout_height="150dp" />
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </ScrollView>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="15dp"
+        android:background="@color/white"
+        android:layout_alignParentBottom="true">
+        <TextView
+            android:id="@+id/harga"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/roboto_bold"
+            android:layout_gravity="end"
+            android:text="@string/harga_rp_23_000_kg"
+            android:textColor="#DC0000"
+            android:textSize="20sp"
+            app:layout_constraintEnd_toStartOf="@+id/endGuidelineVertical"
+            app:layout_constraintBottom_toTopOf="@+id/maps" />
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="end"
+            android:orientation="horizontal">
+
+
+            <com.google.android.material.floatingactionbutton.FloatingActionButton
+                android:id="@+id/Edit"
+                android:layout_marginTop="15dp"
+                android:layout_marginBottom="15dp"
+                android:backgroundTint="@color/orange2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:foregroundGravity="bottom"
+                app:fabSize="auto"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:tint="@android:color/white"
+                app:srcCompat="@drawable/edit" />
+
+        </LinearLayout>
+
+
+    </LinearLayout>
+
+</RelativeLayout>

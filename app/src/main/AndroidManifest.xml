@@ -14,6 +14,12 @@
         android:theme="@style/Theme.AyamHub"
         tools:targetApi="31">
         <activity
+            android:name=".ui.makefarm.EditFarmer"
+            android:exported="false" />
+        <activity
+            android:name=".ui.farmer.FarmerActivity"
+            android:exported="false" />
+        <activity
             android:name=".ui.makefarm.MakeFarmActivity"
             android:exported="false" />
         <activity

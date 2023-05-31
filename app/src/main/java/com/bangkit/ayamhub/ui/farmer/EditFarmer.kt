@@ -1,20 +1,22 @@
 package com.bangkit.ayamhub.ui.makefarm
 
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
 import androidx.activity.viewModels
-import com.bangkit.ayamhub.databinding.ActivityMakeFarmBinding
+import androidx.appcompat.app.AppCompatActivity
+import com.bangkit.ayamhub.databinding.ActivityEditFarmerBinding
 import com.bangkit.ayamhub.helpers.Reusable
 import com.bangkit.ayamhub.helpers.viewmodelfactory.ViewModelFactory
 import com.bangkit.ayamhub.ui.farmer.FarmerActivity
+import com.bangkit.ayamhub.ui.register.RegisterActivity
 
-class MakeFarmActivity : AppCompatActivity() {
 
-    private lateinit var binding: ActivityMakeFarmBinding
+class EditFarmer : AppCompatActivity() {
+
+    private lateinit var binding: ActivityEditFarmerBinding
     private var provinsi = ""
     private var kabupaten = ""
     private var kecamatan = ""
@@ -24,7 +26,7 @@ class MakeFarmActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding = ActivityMakeFarmBinding.inflate(layoutInflater)
+        binding = ActivityEditFarmerBinding.inflate(layoutInflater)
         setContentView(binding.root)
         binding.spKabupaten.isEnabled = false
         binding.spKecamatan.isEnabled = false
@@ -34,9 +36,9 @@ class MakeFarmActivity : AppCompatActivity() {
 
         binding.gambarButton.setOnClickListener { getInputedLocation() }
 
-        binding.registerButton.setOnClickListener {
-            startActivity(Intent(this, FarmerActivity::class.java))
-
+        binding.saveButton.setOnClickListener {
+            val intent = Intent(this@EditFarmer, FarmerActivity::class.java)
+            startActivity(intent)
         }
     }
 

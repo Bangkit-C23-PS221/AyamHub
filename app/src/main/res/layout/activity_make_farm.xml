@@ -63,6 +63,7 @@
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/hargaEditText"
+                android:inputType="number"
                 android:layout_width="match_parent"
                 android:textColor="#000000"
                 android:textColorHint="#a9a9a9"
@@ -78,13 +79,14 @@
         <com.google.android.material.textfield.TextInputLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Umur"
+            android:hint="Umur dalam hari"
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
             >
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/umurEditText"
                 android:layout_width="match_parent"
+                android:inputType="number"
                 android:textColor="#000000"
                 android:textColorHint="#a9a9a9"
                 android:backgroundTint="#ffffff"
@@ -100,12 +102,13 @@
         <com.google.android.material.textfield.TextInputLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Berat"
+            android:hint="Berat dalam Kg"
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
             >
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/beratEditText"
+                android:inputType="number"
                 android:layout_width="match_parent"
                 android:textColor="#000000"
                 android:textColorHint="#a9a9a9"
@@ -121,12 +124,13 @@
         <com.google.android.material.textfield.TextInputLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Stock"
+            android:hint="Stock dalam Kg"
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
             >
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/stockEditText"
+                android:inputType="number"
                 android:layout_width="match_parent"
                 android:textColor="#000000"
                 android:textColorHint="#a9a9a9"

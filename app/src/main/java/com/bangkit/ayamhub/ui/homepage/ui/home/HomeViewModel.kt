@@ -21,8 +21,6 @@ class HomeViewModel(
 
     val getKecamatan = farmRepo.getKecamatan()
 
-    fun getToken() = userRepo.getToken()
-
-    fun getAllFarm(token: String) = farmRepo.getAllFarm(token)
+    val getListFarm = farmRepo.getAllFarm()
 
 }

@@ -1,23 +1,24 @@
 package com.bangkit.ayamhub.ui.homepage.ui.home
 
 import android.content.Context
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import com.bangkit.ayamhub.R
 import com.bangkit.ayamhub.data.local.FlameChaser
+import com.bangkit.ayamhub.data.network.response.ListFarmResponse
 import com.bangkit.ayamhub.databinding.ItemRvBinding
 import com.bangkit.ayamhub.helpers.Reusable
 import com.bumptech.glide.Glide
 import java.util.*
 
 class HomeAdapter(
-    private val data: List<FlameChaser>,
+    private val data: List<ListFarmResponse>,
     private val context: Context,
-    private val onClick: (FlameChaser) -> Unit
+    private val onClick: (ListFarmResponse) -> Unit
 
 ) : RecyclerView.Adapter<HomeAdapter.MyViewHolder>() {
-    private var dataDummy: MutableList<FlameChaser> = data.toMutableList()
+    private var filteredData: MutableList<ListFarmResponse> = data.toMutableList()
 
     class MyViewHolder(val binding: ItemRvBinding) : RecyclerView.ViewHolder(binding.root)
 
@@ -27,45 +28,63 @@ class HomeAdapter(
     }
 
     override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
-        val photo = dataDummy[position].photo
-        val title = dataDummy[position].name
-        val location = dataDummy[position].signet
-        val priceData = dataDummy[position].id
+        with(filteredData[position]) {
+            val pic = picFarm
+            val name = usernameFarm
+            val location = addressFarm
+            val type = typeChicken
+            val priceChicken = priceChicken
+            val statusChicken = status
 
-        with(holder.binding) {
-            Glide.with(holder.itemView.context)
-                .load(photo)
-                .into(ImageView)
-            farmName.text = title
-            locFarm.text = location
-            chickenType.text = "Ayam Goreng"
-            price.text = priceData.toString()
+            with(holder.binding) {
+                Glide.with(holder.itemView.context)
+                    .load(pic)
+                    .into(ImageView)
+                farmName.text = name
+                locFarm.text = location
+                chickenType.text = type
+                price.text = priceChicken
+                status.text = statusChicken
+                if (statusChicken == "Siap Panen") {
+                    status.setBackgroundColor(context.getColor(R.color.green))
+                } else {
+                    status.setBackgroundColor(context.getColor(R.color.yellow))
+                }
+            }
+
+            holder.itemView.setOnClickListener { onClick(filteredData[position]) }
         }
-
-        holder.itemView.setOnClickListener { onClick(dataDummy[position]) }
     }
 
-    override fun getItemCount(): Int = dataDummy.size
+    override fun getItemCount(): Int = filteredData.size
 
     fun filterBySearch(text: String) {
-        dataDummy.clear()
+        filteredData.clear()
         if (text.isEmpty()) {
-            dataDummy.addAll(data)
+            filteredData.addAll(data)
         } else {
-            dataDummy.addAll( data.filter {
-                it.name.toLowerCase(Locale.ROOT).contains(text.toLowerCase(Locale.ROOT))
+            filteredData.addAll( data.filter {
+                it.usernameFarm.toLowerCase(Locale.ROOT).contains(text.toLowerCase(Locale.ROOT))
             })
         }
         notifyDataSetChanged()
     }
 
     fun filterByLocation(location: String) {
-        Reusable.showToast(context, location)
+        filteredData.clear()
+        if (location.isEmpty()) {
+            filteredData.addAll(data)
+        } else {
+            filteredData.addAll( data.filter {
+                it.addressFarm.toLowerCase(Locale.ROOT).contains(location.toLowerCase(Locale.ROOT))
+            })
+        }
+        notifyDataSetChanged()
     }
 
     fun removeFilter() {
-        dataDummy.clear()
-        dataDummy.addAll(data)
+        filteredData.clear()
+        filteredData.addAll(data)
         notifyDataSetChanged()
     }
 }

@@ -2,17 +2,35 @@ package com.bangkit.ayamhub.data.repository
 
 import android.util.Log
 import androidx.lifecycle.MutableLiveData
+import androidx.lifecycle.asLiveData
 import androidx.lifecycle.liveData
 import androidx.lifecycle.switchMap
+import com.bangkit.ayamhub.data.local.datastore.UserPreference
 import com.bangkit.ayamhub.data.network.retrofit.ApiConfig
 import com.bangkit.ayamhub.data.network.Result
 
-class FarmRepository(private val apiConfig: ApiConfig) {
+class FarmRepository(
+    private val apiConfig: ApiConfig,
+    private val preference: UserPreference
+) {
+
+    private val userId = preference.getId().asLiveData()
+    private val userToken = preference.getToken().asLiveData()
 
     val provinsiId = MutableLiveData<Int>()
     val kabupatenId = MutableLiveData<Int>()
 
-    fun getAllFarm(token: String) = liveData {
+    fun getAllFarm() = userToken.switchMap { token ->
+        liveData {
+            emit(Result.Loading)
+            try {
+                val response = apiConfig.getAyamHubApiService(token).getListFarms()
+                emit(Result.Success(response))
+            } catch (e: Exception) {
+                emit(Result.Error(e.message.toString()))
+            }
+        }
+    }
         emit(Result.Loading)
         try {
             emit("Something")
@@ -55,9 +73,10 @@ class FarmRepository(private val apiConfig: ApiConfig) {
     companion object {
         private var INSTANCE:  FarmRepository? = null
         fun getInstance(
-            apiConfig: ApiConfig
+            apiConfig: ApiConfig,
+            pref: UserPreference
         ) = INSTANCE ?: synchronized(this) {
-            INSTANCE ?: FarmRepository(apiConfig)
+            INSTANCE ?: FarmRepository(apiConfig, pref)
         }.also { INSTANCE = it }
     }
 

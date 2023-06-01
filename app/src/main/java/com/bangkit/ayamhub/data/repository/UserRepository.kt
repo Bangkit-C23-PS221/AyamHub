@@ -11,7 +11,6 @@ class UserRepository(
     private val apiConfig: ApiConfig,
     private val preference: UserPreference
 ) {
-
     fun getToken(): LiveData<String> = preference.getToken().asLiveData()
     fun getId(): LiveData<String> = preference.getId().asLiveData()
     fun getName(): LiveData<String> = preference.getName().asLiveData()
@@ -26,39 +25,7 @@ class UserRepository(
     suspend fun setPhone(phoneNumber: String) = preference.setPhone(phoneNumber)
     suspend fun setLevel(level: String) = preference.setLevel(level)
 
-    fun signInPeternak (email: String, password: String) = liveData {
-        emit(Result.Loading)
-        try {
-            val response = apiConfig.getAyamHubApiService().signInPeternak(email, password)
-            emit(Result.Success(response))
-        } catch (e: Exception) {
-            emit(Result.Error(e.message.toString()))
-        }
-    }
-
-    fun signUpPeternak (
-        name: String,
-        username: String,
-        password: String,
-        email: String,
-        phoneNumber: String
-    ) = liveData {
-        emit(Result.Loading)
-        try {
-            val response = apiConfig.getAyamHubApiService().signUpPeternak(
-                name,
-                username,
-                password,
-                email,
-                phoneNumber
-            )
-            emit(Result.Success(response))
-        } catch (e: Exception) {
-            emit(Result.Error(e.message.toString()))
-        }
-    }
-
-    fun signInUmkm (email: String, password: String) = liveData {
+    fun signIn (email: String, password: String) = liveData {
         emit(Result.Loading)
         try {
             val response = apiConfig.getAyamHubApiService().signInUMKM(email, password)
@@ -68,9 +35,8 @@ class UserRepository(
         }
     }
 
-    fun signUpUmkm (
+    fun signUp (
         name: String,
-        username: String,
         password: String,
         email: String,
         phoneNumber: String
@@ -79,7 +45,6 @@ class UserRepository(
         try {
             val response = apiConfig.getAyamHubApiService().signUpUMKM(
                 name,
-                username,
                 password,
                 email,
                 phoneNumber

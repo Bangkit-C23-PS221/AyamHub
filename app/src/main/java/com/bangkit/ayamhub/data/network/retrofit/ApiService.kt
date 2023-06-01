@@ -12,7 +12,7 @@ import retrofit2.http.Path
 interface ApiService {
 
     @FormUrlEncoded
-    @POST("/login")
+    @POST("/login-users")
     suspend fun signInUMKM (
         @Field("email") email: String,
         @Field("password") password: String

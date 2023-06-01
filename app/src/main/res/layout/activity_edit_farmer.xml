@@ -236,17 +236,25 @@
             android:orientation="horizontal">
 
             <TextView
+                android:id="@+id/statusTextView"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Status Panen: "
-                android:textStyle="bold" />
+                android:text="Status Panen:" />
 
-            <Spinner
-                android:id="@+id/statusDropdown"
+            <View
                 android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_weight="1" />
+
+            <ToggleButton
+                android:id="@+id/toggleButton"
+                android:layout_width="wrap_content"
+                android:backgroundTint="@color/orange2"
+                android:textColor="@color/white"
+                android:fontFamily="@font/roboto_regular"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:hint="Pilih Kecamatan" />
+                android:textOn="Siap Panen"
+                android:textOff="Belum Siap Panen" />
 
         </LinearLayout>
         <Space

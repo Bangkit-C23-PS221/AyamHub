@@ -17,6 +17,11 @@ interface ApiService {
         @Field("password") password: String
     ): LoginResponse
 
+    @GET("/detail-bookmarks/{id}")
+    suspend fun getFarmDetail(
+        @Path("id") id: Int
+    ) : DetailFarmResponse
+
     @FormUrlEncoded
     @POST("/regist-users")
     suspend fun signUpUMKM (

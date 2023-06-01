@@ -31,9 +31,12 @@ class FarmRepository(
             }
         }
     }
+
+    fun getFarmDetail(id: Int) = liveData {
         emit(Result.Loading)
         try {
-            emit("Something")
+            val response = apiConfig.getAyamHubApiService().getFarmDetail(id)
+            emit(Result.Success(response))
         } catch (e: Exception) {
             emit(Result.Error(e.message.toString()))
         }

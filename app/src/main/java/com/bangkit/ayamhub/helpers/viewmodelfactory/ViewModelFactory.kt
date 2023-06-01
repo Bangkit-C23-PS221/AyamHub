@@ -6,6 +6,7 @@ import androidx.lifecycle.ViewModelProvider
 import com.bangkit.ayamhub.data.repository.FarmRepository
 import com.bangkit.ayamhub.data.repository.UserRepository
 import com.bangkit.ayamhub.helpers.injection.Injection
+import com.bangkit.ayamhub.ui.detail.DetailVIewModel
 import com.bangkit.ayamhub.ui.homepage.ui.bookmarks.BookmarksViewModel
 import com.bangkit.ayamhub.ui.homepage.ui.detection.DetectionViewModel
 import com.bangkit.ayamhub.ui.homepage.ui.home.HomeViewModel
@@ -28,6 +29,7 @@ class ViewModelFactory(
             modelClass.isAssignableFrom(BookmarksViewModel::class.java) -> return BookmarksViewModel(farmRepository ,userRepository) as T
             modelClass.isAssignableFrom(MakeFarmViewModel::class.java) -> return MakeFarmViewModel(farmRepository) as T
             modelClass.isAssignableFrom(ProfileViewModel::class.java) -> return ProfileViewModel(userRepository) as T
+            modelClass.isAssignableFrom(DetailVIewModel::class.java) -> return DetailVIewModel(userRepository, farmRepository) as T
         }
         throw IllegalArgumentException("Unknown ViewModel Class: ${modelClass.name}")
     }
@@ -38,7 +40,7 @@ class ViewModelFactory(
         fun getInstance(context: Context): ViewModelFactory =
             instance ?: synchronized(this) {
                 instance ?: ViewModelFactory(
-                    Injection.provideFarmRepository(),
+                    Injection.provideFarmRepository(context),
                     Injection.provideUserRepository(context))
             }.also { instance = it }
     }

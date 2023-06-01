@@ -7,7 +7,7 @@ import kotlinx.coroutines.launch
 
 class LoginViewModel(private val repository: UserRepository) : ViewModel() {
 
-    fun signIn(email: String, password: String) = repository.signInUmkm(email, password)
+    fun signIn(email: String, password: String) = repository.signIn(email, password)
 
     fun setToken(token: String) {
         viewModelScope.launch {

@@ -62,7 +62,9 @@ class LoginActivity : AppCompatActivity() {
                     }
                     is Result.Success -> {
                         showLoading(false)
-//                        viewModel.saveToken(result.data.accessToken)
+                        with(result.data) {
+                            saveData(accessToken, idUser.toString(), name, email, phone, userLevel)
+                        }
                         val intent = Intent(this, HomeActivity::class.java)
                         startActivity(intent)
                         finish()
@@ -73,6 +75,24 @@ class LoginActivity : AppCompatActivity() {
                     }
                 }
             }
+        }
+    }
+
+    private fun saveData(
+        token: String,
+        id: String,
+        name: String,
+        email: String,
+        phone: String,
+        level: String
+    ) {
+        with(viewModel) {
+            setToken(token)
+            setId(id)
+            setName(name)
+            setEmail(email)
+            setPhone(phone)
+            setLevel(level)
         }
     }
 

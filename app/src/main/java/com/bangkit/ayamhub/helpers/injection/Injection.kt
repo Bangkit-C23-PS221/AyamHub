@@ -12,9 +12,10 @@ import com.bangkit.ayamhub.data.repository.UserRepository
 
 private val Context.datastore: DataStore<Preferences> by preferencesDataStore("user")
 object Injection {
-    fun provideFarmRepository(): FarmRepository {
+    fun provideFarmRepository(context: Context): FarmRepository {
+        val pref = UserPreference.getInstance(context.datastore)
         val apiConfig = ApiConfig
-        return FarmRepository.getInstance(apiConfig)
+        return FarmRepository.getInstance(apiConfig, pref)
     }
 
     fun provideUserRepository(context: Context): UserRepository {

@@ -32,13 +32,53 @@ class FarmRepository(
         }
     }
 
-    fun getFarmDetail(id: Int) = liveData {
-        emit(Result.Loading)
-        try {
-            val response = apiConfig.getAyamHubApiService().getFarmDetail(id)
-            emit(Result.Success(response))
-        } catch (e: Exception) {
-            emit(Result.Error(e.message.toString()))
+    fun checkBookmark(id: Int) = userToken.switchMap { token ->
+        liveData {
+            emit(Result.Loading)
+            try {
+                val response = apiConfig.getAyamHubApiService(token).checkBookmark(id)
+                emit(Result.Success(response))
+            } catch (e: Exception) {
+                emit(Result.Error(e.message.toString()))
+            }
+        }
+    }
+
+    fun addBookmark(farmId: Int) = userToken.switchMap { token ->
+        userId.switchMap { userId ->
+            liveData {
+                emit(Result.Loading)
+                try {
+                    val response = apiConfig.getAyamHubApiService(token).addBookmark(farmId, userId.toInt())
+                    emit(Result.Success(response))
+                } catch (e: Exception) {
+                    emit(Result.Error(e.message.toString()))
+                }
+            }
+        }
+    }
+
+    fun removeBookmark(id: Int) = userToken.switchMap { token ->
+        liveData {
+            emit(Result.Loading)
+            try {
+                val response = apiConfig.getAyamHubApiService(token).removeBookmark(id)
+                emit(Result.Success(response))
+            } catch (e: Exception) {
+                emit(Result.Error(e.message.toString()))
+            }
+        }
+    }
+
+    fun getFarmDetail(id: Int) = userToken.switchMap { token ->
+        liveData {
+            emit(Result.Loading)
+            try {
+                val response = apiConfig.getAyamHubApiService(token).getFarmDetail(id)
+                emit(Result.Success(response))
+            } catch (e: Exception) {
+                emit(Result.Error(e.message.toString()))
+            }
         }
     }
 
@@ -74,7 +114,7 @@ class FarmRepository(
     }
 
     companion object {
-        private var INSTANCE:  FarmRepository? = null
+        private var INSTANCE: FarmRepository? = null
         fun getInstance(
             apiConfig: ApiConfig,
             pref: UserPreference

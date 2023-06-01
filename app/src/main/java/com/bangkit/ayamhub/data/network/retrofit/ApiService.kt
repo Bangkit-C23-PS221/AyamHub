@@ -1,6 +1,7 @@
 package com.bangkit.ayamhub.data.network.retrofit
 
 import com.bangkit.ayamhub.data.network.response.*
+import retrofit2.http.DELETE
 import retrofit2.http.Field
 import retrofit2.http.FormUrlEncoded
 import retrofit2.http.GET
@@ -34,6 +35,12 @@ interface ApiService {
     @GET("/farms")
     suspend fun getListFarms (): List<ListFarmResponse>
 
+    @POST("/bookmarks/{userId}/{farmId}")
+    fun addBookmark(
+        @Path("farmId") farmId: Int,
+        @Path("userId") userId: Int
+    ): MessageResponse
+
     @GET("provinsi.json")
     suspend fun getProvince(): List<LocationResponse>
 
@@ -47,4 +54,11 @@ interface ApiService {
         @Path("id") id: Int
     ): List<LocationResponse>
 
+    //TODO: add endpoint
+    @DELETE("")
+    suspend fun removeBookmark(id: Int): MessageResponse
+
+    //TODO: add endpoint
+    @GET("")
+    suspend fun checkBookmark(id: Int): MessageResponse
 }

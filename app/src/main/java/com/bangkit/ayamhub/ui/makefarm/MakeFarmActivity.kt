@@ -1,6 +1,5 @@
 package com.bangkit.ayamhub.ui.makefarm
 
-import android.annotation.SuppressLint
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -34,13 +33,48 @@ class MakeFarmActivity : AppCompatActivity() {
         getInputedLocation()
 
         binding.gambarButton.setOnClickListener { getInputedLocation() }
+        binding.registerButton.setOnClickListener { validateForm() }
+    }
 
-        binding.registerButton.setOnClickListener {
-            startActivity(Intent(this, FarmerActivity::class.java))
+    private fun validateForm() {
+        with(binding) {
+            val name = usernameEditText.text.toString()
+            val price = hargaEditText.text.toString()
+            val age = umurEditText.text.toString()
+            val weight = beratEditText.text.toString()
+            val stock = stockEditText.text.toString()
 
+            when {
+                name.isEmpty() -> {
+                    usernameEditText.error = "Mohon diisi dulu namanya!"
+                }
+                price.isEmpty() -> {
+                    hargaEditText.error = "Mohon diisi dulu harganya!"
+                }
+                age.isEmpty() -> {
+                    umurEditText.error = "Mohon diisi dulu umur ayamnya!"
+                }
+                weight.isEmpty() -> {
+                    beratEditText.error = "Mohon diisi dulu berat ayamnya!"
+                }
+                stock.isEmpty() -> {
+                    stockEditText.error = "Mohon diisi dulu jumlah stock ayamnya!"
+                }
+                provinsi.isEmpty() -> {
+                    Reusable.showToast(this@MakeFarmActivity, "Mohon diisi dulu provinsinya")
+                }
+                kabupaten.isEmpty() -> {
+                    Reusable.showToast(this@MakeFarmActivity, "Mohon diisi dulu kabupatennya")
+                }
+                kecamatan.isEmpty() -> {
+                    Reusable.showToast(this@MakeFarmActivity, "Mohon diisi dulu kecamatannya")
+                }
+                else -> {
+                    //Do Something
+                    startActivity(Intent(this@MakeFarmActivity, FarmerActivity::class.java))
+                }
+            }
         }
-
-
     }
 
     private fun locationSetup() {
@@ -133,18 +167,16 @@ class MakeFarmActivity : AppCompatActivity() {
             kecamatanAdapter.notifyDataSetChanged()
 
             binding.spKecamatan.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
-                @SuppressLint("SetTextI18n")
                 override fun onItemSelected(
                     parent: AdapterView<*>?,
                     view: View?,
                     position: Int,
                     id: Long
                 ) {
-                    if (position != 0) {
-                        kecamatan = sortedKec[position-1].nama
-                        binding.tvLocation.text = "$provinsi, $kabupaten, $kecamatan"
+                    kecamatan = if (position != 0) {
+                        sortedKec[position-1].nama
                     } else {
-                        "Alamat"
+                        ""
                     }
                 }
 
@@ -165,10 +197,4 @@ class MakeFarmActivity : AppCompatActivity() {
     private fun getInputedLocation() {
         Reusable.showToast(this, "$provinsi, $kabupaten, $kecamatan")
     }
-
-    private fun statusDropdown(){
-
-    }
-
-
 }

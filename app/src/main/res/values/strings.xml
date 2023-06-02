@@ -56,8 +56,33 @@
     <string name="greeting1">Halo!!, aplikasi ini merupakan aplikasi yang dapat mempermudah para UMKM yang menjual ayam potong, dan merupakan lapak para peternak ayam untuk mempromosikan peternakannya</string>
     <string name="greeting2">Selain itu, aplikasi ini juga dapat mendeteksi kesehatan ayam kamu lho!</string>
     <string name="keluar">Keluar</string>
-    <string-array name="status_options">
-        <item>Siap Panen</item>
-        <item>Belum Panen</item>
-    </string-array>
+    <string name="khair_fadhillah">Khair Fadhillah</string>
+    <string name="email_dummy">khair@gmail.com</string>
+    <string name="filter">Filter</string>
+    <string name="alamat">Alamat:</string>
+    <string name="tangerang_selatan">Tangerang Selatan</string>
+    <string name="catatan_dari_peternak">Catatan dari Peternak</string>
+    <string name="halo_disini_catatan_bla_bla_bl">halo disini catatan bla bla bl</string>
+    <string name="stock_2000kg">Stock: 2000Kg</string>
+    <string name="tipe_broiler">Tipe: Broiler</string>
+    <string name="_28_hari">28 Hari</string>
+    <string name="_100_kg">100 KG</string>
+    <string name="berat_ayam">Berat Ayam</string>
+    <string name="peternakan_rindang_jaya">Peternakan Rindang Jaya</string>
+    <string name="pilih_gambar">Pilih Gambar</string>
+    <string name="belum_siap_panen">Belum Siap Panen</string>
+    <string name="siap_panen">Siap Panen</string>
+    <string name="status_panen">Status Panen:</string>
+    <string name="gang_atau_nama_jalan">Gang atau nama jalan</string>
+    <string name="pilih_kecamatan">Pilih Kecamatan</string>
+    <string name="kec">Kecamatan:</string>
+    <string name="pilih_kabupaten">Pilih Kabupaten</string>
+    <string name="kab">Kabupaten:</string>
+    <string name="pilih_provinsi">Pilih Provinsi</string>
+    <string name="prov">Provinsi:</string>
+    <string name="stock_dalam_kg">Stock dalam Kg</string>
+    <string name="berat_dalam_kg_misal_1_1_3">Berat dalam Kg (Misal 1 - 1.3)</string>
+    <string name="umur_dalam_hari">Umur dalam hari</string>
+    <string name="harga">Harga</string>
+    <string name="username">Nama Peternakan</string>
 </resources>

@@ -85,7 +85,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:fontFamily="@font/roboto_bold"
-                        android:text="Berat Ayam"
+                        android:text="@string/berat_ayam"
                         android:textColor="#232323"
                         android:textSize="15sp"
                         app:layout_constraintEnd_toStartOf="@+id/line1"
@@ -97,7 +97,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:fontFamily="@font/roboto_regular"
-                        android:text="100 KG"
+                        android:text="@string/_100_kg"
                         android:textColor="#232323"
                         android:textSize="15sp"
                         app:layout_constraintEnd_toStartOf="@+id/line1"
@@ -131,7 +131,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:fontFamily="@font/roboto_regular"
-                        android:text="28 Hari"
+                        android:text="@string/_28_hari"
                         android:textColor="#232323"
                         android:textSize="15sp"
                         app:layout_constraintEnd_toEndOf="parent"
@@ -170,7 +170,7 @@
                 app:layout_constraintEnd_toStartOf="@id/endGuidelineVertical"
                 app:layout_constraintStart_toEndOf="@id/icAyam"
                 app:layout_constraintTop_toTopOf="@id/icAyam"
-                android:text="Tipe: Broiler" />
+                android:text="@string/tipe_broiler" />
 
             <ImageView
                 android:id="@+id/icStock"
@@ -196,7 +196,7 @@
                 app:layout_constraintEnd_toStartOf="@id/endGuidelineVertical"
                 app:layout_constraintStart_toEndOf="@id/icStock"
                 app:layout_constraintTop_toTopOf="@id/icStock"
-                android:text="Stock: 2000Kg" />
+                android:text="@string/stock_2000kg" />
 
             <androidx.constraintlayout.widget.Guideline
                 android:id="@+id/startGuidelineVertical"
@@ -230,7 +230,7 @@
                 app:layout_constraintTop_toBottomOf="@id/icStock"
                 app:layout_constraintStart_toStartOf="@id/startGuidelineVertical"
                 app:layout_constraintEnd_toStartOf="@id/endGuidelineVertical"
-                android:text="Alamat: " />
+                android:text="@string/alamat" />
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:id="@+id/alamat"
@@ -248,7 +248,7 @@
                     android:layout_marginStart="4dp"
                     android:paddingHorizontal="8dp"
                     android:paddingVertical="10dp"
-                    android:text="Tangerang Selatan"
+                    android:text="@string/tangerang_selatan"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
 
@@ -262,7 +262,7 @@
                 android:layout_marginTop="15dp"
                 android:fontFamily="@font/roboto_bold"
                 android:textColor="@color/black"
-                android:text="Catatan dari Peternak"
+                android:text="@string/catatan_dari_peternak"
                 app:layout_constraintEnd_toStartOf="@+id/endGuidelineVertical"
                 app:layout_constraintStart_toStartOf="@+id/startGuidelineVertical"
                 app:layout_constraintTop_toBottomOf="@+id/alamat"
@@ -285,7 +285,7 @@
                     android:layout_marginStart="4dp"
                     android:paddingHorizontal="8dp"
                     android:paddingVertical="20dp"
-                    android:text="halo disini catatan bla bla bl"
+                    android:text="@string/halo_disini_catatan_bla_bla_bl"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
 

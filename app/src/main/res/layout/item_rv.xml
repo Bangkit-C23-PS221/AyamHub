@@ -115,7 +115,7 @@
             android:id="@+id/status"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:background="#FFFF00"
+            android:background="@drawable/bg_status"
             android:fontFamily="@font/roboto_regular"
             android:paddingVertical="4dp"
             android:textAlignment="center"

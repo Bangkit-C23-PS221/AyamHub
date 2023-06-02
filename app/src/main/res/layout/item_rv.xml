@@ -74,6 +74,7 @@
             android:fontFamily="@font/roboto_regular"
             android:textAlignment="viewStart"
             android:textAllCaps="false"
+            app:layout_constraintTop_toBottomOf="@id/farmName"
             android:textColor="@color/black"
             app:layout_constraintBottom_toBottomOf="@id/location"
             app:layout_constraintEnd_toStartOf="@id/price"

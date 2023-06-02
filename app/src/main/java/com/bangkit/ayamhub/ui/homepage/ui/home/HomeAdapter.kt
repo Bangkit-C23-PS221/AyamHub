@@ -5,20 +5,18 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.bangkit.ayamhub.R
-import com.bangkit.ayamhub.data.local.FlameChaser
-import com.bangkit.ayamhub.data.network.response.ListFarmResponse
+import com.bangkit.ayamhub.data.network.response.FarmItemResponse
 import com.bangkit.ayamhub.databinding.ItemRvBinding
-import com.bangkit.ayamhub.helpers.Reusable
 import com.bumptech.glide.Glide
 import java.util.*
 
 class HomeAdapter(
-    private val data: List<ListFarmResponse>,
+    private val data: List<FarmItemResponse>,
     private val context: Context,
-    private val onClick: (ListFarmResponse) -> Unit
+    private val onClick: (FarmItemResponse) -> Unit
 
 ) : RecyclerView.Adapter<HomeAdapter.MyViewHolder>() {
-    private var filteredData: MutableList<ListFarmResponse> = data.toMutableList()
+    private var filteredData: MutableList<FarmItemResponse> = data.toMutableList()
 
     class MyViewHolder(val binding: ItemRvBinding) : RecyclerView.ViewHolder(binding.root)
 
@@ -29,26 +27,19 @@ class HomeAdapter(
 
     override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
         with(filteredData[position]) {
-            val pic = picFarm
-            val name = usernameFarm
-            val location = addressFarm
-            val type = typeChicken
-            val priceChicken = priceChicken
-            val statusChicken = status
-
             with(holder.binding) {
                 Glide.with(holder.itemView.context)
-                    .load(pic)
+                    .load(photoUrl)
                     .into(ImageView)
-                farmName.text = name
-                locFarm.text = location
-                chickenType.text = type
+                farmName.text = nameFarm
+                locFarm.text = addressFarm
+                chickenType.text = typeChicken
                 price.text = priceChicken
-                status.text = statusChicken
-                if (statusChicken == "Siap Panen") {
-                    status.setBackgroundColor(context.getColor(R.color.green))
+                statusFarm.text = status
+                if (status == ACTIVE) {
+                    statusFarm.setBackgroundColor(context.getColor(R.color.green))
                 } else {
-                    status.setBackgroundColor(context.getColor(R.color.yellow))
+                    statusFarm.setBackgroundColor(context.getColor(R.color.yellow))
                 }
             }
 
@@ -64,7 +55,7 @@ class HomeAdapter(
             filteredData.addAll(data)
         } else {
             filteredData.addAll( data.filter {
-                it.usernameFarm.toLowerCase(Locale.ROOT).contains(text.toLowerCase(Locale.ROOT))
+                it.nameFarm.toLowerCase(Locale.ROOT).contains(text.toLowerCase(Locale.ROOT))
             })
         }
         notifyDataSetChanged()
@@ -86,5 +77,9 @@ class HomeAdapter(
         filteredData.clear()
         filteredData.addAll(data)
         notifyDataSetChanged()
+    }
+
+    companion object {
+        private const val ACTIVE = "dalam masa panen"
     }
 }

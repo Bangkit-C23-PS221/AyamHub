@@ -28,7 +28,7 @@ class UserRepository(
     fun signIn (email: String, password: String) = liveData {
         emit(Result.Loading)
         try {
-            val response = apiConfig.getAyamHubApiService().signInUMKM(email, password)
+            val response = apiConfig.getAyamHubApiService().signIn(email, password)
             emit(Result.Success(response))
         } catch (e: Exception) {
             emit(Result.Error(e.message.toString()))
@@ -43,7 +43,7 @@ class UserRepository(
     ) = liveData {
         emit(Result.Loading)
         try {
-            val response = apiConfig.getAyamHubApiService().signUpUMKM(
+            val response = apiConfig.getAyamHubApiService().signUp(
                 name,
                 password,
                 email,

@@ -8,17 +8,13 @@ import android.view.View
 import android.view.ViewGroup
 import android.view.inputmethod.EditorInfo
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.bangkit.ayamhub.data.local.DummyFlameChaser
 import com.bangkit.ayamhub.data.network.Result
-import com.bangkit.ayamhub.data.network.response.ListFarmResponse
+import com.bangkit.ayamhub.data.network.response.FarmItemResponse
 import com.bangkit.ayamhub.databinding.FragmentHomeBinding
-import com.bangkit.ayamhub.helpers.Reusable
 import com.bangkit.ayamhub.helpers.viewmodelfactory.ViewModelFactory
 import com.bangkit.ayamhub.ui.detail.DetailActivity
-import com.bangkit.ayamhub.ui.homepage.ui.home.HomeViewModel
 import com.bangkit.ayamhub.ui.homepage.ui.home.filter.LocationFilterFragment
 
 class HomeFragment : Fragment() {
@@ -83,7 +79,7 @@ class HomeFragment : Fragment() {
         }
     }
 
-    private fun setupAdapter(data: List<ListFarmResponse>) {
+    private fun setupAdapter(data: List<FarmItemResponse>) {
         homeAdapter = HomeAdapter(data, requireContext()) { item ->
             val intent = Intent(requireContext(), DetailActivity::class.java)
             intent.putExtra(DetailActivity.EXTRA_ID, item.idFarm)

@@ -5,7 +5,6 @@ import retrofit2.http.DELETE
 import retrofit2.http.Field
 import retrofit2.http.FormUrlEncoded
 import retrofit2.http.GET
-import retrofit2.http.Header
 import retrofit2.http.POST
 import retrofit2.http.Path
 
@@ -13,33 +12,27 @@ interface ApiService {
 
     @FormUrlEncoded
     @POST("/login-users")
-    suspend fun signInUMKM (
+    suspend fun signIn (
         @Field("email") email: String,
         @Field("password") password: String
     ): LoginResponse
 
-    @GET("/detail-bookmarks/{id}")
-    suspend fun getFarmDetail(
-        @Path("id") id: Int
-    ) : DetailFarmResponse
-
     @FormUrlEncoded
     @POST("/regist-users")
-    suspend fun signUpUMKM (
+    suspend fun signUp (
         @Field("name") name: String,
         @Field("password") password: String,
         @Field("email") email: String,
         @Field("phone") phone: String
     ): MessageResponse
 
-    @GET("/farms")
-    suspend fun getListFarms (): List<ListFarmResponse>
+    @GET("/detail-bookmarks/{id}")
+    suspend fun getFarmDetail(
+        @Path("id") id: Int
+    ) : DetailFarmResponse
 
-    @POST("/bookmarks/{userId}/{farmId}")
-    fun addBookmark(
-        @Path("farmId") farmId: Int,
-        @Path("userId") userId: Int
-    ): MessageResponse
+    @GET("/farms")
+    suspend fun getListFarms (): List<FarmItemResponse>
 
     @GET("provinsi.json")
     suspend fun getProvince(): List<LocationResponse>
@@ -54,11 +47,22 @@ interface ApiService {
         @Path("id") id: Int
     ): List<LocationResponse>
 
-    //TODO: add endpoint
-    @DELETE("")
-    suspend fun removeBookmark(id: Int): MessageResponse
+    @GET("/bookmarks/{id}")
+    suspend fun getAllBookmark(@Path("id") id: Int): BookmarkResponse
 
-    //TODO: add endpoint
-    @GET("")
-    suspend fun checkBookmark(id: Int): MessageResponse
+    @POST("/bookmarks/{userId}/{farmId}")
+    suspend fun addBookmark(
+        @Path("farmId") farmId: Int,
+        @Path("userId") userId: Int
+    ): MessageResponse
+
+    @DELETE("/delete-bookmarks/{id}")
+    suspend fun removeBookmark(@Path("id") id: Int): MessageResponse
+
+    @FormUrlEncoded
+    @POST("/check-bookmarks/{userId}/{farmId}")
+    suspend fun checkBookmark(
+        @Path("farmId") farmId: Int,
+        @Path("userId") userId: Int
+    ): BookmarkCheckResponse
 }

@@ -2,10 +2,7 @@ package com.bangkit.ayamhub.data.network.response
 
 import com.google.gson.annotations.SerializedName
 
-data class ListFarmResponse(
-
-	@field:SerializedName("id_farm")
-	val idFarm: Int,
+data class FarmItemResponse(
 
 	@field:SerializedName("stock_chicken")
 	val stockChicken: String,
@@ -16,17 +13,23 @@ data class ListFarmResponse(
 	@field:SerializedName("price_chicken")
 	val priceChicken: String,
 
-	@field:SerializedName("pic_farm")
-	val picFarm: String,
+	@field:SerializedName("id_farm")
+	val idFarm: Int,
+
+	@field:SerializedName("photo")
+	val photo: String,
 
 	@field:SerializedName("address_farm")
 	val addressFarm: String,
 
-	@field:SerializedName("username_farm")
-	val usernameFarm: String,
+	@field:SerializedName("photo_url")
+	val photoUrl: String,
 
 	@field:SerializedName("desc_farm")
 	val descFarm: String,
+
+	@field:SerializedName("name_farm")
+	val nameFarm: String,
 
 	@field:SerializedName("type_chicken")
 	val typeChicken: String,

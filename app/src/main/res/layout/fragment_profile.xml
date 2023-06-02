@@ -197,6 +197,19 @@
                 android:alpha="0.5"
                 android:background="#585858" />
 
+            <Button
+                android:id="@+id/logoutButton"
+                android:layout_width="match_parent"
+                android:layout_weight="1"
+                android:fontFamily="@font/roboto_bold"
+                android:layout_gravity="center"
+                android:layout_margin="10dp"
+                android:textAllCaps="false"
+                android:backgroundTint="@color/orange2"
+                android:text="@string/keluar"
+                android:layout_height="0dp"/>
+
+
         </LinearLayout>
 
         <androidx.cardview.widget.CardView

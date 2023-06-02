@@ -102,13 +102,13 @@
         <com.google.android.material.textfield.TextInputLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Berat dalam Kg"
+            android:hint="Berat dalam Kg (Misal 1 - 1.3)"
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
             >
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/beratEditText"
-                android:inputType="number"
+                android:inputType="text"
                 android:layout_width="match_parent"
                 android:textColor="#000000"
                 android:textColorHint="#a9a9a9"
@@ -215,16 +215,23 @@
             android:layout_width="match_parent"
             android:layout_height="16dp" />
 
-        <TextView
-            android:id="@+id/tvLocation"
-            android:padding="10dp"
-            android:background="@drawable/bgcatatan"
+        <com.google.android.material.textfield.TextInputLayout
             android:layout_width="match_parent"
-            android:layout_gravity="center"
-            android:layout_height="0dp"
-            android:layout_weight="1"
-            android:text="TextView"
-            />
+            android:layout_height="wrap_content"
+            android:hint="Gang atau nama jalan"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+            >
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/alamatLengkap"
+                android:inputType="number"
+                android:layout_width="match_parent"
+                android:textColor="#000000"
+                android:textColorHint="#a9a9a9"
+                android:backgroundTint="#ffffff"
+                android:layout_height="wrap_content" />
+
+        </com.google.android.material.textfield.TextInputLayout>
 
         <Space
             android:layout_width="match_parent"

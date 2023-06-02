@@ -74,9 +74,10 @@
             android:fontFamily="@font/roboto_regular"
             android:textAlignment="viewStart"
             android:textAllCaps="false"
+            app:layout_constraintTop_toBottomOf="@id/farmName"
             android:textColor="@color/black"
             app:layout_constraintBottom_toBottomOf="@id/location"
-            app:layout_constraintEnd_toStartOf="@id/endGuidelineVertical"
+            app:layout_constraintEnd_toStartOf="@id/price"
             app:layout_constraintStart_toEndOf="@id/location"
             app:layout_constraintTop_toTopOf="@id/location"
             tools:text="Tangerang Selatan" />
@@ -148,7 +149,7 @@
             android:textAllCaps="false"
             android:textColor="@color/black"
             app:layout_constraintBottom_toBottomOf="@id/icAyam"
-            app:layout_constraintEnd_toStartOf="@id/endGuidelineVertical"
+            app:layout_constraintEnd_toStartOf="@id/status"
             app:layout_constraintStart_toEndOf="@id/icAyam"
             app:layout_constraintTop_toTopOf="@id/icAyam"
             tools:text="Broiler" />

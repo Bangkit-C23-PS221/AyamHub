@@ -1,5 +1,8 @@
 package com.bangkit.ayamhub.ui.detail
 
+import android.annotation.SuppressLint
+import android.content.Intent
+import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
@@ -20,6 +23,7 @@ class DetailActivity : AppCompatActivity() {
     private lateinit var binding: ActivityDetailBinding
     private var farmId = -1
     private var isBookmarked = ""
+    private var phone = 0L
     private val vIewModel: DetailVIewModel by viewModels {
         ViewModelFactory.getInstance(this)
     }
@@ -34,6 +38,22 @@ class DetailActivity : AppCompatActivity() {
         checkBookmark()
 
         binding.ivBookmark.setOnClickListener { setupBookmarkButton() }
+        binding.WA.setOnClickListener { whatsAppInent() }
+    }
+
+    @SuppressLint("QueryPermissionsNeeded")
+    private fun whatsAppInent() {
+        if (phone != 0L) {
+            val intent = Intent(Intent.ACTION_VIEW)
+            intent.data = Uri.parse("https://wa.me/$phone")
+            if (intent.resolveActivity(packageManager) != null) {
+                startActivity(intent)
+            } else {
+                Reusable.showToast(this@DetailActivity, "Tidak dapat membuka aplikasi WhatsApp")
+            }
+        } else {
+            Reusable.showToast(this@DetailActivity, "Tidak dapat memuat nomor WhatsApp")
+        }
     }
 
     private fun getData() {
@@ -52,6 +72,7 @@ class DetailActivity : AppCompatActivity() {
                         showLoading(false)
                         Log.e("DetailActivity", "OnFailure: ${result.error}")
                     }
+                    else -> {}
                 }
             }
         }
@@ -70,6 +91,8 @@ class DetailActivity : AppCompatActivity() {
             stock.text = data.stockChicken
             farmersNote.text = data.descFarm
             harga.text = data.priceChicken
+            //TODO: add phone number
+//            phone = data.
         }
     }
 
@@ -143,6 +166,7 @@ class DetailActivity : AppCompatActivity() {
                 showLoading(false)
                 Reusable.showToast(this@DetailActivity, errorMessage)
             }
+            else -> {}
         }
     }
 

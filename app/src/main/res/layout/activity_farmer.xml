@@ -13,9 +13,9 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:visibility="gone"
+        android:elevation="3dp"
         android:layout_centerInParent="true"
         tools:visibility="visible" />
-    
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent">
@@ -25,7 +25,7 @@
             android:layout_height="match_parent">
 
             <ImageView
-                android:id="@+id/ImageView"
+                android:id="@+id/farmIv"
                 android:layout_width="0dp"
                 android:layout_height="0dp"
                 android:cropToPadding="false"
@@ -38,12 +38,13 @@
                 android:src="@drawable/background_profile" />
 
             <ImageButton
+                android:id="@+id/ivBookmark"
                 android:layout_width="40dp"
                 android:layout_height="45dp"
                 android:backgroundTint="@color/white"
                 android:layout_marginBottom="10dp"
                 app:layout_constraintEnd_toEndOf="@id/endGuidelineVertical"
-                app:layout_constraintBottom_toBottomOf="@id/ImageView"
+                app:layout_constraintBottom_toBottomOf="@id/farmIv"
                 android:background="@drawable/ic_bookmark_before"/>
 
             <TextView
@@ -56,7 +57,7 @@
                 android:textSize="20sp"
                 app:layout_constraintEnd_toStartOf="@id/endGuidelineVertical"
                 app:layout_constraintStart_toEndOf="@id/startGuidelineVertical"
-                app:layout_constraintTop_toBottomOf="@id/ImageView"
+                app:layout_constraintTop_toBottomOf="@id/farmIv"
                 android:text="Peternakan Rindang Jaya" />
 
             <androidx.cardview.widget.CardView
@@ -89,7 +90,7 @@
                         app:layout_constraintTop_toTopOf="parent" />
 
                     <TextView
-                        android:id="@+id/height"
+                        android:id="@+id/detailWeichtTv"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:fontFamily="@font/roboto_regular"
@@ -138,30 +139,8 @@
                 </androidx.constraintlayout.widget.ConstraintLayout>
             </androidx.cardview.widget.CardView>
 
-            <ImageView
-                android:id="@+id/location"
-                android:layout_width="25dp"
-                android:layout_height="25dp"
-                android:layout_marginTop="20dp"
-                android:layout_marginBottom="16dp"
-                app:layout_constraintStart_toEndOf="@id/startGuidelineVertical"
-                app:layout_constraintTop_toBottomOf="@id/cardView"
-                app:srcCompat="@drawable/ic_location" />
 
-            <TextView
-                android:id="@+id/locFarm"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="4dp"
-                android:fontFamily="@font/roboto_regular"
-                android:textAlignment="viewStart"
-                android:textAllCaps="false"
-                android:textColor="@color/black"
-                app:layout_constraintBottom_toBottomOf="@id/location"
-                app:layout_constraintEnd_toStartOf="@id/endGuidelineVertical"
-                app:layout_constraintStart_toEndOf="@id/location"
-                app:layout_constraintTop_toTopOf="@id/location"
-                android:text="Tangerang Selatan" />
+
 
 
             <ImageView
@@ -171,7 +150,7 @@
                 android:layout_marginTop="6dp"
                 android:layout_marginBottom="16dp"
                 app:layout_constraintStart_toEndOf="@id/startGuidelineVertical"
-                app:layout_constraintTop_toBottomOf="@id/locFarm"
+                app:layout_constraintTop_toBottomOf="@id/cardView"
                 app:srcCompat="@drawable/ic_chicken" />
 
 
@@ -235,18 +214,56 @@
                 app:layout_constraintStart_toStartOf="parent" />
 
 
+            <TextView
+                android:id="@+id/alamatText"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="4dp"
+                android:fontFamily="@font/roboto_regular"
+                android:textAlignment="viewStart"
+                android:layout_marginTop="9dp"
+                android:textAllCaps="false"
+                android:textColor="@color/black"
+                app:layout_constraintTop_toBottomOf="@id/icStock"
+                app:layout_constraintStart_toStartOf="@id/startGuidelineVertical"
+                app:layout_constraintEnd_toStartOf="@id/endGuidelineVertical"
+                android:text="Alamat: " />
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/alamat"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:background="@drawable/border"
+                app:layout_constraintEnd_toStartOf="@+id/endGuidelineVertical"
+                app:layout_constraintStart_toStartOf="@+id/startGuidelineVertical"
+                app:layout_constraintTop_toBottomOf="@+id/alamatText">
+
+                <TextView
+                    android:id="@+id/locFarm"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="4dp"
+                    android:layout_marginTop="2dp"
+                    android:paddingHorizontal="8dp"
+                    android:paddingVertical="10dp"
+                    android:text="Tangerang Selatan"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
 
             <TextView
                 android:id="@+id/catatanP"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="24dp"
+                android:layout_marginTop="15dp"
                 android:fontFamily="@font/roboto_bold"
                 android:textColor="@color/black"
                 android:text="Catatan dari Peternak"
                 app:layout_constraintEnd_toStartOf="@+id/endGuidelineVertical"
                 app:layout_constraintStart_toStartOf="@+id/startGuidelineVertical"
-                app:layout_constraintTop_toBottomOf="@+id/icStock"
+                app:layout_constraintTop_toBottomOf="@+id/alamat"
                 />
 
             <androidx.constraintlayout.widget.ConstraintLayout
@@ -260,6 +277,7 @@
                 app:layout_constraintTop_toBottomOf="@+id/catatanP">
 
                 <TextView
+                    android:id="@+id/farmersNote"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="4dp"

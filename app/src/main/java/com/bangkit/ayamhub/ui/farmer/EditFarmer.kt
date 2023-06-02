@@ -28,6 +28,7 @@ class EditFarmer : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityEditFarmerBinding.inflate(layoutInflater)
         setContentView(binding.root)
+        supportActionBar?.title = "Buat Peternakan";
         binding.spKabupaten.isEnabled = false
         binding.spKecamatan.isEnabled = false
 

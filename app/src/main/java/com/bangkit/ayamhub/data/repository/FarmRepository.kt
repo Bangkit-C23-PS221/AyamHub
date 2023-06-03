@@ -32,14 +32,31 @@ class FarmRepository(
         }
     }
 
+    fun getAllBookmark() = userToken.switchMap { token ->
+        userId.switchMap { userId ->
+            liveData {
+                emit(Result.Loading)
+                try {
+                    val response = apiConfig.getAyamHubApiService(token).getAllBookmark(userId.toInt())
+                    emit(Result.Success(response))
+                    Log.e("ApiCall", "Test")
+                } catch (e: Exception) {
+                    emit(Result.Error(e.message.toString()))
+                }
+            }
+        }
+    }
+
     fun checkBookmark(id: Int) = userToken.switchMap { token ->
-        liveData {
-            emit(Result.Loading)
-            try {
-                val response = apiConfig.getAyamHubApiService(token).checkBookmark(id)
-                emit(Result.Success(response))
-            } catch (e: Exception) {
-                emit(Result.Error(e.message.toString()))
+        userId.switchMap { userId ->
+            liveData {
+                emit(Result.Loading)
+                try {
+                    val response = apiConfig.getAyamHubApiService(token).checkBookmark(id, userId.toInt())
+                    emit(Result.Success(response))
+                } catch (e: Exception) {
+                    emit(Result.Error(e.message.toString()))
+                }
             }
         }
     }

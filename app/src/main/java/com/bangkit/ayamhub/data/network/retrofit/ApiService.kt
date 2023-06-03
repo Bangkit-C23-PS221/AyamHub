@@ -48,7 +48,7 @@ interface ApiService {
     ): List<LocationResponse>
 
     @GET("/bookmarks/{id}")
-    suspend fun getAllBookmark(@Path("id") id: Int): BookmarkResponse
+    suspend fun getAllBookmark(@Path("id") id: Int): List<BookmarkResponse>
 
     @POST("/bookmarks/{userId}/{farmId}")
     suspend fun addBookmark(
@@ -59,7 +59,6 @@ interface ApiService {
     @DELETE("/delete-bookmarks/{id}")
     suspend fun removeBookmark(@Path("id") id: Int): MessageResponse
 
-    @FormUrlEncoded
     @POST("/check-bookmarks/{userId}/{farmId}")
     suspend fun checkBookmark(
         @Path("farmId") farmId: Int,

@@ -7,6 +7,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bangkit.ayamhub.R
 import com.bangkit.ayamhub.data.network.response.FarmItemResponse
 import com.bangkit.ayamhub.databinding.ItemRvBinding
+import com.bangkit.ayamhub.helpers.Reusable
 import com.bumptech.glide.Glide
 import java.util.*
 
@@ -32,7 +33,7 @@ class HomeAdapter(
                     .load(photoUrl)
                     .into(ImageView)
                 farmName.text = nameFarm
-                locFarm.text = addressFarm
+                locFarm.text = Reusable.getCity(addressFarm)
                 chickenType.text = typeChicken
                 price.text = priceChicken
                 statusFarm.text = status

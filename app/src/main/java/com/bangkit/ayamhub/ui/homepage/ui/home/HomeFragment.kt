@@ -83,7 +83,7 @@ class HomeFragment : Fragment() {
         homeAdapter = HomeAdapter(data, requireContext()) { item ->
             val intent = Intent(requireContext(), DetailActivity::class.java)
             intent.putExtra(DetailActivity.EXTRA_ID, item.idFarm)
-            startActivity(Intent(requireContext(), DetailActivity::class.java))
+            startActivity(intent)
         }
         binding.rvPeternak.adapter = homeAdapter
         binding.rvPeternak.layoutManager = LinearLayoutManager(requireContext())

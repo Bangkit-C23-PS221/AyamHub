@@ -85,4 +85,13 @@
     <string name="umur_dalam_hari">Umur dalam hari</string>
     <string name="harga">Harga</string>
     <string name="username">Nama Peternakan</string>
+    <string name="chickenWeightTv">%s Kg</string>
+    <string name="chickenAgeTv">%s Hari</string>
+    <string name="chickenTypeTv">Tipe: %s</string>
+    <string name="chickenStokTv">Stok: %s Ekor</string>
+    <string name="chickengPriceTv">Harga: Rp. %s/Kg</string>
+    <string-array name="status_options">
+        <item>Siap Panen</item>
+        <item>Belum Panen</item>
+    </string-array>
 </resources>

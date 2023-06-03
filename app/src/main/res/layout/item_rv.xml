@@ -149,7 +149,7 @@
             android:textAllCaps="false"
             android:textColor="@color/black"
             app:layout_constraintBottom_toBottomOf="@id/icAyam"
-            app:layout_constraintEnd_toStartOf="@id/status"
+            app:layout_constraintEnd_toStartOf="@id/statusFarm"
             app:layout_constraintStart_toEndOf="@id/icAyam"
             app:layout_constraintTop_toTopOf="@id/icAyam"
             tools:text="Broiler" />

@@ -42,9 +42,9 @@ class SplashScreenActivity : AppCompatActivity() {
         Handler(Looper.getMainLooper()).postDelayed({
             viewModel.getUserData.observe(this) {
                 val intent: Intent = if (it.isNotEmpty()) {
-                    Intent(this@SplashScreenActivity, MainActivity::class.java)
-                } else {
                     Intent(this@SplashScreenActivity, HomeActivity::class.java)
+                } else {
+                    Intent(this@SplashScreenActivity, MainActivity::class.java)
                 }
                 startActivity(intent)
                 finish()

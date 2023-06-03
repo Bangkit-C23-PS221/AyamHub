@@ -4,7 +4,7 @@ import androidx.lifecycle.ViewModel
 import com.bangkit.ayamhub.data.repository.UserRepository
 
 class SplashScreenViewModel(
-    repo: UserRepository
+    private val repo: UserRepository
 ) : ViewModel() {
 
     val getUserData = repo.getToken()

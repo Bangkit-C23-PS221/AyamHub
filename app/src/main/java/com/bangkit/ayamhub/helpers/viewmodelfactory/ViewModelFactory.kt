@@ -14,6 +14,7 @@ import com.bangkit.ayamhub.ui.homepage.ui.profile.ProfileViewModel
 import com.bangkit.ayamhub.ui.login.LoginViewModel
 import com.bangkit.ayamhub.ui.makefarm.MakeFarmViewModel
 import com.bangkit.ayamhub.ui.register.RegisterViewModel
+import com.bangkit.ayamhub.ui.splashscreen.SplashScreenViewModel
 
 class ViewModelFactory(
     private val farmRepository: FarmRepository,
@@ -30,6 +31,8 @@ class ViewModelFactory(
             modelClass.isAssignableFrom(MakeFarmViewModel::class.java) -> return MakeFarmViewModel(farmRepository) as T
             modelClass.isAssignableFrom(ProfileViewModel::class.java) -> return ProfileViewModel(userRepository) as T
             modelClass.isAssignableFrom(DetailVIewModel::class.java) -> return DetailVIewModel(userRepository, farmRepository) as T
+            modelClass.isAssignableFrom(SplashScreenViewModel::class.java) -> return SplashScreenViewModel(userRepository) as T
+
         }
         throw IllegalArgumentException("Unknown ViewModel Class: ${modelClass.name}")
     }

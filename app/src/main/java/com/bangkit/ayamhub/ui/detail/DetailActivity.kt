@@ -22,7 +22,8 @@ class DetailActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityDetailBinding
     private var farmId = -1
-    private var isBookmarked = ""
+    private var isBookmarked: Boolean? = null
+    private var bookmarkId = -1
     private var phone = 0L
     private val vIewModel: DetailVIewModel by viewModels {
         ViewModelFactory.getInstance(this)
@@ -57,7 +58,7 @@ class DetailActivity : AppCompatActivity() {
     }
 
     private fun getData() {
-        val farmId = intent.getIntExtra(EXTRA_ID, -1)
+        farmId = intent.getIntExtra(EXTRA_ID, -1)
         if (farmId >= 0) {
             vIewModel.getFarmDetail(farmId).observe(this) { result ->
                 when(result) {
@@ -84,34 +85,48 @@ class DetailActivity : AppCompatActivity() {
                 .load(data.picFarm)
                 .into(farmIv)
             farmName.text = data.nameFarm
-            detailWeichtTv.text = data.weightChicken
-            age.text = getChickenAge(data.ageChicken).toString()
+            detailWeichtTv.text = getString(R.string.chickenWeightTv, data.weightChicken)
+            age.text = getString(R.string.chickenAgeTv, getChickenAge(data.ageChicken))
             locFarm.text = data.addressFarm
-            chickenType.text = data.typeChicken
-            stock.text = data.stockChicken
+            chickenType.text = getString(R.string.chickenTypeTv, data.typeChicken)
+            stock.text = getString(R.string.chickenStokTv, data.stockChicken)
             farmersNote.text = data.descFarm
-            harga.text = data.priceChicken
+            harga.text = getString(R.string.chickengPriceTv, data.priceChicken)
             //TODO: add phone number
 //            phone = data.
         }
     }
 
-    private fun getChickenAge(date: String): Int {
-        val chickenDate = LocalDate.parse(date)
+    private fun getChickenAge(date: String): String {
+        val actualDate = date.split("T")
+        val chickenDate = LocalDate.parse(actualDate[0])
         val currentDate = LocalDate.now()
-        return ChronoUnit.DAYS.between(chickenDate, currentDate).toInt()
+        return ChronoUnit.DAYS.between(chickenDate, currentDate).toString()
     }
 
     private fun checkBookmark() {
         if (farmId >= 0) {
-            vIewModel.addBookmark(farmId).observe(this@DetailActivity) { result ->
-                processResult(result, "Gagal Mengambil Data") { data ->
-                   isBookmarked = data.message
-                    if (isBookmarked == TRUE) {
-                        binding.ivBookmark.setImageDrawable(ContextCompat.getDrawable(this@DetailActivity, R.drawable.ic_bookmarks))
-                    } else if (isBookmarked == FALSE){
-                        binding.ivBookmark.setImageDrawable(ContextCompat.getDrawable(this@DetailActivity, R.drawable.ic_bookmark_before))
+            vIewModel.checkBookmark(farmId).observe(this@DetailActivity) { result ->
+                when(result) {
+                    is Result.Loading -> {
+                        showLoading(true)
                     }
+                    is Result.Success -> {
+                        showLoading(false)
+                        isBookmarked = result.data.isBookmarked
+                        bookmarkId = result.data.idBookmark ?: bookmarkId
+
+                        if (isBookmarked == true) {
+                            binding.ivBookmark.setImageDrawable(ContextCompat.getDrawable(this@DetailActivity, R.drawable.ic_bookmarks))
+                        } else if (isBookmarked == false){
+                            binding.ivBookmark.setImageDrawable(ContextCompat.getDrawable(this@DetailActivity, R.drawable.ic_bookmark_before))
+                        }
+                    }
+                    is Result.Error -> {
+                        showLoading(false)
+                        Log.e("DetailActivity", "OnFailure: ${result.error}")
+                    }
+                    else -> {}
                 }
             }
         }
@@ -119,12 +134,15 @@ class DetailActivity : AppCompatActivity() {
 
     private fun setupBookmarkButton() {
         when(isBookmarked) {
-            TRUE -> {
+            true -> {
                 removeBookmark()
+                Log.e("BookmarkButton", "is True: $isBookmarked")
             }
-            FALSE -> {
+            false -> {
                 addBookmark()
+                Log.e("BookmarkButton", "is Fasle: $isBookmarked")
             }
+            else -> { Log.e("BookmarkButton", "Else: $isBookmarked") }
         }
     }
 
@@ -133,18 +151,20 @@ class DetailActivity : AppCompatActivity() {
             vIewModel.addBookmark(farmId).observe(this@DetailActivity) { result ->
                 processResult(result, "Oops gagal menambahkan bookmark!") {
                     binding.ivBookmark.setImageDrawable(ContextCompat.getDrawable(this@DetailActivity, R.drawable.ic_bookmarks))
+                    isBookmarked = true
                 }
             }
         }
     }
 
     private fun removeBookmark() {
-        if (farmId >= 0) {
-            vIewModel.removeBookmark(farmId).observe(this@DetailActivity) { result ->
+        Log.e("Remove", "$bookmarkId")
+        if (bookmarkId >= 0) {
+            vIewModel.removeBookmark(bookmarkId).observe(this@DetailActivity) { result ->
                 processResult(result, "Oops gagal menghapus bookmark!") {
                     binding.ivBookmark.setImageDrawable(ContextCompat.getDrawable(this@DetailActivity, R.drawable.ic_bookmark_before))
+                    isBookmarked = false
                 }
-
             }
         }
     }
@@ -165,8 +185,8 @@ class DetailActivity : AppCompatActivity() {
             is Result.Error -> {
                 showLoading(false)
                 Reusable.showToast(this@DetailActivity, errorMessage)
+                Log.e("DetailActivity", "OnFailure: ${result.error}")
             }
-            else -> {}
         }
     }
 

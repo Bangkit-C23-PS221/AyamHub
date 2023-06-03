@@ -12,6 +12,7 @@ class ProfileViewModel(
     val getName = repository.getName()
     val getEmail = repository.getEmail()
     val getPhone = repository.getPhone()
+    val getLevel = repository.getLevel()
 
     fun logOut() {
         viewModelScope.launch {

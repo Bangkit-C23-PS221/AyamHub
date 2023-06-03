@@ -1,6 +1,5 @@
 package com.bangkit.ayamhub.ui.homepage.ui.profile
 
-import android.app.Activity
 import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -8,11 +7,12 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import com.bangkit.ayamhub.R
 import com.bangkit.ayamhub.databinding.FragmentProfileBinding
 import com.bangkit.ayamhub.helpers.viewmodelfactory.ViewModelFactory
+import com.bangkit.ayamhub.ui.farmer.FarmerActivity
 import com.bangkit.ayamhub.ui.login.LoginActivity
 import com.bangkit.ayamhub.ui.makefarm.MakeFarmActivity
-
 
 class ProfileFragment : Fragment() {
 
@@ -46,9 +46,17 @@ class ProfileFragment : Fragment() {
     }
 
     private fun buttonSetup() {
-        binding.makeFarm.setOnClickListener {
-            startActivity(Intent(requireContext(), MakeFarmActivity::class.java))
+        var intent: Intent? = null
+        viewModel.getLevel.observe(viewLifecycleOwner) {
+            if (it == UMKM) {
+                intent = Intent(requireContext(), MakeFarmActivity::class.java)
+            } else {
+                intent = Intent(requireContext(), FarmerActivity::class.java)
+                binding.profileTv.text = getString(R.string.your_farm)
+            }
         }
+
+        binding.makeFarm.setOnClickListener { startActivity(intent) }
     }
 
     private fun logOut() {
@@ -71,6 +79,10 @@ class ProfileFragment : Fragment() {
                 tvPhone.text = it
             }
         }
+    }
+
+    companion object {
+        const val UMKM = "umkm"
     }
 
 }

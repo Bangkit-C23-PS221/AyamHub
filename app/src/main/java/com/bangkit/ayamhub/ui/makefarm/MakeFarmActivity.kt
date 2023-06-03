@@ -26,6 +26,8 @@ class MakeFarmActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityMakeFarmBinding.inflate(layoutInflater)
         setContentView(binding.root)
+        supportActionBar?.title = "Buat Peternakan";
+
         binding.spKabupaten.isEnabled = false
         binding.spKecamatan.isEnabled = false
 

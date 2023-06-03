@@ -176,5 +176,5 @@
            app:layout_constraintEnd_toEndOf="parent"
            app:layout_constraintStart_toStartOf="parent"
            app:layout_constraintTop_toTopOf="parent"
-           app:srcCompat="@drawable/ayamhubtxt" />
+           app:srcCompat="@drawable/ic_name" />
 </androidx.constraintlayout.motion.widget.MotionLayout>

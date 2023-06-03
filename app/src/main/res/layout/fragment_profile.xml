@@ -57,7 +57,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
             tools:text="Khair Fadhillah"
-            android:text="Khair Fadhillah"
+            android:text="@string/khair_fadhillah"
             android:textColor="#ffffff"
             android:textSize="24sp"
             android:fontFamily="@font/roboto_bold"
@@ -71,7 +71,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             tools:text="khair@gmail.com"
-            android:text="khair@gmail.com"
+            android:text="@string/email_dummy"
             android:textColor="#ffffff"
             android:fontFamily="@font/roboto_regular"
             android:textSize="18sp"
@@ -113,7 +113,6 @@
                         android:id="@+id/imageView3"
                         android:layout_width="match_parent"
                         android:layout_height="60dp"
-
                         app:srcCompat="@drawable/make_farm" />
 
                     <TextView

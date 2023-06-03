@@ -14,7 +14,7 @@
         <com.google.android.material.textfield.TextInputLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Username"
+            android:hint="@string/username"
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
 
             <com.google.android.material.textfield.TextInputEditText
@@ -58,7 +58,7 @@
         <com.google.android.material.textfield.TextInputLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Harga"
+            android:hint="@string/harga"
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
 
             <com.google.android.material.textfield.TextInputEditText
@@ -79,7 +79,7 @@
         <com.google.android.material.textfield.TextInputLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Umur dalam hari"
+            android:hint="@string/umur_dalam_hari"
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
             >
 
@@ -102,7 +102,7 @@
         <com.google.android.material.textfield.TextInputLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Berat dalam Kg (Misal 1 - 1.3)"
+            android:hint="@string/berat_dalam_kg_misal_1_1_3"
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
             >
 
@@ -124,7 +124,7 @@
         <com.google.android.material.textfield.TextInputLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Stock dalam Kg"
+            android:hint="@string/stock_dalam_kg"
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
             >
 
@@ -151,7 +151,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Provinsi: "
+                android:text="@string/prov"
                 android:textStyle="bold" />
 
             <Spinner
@@ -159,7 +159,7 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:hint="Pilih Provinsi" />
+                android:hint="@string/pilih_provinsi" />
 
         </LinearLayout>
         <Space
@@ -175,7 +175,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Kabupaten: "
+                android:text="@string/kab"
                 android:textStyle="bold" />
 
             <Spinner
@@ -183,7 +183,7 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:hint="Pilih Kabupaten" />
+                android:hint="@string/pilih_kabupaten" />
 
         </LinearLayout>
         <Space
@@ -199,7 +199,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Kecamatan: "
+                android:text="@string/kec"
                 android:textStyle="bold" />
 
             <Spinner
@@ -207,7 +207,7 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:hint="Pilih Kecamatan" />
+                android:hint="@string/pilih_kecamatan" />
 
         </LinearLayout>
 
@@ -218,7 +218,7 @@
         <com.google.android.material.textfield.TextInputLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Gang atau nama jalan"
+            android:hint="@string/gang_atau_nama_jalan"
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
             >
 
@@ -246,7 +246,7 @@
                 android:id="@+id/statusTextView"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Status Panen:" />
+                android:text="@string/status_panen" />
 
             <View
                 android:layout_width="0dp"
@@ -260,8 +260,8 @@
                 android:textColor="@color/white"
                 android:fontFamily="@font/roboto_regular"
                 android:layout_height="wrap_content"
-                android:textOn="Siap Panen"
-                android:textOff="Belum Siap Panen" />
+                android:textOn="@string/siap_panen"
+                android:textOff="@string/belum_siap_panen" />
 
         </LinearLayout>
         <Space
@@ -272,7 +272,7 @@
             android:layout_width="wrap_content"
             android:layout_gravity="end"
             android:layout_height="wrap_content"
-            android:text="Pilih Gambar"
+            android:text="@string/pilih_gambar"
             style="@style/Widget.MaterialComponents.Button.OutlinedButton" />
 
         <Space

@@ -20,7 +20,7 @@ class MainActivity : AppCompatActivity() {
 
         binding.loginButton.setOnClickListener { startApp() }
     }
-    
+
     private fun startApp() {
         startActivity(Intent(this, LoginActivity::class.java))
     }

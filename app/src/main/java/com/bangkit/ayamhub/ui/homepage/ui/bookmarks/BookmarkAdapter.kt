@@ -5,12 +5,9 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.bangkit.ayamhub.R
-import com.bangkit.ayamhub.data.local.FlameChaser
 import com.bangkit.ayamhub.data.network.response.BookmarkResponse
-import com.bangkit.ayamhub.data.network.response.FarmItem
 import com.bangkit.ayamhub.databinding.ItemRvBinding
 import com.bangkit.ayamhub.helpers.Reusable
-import com.bangkit.ayamhub.ui.homepage.ui.home.HomeAdapter
 import com.bumptech.glide.Glide
 
 class BookmarkAdapter(

@@ -8,17 +8,13 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
-import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.bangkit.ayamhub.data.local.DummyFlameChaser
 import com.bangkit.ayamhub.data.network.Result
 import com.bangkit.ayamhub.data.network.response.BookmarkResponse
-import com.bangkit.ayamhub.data.network.response.FarmItem
 import com.bangkit.ayamhub.databinding.FragmentBookmarksBinding
 import com.bangkit.ayamhub.helpers.Reusable
 import com.bangkit.ayamhub.helpers.viewmodelfactory.ViewModelFactory
 import com.bangkit.ayamhub.ui.detail.DetailActivity
-import com.bangkit.ayamhub.ui.homepage.ui.home.HomeAdapter
 
 class BookmarksFragment : Fragment() {
 

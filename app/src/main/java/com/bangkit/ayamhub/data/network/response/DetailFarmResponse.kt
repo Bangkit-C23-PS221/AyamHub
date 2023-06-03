@@ -13,8 +13,8 @@ data class DetailFarmResponse(
 	@field:SerializedName("id_farm")
 	val idFarm: Int,
 
-	@field:SerializedName("pic_farm")
-	val picFarm: String,
+	@field:SerializedName("photo_url")
+	val photoUrl: String,
 
 	@field:SerializedName("id_user")
 	val idUser: Int,

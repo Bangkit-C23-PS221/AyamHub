@@ -3,6 +3,7 @@ package com.bangkit.ayamhub.ui.homepage
 import android.os.Bundle
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import androidx.appcompat.app.AppCompatActivity
+import androidx.navigation.NavController
 import androidx.navigation.findNavController
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.setupActionBarWithNavController
@@ -14,6 +15,7 @@ import com.bangkit.ayamhub.databinding.ActivityHomeBinding
 class HomeActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityHomeBinding
+    private lateinit var navController: NavController
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -24,8 +26,18 @@ class HomeActivity : AppCompatActivity() {
         setNavbar()
     }
 
+    @Deprecated("Deprecated in Java")
+    override fun onBackPressed() {
+        if (navController.currentDestination?.id != navController.graph.startDestinationId) {
+            navController.navigate(navController.graph.startDestinationId)
+        } else {
+            super.onBackPressed()
+            finishAffinity()
+        }
+    }
+
     private fun setNavbar() {
-        val navController = findNavController(R.id.nav_host_fragment_activity_home)
+        navController = findNavController(R.id.nav_host_fragment_activity_home)
 
         val appBarConfiguration = AppBarConfiguration(
             setOf(

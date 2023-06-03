@@ -82,7 +82,7 @@ class DetailActivity : AppCompatActivity() {
     private fun setupView(data: DetailFarmResponse) {
         with(binding) {
             Glide.with(this@DetailActivity)
-                .load(data.picFarm)
+                .load(data.photoUrl)
                 .into(farmIv)
             farmName.text = data.nameFarm
             detailWeichtTv.text = getString(R.string.chickenWeightTv, data.weightChicken)
@@ -117,9 +117,9 @@ class DetailActivity : AppCompatActivity() {
                         bookmarkId = result.data.idBookmark ?: bookmarkId
 
                         if (isBookmarked == true) {
-                            binding.ivBookmark.setImageDrawable(ContextCompat.getDrawable(this@DetailActivity, R.drawable.ic_bookmarks))
+                            binding.ivBookmark.setBackgroundResource(R.drawable.ic_bookmarks)
                         } else if (isBookmarked == false){
-                            binding.ivBookmark.setImageDrawable(ContextCompat.getDrawable(this@DetailActivity, R.drawable.ic_bookmark_before))
+                            binding.ivBookmark.setBackgroundResource(R.drawable.ic_bookmark_before)
                         }
                     }
                     is Result.Error -> {
@@ -150,7 +150,7 @@ class DetailActivity : AppCompatActivity() {
         if (farmId >= 0) {
             vIewModel.addBookmark(farmId).observe(this@DetailActivity) { result ->
                 processResult(result, "Oops gagal menambahkan bookmark!") {
-                    binding.ivBookmark.setImageDrawable(ContextCompat.getDrawable(this@DetailActivity, R.drawable.ic_bookmarks))
+                    binding.ivBookmark.setBackgroundResource(R.drawable.ic_bookmarks)
                     isBookmarked = true
                 }
             }
@@ -162,7 +162,7 @@ class DetailActivity : AppCompatActivity() {
         if (bookmarkId >= 0) {
             vIewModel.removeBookmark(bookmarkId).observe(this@DetailActivity) { result ->
                 processResult(result, "Oops gagal menghapus bookmark!") {
-                    binding.ivBookmark.setImageDrawable(ContextCompat.getDrawable(this@DetailActivity, R.drawable.ic_bookmark_before))
+                    binding.ivBookmark.setBackgroundResource(R.drawable.ic_bookmark_before)
                     isBookmarked = false
                 }
             }

@@ -48,8 +48,8 @@ class DetectionFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         setupInterpreter()
-
         showImage()
+
         binding.btnCamera.setOnClickListener { startCamera() }
         binding.btnGalery.setOnClickListener { startGallery() }
         binding.btnClassify.setOnClickListener { classifyImage() }

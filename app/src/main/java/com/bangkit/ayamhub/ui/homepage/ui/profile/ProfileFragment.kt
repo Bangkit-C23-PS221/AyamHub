@@ -10,6 +10,7 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import com.bangkit.ayamhub.databinding.FragmentProfileBinding
 import com.bangkit.ayamhub.helpers.viewmodelfactory.ViewModelFactory
+import com.bangkit.ayamhub.ui.login.LoginActivity
 import com.bangkit.ayamhub.ui.makefarm.MakeFarmActivity
 
 
@@ -35,6 +36,8 @@ class ProfileFragment : Fragment() {
 
         profileSetup()
         buttonSetup()
+
+        binding.logoutButton.setOnClickListener { logOut() }
     }
 
     override fun onDestroyView() {
@@ -46,6 +49,12 @@ class ProfileFragment : Fragment() {
         binding.makeFarm.setOnClickListener {
             startActivity(Intent(requireContext(), MakeFarmActivity::class.java))
         }
+    }
+
+    private fun logOut() {
+        viewModel.logOut()
+        startActivity(Intent(requireContext(), LoginActivity::class.java))
+        requireActivity().finishAffinity()
     }
 
     private fun profileSetup() {

@@ -1,7 +1,9 @@
 package com.bangkit.ayamhub.ui.homepage.ui.profile
 
 import androidx.lifecycle.ViewModel
+import androidx.lifecycle.viewModelScope
 import com.bangkit.ayamhub.data.repository.UserRepository
+import kotlinx.coroutines.launch
 
 class ProfileViewModel(
     private val repository: UserRepository
@@ -11,4 +13,13 @@ class ProfileViewModel(
     val getEmail = repository.getEmail()
     val getPhone = repository.getPhone()
 
+    fun logOut() {
+        viewModelScope.launch {
+            repository.setToken("")
+            repository.setLevel("")
+            repository.setPhone("")
+            repository.setName("")
+            repository.setId("")
+        }
+    }
 }

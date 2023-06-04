@@ -3,7 +3,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:tools="http://schemas.android.com/tools"
-    tools:context=".ui.makefarm.MakeFarmActivity">
+    tools:context=".ui.farmform.FarmFormActivity">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -108,7 +108,7 @@
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/beratEditText"
-                android:inputType="text"
+                android:inputType="numberDecimal"
                 android:layout_width="match_parent"
                 android:textColor="#000000"
                 android:textColorHint="#a9a9a9"
@@ -152,7 +152,7 @@
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/catatan"
-                android:inputType="number"
+                android:inputType="text"
                 android:layout_width="match_parent"
                 android:textColor="#000000"
                 android:textColorHint="#a9a9a9"
@@ -246,7 +246,7 @@
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/alamatLengkap"
-                android:inputType="number"
+                android:inputType="text"
                 android:layout_width="match_parent"
                 android:textColor="#000000"
                 android:textColorHint="#a9a9a9"

@@ -1,41 +1,85 @@
-package com.bangkit.ayamhub.ui.makefarm
+package com.bangkit.ayamhub.ui.farmform
 
 import android.content.Intent
+import android.graphics.BitmapFactory
+import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
+import androidx.activity.result.contract.ActivityResultContracts
 import androidx.activity.viewModels
-import com.bangkit.ayamhub.databinding.ActivityMakeFarmBinding
+import com.bangkit.ayamhub.data.network.Result
+import com.bangkit.ayamhub.databinding.ActivityFarmFormBinding
 import com.bangkit.ayamhub.helpers.Reusable
+import com.bangkit.ayamhub.helpers.uriToFile
 import com.bangkit.ayamhub.helpers.viewmodelfactory.ViewModelFactory
 import com.bangkit.ayamhub.ui.farmer.FarmerActivity
+import okhttp3.MediaType.Companion.toMediaType
+import okhttp3.MediaType.Companion.toMediaTypeOrNull
+import okhttp3.MultipartBody
+import okhttp3.RequestBody
+import okhttp3.RequestBody.Companion.asRequestBody
+import okhttp3.RequestBody.Companion.toRequestBody
+import java.io.File
+import java.time.LocalDate
+import java.time.format.DateTimeFormatter
 
-class MakeFarmActivity : AppCompatActivity() {
+class FarmFormActivity : AppCompatActivity() {
 
-    private lateinit var binding: ActivityMakeFarmBinding
+    private lateinit var binding: ActivityFarmFormBinding
     private var provinsi = ""
     private var kabupaten = ""
     private var kecamatan = ""
-    private val viewModel: MakeFarmViewModel by viewModels {
+    private var photoFile: File? = null
+    private val viewModel: FarmFormViewModel by viewModels {
         ViewModelFactory.getInstance(this)
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding = ActivityMakeFarmBinding.inflate(layoutInflater)
+        binding = ActivityFarmFormBinding.inflate(layoutInflater)
         setContentView(binding.root)
-        supportActionBar?.title = "Buat Peternakan";
 
+        viewSetup()
+        locationSetup()
+        showImage()
+
+        binding.gambarButton.setOnClickListener { startGallery() }
+        binding.registerButton.setOnClickListener { validateForm() }
+    }
+
+    private fun viewSetup() {
+        supportActionBar?.title = "Buat Peternakan";
         binding.spKabupaten.isEnabled = false
         binding.spKecamatan.isEnabled = false
+    }
 
-        locationSetup()
-        getInputedLocation()
+    private val launcherIntentGallery = registerForActivityResult(
+        ActivityResultContracts.StartActivityForResult()
+    ) { result ->
+        if (result.resultCode == android.app.Activity.RESULT_OK) {
+            val selectedImg = result.data?.data as Uri
+            selectedImg.let { uri ->
+                val myFile = uriToFile(uri, this@FarmFormActivity)
+                photoFile = myFile
+                viewModel.saveImage(BitmapFactory.decodeFile(myFile.path))
+            }
+        }
+    }
 
-        binding.gambarButton.setOnClickListener { getInputedLocation() }
-        binding.registerButton.setOnClickListener { validateForm() }
+    private fun startGallery() {
+        val intent = Intent(Intent.ACTION_GET_CONTENT)
+        intent.type = "image/*"
+        val chooser = Intent.createChooser(intent, "Choose a Picture")
+        launcherIntentGallery.launch(chooser)
+    }
+
+    private fun showImage() {
+        viewModel.detectionImage.observe(this@FarmFormActivity) {
+            binding.gambarPeternakan.setImageBitmap(it)
+        }
     }
 
     private fun validateForm() {
@@ -43,12 +87,19 @@ class MakeFarmActivity : AppCompatActivity() {
             val name = usernameEditText.text.toString()
             val price = hargaEditText.text.toString()
             val age = umurEditText.text.toString()
+            val type = chickenType.text.toString()
             val weight = beratEditText.text.toString()
             val stock = stockEditText.text.toString()
+            val address = alamatLengkap.text.toString()
+            val note = catatan.text.toString()
+            val status = toggleButton.text.toString()
 
             when {
                 name.isEmpty() -> {
                     usernameEditText.error = "Mohon diisi dulu namanya!"
+                }
+                type.isEmpty() -> {
+                    chickenType.error = "Mohon diisi dulu tipe ayamnya!"
                 }
                 price.isEmpty() -> {
                     hargaEditText.error = "Mohon diisi dulu harganya!"
@@ -62,21 +113,90 @@ class MakeFarmActivity : AppCompatActivity() {
                 stock.isEmpty() -> {
                     stockEditText.error = "Mohon diisi dulu jumlah stock ayamnya!"
                 }
+                note.isEmpty() -> {
+                    catatan.error = "Mohon diisi dulu catatannya!"
+                }
                 provinsi.isEmpty() -> {
-                    Reusable.showToast(this@MakeFarmActivity, "Mohon diisi dulu provinsinya")
+                    Reusable.showToast(this@FarmFormActivity, "Mohon diisi dulu provinsinya")
                 }
                 kabupaten.isEmpty() -> {
-                    Reusable.showToast(this@MakeFarmActivity, "Mohon diisi dulu kabupatennya")
+                    Reusable.showToast(this@FarmFormActivity, "Mohon diisi dulu kabupatennya")
                 }
                 kecamatan.isEmpty() -> {
-                    Reusable.showToast(this@MakeFarmActivity, "Mohon diisi dulu kecamatannya")
+                    Reusable.showToast(this@FarmFormActivity, "Mohon diisi dulu kecamatannya")
+                }
+                address.isEmpty() -> {
+                    alamatLengkap.error = "Mohon diisi dulu alamat lengkapnya!"
+                }
+                photoFile == null -> {
+                    Reusable.showToast(this@FarmFormActivity, "Mohon pilih dulu gambar peternakannya")
                 }
                 else -> {
-                    //Do Something
-                    startActivity(Intent(this@MakeFarmActivity, FarmerActivity::class.java))
+                    val fullAddress = "$provinsi, $kabupaten, $kecamatan, $address"
+                    uploadFarm(name, type, price, age, weight, stock, note, fullAddress, status)
                 }
             }
         }
+    }
+
+    private fun uploadFarm(
+        name: String,
+        type: String,
+        price: String,
+        age: String,
+        weight: String,
+        stock: String,
+        note: String,
+        address: String,
+        status: String
+    ) {
+        val upName = toTextRequestBody(name)
+        val upType = toTextRequestBody(type)
+        val upPrice = toTextRequestBody(price)
+        val upAge = toTextRequestBody(getAge(age.toInt()))
+        val upWeight = toTextRequestBody(weight)
+        val upStock = toTextRequestBody(stock)
+        val upNote = toTextRequestBody(note)
+        val upAddress = toTextRequestBody(address)
+        val upStatus = toTextRequestBody(status)
+        val image = photoFile?.asRequestBody("image/jpeg".toMediaTypeOrNull())
+
+        val imageMultipart = MultipartBody.Part.createFormData(
+            "photo",
+            photoFile?.name as String,
+            image as RequestBody
+        )
+
+        //TODO make a differentiator if the user is creating or editing
+
+        viewModel.uploadFarm(
+            imageMultipart, upName, upType, upPrice, upAge, upWeight, upStock, upNote, upAddress, upStatus
+        ).observe(this@FarmFormActivity) { result ->
+            when(result) {
+                is Result.Loading -> {
+                    showLoading(true)
+                }
+                is Result.Success -> {
+                    showLoading(false)
+                    startActivity(Intent(this@FarmFormActivity, FarmerActivity::class.java))
+                }
+                is Result.Error -> {
+                    showLoading(false)
+                    Reusable.showToast(this@FarmFormActivity, "Gagal membuat peternakan anda")
+                }
+            }
+        }
+    }
+
+    private fun toTextRequestBody(data: String): RequestBody {
+        return data.toRequestBody("text/plain".toMediaType())
+    }
+
+    private fun getAge(days: Int): String {
+        val currentDate = LocalDate.now()
+        val birthDate = currentDate.minusDays(days.toLong())
+        val formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd") // Define your desired date format here
+        return birthDate.format(formatter)
     }
 
     private fun locationSetup() {
@@ -196,7 +316,13 @@ class MakeFarmActivity : AppCompatActivity() {
         return adapter
     }
 
-    private fun getInputedLocation() {
-        Reusable.showToast(this, "$provinsi, $kabupaten, $kecamatan")
+    private fun showLoading(loading: Boolean) {
+        //TODO Uncomment this
+//        if (loading) {
+//            binding.progressBar.visibility = View.VISIBLE
+//        } else {
+//            binding.progressBar.visibility = View.GONE
+//        }
     }
+
 }

@@ -8,6 +8,8 @@ import androidx.lifecycle.switchMap
 import com.bangkit.ayamhub.data.local.datastore.UserPreference
 import com.bangkit.ayamhub.data.network.retrofit.ApiConfig
 import com.bangkit.ayamhub.data.network.Result
+import okhttp3.MultipartBody
+import okhttp3.RequestBody
 
 class FarmRepository(
     private val apiConfig: ApiConfig,
@@ -76,13 +78,15 @@ class FarmRepository(
     }
 
     fun removeBookmark(id: Int) = userToken.switchMap { token ->
-        liveData {
-            emit(Result.Loading)
-            try {
-                val response = apiConfig.getAyamHubApiService(token).removeBookmark(id)
-                emit(Result.Success(response))
-            } catch (e: Exception) {
-                emit(Result.Error(e.message.toString()))
+        userId.switchMap { userId ->
+            liveData {
+                emit(Result.Loading)
+                try {
+                    val response = apiConfig.getAyamHubApiService(token).removeBookmark(id, userId.toInt())
+                    emit(Result.Success(response))
+                } catch (e: Exception) {
+                    emit(Result.Error(e.message.toString()))
+                }
             }
         }
     }
@@ -96,6 +100,32 @@ class FarmRepository(
             } catch (e: Exception) {
                 emit(Result.Error(e.message.toString()))
             }
+        }
+    }
+
+    fun createFarm(
+        image: MultipartBody.Part,
+        name: RequestBody,
+        type: RequestBody,
+        price: RequestBody,
+        age: RequestBody,
+        weight: RequestBody,
+        stock: RequestBody,
+        note: RequestBody,
+        address: RequestBody,
+        status: RequestBody
+    ) = userToken.switchMap { token ->
+            userId.switchMap { id ->
+                liveData {
+                    emit(Result.Loading)
+                    try {
+//                        val response = apiConfig.getAyamHubApiService(token).createFarm(id.toInt())
+//                        emit(Result.Success(response)) TODO: Uncomment and delete the line bellow
+                        emit(Result.Success("Yatta"))
+                    } catch (e: Exception) {
+                        emit(Result.Error(e.message.toString()))
+                    }
+                }
         }
     }
 

@@ -5,6 +5,7 @@ import retrofit2.http.DELETE
 import retrofit2.http.Field
 import retrofit2.http.FormUrlEncoded
 import retrofit2.http.GET
+import retrofit2.http.Multipart
 import retrofit2.http.POST
 import retrofit2.http.Path
 
@@ -24,6 +25,13 @@ interface ApiService {
         @Field("password") password: String,
         @Field("email") email: String,
         @Field("phone") phone: String
+    ): MessageResponse
+
+    @Multipart
+    @POST("/farms/{id}/createFarms")
+    suspend fun createFarm(
+        @Path("id") id: Int
+    //TODO: Complete the parameter for api call
     ): MessageResponse
 
     @GET("/detail-bookmarks/{id}")
@@ -48,7 +56,9 @@ interface ApiService {
     ): List<LocationResponse>
 
     @GET("/bookmarks/{id}")
-    suspend fun getAllBookmark(@Path("id") id: Int): List<BookmarkResponse>
+    suspend fun getAllBookmark(
+        @Path("id") id: Int
+    ): List<BookmarkResponse>
 
     @POST("/bookmarks/{userId}/{farmId}")
     suspend fun addBookmark(

@@ -17,13 +17,13 @@
             android:name=".ui.MainActivity"
             android:exported="false" />
         <activity
-            android:name=".ui.makefarm.EditFarmer"
+            android:name=".ui.farmform.EditFarmer"
             android:exported="false" />
         <activity
             android:name=".ui.farmer.FarmerActivity"
             android:exported="false" />
         <activity
-            android:name=".ui.makefarm.MakeFarmActivity"
+            android:name=".ui.farmform.FarmFormActivity"
             android:exported="false" />
         <activity
             android:name=".ui.detail.DetailActivity"

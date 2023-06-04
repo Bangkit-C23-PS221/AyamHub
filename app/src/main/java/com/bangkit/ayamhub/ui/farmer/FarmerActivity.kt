@@ -4,11 +4,9 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.activity.OnBackPressedCallback
-import com.bangkit.ayamhub.R
 import com.bangkit.ayamhub.databinding.ActivityFarmerBinding
-import com.bangkit.ayamhub.databinding.ActivityMainBinding
 import com.bangkit.ayamhub.ui.homepage.HomeActivity
-import com.bangkit.ayamhub.ui.makefarm.EditFarmer
+import com.bangkit.ayamhub.ui.farmform.EditFarmer
 
 class FarmerActivity : AppCompatActivity() {
 

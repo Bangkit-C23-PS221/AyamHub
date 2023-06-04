@@ -12,7 +12,7 @@ import com.bangkit.ayamhub.databinding.FragmentProfileBinding
 import com.bangkit.ayamhub.helpers.viewmodelfactory.ViewModelFactory
 import com.bangkit.ayamhub.ui.farmer.FarmerActivity
 import com.bangkit.ayamhub.ui.login.LoginActivity
-import com.bangkit.ayamhub.ui.makefarm.MakeFarmActivity
+import com.bangkit.ayamhub.ui.farmform.FarmFormActivity
 
 class ProfileFragment : Fragment() {
 
@@ -49,7 +49,7 @@ class ProfileFragment : Fragment() {
         var intent: Intent? = null
         viewModel.getLevel.observe(viewLifecycleOwner) {
             if (it == UMKM) {
-                intent = Intent(requireContext(), MakeFarmActivity::class.java)
+                intent = Intent(requireContext(), FarmFormActivity::class.java)
             } else {
                 intent = Intent(requireContext(), FarmerActivity::class.java)
                 binding.profileTv.text = getString(R.string.your_farm)

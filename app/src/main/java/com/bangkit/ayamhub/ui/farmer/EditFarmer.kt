@@ -1,4 +1,4 @@
-package com.bangkit.ayamhub.ui.makefarm
+package com.bangkit.ayamhub.ui.farmform
 
 import android.content.Intent
 import android.os.Bundle
@@ -11,7 +11,6 @@ import com.bangkit.ayamhub.databinding.ActivityEditFarmerBinding
 import com.bangkit.ayamhub.helpers.Reusable
 import com.bangkit.ayamhub.helpers.viewmodelfactory.ViewModelFactory
 import com.bangkit.ayamhub.ui.farmer.FarmerActivity
-import com.bangkit.ayamhub.ui.register.RegisterActivity
 
 
 class EditFarmer : AppCompatActivity() {
@@ -20,7 +19,7 @@ class EditFarmer : AppCompatActivity() {
     private var provinsi = ""
     private var kabupaten = ""
     private var kecamatan = ""
-    private val viewModel: MakeFarmViewModel by viewModels {
+    private val viewModel: FarmFormViewModel by viewModels {
         ViewModelFactory.getInstance(this)
     }
 

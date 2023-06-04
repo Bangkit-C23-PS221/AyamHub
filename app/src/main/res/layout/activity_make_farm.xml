@@ -14,7 +14,7 @@
         <com.google.android.material.textfield.TextInputLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Username"
+            android:hint="@string/username"
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
 
             <com.google.android.material.textfield.TextInputEditText
@@ -58,7 +58,7 @@
         <com.google.android.material.textfield.TextInputLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Harga"
+            android:hint="@string/harga"
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
 
             <com.google.android.material.textfield.TextInputEditText
@@ -79,7 +79,7 @@
         <com.google.android.material.textfield.TextInputLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Umur dalam hari"
+            android:hint="@string/umur_dalam_hari"
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
             >
 
@@ -102,7 +102,7 @@
         <com.google.android.material.textfield.TextInputLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Berat dalam Kg (Misal 1 - 1.3)"
+            android:hint="@string/berat_dalam_kg_misal_1_1_3"
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
             >
 
@@ -124,7 +124,7 @@
         <com.google.android.material.textfield.TextInputLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Stock dalam Kg"
+            android:hint="@string/stock_dalam_kg"
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
             >
 
@@ -143,87 +143,15 @@
             android:layout_width="match_parent"
             android:layout_height="16dp" />
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal">
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Provinsi: "
-                android:textStyle="bold" />
-
-            <Spinner
-                android:id="@+id/spProvince"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:hint="Pilih Provinsi" />
-
-        </LinearLayout>
-        <Space
-            android:layout_width="match_parent"
-            android:layout_height="16dp" />
-
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal">
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Kabupaten: "
-                android:textStyle="bold" />
-
-            <Spinner
-                android:id="@+id/spKabupaten"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:hint="Pilih Kabupaten" />
-
-        </LinearLayout>
-        <Space
-            android:layout_width="match_parent"
-            android:layout_height="16dp" />
-
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal">
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Kecamatan: "
-                android:textStyle="bold" />
-
-            <Spinner
-                android:id="@+id/spKecamatan"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:hint="Pilih Kecamatan" />
-
-        </LinearLayout>
-
-        <Space
-            android:layout_width="match_parent"
-            android:layout_height="16dp" />
-
         <com.google.android.material.textfield.TextInputLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Gang atau nama jalan"
+            android:hint="@string/catatan"
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
             >
 
             <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/alamatLengkap"
+                android:id="@+id/catatan"
                 android:inputType="number"
                 android:layout_width="match_parent"
                 android:textColor="#000000"
@@ -243,10 +171,106 @@
             android:orientation="horizontal">
 
             <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/prov"
+                android:textStyle="bold" />
+
+            <Spinner
+                android:id="@+id/spProvince"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:hint="@string/pilih_provinsi" />
+
+        </LinearLayout>
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="16dp" />
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/kab"
+                android:textStyle="bold" />
+
+            <Spinner
+                android:id="@+id/spKabupaten"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:hint="@string/pilih_kabupaten" />
+
+        </LinearLayout>
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="16dp" />
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/kec"
+                android:textStyle="bold" />
+
+            <Spinner
+                android:id="@+id/spKecamatan"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:hint="@string/pilih_kecamatan" />
+
+        </LinearLayout>
+
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="16dp" />
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/gang_atau_nama_jalan"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+            >
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/alamatLengkap"
+                android:inputType="number"
+                android:layout_width="match_parent"
+                android:textColor="#000000"
+                android:textColorHint="#a9a9a9"
+                android:backgroundTint="#ffffff"
+                android:layout_height="wrap_content" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="16dp" />
+
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
                 android:id="@+id/statusTextView"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Status Panen:" />
+                android:text="@string/status_panen" />
 
             <View
                 android:layout_width="0dp"
@@ -260,8 +284,8 @@
                 android:textColor="@color/white"
                 android:fontFamily="@font/roboto_regular"
                 android:layout_height="wrap_content"
-                android:textOn="Siap Panen"
-                android:textOff="Belum Siap Panen" />
+                android:textOn="@string/siap_panen"
+                android:textOff="@string/belum_siap_panen" />
 
         </LinearLayout>
         <Space
@@ -273,7 +297,7 @@
             android:layout_gravity="end"
             android:fontFamily="@font/roboto_regular"
             android:layout_height="wrap_content"
-            android:text="Pilih Gambar"
+            android:text="@string/pilih_gambar"
             style="@style/Widget.MaterialComponents.Button.OutlinedButton" />
 
         <Space
@@ -297,7 +321,7 @@
             android:layout_height="wrap_content"
             android:backgroundTint="@color/orange2"
             android:textAllCaps="false"
-            android:text="Register"
+            android:text="@string/reg"
             android:textColor="#ffffff"
             android:textSize="18sp"
             android:padding="12dp"

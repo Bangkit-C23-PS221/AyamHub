@@ -4,7 +4,7 @@ import androidx.lifecycle.ViewModel
 import com.bangkit.ayamhub.data.repository.FarmRepository
 import com.bangkit.ayamhub.data.repository.UserRepository
 
-class DetailVIewModel(
+class DetailViewModel(
     private val userRepo: UserRepository,
     private val farmRepo: FarmRepository
 ) : ViewModel() {

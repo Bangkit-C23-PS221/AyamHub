@@ -8,7 +8,6 @@ import android.os.Bundle
 import android.util.Log
 import android.view.View
 import androidx.activity.viewModels
-import androidx.core.content.ContextCompat
 import com.bangkit.ayamhub.R
 import com.bangkit.ayamhub.data.network.Result
 import com.bangkit.ayamhub.data.network.response.DetailFarmResponse
@@ -17,8 +16,7 @@ import com.bangkit.ayamhub.databinding.ActivityDetailBinding
 import com.bangkit.ayamhub.helpers.Reusable
 import com.bangkit.ayamhub.helpers.viewmodelfactory.ViewModelFactory
 import com.bumptech.glide.Glide
-import java.time.LocalDate
-import java.time.temporal.ChronoUnit
+
 class DetailActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityDetailBinding
@@ -26,7 +24,7 @@ class DetailActivity : AppCompatActivity() {
     private var isBookmarked: Boolean? = null
     private var bookmarkId = -1
     private var phone = 0L
-    private val vIewModel: DetailVIewModel by viewModels {
+    private val vIewModel: DetailViewModel by viewModels {
         ViewModelFactory.getInstance(this)
     }
 
@@ -40,11 +38,11 @@ class DetailActivity : AppCompatActivity() {
         checkBookmark()
 
         binding.ivBookmark.setOnClickListener { setupBookmarkButton() }
-        binding.WA.setOnClickListener { whatsAppInent() }
+        binding.WA.setOnClickListener { whatsAppIntent() }
     }
 
     @SuppressLint("QueryPermissionsNeeded")
-    private fun whatsAppInent() {
+    private fun whatsAppIntent() {
         if (phone != 0L) {
             val intent = Intent(Intent.ACTION_VIEW)
             intent.data = Uri.parse("https://wa.me/$phone")
@@ -74,7 +72,6 @@ class DetailActivity : AppCompatActivity() {
                         showLoading(false)
                         Log.e("DetailActivity", "OnFailure: ${result.error}")
                     }
-                    else -> {}
                 }
             }
         }
@@ -87,22 +84,14 @@ class DetailActivity : AppCompatActivity() {
                 .into(farmIv)
             farmName.text = data.nameFarm
             detailWeichtTv.text = getString(R.string.chickenWeightTv, data.weightChicken)
-            age.text = getString(R.string.chickenAgeTv, getChickenAge(data.ageChicken))
+            age.text = getString(R.string.chickenAgeTv, Reusable.getChickenAge(data.ageChicken))
             locFarm.text = data.addressFarm
             chickenType.text = getString(R.string.chickenTypeTv, data.typeChicken)
             stock.text = getString(R.string.chickenStokTv, data.stockChicken)
             farmersNote.text = data.descFarm
             harga.text = getString(R.string.chickengPriceTv, data.priceChicken)
-            //TODO: add phone number
-//            phone = data.
+//            phone = data.tbUser.phone.toLong() TODO: Uncomment this once api is deployed
         }
-    }
-
-    private fun getChickenAge(date: String): String {
-        val actualDate = date.split("T")
-        val chickenDate = LocalDate.parse(actualDate[0])
-        val currentDate = LocalDate.now()
-        return ChronoUnit.DAYS.between(chickenDate, currentDate).toString()
     }
 
     private fun checkBookmark() {
@@ -127,7 +116,6 @@ class DetailActivity : AppCompatActivity() {
                         showLoading(false)
                         Log.e("DetailActivity", "OnFailure: ${result.error}")
                     }
-                    else -> {}
                 }
             }
         }

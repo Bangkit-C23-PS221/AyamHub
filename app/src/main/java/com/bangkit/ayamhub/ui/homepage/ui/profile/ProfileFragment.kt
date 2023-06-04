@@ -53,6 +53,8 @@ class ProfileFragment : Fragment() {
             } else {
                 intent = Intent(requireContext(), FarmerActivity::class.java)
                 binding.profileTv.text = getString(R.string.your_farm)
+                binding.imageView3.setImageResource(R.drawable.open_farm)
+
             }
         }
 

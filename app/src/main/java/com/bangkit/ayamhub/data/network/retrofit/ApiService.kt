@@ -56,8 +56,11 @@ interface ApiService {
         @Path("userId") userId: Int
     ): MessageResponse
 
-    @DELETE("/delete-bookmarks/{id}")
-    suspend fun removeBookmark(@Path("id") id: Int): MessageResponse
+    @DELETE("/delete-bookmarks/{userId}/farmId")
+    suspend fun removeBookmark(
+        @Path("farmId") farmId: Int,
+        @Path("userId") userId: Int
+    ): MessageResponse
 
     @POST("/check-bookmarks/{userId}/{farmId}")
     suspend fun checkBookmark(

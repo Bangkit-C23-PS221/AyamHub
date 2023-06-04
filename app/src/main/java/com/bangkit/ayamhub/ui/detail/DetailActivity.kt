@@ -6,6 +6,7 @@ import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import android.view.View
 import androidx.activity.viewModels
 import androidx.core.content.ContextCompat
 import com.bangkit.ayamhub.R
@@ -159,8 +160,8 @@ class DetailActivity : AppCompatActivity() {
 
     private fun removeBookmark() {
         Log.e("Remove", "$bookmarkId")
-        if (bookmarkId >= 0) {
-            vIewModel.removeBookmark(bookmarkId).observe(this@DetailActivity) { result ->
+        if (farmId >= 0) {
+            vIewModel.removeBookmark(farmId).observe(this@DetailActivity) { result ->
                 processResult(result, "Oops gagal menghapus bookmark!") {
                     binding.ivBookmark.setBackgroundResource(R.drawable.ic_bookmark_before)
                     isBookmarked = false
@@ -191,17 +192,14 @@ class DetailActivity : AppCompatActivity() {
     }
 
     private fun showLoading(loading: Boolean) {
-        //TODO: Uncomment This Line of Code
-//        if (loading) {
-//            binding.progressBar.visibility = View.VISIBLE
-//        } else {
-//            binding.progressBar.visibility = View.GONE
-//        }
+        if (loading) {
+            binding.progress.visibility = View.VISIBLE
+        } else {
+            binding.progress.visibility = View.GONE
+        }
     }
 
     companion object {
         const val EXTRA_ID = "ID_FARM"
-        const val FALSE = "false"
-        const val TRUE = "true"
     }
 }

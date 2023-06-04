@@ -39,4 +39,18 @@ class FarmFormViewModel(private val repository: FarmRepository) : ViewModel() {
         status: RequestBody
     ) = repository.createFarm(image, name, type, price, age, weight, stock, note, address, status)
 
+    fun getMyFarm() = repository.getMyFarm()
+
+    fun updateMyFarm(
+        image: MultipartBody.Part,
+        name: RequestBody,
+        type: RequestBody,
+        price: RequestBody,
+        age: RequestBody,
+        weight: RequestBody,
+        stock: RequestBody,
+        note: RequestBody,
+        address: RequestBody,
+        status: RequestBody
+    ) = repository.updateMyFarm(image, name, type, price, age, weight, stock, note, address, status)
 }

@@ -7,6 +7,7 @@ import retrofit2.http.FormUrlEncoded
 import retrofit2.http.GET
 import retrofit2.http.Multipart
 import retrofit2.http.POST
+import retrofit2.http.PUT
 import retrofit2.http.Path
 
 interface ApiService {
@@ -34,6 +35,13 @@ interface ApiService {
     //TODO: Complete the parameter for api call
     ): MessageResponse
 
+    @Multipart
+    @PUT("/updateFarms/{id})")
+    suspend fun updateMyFarm(
+        @Path("id") id: Int
+    ) : MessageResponse
+
+//    @GET("/detail-farms/{id}") TODO: Replace with this once the new api is deployed
     @GET("/detail-bookmarks/{id}")
     suspend fun getFarmDetail(
         @Path("id") id: Int

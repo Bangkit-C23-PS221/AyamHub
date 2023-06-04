@@ -126,6 +126,46 @@ class FarmRepository(
                         emit(Result.Error(e.message.toString()))
                     }
                 }
+            }
+    }
+
+    fun getMyFarm() = userToken.switchMap { token ->
+        userId.switchMap { id ->
+            liveData {
+                emit(Result.Loading)
+                try {
+                    val response = apiConfig.getAyamHubApiService(token).getMyFarm(id.toInt())
+                    emit(Result.Success(response))
+                } catch (e: Exception) {
+                    emit(Result.Error(e.message.toString()))
+                }
+            }
+        }
+    }
+
+    fun updateMyFarm(
+        image: MultipartBody.Part,
+        name: RequestBody,
+        type: RequestBody,
+        price: RequestBody,
+        age: RequestBody,
+        weight: RequestBody,
+        stock: RequestBody,
+        note: RequestBody,
+        address: RequestBody,
+        status: RequestBody
+    ) = userToken.switchMap { token ->
+        userId.switchMap { id ->
+            liveData {
+                emit(Result.Loading)
+                try {
+//                        val response = apiConfig.getAyamHubApiService(token).updateMyFarm(id.toInt())
+//                        emit(Result.Success(response)) TODO: Uncomment and delete the line bellow
+                    emit(Result.Success("Yatta"))
+                } catch (e: Exception) {
+                    emit(Result.Error(e.message.toString()))
+                }
+            }
         }
     }
 
@@ -159,6 +199,8 @@ class FarmRepository(
             }
         }
     }
+
+
 
     companion object {
         private var INSTANCE: FarmRepository? = null

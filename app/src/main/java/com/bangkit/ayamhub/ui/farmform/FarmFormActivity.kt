@@ -11,6 +11,7 @@ import android.widget.ArrayAdapter
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.activity.viewModels
 import com.bangkit.ayamhub.data.network.Result
+import com.bangkit.ayamhub.data.network.response.DetailFarmResponse
 import com.bangkit.ayamhub.databinding.ActivityFarmFormBinding
 import com.bangkit.ayamhub.helpers.Reusable
 import com.bangkit.ayamhub.helpers.uriToFile
@@ -33,6 +34,7 @@ class FarmFormActivity : AppCompatActivity() {
     private var kabupaten = ""
     private var kecamatan = ""
     private var photoFile: File? = null
+    private var caller = ""
     private val viewModel: FarmFormViewModel by viewModels {
         ViewModelFactory.getInstance(this)
     }
@@ -42,12 +44,54 @@ class FarmFormActivity : AppCompatActivity() {
         binding = ActivityFarmFormBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        checkCaller()
         viewSetup()
         locationSetup()
         showImage()
 
         binding.gambarButton.setOnClickListener { startGallery() }
         binding.registerButton.setOnClickListener { validateForm() }
+    }
+
+    private fun checkCaller() {
+        caller = intent.getStringExtra(EXTRA_CALLER) ?: ""
+        if (caller == EDIT) {
+            getMyFarmData()
+        }
+    }
+
+    private fun getMyFarmData() {
+        viewModel.getMyFarm().observe(this@FarmFormActivity) { result ->
+            when(result) {
+                is Result.Loading -> {
+                    showLoading(true)
+                }
+                is Result.Success -> {
+                    showLoading(false)
+                    prePopulateData(result.data)
+                }
+                is Result.Error -> {
+                    showLoading(false)
+                    Reusable.showToast(this@FarmFormActivity, "Gagal mengambil data")
+                }
+            }
+        }
+    }
+    private fun prePopulateData(data: DetailFarmResponse) {
+        with(binding) {
+            usernameEditText.setText(data.nameFarm)
+            chickenType.setText(data.typeChicken)
+            hargaEditText.setText(data.priceChicken)
+            umurEditText.setText(Reusable.getChickenAge(data.ageChicken))
+            beratEditText.setText(data.weightChicken)
+            stockEditText.setText(data.stockChicken)
+            catatan.setText(data.descFarm)
+            alamatLengkap.setText(data.addressFarm)
+            Reusable.urlToBitmap(this@FarmFormActivity, data.photoUrl){
+                viewModel.saveImage(it!!)
+            }
+            toggleButton.isChecked = data.status == READY
+        }
     }
 
     private fun viewSetup() {
@@ -169,20 +213,43 @@ class FarmFormActivity : AppCompatActivity() {
 
         //TODO make a differentiator if the user is creating or editing
 
-        viewModel.uploadFarm(
-            imageMultipart, upName, upType, upPrice, upAge, upWeight, upStock, upNote, upAddress, upStatus
-        ).observe(this@FarmFormActivity) { result ->
-            when(result) {
-                is Result.Loading -> {
-                    showLoading(true)
+        if(caller == EDIT) {
+            viewModel.updateMyFarm(
+                imageMultipart, upName, upType, upPrice, upAge, upWeight, upStock, upNote, upAddress, upStatus
+            ).observe(this@FarmFormActivity) { result ->
+                when(result) {
+                    is Result.Loading -> {
+                        showLoading(true)
+                    }
+                    is Result.Success -> {
+                        showLoading(false)
+                        startActivity(Intent(this@FarmFormActivity, FarmerActivity::class.java))
+                        finish()
+                    }
+                    is Result.Error -> {
+                        showLoading(false)
+                        Reusable.showToast(this@FarmFormActivity, "Gagal memperbarui data anda")
+                    }
                 }
-                is Result.Success -> {
-                    showLoading(false)
-                    startActivity(Intent(this@FarmFormActivity, FarmerActivity::class.java))
-                }
-                is Result.Error -> {
-                    showLoading(false)
-                    Reusable.showToast(this@FarmFormActivity, "Gagal membuat peternakan anda")
+            }
+
+        } else {
+            viewModel.uploadFarm(
+                imageMultipart, upName, upType, upPrice, upAge, upWeight, upStock, upNote, upAddress, upStatus
+            ).observe(this@FarmFormActivity) { result ->
+                when(result) {
+                    is Result.Loading -> {
+                        showLoading(true)
+                    }
+                    is Result.Success -> {
+                        showLoading(false)
+                        startActivity(Intent(this@FarmFormActivity, FarmerActivity::class.java))
+                        finish()
+                    }
+                    is Result.Error -> {
+                        showLoading(false)
+                        Reusable.showToast(this@FarmFormActivity, "Gagal membuat peternakan anda")
+                    }
                 }
             }
         }
@@ -323,6 +390,12 @@ class FarmFormActivity : AppCompatActivity() {
 //        } else {
 //            binding.progressBar.visibility = View.GONE
 //        }
+    }
+
+    companion object {
+        const val EDIT = "edit"
+        const val EXTRA_CALLER = "caller"
+        const val READY = "Siap Panen"
     }
 
 }

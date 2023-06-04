@@ -47,7 +47,17 @@ data class DetailFarmResponse(
 	val updatedAt: String,
 
 	@field:SerializedName("message")
-	val message: String
+	val message: String,
+
+	@field:SerializedName("tb_user")
+	val tbUser: TbUser
 
 )
+
+data class TbUser (
+
+	@field:SerializedName("phone")
+	val phone: String
+
+	)
 

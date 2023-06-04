@@ -17,9 +17,6 @@
             android:name=".ui.MainActivity"
             android:exported="false" />
         <activity
-            android:name=".ui.farmform.EditFarmer"
-            android:exported="false" />
-        <activity
             android:name=".ui.farmer.FarmerActivity"
             android:exported="false" />
         <activity

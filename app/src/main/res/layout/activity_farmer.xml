@@ -37,16 +37,6 @@
                 app:layout_constraintTop_toTopOf="parent"
                 android:src="@drawable/background_profile" />
 
-            <ImageButton
-                android:id="@+id/ivBookmark"
-                android:layout_width="40dp"
-                android:layout_height="45dp"
-                android:backgroundTint="@color/white"
-                android:layout_marginBottom="10dp"
-                app:layout_constraintEnd_toEndOf="@id/endGuidelineVertical"
-                app:layout_constraintBottom_toBottomOf="@id/farmIv"
-                android:background="@drawable/ic_bookmark_before"/>
-
             <TextView
                 android:id="@+id/farmName"
                 android:layout_width="0dp"

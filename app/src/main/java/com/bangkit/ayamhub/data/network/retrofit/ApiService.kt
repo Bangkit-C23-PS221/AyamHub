@@ -1,6 +1,8 @@
 package com.bangkit.ayamhub.data.network.retrofit
 
 import com.bangkit.ayamhub.data.network.response.*
+import okhttp3.MultipartBody
+import okhttp3.RequestBody
 import retrofit2.http.DELETE
 import retrofit2.http.Field
 import retrofit2.http.FormUrlEncoded
@@ -31,18 +33,39 @@ interface ApiService {
     @Multipart
     @POST("/farms/{id}/createFarms")
     suspend fun createFarm(
-        @Path("id") id: Int
-    //TODO: Complete the parameter for api call
+        @Path("id") id: Int,
+        @Field("username_farm") name: RequestBody,
+        @Field("type_chicken") type: RequestBody,
+        @Field("price_chicken") price: RequestBody,
+        @Field("age_chicken") age: RequestBody,
+        @Field("weight_chicken") weight: RequestBody,
+        @Field("stock_chicken") stock: RequestBody,
+        @Field("desc_farm") note: RequestBody,
+        @Field("address_farm") address: RequestBody,
+        @Field("photo") photo: MultipartBody.Part,
+        @Field("status") status: RequestBody,
+        @Field("photo_url") photoUrl: RequestBody? = null
     ): MessageResponse
 
     @Multipart
     @PUT("/updateFarms/{id})")
     suspend fun updateMyFarm(
-        @Path("id") id: Int
+        @Path("id") id: Int,
+        @Field("username_farm") name: RequestBody,
+        @Field("type_chicken") type: RequestBody,
+        @Field("price_chicken") price: RequestBody,
+        @Field("age_chicken") age: RequestBody,
+        @Field("weight_chicken") weight: RequestBody,
+        @Field("stock_chicken") stock: RequestBody,
+        @Field("desc_farm") note: RequestBody,
+        @Field("address_farm") address: RequestBody,
+        @Field("photo") photo: MultipartBody.Part,
+        @Field("status") status: RequestBody,
+        @Field("photo_url") photoUrl: RequestBody? = null
     ) : MessageResponse
 
 //    @GET("/detail-farms/{id}") TODO: Replace with this once the new api is deployed
-    @GET("/detail-bookmarks/{id}")
+    @GET("/detail-farms/{id}")
     suspend fun getFarmDetail(
         @Path("id") id: Int
     ) : DetailFarmResponse

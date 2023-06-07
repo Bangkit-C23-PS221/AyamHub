@@ -28,6 +28,7 @@ class FarmFormViewModel(
 
     private val _detectionImage = MutableLiveData<Bitmap>()
     val detectionImage: LiveData<Bitmap> = _detectionImage
+
     fun saveImage(bitmap: Bitmap) {
         _detectionImage.value = bitmap
     }
@@ -51,7 +52,7 @@ class FarmFormViewModel(
         status: RequestBody
     ) = farmRepository.createFarm(image, name, type, price, age, weight, stock, note, address, status)
 
-    val getMyFarm = farmRepository.getMyFarm()
+    fun getMyFarm() = farmRepository.getMyFarm()
 
     fun updateMyFarm(
         image: MultipartBody.Part,

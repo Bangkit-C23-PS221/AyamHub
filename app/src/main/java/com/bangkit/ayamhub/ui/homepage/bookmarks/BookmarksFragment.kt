@@ -63,14 +63,6 @@ class BookmarksFragment : Fragment() {
         }
     }
 
-    private fun showLoading(loading: Boolean) {
-        if (loading) {
-            binding.progressBar.visibility = View.VISIBLE
-        } else {
-            binding.progressBar.visibility = View.GONE
-        }
-    }
-
     private fun setupAdapter(data: List<BookmarkResponse>) {
         binding.rvBookmark.adapter = BookmarkAdapter(data, requireContext()) { listFarm ->
             val intent = Intent(requireContext(), DetailActivity::class.java)
@@ -78,5 +70,13 @@ class BookmarksFragment : Fragment() {
             startActivity(intent)
         }
         binding.rvBookmark.layoutManager = LinearLayoutManager(requireContext())
+    }
+
+    private fun showLoading(loading: Boolean) {
+        if (loading) {
+            binding.progressBar.visibility = View.VISIBLE
+        } else {
+            binding.progressBar.visibility = View.GONE
+        }
     }
 }

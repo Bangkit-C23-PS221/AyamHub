@@ -9,6 +9,9 @@ import com.bangkit.ayamhub.data.network.response.MessageResponse
 import com.bumptech.glide.Glide
 import com.bumptech.glide.request.target.SimpleTarget
 import com.bumptech.glide.request.transition.Transition
+import java.io.File
+import java.io.FileOutputStream
+import java.io.IOException
 import java.time.LocalDate
 import java.time.temporal.ChronoUnit
 
@@ -17,9 +20,16 @@ object Reusable {
         Toast.makeText(context, text, Toast.LENGTH_SHORT).show()
     }
 
+    private fun splitAddress(address: String): List<String> {
+        return address.split(", ", limit = 4)
+    }
+
     fun getCity(address: String): String {
-        val cityName = address.split(", ")
-        return cityName[1]
+        return splitAddress(address)[1]
+    }
+
+    fun getSpecificAddress(address: String): String {
+        return splitAddress(address)[3]
     }
 
     fun getChickenAge(date: String): String {
@@ -38,5 +48,21 @@ object Reusable {
                     callback(bitmap)
                 }
             })
+    }
+
+    fun bitmapToFile(context: Context, bitmap: Bitmap): File? {
+        val file = File(context.cacheDir, "image.jpg")
+
+        try {
+            val outputStream = FileOutputStream(file)
+            bitmap.compress(Bitmap.CompressFormat.JPEG, 100, outputStream)
+            outputStream.flush()
+            outputStream.close()
+            return file
+        } catch (e: IOException) {
+            e.printStackTrace()
+        }
+
+        return null
     }
 }

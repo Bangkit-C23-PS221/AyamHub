@@ -74,9 +74,9 @@ interface ApiService {
     suspend fun getListFarms (): List<FarmItemResponse>
 
     @GET("/farms/{id}")
-    fun getMyFarm(
+    suspend fun getMyFarm(
         @Path("id") id: Int
-    ): DetailFarmResponse
+    ): List<MyFarmResponse>
 
     @GET("provinsi.json")
     suspend fun getProvince(): List<LocationResponse>

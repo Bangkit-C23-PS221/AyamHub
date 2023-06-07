@@ -9,6 +9,7 @@ import androidx.activity.viewModels
 import com.bangkit.ayamhub.R
 import com.bangkit.ayamhub.data.network.Result
 import com.bangkit.ayamhub.data.network.response.DetailFarmResponse
+import com.bangkit.ayamhub.data.network.response.MyFarmResponse
 import com.bangkit.ayamhub.databinding.ActivityFarmerBinding
 import com.bangkit.ayamhub.helpers.Reusable
 import com.bangkit.ayamhub.helpers.viewmodelfactory.ViewModelFactory
@@ -57,7 +58,7 @@ class FarmerActivity : AppCompatActivity() {
         }
     }
 
-    private fun setupView(data: DetailFarmResponse) {
+    private fun setupView(data: MyFarmResponse) {
         with(binding) {
             Glide.with(this@FarmerActivity)
                 .load(data.photoUrl)
@@ -65,7 +66,7 @@ class FarmerActivity : AppCompatActivity() {
             farmName.text = data.nameFarm
             detailWeichtTv.text = getString(R.string.chickenWeightTv, data.weightChicken)
             age.text = getString(R.string.chickenAgeTv, Reusable.getChickenAge(data.ageChicken))
-            locFarm.text = data.addressFarm //TODO: Properly separate the address data
+            locFarm.text = data.addressFarm
             chickenType.text = getString(R.string.chickenTypeTv, data.typeChicken)
             stock.text = getString(R.string.chickenStokTv, data.stockChicken)
             farmersNote.text = data.descFarm

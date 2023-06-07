@@ -32,6 +32,7 @@ class ViewModelFactory(
             modelClass.isAssignableFrom(ProfileViewModel::class.java) -> return ProfileViewModel(userRepository) as T
             modelClass.isAssignableFrom(DetailViewModel::class.java) -> return DetailViewModel(userRepository, farmRepository) as T
             modelClass.isAssignableFrom(SplashScreenViewModel::class.java) -> return SplashScreenViewModel(userRepository) as T
+            modelClass.isAssignableFrom(FarmerVIewModel::class.java) -> return FarmerVIewModel(farmRepository) as T
 
         }
         throw IllegalArgumentException("Unknown ViewModel Class: ${modelClass.name}")

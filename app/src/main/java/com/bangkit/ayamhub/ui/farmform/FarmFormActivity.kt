@@ -225,7 +225,6 @@ class FarmFormActivity : AppCompatActivity() {
                     }
                     is Result.Success -> {
                         showLoading(false)
-                        startActivity(Intent(this@FarmFormActivity, FarmerActivity::class.java))
                         finish()
                     }
                     is Result.Error -> {

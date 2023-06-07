@@ -23,7 +23,7 @@ class DetailActivity : AppCompatActivity() {
     private var farmId = -1
     private var isBookmarked: Boolean? = null
     private var bookmarkId = -1
-    private var phone = 0L
+    private var phone = ""
     private val vIewModel: DetailViewModel by viewModels {
         ViewModelFactory.getInstance(this)
     }
@@ -43,9 +43,12 @@ class DetailActivity : AppCompatActivity() {
 
     @SuppressLint("QueryPermissionsNeeded")
     private fun whatsAppIntent() {
-        if (phone != 0L) {
-            val intent = Intent(Intent.ACTION_VIEW)
-            intent.data = Uri.parse("https://wa.me/$phone")
+        if (phone.isNotEmpty()) {
+            val contactUri = Uri.parse("https://api.whatsapp.com/send?phone=+6281809087052")
+
+            val intent = Intent(Intent.ACTION_VIEW, contactUri)
+            intent.setPackage("com.whatsapp")
+
             if (intent.resolveActivity(packageManager) != null) {
                 startActivity(intent)
             } else {
@@ -90,7 +93,7 @@ class DetailActivity : AppCompatActivity() {
             stock.text = getString(R.string.chickenStokTv, data.stockChicken)
             farmersNote.text = data.descFarm
             harga.text = getString(R.string.chickengPriceTv, data.priceChicken)
-//            phone = data.tbUser.phone.toLong() TODO: Uncomment this once api is deployed
+            phone = data.tbUser.phone
         }
     }
 

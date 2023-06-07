@@ -1,4 +1,4 @@
-package com.bangkit.ayamhub.ui.homepage.ui.home.filter
+package com.bangkit.ayamhub.ui.homepage.home.filter
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -13,8 +13,8 @@ import com.bangkit.ayamhub.databinding.FragmentHomeBinding
 import com.bangkit.ayamhub.databinding.FragmentLocationFilterBinding
 import com.bangkit.ayamhub.helpers.Reusable
 import com.bangkit.ayamhub.helpers.viewmodelfactory.ViewModelFactory
-import com.bangkit.ayamhub.ui.homepage.ui.home.HomeAdapter
-import com.bangkit.ayamhub.ui.homepage.ui.home.HomeViewModel
+import com.bangkit.ayamhub.ui.homepage.home.HomeAdapter
+import com.bangkit.ayamhub.ui.homepage.home.HomeViewModel
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 
 class LocationFilterFragment(

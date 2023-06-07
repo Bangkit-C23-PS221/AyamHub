@@ -1,21 +1,23 @@
-package com.bangkit.ayamhub.ui.homepage.ui.bookmarks
+package com.bangkit.ayamhub.ui.homepage.home
 
 import android.content.Context
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.bangkit.ayamhub.R
-import com.bangkit.ayamhub.data.network.response.BookmarkResponse
+import com.bangkit.ayamhub.data.network.response.FarmItemResponse
 import com.bangkit.ayamhub.databinding.ItemRvBinding
 import com.bangkit.ayamhub.helpers.Reusable
 import com.bumptech.glide.Glide
+import java.util.*
 
-class BookmarkAdapter(
-    private val farmList: List<BookmarkResponse>,
+class HomeAdapter(
+    private val data: List<FarmItemResponse>,
     private val context: Context,
-    private val onClick: (BookmarkResponse) -> Unit
+    private val onClick: (FarmItemResponse) -> Unit
 
-) : RecyclerView.Adapter<BookmarkAdapter.MyViewHolder>() {
+) : RecyclerView.Adapter<HomeAdapter.MyViewHolder>() {
+    private var filteredData: MutableList<FarmItemResponse> = data.toMutableList()
 
     class MyViewHolder(val binding: ItemRvBinding) : RecyclerView.ViewHolder(binding.root)
 
@@ -25,7 +27,7 @@ class BookmarkAdapter(
     }
 
     override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
-        with(farmList[position].farmItem) {
+        with(filteredData[position]) {
             with(holder.binding) {
                 Glide.with(holder.itemView.context)
                     .load(photoUrl)
@@ -42,13 +44,41 @@ class BookmarkAdapter(
                 }
             }
 
-            holder.itemView.setOnClickListener {
-                onClick(farmList[position])
-            }
+            holder.itemView.setOnClickListener { onClick(filteredData[position]) }
         }
     }
 
-    override fun getItemCount(): Int = farmList.size
+    override fun getItemCount(): Int = filteredData.size
+
+    fun filterBySearch(text: String) {
+        filteredData.clear()
+        if (text.isEmpty()) {
+            filteredData.addAll(data)
+        } else {
+            filteredData.addAll( data.filter {
+                it.nameFarm.toLowerCase(Locale.ROOT).contains(text.toLowerCase(Locale.ROOT))
+            })
+        }
+        notifyDataSetChanged()
+    }
+
+    fun filterByLocation(location: String) {
+        filteredData.clear()
+        if (location.isEmpty()) {
+            filteredData.addAll(data)
+        } else {
+            filteredData.addAll( data.filter {
+                it.addressFarm.toLowerCase(Locale.ROOT).contains(location.toLowerCase(Locale.ROOT))
+            })
+        }
+        notifyDataSetChanged()
+    }
+
+    fun removeFilter() {
+        filteredData.clear()
+        filteredData.addAll(data)
+        notifyDataSetChanged()
+    }
 
     companion object {
         private const val ACTIVE = "dalam masa panen"

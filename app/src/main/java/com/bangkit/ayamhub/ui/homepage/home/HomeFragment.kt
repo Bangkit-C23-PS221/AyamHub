@@ -1,4 +1,4 @@
-package com.bangkit.ayamhub.ui.homepage.ui.home
+package com.bangkit.ayamhub.ui.homepage.home
 
 import android.content.Intent
 import android.os.Bundle
@@ -15,7 +15,7 @@ import com.bangkit.ayamhub.data.network.response.FarmItemResponse
 import com.bangkit.ayamhub.databinding.FragmentHomeBinding
 import com.bangkit.ayamhub.helpers.viewmodelfactory.ViewModelFactory
 import com.bangkit.ayamhub.ui.detail.DetailActivity
-import com.bangkit.ayamhub.ui.homepage.ui.home.filter.LocationFilterFragment
+import com.bangkit.ayamhub.ui.homepage.home.filter.LocationFilterFragment
 
 class HomeFragment : Fragment() {
 

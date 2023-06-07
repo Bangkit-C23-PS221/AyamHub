@@ -1,4 +1,4 @@
-package com.bangkit.ayamhub.ui.homepage.ui.home
+package com.bangkit.ayamhub.ui.homepage.home
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData

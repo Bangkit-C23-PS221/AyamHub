@@ -1,4 +1,4 @@
-package com.bangkit.ayamhub.ui.homepage.ui.bookmarks
+package com.bangkit.ayamhub.ui.homepage.bookmarks
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.ViewModel

@@ -1,4 +1,4 @@
-package com.bangkit.ayamhub.ui.homepage.ui.detection
+package com.bangkit.ayamhub.ui.homepage.detection
 
 import android.graphics.Bitmap
 import androidx.lifecycle.LiveData

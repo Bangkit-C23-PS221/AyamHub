@@ -90,7 +90,7 @@
     <string name="chickenTypeTv">Tipe: %s</string>
     <string name="chickenStokTv">Stok: %s Ekor</string>
     <string name="chickengPriceTv">Harga: Rp. %s/Kg</string>
-    <string name="your_farm">Atur Peternakanmu</string>
+    <string name="your_farm">Lihat Peternakanmu</string>
     <string name="catatan">Catatan</string>
     <string name="reg">Register</string>
     <string-array name="status_options">

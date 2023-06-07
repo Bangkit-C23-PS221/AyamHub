@@ -1,4 +1,4 @@
-package com.bangkit.ayamhub.ui.homepage.ui.profile
+package com.bangkit.ayamhub.ui.homepage.profile
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope

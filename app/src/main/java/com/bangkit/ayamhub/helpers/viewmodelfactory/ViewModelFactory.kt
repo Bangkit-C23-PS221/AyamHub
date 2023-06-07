@@ -7,10 +7,11 @@ import com.bangkit.ayamhub.data.repository.FarmRepository
 import com.bangkit.ayamhub.data.repository.UserRepository
 import com.bangkit.ayamhub.helpers.injection.Injection
 import com.bangkit.ayamhub.ui.detail.DetailViewModel
-import com.bangkit.ayamhub.ui.homepage.ui.bookmarks.BookmarksViewModel
-import com.bangkit.ayamhub.ui.homepage.ui.detection.DetectionViewModel
-import com.bangkit.ayamhub.ui.homepage.ui.home.HomeViewModel
-import com.bangkit.ayamhub.ui.homepage.ui.profile.ProfileViewModel
+import com.bangkit.ayamhub.ui.farmer.FarmerVIewModel
+import com.bangkit.ayamhub.ui.homepage.bookmarks.BookmarksViewModel
+import com.bangkit.ayamhub.ui.homepage.detection.DetectionViewModel
+import com.bangkit.ayamhub.ui.homepage.home.HomeViewModel
+import com.bangkit.ayamhub.ui.homepage.profile.ProfileViewModel
 import com.bangkit.ayamhub.ui.login.LoginViewModel
 import com.bangkit.ayamhub.ui.farmform.FarmFormViewModel
 import com.bangkit.ayamhub.ui.register.RegisterViewModel
@@ -28,7 +29,7 @@ class ViewModelFactory(
             modelClass.isAssignableFrom(DetectionViewModel::class.java) -> return DetectionViewModel(farmRepository ,userRepository) as T
             modelClass.isAssignableFrom(HomeViewModel::class.java) -> return HomeViewModel(farmRepository ,userRepository) as T
             modelClass.isAssignableFrom(BookmarksViewModel::class.java) -> return BookmarksViewModel(farmRepository ,userRepository) as T
-            modelClass.isAssignableFrom(FarmFormViewModel::class.java) -> return FarmFormViewModel(farmRepository) as T
+            modelClass.isAssignableFrom(FarmFormViewModel::class.java) -> return FarmFormViewModel(farmRepository, userRepository) as T
             modelClass.isAssignableFrom(ProfileViewModel::class.java) -> return ProfileViewModel(userRepository) as T
             modelClass.isAssignableFrom(DetailViewModel::class.java) -> return DetailViewModel(userRepository, farmRepository) as T
             modelClass.isAssignableFrom(SplashScreenViewModel::class.java) -> return SplashScreenViewModel(userRepository) as T

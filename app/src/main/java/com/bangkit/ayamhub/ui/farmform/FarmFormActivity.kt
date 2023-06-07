@@ -5,6 +5,7 @@ import android.graphics.BitmapFactory
 import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
@@ -12,6 +13,7 @@ import androidx.activity.result.contract.ActivityResultContracts
 import androidx.activity.viewModels
 import com.bangkit.ayamhub.data.network.Result
 import com.bangkit.ayamhub.data.network.response.DetailFarmResponse
+import com.bangkit.ayamhub.data.network.response.MyFarmResponse
 import com.bangkit.ayamhub.databinding.ActivityFarmFormBinding
 import com.bangkit.ayamhub.helpers.Reusable
 import com.bangkit.ayamhub.helpers.uriToFile
@@ -61,7 +63,7 @@ class FarmFormActivity : AppCompatActivity() {
     }
 
     private fun getMyFarmData() {
-        viewModel.getMyFarm().observe(this@FarmFormActivity) { result ->
+        viewModel.getMyFarm.observe(this@FarmFormActivity) { result ->
             when(result) {
                 is Result.Loading -> {
                     showLoading(true)
@@ -77,7 +79,7 @@ class FarmFormActivity : AppCompatActivity() {
             }
         }
     }
-    private fun prePopulateData(data: DetailFarmResponse) {
+    private fun prePopulateData(data: MyFarmResponse) {
         with(binding) {
             usernameEditText.setText(data.nameFarm)
             chickenType.setText(data.typeChicken)
@@ -86,7 +88,7 @@ class FarmFormActivity : AppCompatActivity() {
             beratEditText.setText(data.weightChicken)
             stockEditText.setText(data.stockChicken)
             catatan.setText(data.descFarm)
-            alamatLengkap.setText(data.addressFarm)
+            alamatLengkap.setText(Reusable.getSpecificAddress(data.addressFarm))
             Reusable.urlToBitmap(this@FarmFormActivity, data.photoUrl){
                 viewModel.saveImage(it!!)
             }
@@ -123,6 +125,7 @@ class FarmFormActivity : AppCompatActivity() {
     private fun showImage() {
         viewModel.detectionImage.observe(this@FarmFormActivity) {
             binding.gambarPeternakan.setImageBitmap(it)
+            photoFile = Reusable.bitmapToFile(this@FarmFormActivity, it)
         }
     }
 
@@ -137,6 +140,7 @@ class FarmFormActivity : AppCompatActivity() {
             val address = alamatLengkap.text.toString()
             val note = catatan.text.toString()
             val status = toggleButton.text.toString()
+            val image = gambarPeternakan.drawable
 
             when {
                 name.isEmpty() -> {
@@ -172,7 +176,7 @@ class FarmFormActivity : AppCompatActivity() {
                 address.isEmpty() -> {
                     alamatLengkap.error = "Mohon diisi dulu alamat lengkapnya!"
                 }
-                photoFile == null -> {
+                image == null -> {
                     Reusable.showToast(this@FarmFormActivity, "Mohon pilih dulu gambar peternakannya")
                 }
                 else -> {
@@ -206,12 +210,10 @@ class FarmFormActivity : AppCompatActivity() {
         val image = photoFile?.asRequestBody("image/jpeg".toMediaTypeOrNull())
 
         val imageMultipart = MultipartBody.Part.createFormData(
-            "photo",
+            "file",
             photoFile?.name as String,
             image as RequestBody
         )
-
-        //TODO make a differentiator if the user is creating or editing
 
         if(caller == EDIT) {
             viewModel.updateMyFarm(
@@ -244,11 +246,13 @@ class FarmFormActivity : AppCompatActivity() {
                     is Result.Success -> {
                         showLoading(false)
                         startActivity(Intent(this@FarmFormActivity, FarmerActivity::class.java))
+                        viewModel.setLevel(FARMER)
                         finish()
                     }
                     is Result.Error -> {
                         showLoading(false)
                         Reusable.showToast(this@FarmFormActivity, "Gagal membuat peternakan anda")
+                        Log.e("FarmForm", result.error)
                     }
                 }
             }
@@ -396,6 +400,7 @@ class FarmFormActivity : AppCompatActivity() {
         const val EDIT = "edit"
         const val EXTRA_CALLER = "caller"
         const val READY = "Siap Panen"
+        const val FARMER = "farm"
     }
 
 }

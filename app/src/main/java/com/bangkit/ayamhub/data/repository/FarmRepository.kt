@@ -8,6 +8,7 @@ import androidx.lifecycle.switchMap
 import com.bangkit.ayamhub.data.local.datastore.UserPreference
 import com.bangkit.ayamhub.data.network.retrofit.ApiConfig
 import com.bangkit.ayamhub.data.network.Result
+import kotlinx.coroutines.flow.switchMap
 import okhttp3.MultipartBody
 import okhttp3.RequestBody
 
@@ -119,9 +120,10 @@ class FarmRepository(
                 liveData {
                     emit(Result.Loading)
                     try {
-//                        val response = apiConfig.getAyamHubApiService(token).createFarm(id.toInt())
-//                        emit(Result.Success(response)) TODO: Uncomment and delete the line bellow
-                        emit(Result.Success("Yatta"))
+                        val response = apiConfig
+                            .getAyamHubApiService(token)
+                            .createFarm(id.toInt(), image, name, type, price, age, weight, stock, note, address, status)
+                        emit(Result.Success(response))
                     } catch (e: Exception) {
                         emit(Result.Error(e.message.toString()))
                     }
@@ -135,7 +137,7 @@ class FarmRepository(
                 emit(Result.Loading)
                 try {
                     val response = apiConfig.getAyamHubApiService(token).getMyFarm(id.toInt())
-                    emit(Result.Success(response))
+                    emit(Result.Success(response.first()))
                 } catch (e: Exception) {
                     emit(Result.Error(e.message.toString()))
                 }
@@ -159,9 +161,10 @@ class FarmRepository(
             liveData {
                 emit(Result.Loading)
                 try {
-//                        val response = apiConfig.getAyamHubApiService(token).updateMyFarm(id.toInt())
-//                        emit(Result.Success(response)) TODO: Uncomment and delete the line bellow
-                    emit(Result.Success("Yatta"))
+                    val response = apiConfig
+                        .getAyamHubApiService(token)
+                        .updateMyFarm(id.toInt(), image, name, type, price, age, weight, stock, note, address, status)
+                    emit(Result.Success(response))
                 } catch (e: Exception) {
                     emit(Result.Error(e.message.toString()))
                 }

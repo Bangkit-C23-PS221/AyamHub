@@ -10,6 +10,7 @@ import retrofit2.http.GET
 import retrofit2.http.Multipart
 import retrofit2.http.POST
 import retrofit2.http.PUT
+import retrofit2.http.Part
 import retrofit2.http.Path
 
 interface ApiService {
@@ -34,34 +35,34 @@ interface ApiService {
     @POST("/farms/{id}/createFarms")
     suspend fun createFarm(
         @Path("id") id: Int,
-        @Field("username_farm") name: RequestBody,
-        @Field("type_chicken") type: RequestBody,
-        @Field("price_chicken") price: RequestBody,
-        @Field("age_chicken") age: RequestBody,
-        @Field("weight_chicken") weight: RequestBody,
-        @Field("stock_chicken") stock: RequestBody,
-        @Field("desc_farm") note: RequestBody,
-        @Field("address_farm") address: RequestBody,
-        @Field("photo") photo: MultipartBody.Part,
-        @Field("status") status: RequestBody,
-        @Field("photo_url") photoUrl: RequestBody? = null
+        @Part file: MultipartBody.Part,
+        @Part("name_farm") name: RequestBody,
+        @Part("type_chicken") type: RequestBody,
+        @Part("price_chicken") price: RequestBody,
+        @Part("age_chicken") age: RequestBody,
+        @Part("weight_chicken") weight: RequestBody,
+        @Part("stock_chicken") stock: RequestBody,
+        @Part("desc_farm") note: RequestBody,
+        @Part("address_farm") address: RequestBody,
+        @Part("status") status: RequestBody,
+        @Part("photo_url") photoUrl: RequestBody? = null
     ): MessageResponse
 
     @Multipart
     @PUT("/updateFarms/{id})")
     suspend fun updateMyFarm(
         @Path("id") id: Int,
-        @Field("username_farm") name: RequestBody,
-        @Field("type_chicken") type: RequestBody,
-        @Field("price_chicken") price: RequestBody,
-        @Field("age_chicken") age: RequestBody,
-        @Field("weight_chicken") weight: RequestBody,
-        @Field("stock_chicken") stock: RequestBody,
-        @Field("desc_farm") note: RequestBody,
-        @Field("address_farm") address: RequestBody,
-        @Field("photo") photo: MultipartBody.Part,
-        @Field("status") status: RequestBody,
-        @Field("photo_url") photoUrl: RequestBody? = null
+        @Part file: MultipartBody.Part,
+        @Part("name_farm") name: RequestBody,
+        @Part("type_chicken") type: RequestBody,
+        @Part("price_chicken") price: RequestBody,
+        @Part("age_chicken") age: RequestBody,
+        @Part("weight_chicken") weight: RequestBody,
+        @Part("stock_chicken") stock: RequestBody,
+        @Part("desc_farm") note: RequestBody,
+        @Part("address_farm") address: RequestBody,
+        @Part("status") status: RequestBody,
+        @Part("photo_url") photoUrl: RequestBody? = null
     ) : MessageResponse
 
 //    @GET("/detail-farms/{id}") TODO: Replace with this once the new api is deployed

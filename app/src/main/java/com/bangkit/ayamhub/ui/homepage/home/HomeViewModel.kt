@@ -7,8 +7,7 @@ import com.bangkit.ayamhub.data.repository.FarmRepository
 import com.bangkit.ayamhub.data.repository.UserRepository
 
 class HomeViewModel(
-    private val farmRepo: FarmRepository,
-    private val userRepo: UserRepository
+    private val farmRepo: FarmRepository
 ) : ViewModel() {
 
     val provinceId = farmRepo.provinsiId

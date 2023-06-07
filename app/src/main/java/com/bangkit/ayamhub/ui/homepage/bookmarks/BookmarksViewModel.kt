@@ -8,8 +8,7 @@ import com.bangkit.ayamhub.data.repository.UserRepository
 import com.bangkit.ayamhub.data.network.Result
 
 class BookmarksViewModel(
-    private val farmRepository: FarmRepository,
-    private val userRepository: UserRepository
+    private val farmRepository: FarmRepository
 ) : ViewModel() {
 
     fun getAllBookmark(): LiveData<Result<List<BookmarkResponse>>> {

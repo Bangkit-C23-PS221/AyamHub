@@ -27,8 +27,8 @@ class ViewModelFactory(
             modelClass.isAssignableFrom(LoginViewModel::class.java) -> return LoginViewModel(userRepository) as T
             modelClass.isAssignableFrom(RegisterViewModel::class.java) -> return RegisterViewModel(userRepository) as T
             modelClass.isAssignableFrom(DetectionViewModel::class.java) -> return DetectionViewModel(farmRepository ,userRepository) as T
-            modelClass.isAssignableFrom(HomeViewModel::class.java) -> return HomeViewModel(farmRepository ,userRepository) as T
-            modelClass.isAssignableFrom(BookmarksViewModel::class.java) -> return BookmarksViewModel(farmRepository ,userRepository) as T
+            modelClass.isAssignableFrom(HomeViewModel::class.java) -> return HomeViewModel(farmRepository) as T
+            modelClass.isAssignableFrom(BookmarksViewModel::class.java) -> return BookmarksViewModel(farmRepository) as T
             modelClass.isAssignableFrom(FarmFormViewModel::class.java) -> return FarmFormViewModel(farmRepository, userRepository) as T
             modelClass.isAssignableFrom(ProfileViewModel::class.java) -> return ProfileViewModel(userRepository) as T
             modelClass.isAssignableFrom(DetailViewModel::class.java) -> return DetailViewModel(userRepository, farmRepository) as T

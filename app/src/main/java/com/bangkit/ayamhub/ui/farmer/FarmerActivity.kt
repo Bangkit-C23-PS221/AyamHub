@@ -29,9 +29,13 @@ class FarmerActivity : AppCompatActivity() {
         binding = ActivityFarmerBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        getData()
-
         binding.Edit.setOnClickListener{ goToEdit() }
+    }
+
+    override fun onStart() {
+        super.onStart()
+
+        getData()
     }
 
     private fun goToEdit() {
@@ -41,7 +45,7 @@ class FarmerActivity : AppCompatActivity() {
     }
 
     private fun getData() {
-        vIewModel.getMyFarm.observe(this) { result ->
+        vIewModel.getMyFarm().observe(this) { result ->
             when(result) {
                 is Result.Loading -> {
                     showLoading(true)

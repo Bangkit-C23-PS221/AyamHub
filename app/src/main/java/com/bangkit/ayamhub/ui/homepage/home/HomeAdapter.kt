@@ -81,6 +81,6 @@ class HomeAdapter(
     }
 
     companion object {
-        private const val ACTIVE = "dalam masa panen"
+        private const val ACTIVE = "Siap Panen"
     }
 }

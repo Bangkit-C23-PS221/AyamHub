@@ -13,6 +13,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.bangkit.ayamhub.data.network.Result
 import com.bangkit.ayamhub.data.network.response.FarmItemResponse
 import com.bangkit.ayamhub.databinding.FragmentHomeBinding
+import com.bangkit.ayamhub.helpers.Reusable
 import com.bangkit.ayamhub.helpers.viewmodelfactory.ViewModelFactory
 import com.bangkit.ayamhub.ui.detail.DetailActivity
 import com.bangkit.ayamhub.ui.homepage.home.filter.LocationFilterFragment
@@ -62,7 +63,7 @@ class HomeFragment : Fragment() {
     }
 
     private fun getListFarm() {
-        viewModel.getListFarm.observe(viewLifecycleOwner) { result ->
+        viewModel.getListFarm().observe(viewLifecycleOwner) { result ->
             when (result) {
                 is Result.Loading -> {
                     showLoading(true)
@@ -73,6 +74,7 @@ class HomeFragment : Fragment() {
                 }
                 is Result.Error -> {
                     showLoading(false)
+                    Reusable.showToast(requireContext(), "Gagal memuat data")
                     Log.e("HomeFragment", "OnFailure: ${result.error}")
                 }
             }

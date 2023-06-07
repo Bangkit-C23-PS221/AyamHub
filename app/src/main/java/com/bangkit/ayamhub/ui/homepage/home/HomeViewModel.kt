@@ -1,7 +1,5 @@
 package com.bangkit.ayamhub.ui.homepage.home
 
-import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.bangkit.ayamhub.data.repository.FarmRepository
 import com.bangkit.ayamhub.data.repository.UserRepository
@@ -20,6 +18,6 @@ class HomeViewModel(
 
     val getKecamatan = farmRepo.getKecamatan()
 
-    val getListFarm = farmRepo.getAllFarm()
+    fun getListFarm() = farmRepo.getAllFarm()
 
 }

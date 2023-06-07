@@ -9,16 +9,21 @@ import android.util.Log
 import android.view.View
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
+import android.widget.Spinner
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.activity.viewModels
+import androidx.appcompat.app.ActionBar.DISPLAY_SHOW_TITLE
+import androidx.core.graphics.drawable.toBitmap
 import com.bangkit.ayamhub.data.network.Result
 import com.bangkit.ayamhub.data.network.response.DetailFarmResponse
+import com.bangkit.ayamhub.data.network.response.LocationResponse
 import com.bangkit.ayamhub.data.network.response.MyFarmResponse
 import com.bangkit.ayamhub.databinding.ActivityFarmFormBinding
 import com.bangkit.ayamhub.helpers.Reusable
 import com.bangkit.ayamhub.helpers.uriToFile
 import com.bangkit.ayamhub.helpers.viewmodelfactory.ViewModelFactory
 import com.bangkit.ayamhub.ui.farmer.FarmerActivity
+import com.bumptech.glide.Glide
 import okhttp3.MediaType.Companion.toMediaType
 import okhttp3.MediaType.Companion.toMediaTypeOrNull
 import okhttp3.MultipartBody
@@ -32,9 +37,6 @@ import java.time.format.DateTimeFormatter
 class FarmFormActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityFarmFormBinding
-    private var provinsi = ""
-    private var kabupaten = ""
-    private var kecamatan = ""
     private var photoFile: File? = null
     private var caller = ""
     private val viewModel: FarmFormViewModel by viewModels {
@@ -46,8 +48,8 @@ class FarmFormActivity : AppCompatActivity() {
         binding = ActivityFarmFormBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        checkCaller()
         viewSetup()
+        checkCaller()
         locationSetup()
         showImage()
 
@@ -58,12 +60,13 @@ class FarmFormActivity : AppCompatActivity() {
     private fun checkCaller() {
         caller = intent.getStringExtra(EXTRA_CALLER) ?: ""
         if (caller == EDIT) {
+            supportActionBar?.title = "Edit Peternakan"
             getMyFarmData()
         }
     }
 
     private fun getMyFarmData() {
-        viewModel.getMyFarm.observe(this@FarmFormActivity) { result ->
+        viewModel.getMyFarm().observe(this@FarmFormActivity) { result ->
             when(result) {
                 is Result.Loading -> {
                     showLoading(true)
@@ -89,10 +92,10 @@ class FarmFormActivity : AppCompatActivity() {
             stockEditText.setText(data.stockChicken)
             catatan.setText(data.descFarm)
             alamatLengkap.setText(Reusable.getSpecificAddress(data.addressFarm))
+            toggleButton.isChecked = data.status == READY
             Reusable.urlToBitmap(this@FarmFormActivity, data.photoUrl){
                 viewModel.saveImage(it!!)
             }
-            toggleButton.isChecked = data.status == READY
         }
     }
 
@@ -141,6 +144,9 @@ class FarmFormActivity : AppCompatActivity() {
             val note = catatan.text.toString()
             val status = toggleButton.text.toString()
             val image = gambarPeternakan.drawable
+            val province = getSelectedItem(spProvince)
+            val city = getSelectedItem(spKabupaten)
+            val district = getSelectedItem(spKecamatan)
 
             when {
                 name.isEmpty() -> {
@@ -164,13 +170,13 @@ class FarmFormActivity : AppCompatActivity() {
                 note.isEmpty() -> {
                     catatan.error = "Mohon diisi dulu catatannya!"
                 }
-                provinsi.isEmpty() -> {
+                province.isEmpty() -> {
                     Reusable.showToast(this@FarmFormActivity, "Mohon diisi dulu provinsinya")
                 }
-                kabupaten.isEmpty() -> {
+                city.isEmpty() -> {
                     Reusable.showToast(this@FarmFormActivity, "Mohon diisi dulu kabupatennya")
                 }
-                kecamatan.isEmpty() -> {
+                district.isEmpty() -> {
                     Reusable.showToast(this@FarmFormActivity, "Mohon diisi dulu kecamatannya")
                 }
                 address.isEmpty() -> {
@@ -180,7 +186,7 @@ class FarmFormActivity : AppCompatActivity() {
                     Reusable.showToast(this@FarmFormActivity, "Mohon pilih dulu gambar peternakannya")
                 }
                 else -> {
-                    val fullAddress = "$provinsi, $kabupaten, $kecamatan, $address"
+                    val fullAddress = "$province, $city, $district, $address"
                     uploadFarm(name, type, price, age, weight, stock, note, fullAddress, status)
                 }
             }
@@ -281,100 +287,72 @@ class FarmFormActivity : AppCompatActivity() {
         binding.spKecamatan.adapter = kecamatanAdapter
 
         viewModel.getProvinsi.observe(this) { listProvince ->
-            val sortedProvince = listProvince.sortedBy { it.nama }
-            provinceAdapter.add("Pilih Provinsi")
-            provinceAdapter.addAll(sortedProvince.map { it.nama })
-            provinceAdapter.notifyDataSetChanged()
+            val sortedProvince = setupDropdown(listProvince, provinceAdapter, PROVINCE)
 
-            binding.spProvince.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
-                override fun onItemSelected(
-                    parent: AdapterView<*>?,
-                    view: View?,
-                    position: Int,
-                    id: Long
-                ) {
-                    if (position != 0) {
-                        val selectedProvince = sortedProvince[position-1].id.toInt()
-                        kabupatenAdapter.clear()
-                        viewModel.provinceId.value = selectedProvince
+            binding.spProvince.onItemSelectedListener = onItemSelected { position ->
+                if (position != 0) {
+                    val selectedProvince = sortedProvince[position-1].id.toInt()
+                    kabupatenAdapter.clear()
+                    viewModel.provinceId.value = selectedProvince
 
-                        binding.spKabupaten.isEnabled = true
-                        binding.spKecamatan.isEnabled = false
-
-                        provinsi = sortedProvince[position-1].nama
-                        kabupaten = ""
-                        kecamatan = ""
-                    } else {
-                        provinsi = ""
-                        kabupaten = ""
-                        kecamatan = ""
-                        kecamatanAdapter.clear()
-                        kabupatenAdapter.clear()
-                        binding.spKabupaten.isEnabled = false
-                        binding.spKecamatan.isEnabled = false
-                    }
+                    binding.spKabupaten.isEnabled = true
+                    binding.spKecamatan.isEnabled = false
+                } else {
+                    kecamatanAdapter.clear()
+                    kabupatenAdapter.clear()
+                    binding.spKabupaten.isEnabled = false
+                    binding.spKecamatan.isEnabled = false
                 }
-
-                override fun onNothingSelected(parent: AdapterView<*>?) {}
             }
         }
 
         viewModel.getKabupaten.observe(this) { listKab ->
-            val sortedKab = listKab.sortedBy { it.nama }
-            kabupatenAdapter.add("Pilih Kabupaten")
-            kabupatenAdapter.addAll(sortedKab.map { it.nama })
-            kabupatenAdapter.notifyDataSetChanged()
+            val sortedKab = setupDropdown(listKab, kabupatenAdapter, CITY)
 
-            binding.spKabupaten.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
-                override fun onItemSelected(
-                    parent: AdapterView<*>?,
-                    view: View?,
-                    position: Int,
-                    id: Long
-                ) {
-                    if (position != 0) {
-                        val selectedKabupaten = sortedKab[position-1].id.toInt()
-                        kecamatanAdapter.clear()
-                        viewModel.kabupatenId.value = selectedKabupaten
+            binding.spKabupaten.onItemSelectedListener = onItemSelected { position ->
+                if (position != 0) {
+                    val selectedKabupaten = sortedKab[position-1].id.toInt()
+                    kecamatanAdapter.clear()
+                    viewModel.kabupatenId.value = selectedKabupaten
 
-                        binding.spKecamatan.isEnabled = true
-
-                        kabupaten = sortedKab[position-1].nama
-                        kecamatan = ""
-                    } else {
-                        kabupaten = ""
-                        kecamatan = ""
-                        kecamatanAdapter.clear()
-                        binding.spKecamatan.isEnabled = false
-                    }
+                    binding.spKecamatan.isEnabled = true
+                } else {
+                    kecamatanAdapter.clear()
+                    binding.spKecamatan.isEnabled = false
                 }
-                override fun onNothingSelected(parent: AdapterView<*>?) {}
             }
         }
 
         viewModel.getKecamatan.observe(this) { listKec ->
-            val sortedKec = listKec.sortedBy { it.nama }
-            kecamatanAdapter.add("Pilih Kecamatan")
-            kecamatanAdapter.addAll(sortedKec.map { it.nama })
-            kecamatanAdapter.notifyDataSetChanged()
-
-            binding.spKecamatan.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
-                override fun onItemSelected(
-                    parent: AdapterView<*>?,
-                    view: View?,
-                    position: Int,
-                    id: Long
-                ) {
-                    kecamatan = if (position != 0) {
-                        sortedKec[position-1].nama
-                    } else {
-                        ""
-                    }
-                }
-
-                override fun onNothingSelected(parent: AdapterView<*>?) {}
-            }
+            setupDropdown(listKec, kecamatanAdapter, DISTRICT)
         }
+    }
+
+    private fun getSelectedItem(spinner: Spinner): String {
+        return if (spinner.selectedItem != null) {
+            if (spinner.selectedItem.toString().contains("Pilih")) {
+                ""
+            } else {
+                spinner.selectedItem.toString()
+            }
+        } else {
+            ""
+        }
+    }
+
+    private fun onItemSelected(
+        onClick: (position: Int) -> Unit
+    ) = object : AdapterView.OnItemSelectedListener {
+        override fun onItemSelected(
+            parent: AdapterView<*>?,
+            view: View?,
+            position: Int,
+            id: Long
+        ) {
+            onClick(position)
+        }
+
+        override fun onNothingSelected(parent: AdapterView<*>?) {}
     }
 
     private fun provideArrayAdapter(): ArrayAdapter<String> {
@@ -384,6 +362,19 @@ class FarmFormActivity : AppCompatActivity() {
         )
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
         return adapter
+    }
+
+    private fun setupDropdown(
+        list: List<LocationResponse>,
+        adapter: ArrayAdapter<String>,
+        place: String
+    ): List<LocationResponse>{
+
+        val sortedData = list.sortedBy { it.nama }
+        adapter.add("Pilih $place")
+        adapter.addAll(sortedData.map { it.nama })
+        adapter.notifyDataSetChanged()
+        return sortedData
     }
 
     private fun showLoading(loading: Boolean) {
@@ -400,6 +391,12 @@ class FarmFormActivity : AppCompatActivity() {
         const val EXTRA_CALLER = "caller"
         const val READY = "Siap Panen"
         const val FARMER = "farm"
+        const val PROVINCE = "Provinsi"
+        const val CITY = "Kota"
+        const val DISTRICT = "Kecamatan"
+        const val PROVINCE_INDEX = 0
+        const val CITY_INDEX = 1
+        const val DISTRICT_INDEX = 2
     }
 
 }

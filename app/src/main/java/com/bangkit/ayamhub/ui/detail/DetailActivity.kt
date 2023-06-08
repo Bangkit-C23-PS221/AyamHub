@@ -133,7 +133,7 @@ class DetailActivity : AppCompatActivity() {
                         bookmarkId = result.data.idBookmark ?: bookmarkId
 
                         if (isBookmarked == true) {
-                            binding.ivBookmark.setBackgroundResource(R.drawable.ic_bookmarks)
+                            binding.ivBookmark.setBackgroundResource(R.drawable.ic_bookmark_after)
                         } else if (isBookmarked == false){
                             binding.ivBookmark.setBackgroundResource(R.drawable.ic_bookmark_before)
                         }
@@ -165,7 +165,7 @@ class DetailActivity : AppCompatActivity() {
         if (farmId >= 0) {
             vIewModel.addBookmark(farmId).observe(this@DetailActivity) { result ->
                 processResult(result, "Oops gagal menambahkan bookmark!") {
-                    binding.ivBookmark.setBackgroundResource(R.drawable.ic_bookmarks)
+                    binding.ivBookmark.setBackgroundResource(R.drawable.ic_bookmark_after)
                     isBookmarked = true
                 }
             }

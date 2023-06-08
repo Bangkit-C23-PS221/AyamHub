@@ -76,6 +76,7 @@
             android:layout_height="wrap_content"
             android:layout_centerHorizontal="true"
             android:textColor="@color/black"
+            android:fontFamily="@font/roboto_bold"
             android:textStyle="bold"
             android:textSize="27sp"
             android:id="@+id/result"

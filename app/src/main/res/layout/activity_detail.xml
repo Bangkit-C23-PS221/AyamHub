@@ -231,27 +231,19 @@
                 app:layout_constraintEnd_toStartOf="@id/endGuidelineVertical"
                 android:text="@string/alamat" />
 
-            <androidx.constraintlayout.widget.ConstraintLayout
-                android:id="@+id/alamat"
+            <TextView
+                android:id="@+id/locFarm"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
+                android:paddingHorizontal="8dp"
+                android:paddingVertical="14dp"
+                android:fontFamily="@font/roboto_regular"
+                tools:text="@string/tangerang_selatan"
                 android:background="@drawable/border"
                 app:layout_constraintEnd_toStartOf="@+id/endGuidelineVertical"
                 app:layout_constraintStart_toStartOf="@+id/startGuidelineVertical"
-                app:layout_constraintTop_toBottomOf="@+id/alamatText">
+                app:layout_constraintTop_toBottomOf="@+id/alamatText"/>
 
-                <TextView
-                    android:id="@+id/locFarm"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="4dp"
-                    android:paddingHorizontal="8dp"
-                    android:paddingVertical="10dp"
-                    tools:text="@string/tangerang_selatan"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
-
-            </androidx.constraintlayout.widget.ConstraintLayout>
 
 
             <TextView
@@ -264,7 +256,7 @@
                 android:text="@string/catatan_dari_peternak"
                 app:layout_constraintEnd_toStartOf="@+id/endGuidelineVertical"
                 app:layout_constraintStart_toStartOf="@+id/startGuidelineVertical"
-                app:layout_constraintTop_toBottomOf="@+id/alamat"
+                app:layout_constraintTop_toBottomOf="@+id/locFarm"
                 />
 
             <TextView
@@ -275,6 +267,7 @@
                 android:paddingVertical="20dp"
                 android:background="@drawable/bgcatatan"
                 tools:text="@string/halo_disini_catatan_bla_bla_bl"
+                android:fontFamily="@font/roboto_regular"
                 app:layout_constraintEnd_toStartOf="@+id/endGuidelineVertical"
                 app:layout_constraintStart_toStartOf="@+id/startGuidelineVertical"
                 app:layout_constraintTop_toBottomOf="@+id/catatanP"/>

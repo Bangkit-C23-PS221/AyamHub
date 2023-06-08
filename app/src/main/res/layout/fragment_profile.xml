@@ -119,6 +119,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginBottom="10dp"
+                        android:fontFamily="@font/roboto_bold"
                         tools:text="@string/buat_peternakan"
                         android:textAlignment="center"
                         android:textColor="@color/black"
@@ -138,6 +139,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
+                    android:fontFamily="@font/roboto_regular"
                     android:text="@string/password"
                     android:textColor="@color/black"
                     android:textSize="18sp" />
@@ -148,6 +150,7 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:text="@string/passw"
+                    android:fontFamily="@font/roboto_regular"
                     android:textAlignment="viewEnd"
                     android:textColor="#5b5b5b"
                     android:textSize="18sp" />
@@ -173,6 +176,7 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:text="@string/telepon"
+                    android:fontFamily="@font/roboto_regular"
                     android:textColor="@color/black"
                     android:textSize="18sp" />
 
@@ -184,6 +188,7 @@
                     tools:text="@string/_08956565644"
                     android:textAlignment="viewEnd"
                     android:textColor="#5b5b5b"
+                    android:fontFamily="@font/roboto_regular"
                     android:textSize="18sp" />
             </LinearLayout>
 
@@ -197,15 +202,16 @@
 
             <Button
                 android:id="@+id/logoutButton"
-                android:layout_width="match_parent"
-                android:layout_weight="1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
                 android:fontFamily="@font/roboto_bold"
+                android:paddingHorizontal="40dp"
                 android:layout_gravity="center"
                 android:layout_margin="10dp"
                 android:textAllCaps="false"
                 android:backgroundTint="@color/orange2"
                 android:text="@string/keluar"
-                android:layout_height="0dp"/>
+              />
 
 
         </LinearLayout>

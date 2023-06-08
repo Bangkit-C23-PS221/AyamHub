@@ -3,6 +3,9 @@ package com.bangkit.ayamhub.helpers
 import android.content.ContentResolver
 import android.content.Context
 import android.graphics.Bitmap
+import android.graphics.Canvas
+import android.graphics.drawable.BitmapDrawable
+import android.graphics.drawable.Drawable
 import android.net.Uri
 import android.os.Environment
 import com.bumptech.glide.Glide
@@ -64,4 +67,9 @@ fun bitmapToFile(context: Context, bitmap: Bitmap): File? {
     }
 
     return null
+}
+
+fun generateUniqueCode(): String {
+    val timestamp = System.currentTimeMillis()
+    return timestamp.toString()
 }

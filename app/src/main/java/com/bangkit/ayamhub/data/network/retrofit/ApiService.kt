@@ -49,7 +49,7 @@ interface ApiService {
     ): MessageResponse
 
     @Multipart
-    @PUT("/updateFarms/{id})")
+    @PUT("/updateFarms/{id}")
     suspend fun updateMyFarm(
         @Path("id") id: Int,
         @Part file: MultipartBody.Part,

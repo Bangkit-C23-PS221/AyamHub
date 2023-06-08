@@ -8,6 +8,7 @@ import com.bangkit.ayamhub.R
 import com.bangkit.ayamhub.data.network.response.BookmarkResponse
 import com.bangkit.ayamhub.databinding.ItemRvBinding
 import com.bangkit.ayamhub.helpers.Reusable
+import com.bangkit.ayamhub.ui.homepage.home.HomeAdapter
 import com.bumptech.glide.Glide
 
 class BookmarkAdapter(
@@ -36,9 +37,10 @@ class BookmarkAdapter(
                 price.text = priceChicken
                 statusFarm.text = status
                 if (status == ACTIVE) {
-                    statusFarm.setBackgroundColor(context.getColor(R.color.green))
+                    statusFarm.setBackgroundResource(R.drawable.bg_status_ready)
+                    statusFarm.setTextColor(context.getColor(R.color.white))
                 } else {
-                    statusFarm.setBackgroundColor(context.getColor(R.color.yellow))
+                    statusFarm.setBackgroundResource(R.drawable.bg_status)
                 }
             }
 

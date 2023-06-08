@@ -79,6 +79,7 @@
                 android:layout_width="0dp"
                 android:layout_height="40dp"
                 android:layout_marginStart="20dp"
+                app:layout_goneMarginEnd="20dp"
                 android:background="@drawable/back_search"
                 android:layout_marginTop="20dp"
                 android:backgroundTint="@color/white"
@@ -100,7 +101,8 @@
                 app:layout_constraintBottom_toBottomOf="@id/search"
                 android:background="@drawable/ic_filter"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toTopOf="@id/search" />
+                app:layout_constraintTop_toTopOf="@id/search"
+                android:visibility="gone"/>
 
             <ImageView
                 android:id="@+id/logo"

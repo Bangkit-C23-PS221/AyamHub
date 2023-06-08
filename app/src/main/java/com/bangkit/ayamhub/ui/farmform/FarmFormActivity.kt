@@ -1,12 +1,15 @@
 package com.bangkit.ayamhub.ui.farmform
 
 import android.content.Intent
+import android.graphics.Bitmap
 import android.graphics.BitmapFactory
 import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.activity.viewModels
+import androidx.core.view.drawToBitmap
 import com.bangkit.ayamhub.data.network.Result
 import com.bangkit.ayamhub.data.network.response.MyFarmResponse
 import com.bangkit.ayamhub.databinding.ActivityFarmFormBinding
@@ -66,6 +69,7 @@ class FarmFormActivity : AppCompatActivity() {
                 }
                 is Result.Success -> {
                     showLoading(false)
+                    Log.e("Called Again", "Test")
                     prePopulateData(result.data)
                 }
                 is Result.Error -> {
@@ -88,7 +92,7 @@ class FarmFormActivity : AppCompatActivity() {
             alamatLengkap.setText(Reusable.getSpecificAddress(data.addressFarm))
             toggleButton.isChecked = data.status == READY
             urlToBitmap(this@FarmFormActivity, data.photoUrl){
-                viewModel.saveImage(it!!)
+                viewModel.saveImage(it as Bitmap)
             }
             locationSetup(data.addressFarm)
         }
@@ -101,7 +105,6 @@ class FarmFormActivity : AppCompatActivity() {
             val selectedImg = result.data?.data as Uri
             selectedImg.let { uri ->
                 val myFile = uriToFile(uri, this@FarmFormActivity)
-                photoFile = myFile
                 viewModel.saveImage(BitmapFactory.decodeFile(myFile.path))
             }
         }
@@ -121,7 +124,7 @@ class FarmFormActivity : AppCompatActivity() {
         }
     }
 
-    private fun validateForm() {
+    private fun validateForm()  {
         with(binding) {
             val name = usernameEditText.text.toString()
             val price = hargaEditText.text.toString()
@@ -132,7 +135,6 @@ class FarmFormActivity : AppCompatActivity() {
             val address = alamatLengkap.text.toString()
             val note = catatan.text.toString()
             val status = toggleButton.text.toString()
-            val image = gambarPeternakan.drawable
             val province = getSelectedItem(spProvince)
             val city = getSelectedItem(spKabupaten)
             val district = getSelectedItem(spKecamatan)
@@ -171,7 +173,7 @@ class FarmFormActivity : AppCompatActivity() {
                 address.isEmpty() -> {
                     alamatLengkap.error = "Mohon diisi dulu alamat lengkapnya!"
                 }
-                image == null -> {
+                photoFile == null -> {
                     Reusable.showToast(this@FarmFormActivity, "Mohon pilih dulu gambar peternakannya")
                 }
                 else -> {
@@ -206,7 +208,7 @@ class FarmFormActivity : AppCompatActivity() {
 
         val imageMultipart = MultipartBody.Part.createFormData(
             "file",
-            photoFile?.name as String,
+            "${generateUniqueCode()}.jpg",
             image as RequestBody
         )
 

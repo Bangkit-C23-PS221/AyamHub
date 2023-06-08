@@ -24,6 +24,7 @@ class DetailActivity : AppCompatActivity() {
     private var isBookmarked: Boolean? = null
     private var bookmarkId = -1
     private var phone = ""
+    private var address = ""
     private val vIewModel: DetailViewModel by viewModels {
         ViewModelFactory.getInstance(this)
     }
@@ -39,23 +40,27 @@ class DetailActivity : AppCompatActivity() {
 
         binding.ivBookmark.setOnClickListener { setupBookmarkButton() }
         binding.WA.setOnClickListener { whatsAppIntent() }
+        binding.maps.setOnClickListener { mapsIntent() }
     }
 
-    @SuppressLint("QueryPermissionsNeeded")
     private fun whatsAppIntent() {
         if (phone.isNotEmpty()) {
-            val contactUri = Uri.parse("https://api.whatsapp.com/send?phone=+6281809087052")
-
-            val intent = Intent(Intent.ACTION_VIEW, contactUri)
-            intent.setPackage("com.whatsapp")
-
-            if (intent.resolveActivity(packageManager) != null) {
-                startActivity(intent)
-            } else {
-                Reusable.showToast(this@DetailActivity, "Tidak dapat membuka aplikasi WhatsApp")
-            }
+            val uri = Uri.parse("https://api.whatsapp.com/send?phone=$phone&text=${Uri.encode(getString(R.string.whatsapp_msg))}")
+            val intent = Intent(Intent.ACTION_VIEW, uri)
+            startActivity(intent)
         } else {
             Reusable.showToast(this@DetailActivity, "Tidak dapat memuat nomor WhatsApp")
+        }
+    }
+
+    private fun mapsIntent() {
+        if (address.isNotEmpty()) {
+            val uri = Uri.parse("geo:0,0?q=${Uri.encode(address)}")
+            val intent = Intent(Intent.ACTION_VIEW, uri)
+            intent.setPackage("com.google.android.apps.maps") // Specify package to ensure Google Maps app is opened
+            startActivity(intent)
+        } else {
+            Reusable.showToast(this@DetailActivity, "Tidak dapat memuat alamat peternakan")
         }
     }
 
@@ -94,6 +99,7 @@ class DetailActivity : AppCompatActivity() {
             farmersNote.text = data.descFarm
             harga.text = getString(R.string.chickengPriceTv, data.priceChicken)
             phone = data.tbUser.phone
+            address = data.addressFarm
         }
     }
 

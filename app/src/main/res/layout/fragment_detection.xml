@@ -79,7 +79,7 @@
             android:textStyle="bold"
             android:textSize="27sp"
             android:id="@+id/result"
-            tools:text="@string/galeri"
+            tools:text="@string/hasil"
             app:layout_constraintTop_toBottomOf="@+id/btnClassify"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"

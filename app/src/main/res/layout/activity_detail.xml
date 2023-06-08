@@ -60,7 +60,7 @@
                 app:layout_constraintEnd_toStartOf="@id/endGuidelineVertical"
                 app:layout_constraintStart_toEndOf="@id/startGuidelineVertical"
                 app:layout_constraintTop_toBottomOf="@id/farmIv"
-                android:text="Peternakan Rindang Jaya" />
+                tools:text="@string/peternakan_rindang_jaya" />
 
             <androidx.cardview.widget.CardView
                 android:id="@+id/cardView"
@@ -96,7 +96,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:fontFamily="@font/roboto_regular"
-                        android:text="@string/_100_kg"
+                        tools:text="@string/_100_kg"
                         android:textColor="#232323"
                         android:textSize="15sp"
                         app:layout_constraintEnd_toStartOf="@+id/line1"
@@ -130,7 +130,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:fontFamily="@font/roboto_regular"
-                        android:text="@string/_28_hari"
+                        tools:text="@string/_28_hari"
                         android:textColor="#232323"
                         android:textSize="15sp"
                         app:layout_constraintEnd_toEndOf="parent"
@@ -169,7 +169,7 @@
                 app:layout_constraintEnd_toStartOf="@id/endGuidelineVertical"
                 app:layout_constraintStart_toEndOf="@id/icAyam"
                 app:layout_constraintTop_toTopOf="@id/icAyam"
-                android:text="@string/tipe_broiler" />
+                tools:text="@string/tipe_broiler" />
 
             <ImageView
                 android:id="@+id/icStock"
@@ -195,7 +195,7 @@
                 app:layout_constraintEnd_toStartOf="@id/endGuidelineVertical"
                 app:layout_constraintStart_toEndOf="@id/icStock"
                 app:layout_constraintTop_toTopOf="@id/icStock"
-                android:text="@string/stock_2000kg" />
+                tools:text="@string/stock_2000kg" />
 
             <androidx.constraintlayout.widget.Guideline
                 android:id="@+id/startGuidelineVertical"
@@ -247,7 +247,7 @@
                     android:layout_marginStart="4dp"
                     android:paddingHorizontal="8dp"
                     android:paddingVertical="10dp"
-                    android:text="@string/tangerang_selatan"
+                    tools:text="@string/tangerang_selatan"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
 
@@ -267,31 +267,20 @@
                 app:layout_constraintTop_toBottomOf="@+id/alamat"
                 />
 
-            <androidx.constraintlayout.widget.ConstraintLayout
-                android:id="@+id/catatanView"
+            <TextView
+                android:id="@+id/farmersNote"
                 android:layout_width="0dp"
-                android:layout_marginTop="10dp"
                 android:layout_height="wrap_content"
+                android:paddingHorizontal="8dp"
+                android:paddingVertical="20dp"
                 android:background="@drawable/bgcatatan"
+                tools:text="@string/halo_disini_catatan_bla_bla_bl"
                 app:layout_constraintEnd_toStartOf="@+id/endGuidelineVertical"
                 app:layout_constraintStart_toStartOf="@+id/startGuidelineVertical"
-                app:layout_constraintTop_toBottomOf="@+id/catatanP">
-
-                <TextView
-                    android:id="@+id/farmersNote"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="4dp"
-                    android:paddingHorizontal="8dp"
-                    android:paddingVertical="20dp"
-                    android:text="@string/halo_disini_catatan_bla_bla_bl"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
-
-            </androidx.constraintlayout.widget.ConstraintLayout>
+                app:layout_constraintTop_toBottomOf="@+id/catatanP"/>
 
             <Space
-                app:layout_constraintTop_toBottomOf="@id/catatanView"
+                app:layout_constraintTop_toBottomOf="@id/farmersNote"
                 app:layout_constraintStart_toStartOf="parent"
                 android:layout_width="match_parent"
                 android:layout_height="150dp" />

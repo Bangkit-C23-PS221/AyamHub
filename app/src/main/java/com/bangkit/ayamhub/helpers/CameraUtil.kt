@@ -1,14 +1,13 @@
 package com.bangkit.ayamhub.helpers
 
-import android.app.Application
 import android.content.ContentResolver
 import android.content.Context
 import android.graphics.Bitmap
-import android.graphics.BitmapFactory
-import android.graphics.Matrix
 import android.net.Uri
 import android.os.Environment
-import com.bangkit.ayamhub.R
+import com.bumptech.glide.Glide
+import com.bumptech.glide.request.target.SimpleTarget
+import com.bumptech.glide.request.transition.Transition
 import java.io.*
 import java.text.SimpleDateFormat
 import java.util.*
@@ -35,78 +34,34 @@ fun uriToFile(selectedImg: Uri, context: Context): File {
     return myFile
 }
 
-fun rotateFile(file: File, isBackCamera: Boolean = false) {
-    val matrix = Matrix()
-    val bitmap = BitmapFactory.decodeFile(file.path)
-    val rotation = if (isBackCamera) 90f else -90f
-    matrix.postRotate(rotation)
-    if (!isBackCamera) {
-        matrix.postScale(-1f, 1f, bitmap.width / 2f, bitmap.height / 2f)
-    }
-    val result = Bitmap.createBitmap(bitmap, 0, 0, bitmap.width, bitmap.height, matrix, true)
-    result.compress(Bitmap.CompressFormat.JPEG, 100, FileOutputStream(file))
-}
-
 fun createCustomTempFile(context: Context): File {
     val storageDir: File? = context.getExternalFilesDir(Environment.DIRECTORY_PICTURES)
     return File.createTempFile(timeStamp, ".jpg", storageDir)
 }
 
-fun createFile(application: Application): File {
-    val mediaDir = application.externalMediaDirs.firstOrNull()?.let {
-        File(it, application.resources.getString(R.string.app_name)).apply { mkdirs() }
-    }
-
-    val outputDirectory = if (
-        mediaDir != null && mediaDir.exists()
-    ) mediaDir else application.filesDir
-
-    return File(outputDirectory, "$timeStamp.jpg")
+fun urlToBitmap(context: Context, url: String, callback: (Bitmap?) -> Unit) {
+    Glide.with(context)
+        .asBitmap()
+        .load(url)
+        .into(object : SimpleTarget<Bitmap>() {
+            override fun onResourceReady(bitmap: Bitmap, transition: Transition<in Bitmap>?) {
+                callback(bitmap)
+            }
+        })
 }
 
-fun rotateBitmap(bitmap: Bitmap, isBackCamera: Boolean = false): Bitmap {
-    val matrix = Matrix()
-    return if (isBackCamera) {
-        matrix.postRotate(90f)
-        Bitmap.createBitmap(
-            bitmap,
-            0,
-            0,
-            bitmap.width,
-            bitmap.height,
-            matrix,
-            true
-        )
-    } else {
-        matrix.postRotate(-90f)
-        matrix.postScale(-1f, 1f, bitmap.width / 2f, bitmap.height / 2f)
-        Bitmap.createBitmap(
-            bitmap,
-            0,
-            0,
-            bitmap.width,
-            bitmap.height,
-            matrix,
-            true
-        )
+fun bitmapToFile(context: Context, bitmap: Bitmap): File? {
+    val file = File(context.cacheDir, "image.jpg")
+
+    try {
+        val outputStream = FileOutputStream(file)
+        bitmap.compress(Bitmap.CompressFormat.JPEG, 100, outputStream)
+        outputStream.flush()
+        outputStream.close()
+        return file
+    } catch (e: IOException) {
+        e.printStackTrace()
     }
-}
 
-fun reduceFileImage(file: File): File {
-    val bitmap = BitmapFactory.decodeFile(file.path)
-
-    var compressQuality = 100
-    var streamLength: Int
-
-    do {
-        val bmpStream = ByteArrayOutputStream()
-        bitmap.compress(Bitmap.CompressFormat.JPEG, compressQuality, bmpStream)
-        val bmpPicByteArray = bmpStream.toByteArray()
-        streamLength = bmpPicByteArray.size
-        compressQuality -= 5
-    } while (streamLength > 1000000)
-
-    bitmap.compress(Bitmap.CompressFormat.JPEG, compressQuality, FileOutputStream(file))
-
-    return file
+    return null
 }

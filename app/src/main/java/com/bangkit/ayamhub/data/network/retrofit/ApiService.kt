@@ -65,7 +65,6 @@ interface ApiService {
         @Part("photo_url") photoUrl: RequestBody? = null
     ) : MessageResponse
 
-//    @GET("/detail-farms/{id}") TODO: Replace with this once the new api is deployed
     @GET("/detail-farms/{id}")
     suspend fun getFarmDetail(
         @Path("id") id: Int
@@ -103,7 +102,7 @@ interface ApiService {
         @Path("userId") userId: Int
     ): MessageResponse
 
-    @DELETE("/delete-bookmarks/{userId}/farmId")
+    @DELETE("/delete-bookmarks/{userId}/{farmId}")
     suspend fun removeBookmark(
         @Path("farmId") farmId: Int,
         @Path("userId") userId: Int

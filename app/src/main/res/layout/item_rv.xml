@@ -68,7 +68,7 @@
 
         <TextView
             android:id="@+id/locFarm"
-            android:layout_width="0dp"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="4dp"
             android:fontFamily="@font/roboto_regular"
@@ -77,7 +77,6 @@
             app:layout_constraintTop_toBottomOf="@id/farmName"
             android:textColor="@color/black"
             app:layout_constraintBottom_toBottomOf="@id/location"
-            app:layout_constraintEnd_toStartOf="@id/price"
             app:layout_constraintStart_toEndOf="@id/location"
             app:layout_constraintTop_toTopOf="@id/location"
             tools:text="Tangerang Selatan" />
@@ -113,17 +112,17 @@
 
         <TextView
             android:id="@+id/statusFarm"
-            android:layout_width="0dp"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:background="@drawable/bg_status"
             android:fontFamily="@font/roboto_regular"
             android:paddingVertical="4dp"
+            android:paddingHorizontal="8dp"
             android:textAlignment="center"
             android:textAllCaps="false"
             android:textColor="#D10000"
             app:layout_constraintTop_toBottomOf="@id/kg"
-            app:layout_constraintEnd_toEndOf="@id/kg"
-            app:layout_constraintStart_toStartOf="@id/price"
+            app:layout_constraintEnd_toEndOf="@id/endGuidelineVertical"
             app:layout_constraintTop_toTopOf="@id/chickenType"
             tools:text="Siap Panen" />
 
@@ -141,7 +140,8 @@
 
         <TextView
             android:id="@+id/chickenType"
-            android:layout_width="0dp"
+            android:layout_width="wrap_content"
+            android:gravity="start"
             android:layout_height="wrap_content"
             android:layout_marginStart="4dp"
             android:fontFamily="@font/roboto_regular"
@@ -149,7 +149,6 @@
             android:textAllCaps="false"
             android:textColor="@color/black"
             app:layout_constraintBottom_toBottomOf="@id/icAyam"
-            app:layout_constraintEnd_toStartOf="@id/statusFarm"
             app:layout_constraintStart_toEndOf="@id/icAyam"
             app:layout_constraintTop_toTopOf="@id/icAyam"
             tools:text="Broiler" />

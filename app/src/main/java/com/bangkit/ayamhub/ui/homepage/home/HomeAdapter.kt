@@ -39,6 +39,7 @@ class HomeAdapter(
                 statusFarm.text = status
                 if (status == ACTIVE) {
                     statusFarm.setBackgroundColor(context.getColor(R.color.green))
+                    statusFarm.setTextColor(context.getColor(R.color.white))
                 } else {
                     statusFarm.setBackgroundColor(context.getColor(R.color.yellow))
                 }

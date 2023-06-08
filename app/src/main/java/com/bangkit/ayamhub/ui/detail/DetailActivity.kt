@@ -8,6 +8,7 @@ import android.os.Bundle
 import android.util.Log
 import android.view.View
 import androidx.activity.viewModels
+import androidx.appcompat.app.AlertDialog
 import com.bangkit.ayamhub.R
 import com.bangkit.ayamhub.data.network.Result
 import com.bangkit.ayamhub.data.network.response.DetailFarmResponse
@@ -45,9 +46,25 @@ class DetailActivity : AppCompatActivity() {
 
     private fun whatsAppIntent() {
         if (phone.isNotEmpty()) {
-            val uri = Uri.parse("https://api.whatsapp.com/send?phone=$phone&text=${Uri.encode(getString(R.string.whatsapp_msg))}")
-            val intent = Intent(Intent.ACTION_VIEW, uri)
-            startActivity(intent)
+            phone = "62" + phone.substring(1)
+            val options = arrayOf("WhatsApp", "Telepon")
+            val builder = AlertDialog.Builder(this)
+            builder.setTitle("Pilih Aksi")
+            builder.setItems(options) { _, which ->
+                when (which) {
+                    0 -> {
+                        val uri = Uri.parse("https://api.whatsapp.com/send?phone=$phone&text=${Uri.encode(getString(R.string.whatsapp_msg))}")
+                        val intent = Intent(Intent.ACTION_VIEW, uri)
+                        startActivity(intent)
+                    }
+                    1 -> {
+                        val dialIntent = Intent(Intent.ACTION_DIAL)
+                        dialIntent.data = Uri.parse("tel:$phone")
+                        startActivity(dialIntent)
+                    }
+                }
+            }
+            builder.show()
         } else {
             Reusable.showToast(this@DetailActivity, "Tidak dapat memuat nomor WhatsApp")
         }

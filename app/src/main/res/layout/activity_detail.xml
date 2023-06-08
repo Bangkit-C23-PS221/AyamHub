@@ -322,34 +322,31 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal">
-
-
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/maps"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:textAllCaps="false"
+                    android:text="@string/maps"
+                    android:elevation="4dp"
+                    android:layout_marginEnd="8dp"
+                    android:textSize="15sp"
+                    android:backgroundTint="@color/orange2"
+                    android:drawableEnd="@drawable/iconmapssize"
+                    />
 
                 <com.google.android.material.button.MaterialButton
                     android:id="@+id/WA"
                     android:layout_width="0dp"
-                    android:layout_height="65dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
                     android:textAllCaps="false"
                     android:text="@string/whatsapp"
-                    android:layout_marginEnd="15dp"
                     android:elevation="4dp"
                     android:textSize="15sp"
                     android:backgroundTint="@color/orange2"
                     android:drawableEnd="@drawable/iconwasize"
-                    android:layout_weight="1"
-                    />
-
-                <com.google.android.material.button.MaterialButton
-                    android:id="@+id/maps"
-                    android:layout_width="0dp"
-                    android:layout_height="65dp"
-                    android:textAllCaps="false"
-                    android:text="@string/maps"
-                    android:elevation="4dp"
-                    android:textSize="15sp"
-                    android:backgroundTint="@color/orange2"
-                    android:drawableEnd="@drawable/iconmapssize"
-                    android:layout_weight="1"
                     />
 
             </LinearLayout>

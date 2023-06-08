@@ -13,6 +13,7 @@ import java.io.File
 import java.io.FileOutputStream
 import java.io.IOException
 import java.time.LocalDate
+import java.time.format.DateTimeFormatter
 import java.time.temporal.ChronoUnit
 
 object Reusable {
@@ -28,6 +29,14 @@ object Reusable {
         return splitAddress(address)[1]
     }
 
+    fun getProvince(address: String): String {
+        return splitAddress(address)[0]
+    }
+
+    fun getDistrict(address: String): String {
+        return splitAddress(address)[2]
+    }
+
     fun getSpecificAddress(address: String): String {
         return splitAddress(address)[3]
     }
@@ -39,30 +48,10 @@ object Reusable {
         return ChronoUnit.DAYS.between(chickenDate, currentDate).toString()
     }
 
-    fun urlToBitmap(context: Context, url: String, callback: (Bitmap?) -> Unit) {
-        Glide.with(context)
-            .asBitmap()
-            .load(url)
-            .into(object : SimpleTarget<Bitmap>() {
-                override fun onResourceReady(bitmap: Bitmap, transition: Transition<in Bitmap>?) {
-                    callback(bitmap)
-                }
-            })
-    }
-
-    fun bitmapToFile(context: Context, bitmap: Bitmap): File? {
-        val file = File(context.cacheDir, "image.jpg")
-
-        try {
-            val outputStream = FileOutputStream(file)
-            bitmap.compress(Bitmap.CompressFormat.JPEG, 100, outputStream)
-            outputStream.flush()
-            outputStream.close()
-            return file
-        } catch (e: IOException) {
-            e.printStackTrace()
-        }
-
-        return null
+    fun ageToDate(days: Int): String {
+        val currentDate = LocalDate.now()
+        val birthDate = currentDate.minusDays(days.toLong())
+        val formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd")
+        return birthDate.format(formatter)
     }
 }

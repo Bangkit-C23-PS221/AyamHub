@@ -38,10 +38,10 @@ class HomeAdapter(
                 price.text = priceChicken
                 statusFarm.text = status
                 if (status == ACTIVE) {
-                    statusFarm.setBackgroundColor(context.getColor(R.color.green))
+                    statusFarm.setBackgroundResource(R.drawable.bg_status_ready)
                     statusFarm.setTextColor(context.getColor(R.color.white))
                 } else {
-                    statusFarm.setBackgroundColor(context.getColor(R.color.yellow))
+                    statusFarm.setBackgroundResource(R.drawable.bg_status)
                 }
             }
 

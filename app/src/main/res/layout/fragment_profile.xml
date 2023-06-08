@@ -120,7 +120,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginBottom="10dp"
                         android:fontFamily="@font/roboto_bold"
-                        tools:text="@string/buat_peternakan"
+                        android:text="@string/buat_peternakan"
                         android:textAlignment="center"
                         android:textColor="@color/black"
                         android:textSize="14sp"

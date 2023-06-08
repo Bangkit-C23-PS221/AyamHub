@@ -95,6 +95,7 @@
     <string name="reg">Daftar Peternakan</string>
     <string name="whatsapp_msg">Uyeah</string>
     <string name="hasil">Hasil</string>
+    <string name="cara_penanganan">Cara Penanganan</string>
     <string-array name="status_options">
         <item>Siap Panen</item>
         <item>Belum Panen</item>

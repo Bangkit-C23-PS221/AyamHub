@@ -27,6 +27,7 @@ import java.nio.channels.FileChannel
 class DetectionFragment : Fragment() {
     private var imageSize = 224
 
+    private var virusType = ""
     private var _binding: FragmentDetectionBinding? = null
     private val binding get() = _binding!!
     private val viewModel: DetectionViewModel by viewModels {
@@ -106,10 +107,13 @@ class DetectionFragment : Fragment() {
         interpreter.run(inputBuffer, outputBuffer)
 
         val maxIndex = outputBuffer[0].indices.maxByOrNull { outputBuffer[0][it] } ?: -1
-        val classes = arrayOf("coccidiosis", "healthy", "ncd", "salmonella")
+        val classes = arrayOf("Coccidiosis", "Healthy", "NewCastle Disease (NCD)", "Salmonella")
         val className = if (maxIndex != -1) classes[maxIndex] else "Unknown"
         binding.result.text = className
-    }
+        virusType = className
+        binding.suggestion.visibility = View.VISIBLE
+        toSuggestion(virusType)
+        }
 
     private fun preprocessImage(bitmap: Bitmap): ByteBuffer {
         val inputShape = interpreter.getInputTensor(0).shape()
@@ -159,5 +163,13 @@ class DetectionFragment : Fragment() {
 
     companion object {
         private const val YOUR_MODEL_PATH = "your_model.tflite"
+    }
+
+    private fun toSuggestion(virusType: String){
+        binding.suggestion.setOnClickListener {
+            val intent = Intent(activity, SuggestionActivity::class.java)
+            intent.putExtra("data", virusType)
+            startActivity(intent)
+        }
     }
 }

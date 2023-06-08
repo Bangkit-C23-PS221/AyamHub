@@ -88,9 +88,9 @@ class RegisterActivity : AppCompatActivity() {
 
     private fun showLoading(show: Boolean) {
         if (show) {
-            binding.progress.visibility = View.VISIBLE
+            binding.progressBar.visibility = View.VISIBLE
         } else {
-            binding.progress.visibility = View.GONE
+            binding.progressBar.visibility = View.GONE
         }
     }
 }

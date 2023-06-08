@@ -270,7 +270,7 @@ class FarmFormActivity : AppCompatActivity() {
             val sortedProvince = setupDropdown(listProvince, provinceAdapter, PROVINCE)
             if (location.isNotEmpty()) {
                 val index = provinceAdapter.getPosition(Reusable.getProvince(location))
-                viewModel.provinceId.value = sortedProvince[index].id.toInt()
+                viewModel.provinceId.value = sortedProvince[index-1].id.toInt()
                 binding.spProvince.setSelection(index)
             }
 
@@ -295,7 +295,7 @@ class FarmFormActivity : AppCompatActivity() {
             val sortedKab = setupDropdown(listKab, kabupatenAdapter, CITY)
             if (location.isNotEmpty()) {
                 val index = kabupatenAdapter.getPosition(Reusable.getCity(location))
-                viewModel.kabupatenId.value = sortedKab[index].id.toInt()
+                viewModel.kabupatenId.value = sortedKab[index-1].id.toInt()
                 binding.spKabupaten.setSelection(index)
             }
 

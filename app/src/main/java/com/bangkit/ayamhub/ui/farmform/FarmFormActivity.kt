@@ -5,25 +5,14 @@ import android.graphics.BitmapFactory
 import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
-import android.view.View
-import android.widget.AdapterView
-import android.widget.ArrayAdapter
-import android.widget.Spinner
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.activity.viewModels
-import androidx.appcompat.app.ActionBar.DISPLAY_SHOW_TITLE
-import androidx.core.graphics.drawable.toBitmap
 import com.bangkit.ayamhub.data.network.Result
-import com.bangkit.ayamhub.data.network.response.DetailFarmResponse
-import com.bangkit.ayamhub.data.network.response.LocationResponse
 import com.bangkit.ayamhub.data.network.response.MyFarmResponse
 import com.bangkit.ayamhub.databinding.ActivityFarmFormBinding
-import com.bangkit.ayamhub.helpers.Reusable
-import com.bangkit.ayamhub.helpers.uriToFile
+import com.bangkit.ayamhub.helpers.*
 import com.bangkit.ayamhub.helpers.viewmodelfactory.ViewModelFactory
 import com.bangkit.ayamhub.ui.farmer.FarmerActivity
-import com.bumptech.glide.Glide
 import okhttp3.MediaType.Companion.toMediaType
 import okhttp3.MediaType.Companion.toMediaTypeOrNull
 import okhttp3.MultipartBody
@@ -31,8 +20,6 @@ import okhttp3.RequestBody
 import okhttp3.RequestBody.Companion.asRequestBody
 import okhttp3.RequestBody.Companion.toRequestBody
 import java.io.File
-import java.time.LocalDate
-import java.time.format.DateTimeFormatter
 
 class FarmFormActivity : AppCompatActivity() {
 
@@ -55,6 +42,12 @@ class FarmFormActivity : AppCompatActivity() {
 
         binding.gambarButton.setOnClickListener { startGallery() }
         binding.registerButton.setOnClickListener { validateForm() }
+    }
+
+    private fun viewSetup() {
+        supportActionBar?.title = "Buat Peternakan";
+        binding.spKabupaten.isEnabled = false
+        binding.spKecamatan.isEnabled = false
     }
 
     private fun checkCaller() {
@@ -82,6 +75,7 @@ class FarmFormActivity : AppCompatActivity() {
             }
         }
     }
+
     private fun prePopulateData(data: MyFarmResponse) {
         with(binding) {
             usernameEditText.setText(data.nameFarm)
@@ -93,16 +87,11 @@ class FarmFormActivity : AppCompatActivity() {
             catatan.setText(data.descFarm)
             alamatLengkap.setText(Reusable.getSpecificAddress(data.addressFarm))
             toggleButton.isChecked = data.status == READY
-            Reusable.urlToBitmap(this@FarmFormActivity, data.photoUrl){
+            urlToBitmap(this@FarmFormActivity, data.photoUrl){
                 viewModel.saveImage(it!!)
             }
+            locationSetup(data.addressFarm)
         }
-    }
-
-    private fun viewSetup() {
-        supportActionBar?.title = "Buat Peternakan";
-        binding.spKabupaten.isEnabled = false
-        binding.spKecamatan.isEnabled = false
     }
 
     private val launcherIntentGallery = registerForActivityResult(
@@ -128,7 +117,7 @@ class FarmFormActivity : AppCompatActivity() {
     private fun showImage() {
         viewModel.detectionImage.observe(this@FarmFormActivity) {
             binding.gambarPeternakan.setImageBitmap(it)
-            photoFile = Reusable.bitmapToFile(this@FarmFormActivity, it)
+            photoFile = bitmapToFile(this@FarmFormActivity, it)
         }
     }
 
@@ -207,7 +196,7 @@ class FarmFormActivity : AppCompatActivity() {
         val upName = toTextRequestBody(name)
         val upType = toTextRequestBody(type)
         val upPrice = toTextRequestBody(price)
-        val upAge = toTextRequestBody(getAge(age.toInt()))
+        val upAge = toTextRequestBody(Reusable.ageToDate(age.toInt()))
         val upWeight = toTextRequestBody(weight)
         val upStock = toTextRequestBody(stock)
         val upNote = toTextRequestBody(note)
@@ -257,7 +246,6 @@ class FarmFormActivity : AppCompatActivity() {
                     is Result.Error -> {
                         showLoading(false)
                         Reusable.showToast(this@FarmFormActivity, "Gagal membuat peternakan anda")
-                        Log.e("FarmForm", result.error)
                     }
                 }
             }
@@ -268,26 +256,23 @@ class FarmFormActivity : AppCompatActivity() {
         return data.toRequestBody("text/plain".toMediaType())
     }
 
-    private fun getAge(days: Int): String {
-        val currentDate = LocalDate.now()
-        val birthDate = currentDate.minusDays(days.toLong())
-        val formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd") // Define your desired date format here
-        return birthDate.format(formatter)
-    }
-
-    private fun locationSetup() {
-
-        val provinceAdapter = provideArrayAdapter()
+    private fun locationSetup(location: String = "") {
+        val provinceAdapter = provideArrayAdapter(this)
         binding.spProvince.adapter = provinceAdapter
 
-        val kabupatenAdapter = provideArrayAdapter()
+        val kabupatenAdapter = provideArrayAdapter(this)
         binding.spKabupaten.adapter = kabupatenAdapter
 
-        val kecamatanAdapter = provideArrayAdapter()
+        val kecamatanAdapter = provideArrayAdapter(this)
         binding.spKecamatan.adapter = kecamatanAdapter
 
         viewModel.getProvinsi.observe(this) { listProvince ->
             val sortedProvince = setupDropdown(listProvince, provinceAdapter, PROVINCE)
+            if (location.isNotEmpty()) {
+                val index = provinceAdapter.getPosition(Reusable.getProvince(location))
+                viewModel.provinceId.value = sortedProvince[index].id.toInt()
+                binding.spProvince.setSelection(index)
+            }
 
             binding.spProvince.onItemSelectedListener = onItemSelected { position ->
                 if (position != 0) {
@@ -308,6 +293,11 @@ class FarmFormActivity : AppCompatActivity() {
 
         viewModel.getKabupaten.observe(this) { listKab ->
             val sortedKab = setupDropdown(listKab, kabupatenAdapter, CITY)
+            if (location.isNotEmpty()) {
+                val index = kabupatenAdapter.getPosition(Reusable.getCity(location))
+                viewModel.kabupatenId.value = sortedKab[index].id.toInt()
+                binding.spKabupaten.setSelection(index)
+            }
 
             binding.spKabupaten.onItemSelectedListener = onItemSelected { position ->
                 if (position != 0) {
@@ -325,56 +315,11 @@ class FarmFormActivity : AppCompatActivity() {
 
         viewModel.getKecamatan.observe(this) { listKec ->
             setupDropdown(listKec, kecamatanAdapter, DISTRICT)
-        }
-    }
-
-    private fun getSelectedItem(spinner: Spinner): String {
-        return if (spinner.selectedItem != null) {
-            if (spinner.selectedItem.toString().contains("Pilih")) {
-                ""
-            } else {
-                spinner.selectedItem.toString()
+            if (location.isNotEmpty()) {
+                val index = kecamatanAdapter.getPosition(Reusable.getDistrict(location))
+                binding.spKecamatan.setSelection(index)
             }
-        } else {
-            ""
         }
-    }
-
-    private fun onItemSelected(
-        onClick: (position: Int) -> Unit
-    ) = object : AdapterView.OnItemSelectedListener {
-        override fun onItemSelected(
-            parent: AdapterView<*>?,
-            view: View?,
-            position: Int,
-            id: Long
-        ) {
-            onClick(position)
-        }
-
-        override fun onNothingSelected(parent: AdapterView<*>?) {}
-    }
-
-    private fun provideArrayAdapter(): ArrayAdapter<String> {
-        val adapter = ArrayAdapter<String>(
-            this,
-            android.R.layout.simple_spinner_item
-        )
-        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
-        return adapter
-    }
-
-    private fun setupDropdown(
-        list: List<LocationResponse>,
-        adapter: ArrayAdapter<String>,
-        place: String
-    ): List<LocationResponse>{
-
-        val sortedData = list.sortedBy { it.nama }
-        adapter.add("Pilih $place")
-        adapter.addAll(sortedData.map { it.nama })
-        adapter.notifyDataSetChanged()
-        return sortedData
     }
 
     private fun showLoading(loading: Boolean) {
@@ -394,9 +339,6 @@ class FarmFormActivity : AppCompatActivity() {
         const val PROVINCE = "Provinsi"
         const val CITY = "Kota"
         const val DISTRICT = "Kecamatan"
-        const val PROVINCE_INDEX = 0
-        const val CITY_INDEX = 1
-        const val DISTRICT_INDEX = 2
     }
 
 }

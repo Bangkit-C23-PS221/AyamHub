@@ -1,5 +1,6 @@
 package com.bangkit.ayamhub.ui.farmform
 
+import android.annotation.SuppressLint
 import android.content.Intent
 import android.graphics.Bitmap
 import android.graphics.BitmapFactory
@@ -59,6 +60,7 @@ class FarmFormActivity : AppCompatActivity() {
         if (caller == EDIT) {
             supportActionBar?.title = "Edit Peternakan"
             getMyFarmData()
+            binding.registerButton.text = "Edit Data"
         }
     }
 

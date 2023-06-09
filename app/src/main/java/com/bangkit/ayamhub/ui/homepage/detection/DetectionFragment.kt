@@ -3,6 +3,8 @@ package com.bangkit.ayamhub.ui.homepage.detection
 import android.content.Intent
 import android.graphics.Bitmap
 import android.graphics.BitmapFactory
+import android.graphics.drawable.BitmapDrawable
+import android.graphics.drawable.ColorDrawable
 import android.media.ThumbnailUtils
 import android.net.Uri
 import android.os.Bundle
@@ -10,6 +12,7 @@ import android.provider.MediaStore
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.core.graphics.drawable.toBitmap
 import androidx.fragment.app.Fragment
@@ -98,21 +101,32 @@ class DetectionFragment : Fragment() {
     }
 
     private fun classifyImage() {
-        val imageBitmap = binding.pvImage.drawable.toBitmap()
-        val resizedBitmap = ThumbnailUtils.extractThumbnail(imageBitmap, imageSize, imageSize)
+        val imageDrawable = binding.pvImage.drawable
 
-        val inputBuffer = preprocessImage(resizedBitmap)
-        val outputBuffer = Array(1) { FloatArray(4) }
+        if (imageDrawable == null || imageDrawable is ColorDrawable) {
+            requireActivity().runOnUiThread {
+                Toast.makeText(requireContext(), "Pilih gambar terlebih dahulu", Toast.LENGTH_SHORT).show()
+            }
+            return
+        }
 
-        interpreter.run(inputBuffer, outputBuffer)
+        else{
+            val imageBitmap = binding.pvImage.drawable.toBitmap()
+            val resizedBitmap = ThumbnailUtils.extractThumbnail(imageBitmap, imageSize, imageSize)
 
-        val maxIndex = outputBuffer[0].indices.maxByOrNull { outputBuffer[0][it] } ?: -1
-        val classes = arrayOf("Coccidiosis", "Healthy", "NewCastle Disease (NCD)", "Salmonella")
-        val className = if (maxIndex != -1) classes[maxIndex] else "Unknown"
-        binding.result.text = className
-        virusType = className
-        binding.suggestion.visibility = View.VISIBLE
-        toSuggestion(virusType)
+            val inputBuffer = preprocessImage(resizedBitmap)
+            val outputBuffer = Array(1) { FloatArray(4) }
+
+            interpreter.run(inputBuffer, outputBuffer)
+
+            val maxIndex = outputBuffer[0].indices.maxByOrNull { outputBuffer[0][it] } ?: -1
+            val classes = arrayOf("Coccidiosis", "Healthy", "NewCastle Disease (NCD)", "Salmonella")
+            val className = if (maxIndex != -1) classes[maxIndex] else "Unknown"
+            binding.result.text = className
+            virusType = className
+            binding.suggestion.visibility = View.VISIBLE
+            toSuggestion(virusType)
+        }
         }
 
     private fun preprocessImage(bitmap: Bitmap): ByteBuffer {
@@ -161,9 +175,6 @@ class DetectionFragment : Fragment() {
         }
     }
 
-    companion object {
-        private const val YOUR_MODEL_PATH = "your_model.tflite"
-    }
 
     private fun toSuggestion(virusType: String){
         binding.suggestion.setOnClickListener {

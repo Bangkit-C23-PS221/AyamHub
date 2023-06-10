@@ -53,6 +53,6 @@ class BookmarkAdapter(
     override fun getItemCount(): Int = farmList.size
 
     companion object {
-        private const val ACTIVE = "dalam masa panen"
+        private const val ACTIVE = "Siap Panen"
     }
 }

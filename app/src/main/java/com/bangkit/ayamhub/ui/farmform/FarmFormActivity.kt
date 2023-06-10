@@ -329,7 +329,6 @@ class FarmFormActivity : AppCompatActivity() {
     }
 
     private fun showLoading(loading: Boolean) {
-        //TODO Uncomment this
         if (loading) {
             binding.progress.visibility = View.VISIBLE
         } else {

@@ -58,7 +58,7 @@
     <string name="keluar">Keluar</string>
     <string name="khair_fadhillah">Khair Fadhillah</string>
     <string name="email_dummy">khair@gmail.com</string>
-    <string name="filter">Filter</string>
+    <string name="filter">Terapkan Filter</string>
     <string name="alamat">Alamat:</string>
     <string name="tangerang_selatan">Tangerang Selatan</string>
     <string name="catatan_dari_peternak">Catatan dari Peternak</string>
@@ -96,6 +96,9 @@
     <string name="whatsapp_msg">Uyeah</string>
     <string name="hasil">Hasil</string>
     <string name="cara_penanganan">Cara Penanganan</string>
+    <string name="remove_filter">Hapus Filter</string>
+    <string name="lokasi">Lokasi</string>
+    <string name="filter_title">Filter Berdasarkan</string>
     <string-array name="status_options">
         <item>Siap Panen</item>
         <item>Belum Panen</item>

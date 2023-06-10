@@ -1,5 +1,6 @@
 package com.bangkit.ayamhub.ui.homepage.home
 
+import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.bangkit.ayamhub.data.repository.FarmRepository
 import com.bangkit.ayamhub.data.repository.UserRepository
@@ -12,11 +13,11 @@ class HomeViewModel(
 
     val kabupatenId = farmRepo.kabupatenId
 
-    val getProvinsi = farmRepo.getProvinsi()
+    fun getProvinsi() = farmRepo.getProvinsi()
 
-    val getKabupaten = farmRepo.getKabupaten()
+    fun getKabupaten() = farmRepo.getKabupaten()
 
-    val getKecamatan = farmRepo.getKecamatan()
+    fun getKecamatan() = farmRepo.getKecamatan()
 
     fun getListFarm() = farmRepo.getAllFarm()
 

@@ -16,7 +16,7 @@ import com.bangkit.ayamhub.databinding.FragmentHomeBinding
 import com.bangkit.ayamhub.helpers.Reusable
 import com.bangkit.ayamhub.helpers.viewmodelfactory.ViewModelFactory
 import com.bangkit.ayamhub.ui.detail.DetailActivity
-import com.bangkit.ayamhub.ui.homepage.home.filter.LocationFilterFragment
+import com.bangkit.ayamhub.ui.homepage.home.filter.FilterFragment
 import com.bangkit.ayamhub.ui.homepage.home.sort.SortFragment
 
 class HomeFragment : Fragment() {
@@ -98,13 +98,21 @@ class HomeFragment : Fragment() {
     }
 
     private fun showFilter() {
-        val fragment = LocationFilterFragment(homeAdapter)
-        fragment.show(childFragmentManager, "FilterFragment")
+        try {
+            val fragment = FilterFragment(homeAdapter)
+            fragment.show(childFragmentManager, "FilterFragment")
+        } catch (e: Exception) {
+            Reusable.showToast(requireContext(), "Mohon menuggu hingga loading selesai")
+        }
     }
 
     private fun showSort() {
-        val fragment = SortFragment(homeAdapter)
-        fragment.show(childFragmentManager, "SortFragment")
+        try {
+            val fragment = SortFragment(homeAdapter)
+            fragment.show(childFragmentManager, "SortFragment")
+        } catch (e: Exception) {
+            Reusable.showToast(requireContext(), "Mohon menuggu hingga loading selesai")
+        }
     }
 
     private fun showLoading(show: Boolean) {

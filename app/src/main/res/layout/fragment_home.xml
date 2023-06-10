@@ -1,12 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 
 
-<androidx.constraintlayout.widget.ConstraintLayout
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
     tools:context=".ui.homepage.HomeActivity">
 
     <ProgressBar
@@ -14,8 +13,8 @@
         style="?android:attr/progressBarStyle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:visibility="gone"
         android:elevation="1dp"
+        android:visibility="gone"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -25,12 +24,12 @@
     <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        >
+        tools:layout_editor_absoluteX="35dp"
+        tools:layout_editor_absoluteY="112dp">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
-
 
 
             <androidx.constraintlayout.widget.ConstraintLayout
@@ -60,17 +59,17 @@
 
                 <TextView
                     android:id="@+id/hub"
-                    android:layout_marginBottom="20dp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="bottom"
+                    android:layout_marginBottom="20dp"
                     android:fontFamily="@font/roboto_bold"
                     android:text="@string/hub"
                     android:textColor="#FFFF00"
                     android:textSize="35sp"
                     app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintTop_toTopOf="@id/ayam"
-                    app:layout_constraintStart_toEndOf="@+id/ayam" />
+                    app:layout_constraintStart_toEndOf="@+id/ayam"
+                    app:layout_constraintTop_toTopOf="@id/ayam" />
 
             </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -79,31 +78,31 @@
                 android:layout_width="0dp"
                 android:layout_height="40dp"
                 android:layout_marginStart="20dp"
-                app:layout_goneMarginEnd="20dp"
-                android:background="@drawable/back_search"
                 android:layout_marginTop="20dp"
+                android:layout_marginEnd="20dp"
+                android:background="@drawable/back_search"
                 android:backgroundTint="@color/white"
-                android:layout_marginEnd="5dp"
-                android:inputType="text"
-                android:fontFamily="@font/roboto_regular"
-                android:imeOptions="actionDone"
-                android:hint="@string/cari_peternakan"
-                app:layout_constraintEnd_toStartOf="@id/btnFilter"
-                app:layout_constraintStart_toStartOf="parent"
                 android:drawableStart="@drawable/search"
                 android:drawablePadding="8dp"
-                app:layout_constraintTop_toTopOf="parent"/>
-
-            <ImageButton
-                android:id="@+id/btnFilter"
-                android:layout_width="40dp"
-                android:layout_height="40dp"
-                android:layout_marginEnd="20dp"
-                app:layout_constraintBottom_toBottomOf="@id/search"
-                android:background="@drawable/ic_filter"
+                android:fontFamily="@font/roboto_regular"
+                android:hint="@string/cari_peternakan"
+                android:imeOptions="actionDone"
+                android:inputType="text"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toTopOf="@id/search"
-                android:visibility="gone"/>
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_goneMarginEnd="20dp" />
+
+            <Button
+                android:id="@+id/btnFilter"
+                android:layout_width="80dp"
+                android:layout_height="35dp"
+                android:backgroundTint="@color/orange2"
+                android:text="Filter"
+                android:textSize="12sp"
+                app:layout_constraintEnd_toStartOf="@+id/btnSort"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/topItem" />
 
             <Button
                 android:id="@+id/btnSort"
@@ -137,8 +136,6 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/logo"
                 tools:listitem="@layout/item_rv" />
-
-
 
 
         </androidx.constraintlayout.widget.ConstraintLayout>

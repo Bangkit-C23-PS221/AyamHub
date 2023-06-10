@@ -1,0 +1,156 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.homepage.home.filter.FilterFragment">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:id="@+id/filterTitle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="12dp"
+            android:layout_marginTop="12dp"
+            android:text="@string/filter_title"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/tvLocation"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="18dp"
+            android:layout_marginStart="12dp"
+            android:text="@string/lokasi"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/filterTitle" />
+
+        <TextView
+            android:id="@+id/tvProvince"
+            android:layout_width="80dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="12dp"
+            android:text="@string/provinsi"
+            app:layout_constraintBottom_toBottomOf="@+id/spProvince"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/spProvince" />
+
+        <Spinner
+            android:id="@+id/spProvince"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="12dp"
+            android:layout_marginTop="12dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/tvProvince"
+            app:layout_constraintTop_toBottomOf="@+id/tvLocation" />
+
+        <TextView
+            android:id="@+id/tvCity"
+            android:layout_width="80dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="12dp"
+            android:text="@string/kabupaten"
+            app:layout_constraintBottom_toBottomOf="@+id/spKabupaten"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/spKabupaten" />
+
+        <Spinner
+            android:id="@+id/spKabupaten"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="12dp"
+            android:layout_marginTop="8dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/tvCity"
+            app:layout_constraintTop_toBottomOf="@+id/spProvince" />
+
+        <TextView
+            android:id="@+id/tvDistrict"
+            android:layout_width="80dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="12dp"
+            android:text="@string/kecamatan"
+            app:layout_constraintBottom_toBottomOf="@+id/spKecamatan"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/spKecamatan" />
+
+        <Spinner
+            android:id="@+id/spKecamatan"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="12dp"
+            android:layout_marginTop="8dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/tvDistrict"
+            app:layout_constraintTop_toBottomOf="@+id/spKabupaten" />
+
+        <TextView
+            android:id="@+id/tvStatus"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="32dp"
+            android:layout_marginStart="12dp"
+            android:text="Status"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/spKecamatan" />
+
+        <CheckBox
+            android:id="@+id/cbReady"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:text="Siap Panen"
+            app:layout_constraintEnd_toStartOf="@id/cbNotReady"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tvStatus" />
+
+        <CheckBox
+            android:id="@+id/cbNotReady"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Belum Siap Panen"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/cbReady"
+            app:layout_constraintTop_toTopOf="@+id/cbReady" />
+
+
+        <Button
+            android:id="@+id/btnAddFilter"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="20dp"
+            android:layout_marginTop="32dp"
+            android:backgroundTint="@color/orange2"
+            android:text="@string/filter"
+            android:textColor="@color/white"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/cbReady" />
+
+        <Button
+            android:id="@+id/btnRemoveFilter"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="20dp"
+            android:backgroundTint="@color/red"
+            android:visibility="gone"
+            android:text="@string/remove_filter"
+            android:textColor="@color/white"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/btnAddFilter" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

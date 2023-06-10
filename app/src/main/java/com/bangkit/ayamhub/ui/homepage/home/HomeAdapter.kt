@@ -19,6 +19,8 @@ class HomeAdapter(
 ) : RecyclerView.Adapter<HomeAdapter.MyViewHolder>() {
     private var filteredData: MutableList<FarmItemResponse> = data.toMutableList()
     var currentSort = ""
+    var currentLocFilter = ""
+    var currentStatusFilter = ""
 
     class MyViewHolder(val binding: ItemRvBinding) : RecyclerView.ViewHolder(binding.root)
 
@@ -65,22 +67,35 @@ class HomeAdapter(
         notifyDataSetChanged()
     }
 
-    fun filterByLocation(location: String) {
+    fun filterBy() {
         filteredData.clear()
-        if (location.isEmpty()) {
-            filteredData.addAll(data)
-        } else {
-            filteredData.addAll( data.filter {
-                it.addressFarm.toLowerCase(Locale.ROOT).contains(location.toLowerCase(Locale.ROOT))
-            })
-            sortBy()
-        }
-        notifyDataSetChanged()
-    }
+        when {
+            currentLocFilter.isNotEmpty() && currentStatusFilter.isNotEmpty() -> {
+                filteredData.addAll(data.filter {
+                    it.status.contains(currentStatusFilter) && it.addressFarm.toLowerCase(Locale.ROOT).contains(currentLocFilter.toLowerCase(Locale.ROOT))
+                })
+            }
+            currentLocFilter.isNotEmpty() -> {
+                filteredData.addAll(data.filter {
+                    it.addressFarm.contains(currentLocFilter, true)
+                })
+            }
+            currentStatusFilter.isNotEmpty() -> {
+                if (currentStatusFilter == NOT_ACTIVE) {
+                    filteredData.addAll(data.filter {
+                        it.status.contains(NOT_ACTIVE)
+                    })
+                } else {
+                    filteredData.addAll(data.filterNot {
+                        it.status.contains(NOT_ACTIVE)
+                    })
+                }
 
-    fun removeFilter() {
-        filteredData.clear()
-        filteredData.addAll(data)
+            }
+            else -> {
+                filteredData.addAll(data)
+            }
+        }
         sortBy()
         notifyDataSetChanged()
     }
@@ -115,7 +130,8 @@ class HomeAdapter(
     }
 
     companion object {
-        private const val ACTIVE = "Siap Panen"
+        const val ACTIVE = "Siap Panen"
+        const val NOT_ACTIVE = "Belum Siap Panen"
         const val NAME = "name"
         const val CHEAPEST = "murah"
         const val EXPENSIVE = "mahal"

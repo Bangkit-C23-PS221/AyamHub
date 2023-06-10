@@ -18,6 +18,7 @@ class HomeAdapter(
 
 ) : RecyclerView.Adapter<HomeAdapter.MyViewHolder>() {
     private var filteredData: MutableList<FarmItemResponse> = data.toMutableList()
+    var currentSort = ""
 
     class MyViewHolder(val binding: ItemRvBinding) : RecyclerView.ViewHolder(binding.root)
 
@@ -59,6 +60,7 @@ class HomeAdapter(
             filteredData.addAll( data.filter {
                 it.nameFarm.toLowerCase(Locale.ROOT).contains(text.toLowerCase(Locale.ROOT))
             })
+            sortBy()
         }
         notifyDataSetChanged()
     }
@@ -71,6 +73,7 @@ class HomeAdapter(
             filteredData.addAll( data.filter {
                 it.addressFarm.toLowerCase(Locale.ROOT).contains(location.toLowerCase(Locale.ROOT))
             })
+            sortBy()
         }
         notifyDataSetChanged()
     }
@@ -78,10 +81,45 @@ class HomeAdapter(
     fun removeFilter() {
         filteredData.clear()
         filteredData.addAll(data)
+        sortBy()
+        notifyDataSetChanged()
+    }
+
+    fun sortBy() {
+        when(currentSort) {
+            NAME -> {
+                filteredData.sortBy { it.nameFarm }
+                currentSort = NAME
+            }
+            CHEAPEST -> {
+                filteredData.sortBy { it.priceChicken.toInt() }
+                currentSort = CHEAPEST
+            }
+            EXPENSIVE -> {
+                filteredData.sortByDescending { it.priceChicken.toInt() }
+                currentSort = EXPENSIVE
+            }
+            LATEST -> {
+                filteredData.sortBy { it.idFarm }
+                currentSort = LATEST
+            }
+            OLDEST -> {
+                filteredData.sortByDescending { it.idFarm }
+                currentSort = OLDEST
+            }
+            else -> {
+                return
+            }
+        }
         notifyDataSetChanged()
     }
 
     companion object {
         private const val ACTIVE = "Siap Panen"
+        const val NAME = "name"
+        const val CHEAPEST = "murah"
+        const val EXPENSIVE = "mahal"
+        const val LATEST = "terbaru"
+        const val OLDEST = "terlama"
     }
 }

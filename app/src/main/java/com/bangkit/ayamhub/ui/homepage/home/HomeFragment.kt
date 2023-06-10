@@ -17,6 +17,7 @@ import com.bangkit.ayamhub.helpers.Reusable
 import com.bangkit.ayamhub.helpers.viewmodelfactory.ViewModelFactory
 import com.bangkit.ayamhub.ui.detail.DetailActivity
 import com.bangkit.ayamhub.ui.homepage.home.filter.LocationFilterFragment
+import com.bangkit.ayamhub.ui.homepage.home.sort.SortFragment
 
 class HomeFragment : Fragment() {
 
@@ -43,6 +44,7 @@ class HomeFragment : Fragment() {
         processSearchBar()
 
         binding.btnFilter.setOnClickListener { showFilter() }
+        binding.btnSort.setOnClickListener { showSort() }
     }
 
     override fun onDestroyView() {
@@ -98,6 +100,11 @@ class HomeFragment : Fragment() {
     private fun showFilter() {
         val fragment = LocationFilterFragment(homeAdapter)
         fragment.show(childFragmentManager, "FilterFragment")
+    }
+
+    private fun showSort() {
+        val fragment = SortFragment(homeAdapter)
+        fragment.show(childFragmentManager, "SortFragment")
     }
 
     private fun showLoading(show: Boolean) {

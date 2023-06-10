@@ -26,15 +26,28 @@ object Reusable {
     }
 
     fun getCity(address: String): String {
-        return splitAddress(address)[1]
+        return try {
+            splitAddress(address)[1]
+        } catch (e:Exception) {
+            ""
+        }
+
     }
 
     fun getProvince(address: String): String {
-        return splitAddress(address)[0]
+        return try {
+            splitAddress(address)[0]
+        } catch (e:Exception) {
+            ""
+        }
     }
 
     fun getDistrict(address: String): String {
-        return splitAddress(address)[2]
+        return try {
+            splitAddress(address)[2]
+        } catch (e:Exception) {
+            ""
+        }
     }
 
     fun getSpecificAddress(address: String): String {

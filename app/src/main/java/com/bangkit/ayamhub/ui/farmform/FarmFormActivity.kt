@@ -108,7 +108,8 @@ class FarmFormActivity : AppCompatActivity() {
             val selectedImg = result.data?.data as Uri
             selectedImg.let { uri ->
                 val myFile = uriToFile(uri, this@FarmFormActivity)
-                viewModel.saveImage(BitmapFactory.decodeFile(myFile.path))
+                val reducedFile = reduceFileImage(myFile)
+                viewModel.saveImage(BitmapFactory.decodeFile(reducedFile.path))
             }
         }
     }

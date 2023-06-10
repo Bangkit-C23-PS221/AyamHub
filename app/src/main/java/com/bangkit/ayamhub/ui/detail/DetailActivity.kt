@@ -26,6 +26,7 @@ class DetailActivity : AppCompatActivity() {
     private var bookmarkId = -1
     private var phone = ""
     private var address = ""
+    private var name = ""
     private val vIewModel: DetailViewModel by viewModels {
         ViewModelFactory.getInstance(this)
     }
@@ -53,7 +54,7 @@ class DetailActivity : AppCompatActivity() {
             builder.setItems(options) { _, which ->
                 when (which) {
                     0 -> {
-                        val uri = Uri.parse("https://api.whatsapp.com/send?phone=$phone&text=${Uri.encode(getString(R.string.whatsapp_msg))}")
+                        val uri = Uri.parse("https://api.whatsapp.com/send?phone=$phone&text=${Uri.encode(getString(R.string.whatsapp_msg, name))}")
                         val intent = Intent(Intent.ACTION_VIEW, uri)
                         startActivity(intent)
                     }
@@ -117,6 +118,7 @@ class DetailActivity : AppCompatActivity() {
             harga.text = getString(R.string.chickengPriceTv, data.priceChicken)
             phone = data.tbUser.phone
             address = data.addressFarm
+            name = data.nameFarm
         }
     }
 

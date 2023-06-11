@@ -139,11 +139,5 @@ class HomeFragment : Fragment() {
         }
     }
 
-    private fun showEmpty(show: Boolean) {
-        if (show) {
-            binding.tidakada.visibility = View.VISIBLE
-        } else {
-            binding.tidakada.visibility = View.GONE
-        }
-    }
+
 }

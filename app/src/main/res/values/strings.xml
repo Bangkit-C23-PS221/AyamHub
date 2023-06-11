@@ -99,6 +99,14 @@
     <string name="remove_filter">Hapus Filter</string>
     <string name="lokasi">Lokasi</string>
     <string name="filter_title">Filter Berdasarkan</string>
+    <string name="terapkan_sorting">Terapkan Sorting</string>
+    <string name="terlama">Terlama</string>
+    <string name="terbaru">Terbaru</string>
+    <string name="harga_termahal">Harga Termahal</string>
+    <string name="harga_termurah">Harga Termurah</string>
+    <string name="nama">Nama</string>
+    <string name="sorting_berdasarkan">Sorting Berdasarkan</string>
+    <string name="status">Status</string>
     <string-array name="status_options">
         <item>Siap Panen</item>
         <item>Belum Panen</item>

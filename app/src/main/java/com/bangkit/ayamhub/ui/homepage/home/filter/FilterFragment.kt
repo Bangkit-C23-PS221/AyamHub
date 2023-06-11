@@ -1,6 +1,7 @@
 package com.bangkit.ayamhub.ui.homepage.home.filter
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -37,6 +38,7 @@ class FilterFragment(
 
         checkFilter()
         setStatusListener()
+        getCheckedStatus(adapter.currentStatusFilter)
         locationSetup(adapter.currentLocFilter)
 
         binding.btnAddFilter.setOnClickListener { callAdapterFilter() }
@@ -54,13 +56,21 @@ class FilterFragment(
                 adapter.currentStatusFilter.isNotEmpty() -> {
                     btnRemoveFilter.visibility = View.VISIBLE
                 }
-                adapter.currentLocFilter != "" -> {
+                adapter.currentLocFilter.isNotEmpty() -> {
                     btnRemoveFilter.visibility = View.VISIBLE
                 }
                 else -> {
                     btnRemoveFilter.visibility = View.GONE
                 }
             }
+        }
+    }
+
+    private fun getCheckedStatus(status: String) {
+        if (status == HomeAdapter.ACTIVE) {
+            binding.cbReady.isChecked = true
+        } else if (status == HomeAdapter.NOT_ACTIVE) {
+            binding.cbNotReady.isChecked = true
         }
     }
 

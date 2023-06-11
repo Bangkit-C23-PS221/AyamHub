@@ -60,7 +60,7 @@ class FarmFormActivity : AppCompatActivity() {
         if (caller == EDIT) {
             supportActionBar?.title = "Edit Peternakan"
             getMyFarmData()
-            binding.registerButton.text = "Edit Data"
+            binding.registerButton.text = "Simpan Data"
         }
     }
 

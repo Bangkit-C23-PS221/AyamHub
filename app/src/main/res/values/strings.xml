@@ -107,7 +107,7 @@
     <string name="nama">Nama</string>
     <string name="sorting_berdasarkan">Urutkan Berdasarkan</string>
     <string name="status">Status</string>
-    <string name="tidak_ada">Tidak ada</string>
+    <string name="tidak_ada">Tidak ada data</string>
     <string-array name="status_options">
         <item>Siap Panen</item>
         <item>Belum Panen</item>

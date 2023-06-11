@@ -73,6 +73,7 @@ class HomeFragment : Fragment() {
                 is Result.Success -> {
                     showLoading(false)
                     setupAdapter(result.data)
+
                 }
                 is Result.Error -> {
                     showLoading(false)
@@ -104,6 +105,7 @@ class HomeFragment : Fragment() {
         } catch (e: Exception) {
             Reusable.showToast(requireContext(), "Mohon menuggu hingga loading selesai")
         }
+
     }
 
     private fun showSort() {
@@ -120,6 +122,14 @@ class HomeFragment : Fragment() {
             binding.progressBar.visibility = View.VISIBLE
         } else {
             binding.progressBar.visibility = View.GONE
+        }
+    }
+
+    private fun showEmpty(show: Boolean) {
+        if (show) {
+            binding.tidakada.visibility = View.VISIBLE
+        } else {
+            binding.tidakada.visibility = View.GONE
         }
     }
 }

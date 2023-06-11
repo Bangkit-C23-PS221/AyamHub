@@ -101,7 +101,6 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="4dp"
             android:fontFamily="@font/roboto_regular"
-            android:paddingEnd="3dp"
             android:textAlignment="viewStart"
             android:textAllCaps="false"
             android:textColor="#D10000"

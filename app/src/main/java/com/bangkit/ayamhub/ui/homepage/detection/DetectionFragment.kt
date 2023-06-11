@@ -16,6 +16,7 @@ import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AlertDialog
 import androidx.core.graphics.drawable.toBitmap
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.activityViewModels
 import androidx.fragment.app.viewModels
 import com.bangkit.ayamhub.databinding.FragmentDetectionBinding
 import com.bangkit.ayamhub.helpers.uriToFile
@@ -33,7 +34,7 @@ class DetectionFragment : Fragment() {
     private var virusType = ""
     private var _binding: FragmentDetectionBinding? = null
     private val binding get() = _binding!!
-    private val viewModel: DetectionViewModel by viewModels {
+    private val viewModel: DetectionViewModel by activityViewModels {
         ViewModelFactory.getInstance(requireContext())
     }
 

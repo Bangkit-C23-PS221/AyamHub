@@ -45,6 +45,7 @@ class HomeAdapter(
                     statusFarm.setTextColor(context.getColor(R.color.white))
                 } else {
                     statusFarm.setBackgroundResource(R.drawable.bg_status)
+                    statusFarm.setTextColor(context.getColor(R.color.red))
                 }
             }
 
@@ -53,6 +54,10 @@ class HomeAdapter(
     }
 
     override fun getItemCount(): Int = filteredData.size
+
+    fun isDataEmpty(): Boolean {
+        return filteredData.isEmpty()
+    }
 
     fun filterBySearch(text: String) {
         filteredData.clear()

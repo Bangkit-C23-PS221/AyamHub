@@ -332,13 +332,13 @@
             android:id="@+id/registerButton"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:backgroundTint="@color/orange2"
             android:textAllCaps="false"
             android:text="@string/reg"
             android:textColor="#ffffff"
             android:textSize="18sp"
+            android:fontFamily="@font/roboto_bold"
             android:padding="12dp"
-            android:letterSpacing="-0.01"
+            android:background="@drawable/bg_button"
             style="@style/Widget.MaterialComponents.Button" />
 
     </LinearLayout>

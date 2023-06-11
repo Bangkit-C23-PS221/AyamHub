@@ -21,7 +21,7 @@
     <string name="title_activity_home">Home</string>
     <string name="title_home">Beranda</string>
     <string name="title_detection">Deteksi</string>
-    <string name="title_bookmark">Bookmark</string>
+    <string name="title_bookmark">Bookmarks</string>
     <string name="form_email_error">Form nama tolong diisi ya</string>
     <string name="form_password_error">Password harus lebih dari 8 karakter ya</string>
     <string name="title_profile">Profil</string>

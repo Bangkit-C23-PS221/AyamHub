@@ -313,6 +313,7 @@
                     android:text="@string/maps"
                     android:elevation="4dp"
                     android:layout_marginEnd="8dp"
+                    android:fontFamily="@font/roboto_bold"
                     android:textSize="15sp"
                     android:backgroundTint="@color/orange2"
                     android:drawableEnd="@drawable/iconmapssize"
@@ -327,6 +328,7 @@
                     android:text="@string/whatsapp"
                     android:elevation="4dp"
                     android:textSize="15sp"
+                    android:fontFamily="@font/roboto_bold"
                     android:backgroundTint="@color/orange2"
                     android:drawableEnd="@drawable/iconwasize"
                     />

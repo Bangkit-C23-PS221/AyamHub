@@ -13,6 +13,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.activity.result.contract.ActivityResultContracts
+import androidx.appcompat.app.AlertDialog
 import androidx.core.graphics.drawable.toBitmap
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
@@ -119,10 +120,11 @@ class DetectionFragment : Fragment() {
             interpreter.run(inputBuffer, outputBuffer)
 
             val maxIndex = outputBuffer[0].indices.maxByOrNull { outputBuffer[0][it] } ?: -1
-            val classes = arrayOf("Coccidiosis", "Healthy", "NewCastle Disease (NCD)", "Salmonella")
+            val classes = arrayOf("Coccidiosis", "Sehat", "NewCastle Disease (NCD)", "Salmonella")
             val className = if (maxIndex != -1) classes[maxIndex] else "Unknown"
             binding.result.text = className
             virusType = className
+            binding.line1.alpha = 0.5F
             binding.suggestion.visibility = View.VISIBLE
             toSuggestion(virusType)
         }
@@ -175,11 +177,29 @@ class DetectionFragment : Fragment() {
     }
 
 
-    private fun toSuggestion(virusType: String){
+    private fun toSuggestion(virusType: String) {
         binding.suggestion.setOnClickListener {
-            val intent = Intent(activity, SuggestionActivity::class.java)
-            intent.putExtra("data", virusType)
-            startActivity(intent)
+            val currentContext = context // Assign the nullable context to a new non-null variable
+            if (currentContext != null) {
+                if (virusType == "Sehat") {
+                    val builder = AlertDialog.Builder(currentContext)
+                    builder.setTitle("Selamat, Ayam Anda Sehat!")
+                    builder.setMessage("Ayam anda sehat, tingkatkan terus kualitas ayam anda!!")
+                    builder.setPositiveButton("OK") { dialog, which ->
+                        // Code to be executed when the "OK" button is clicked
+                        dialog.dismiss() // Close the pop-up dialog
+                    }
+
+                    val dialog = builder.create()
+                    dialog.show()
+                } else {
+                    val intent = Intent(activity, SuggestionActivity::class.java)
+                    intent.putExtra("data", virusType)
+                    startActivity(intent)
+                }
+            } else {
+                // Handle the case when context is null
+            }
         }
     }
 }

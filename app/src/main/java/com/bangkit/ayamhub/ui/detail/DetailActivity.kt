@@ -1,6 +1,5 @@
 package com.bangkit.ayamhub.ui.detail
 
-import android.annotation.SuppressLint
 import android.content.Intent
 import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
@@ -27,7 +26,7 @@ class DetailActivity : AppCompatActivity() {
     private var phone = ""
     private var address = ""
     private var name = ""
-    private val vIewModel: DetailViewModel by viewModels {
+    private val viewModel: DetailViewModel by viewModels {
         ViewModelFactory.getInstance(this)
     }
 
@@ -85,7 +84,7 @@ class DetailActivity : AppCompatActivity() {
     private fun getData() {
         farmId = intent.getIntExtra(EXTRA_ID, -1)
         if (farmId >= 0) {
-            vIewModel.getFarmDetail(farmId).observe(this) { result ->
+            viewModel.getFarmDetail(farmId).observe(this) { result ->
                 when(result) {
                     is Result.Loading -> {
                         showLoading(true)
@@ -124,7 +123,7 @@ class DetailActivity : AppCompatActivity() {
 
     private fun checkBookmark() {
         if (farmId >= 0) {
-            vIewModel.checkBookmark(farmId).observe(this@DetailActivity) { result ->
+            viewModel.checkBookmark(farmId).observe(this@DetailActivity) { result ->
                 when(result) {
                     is Result.Loading -> {
                         showLoading(true)
@@ -165,7 +164,7 @@ class DetailActivity : AppCompatActivity() {
 
     private fun addBookmark() {
         if (farmId >= 0) {
-            vIewModel.addBookmark(farmId).observe(this@DetailActivity) { result ->
+            viewModel.addBookmark(farmId).observe(this@DetailActivity) { result ->
                 processResult(result, "Oops gagal menambahkan bookmark!") {
                     binding.ivBookmark.setBackgroundResource(R.drawable.ic_bookmark_after)
                     isBookmarked = true
@@ -177,7 +176,7 @@ class DetailActivity : AppCompatActivity() {
     private fun removeBookmark() {
         Log.e("Remove", "$bookmarkId")
         if (farmId >= 0) {
-            vIewModel.removeBookmark(farmId).observe(this@DetailActivity) { result ->
+            viewModel.removeBookmark(farmId).observe(this@DetailActivity) { result ->
                 processResult(result, "Oops gagal menghapus bookmark!") {
                     binding.ivBookmark.setBackgroundResource(R.drawable.ic_bookmark_before)
                     isBookmarked = false

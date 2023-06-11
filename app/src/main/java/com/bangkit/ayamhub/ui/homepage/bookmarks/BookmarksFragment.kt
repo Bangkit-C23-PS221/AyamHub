@@ -7,6 +7,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.activityViewModels
 import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.bangkit.ayamhub.data.network.Result
@@ -20,7 +21,7 @@ class BookmarksFragment : Fragment() {
 
     private var _binding: FragmentBookmarksBinding? = null
     private val binding get() = _binding!!
-    private val viewModel: BookmarksViewModel by viewModels {
+    private val viewModel: BookmarksViewModel by activityViewModels {
         ViewModelFactory.getInstance(requireContext())
     }
 

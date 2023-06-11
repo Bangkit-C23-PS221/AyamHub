@@ -45,6 +45,7 @@ class HomeAdapter(
                     statusFarm.setTextColor(context.getColor(R.color.white))
                 } else {
                     statusFarm.setBackgroundResource(R.drawable.bg_status)
+                    statusFarm.setTextColor(context.getColor(R.color.red))
                 }
             }
 

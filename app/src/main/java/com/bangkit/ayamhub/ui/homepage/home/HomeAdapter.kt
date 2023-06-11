@@ -54,6 +54,10 @@ class HomeAdapter(
 
     override fun getItemCount(): Int = filteredData.size
 
+    fun isDataEmpty(): Boolean {
+        return filteredData.isEmpty()
+    }
+
     fun filterBySearch(text: String) {
         filteredData.clear()
         if (text.isEmpty()) {

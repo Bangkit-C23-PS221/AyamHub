@@ -8,6 +8,8 @@ import android.view.View
 import android.view.ViewGroup
 import android.view.inputmethod.EditorInfo
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.activityViewModels
+import androidx.fragment.app.setFragmentResultListener
 import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.bangkit.ayamhub.data.network.Result
@@ -24,7 +26,7 @@ class HomeFragment : Fragment() {
     private var _binding: FragmentHomeBinding? = null
     private val binding get() = _binding!!
     private lateinit var homeAdapter: HomeAdapter
-    private val viewModel: HomeViewModel by viewModels {
+    private val viewModel: HomeViewModel by activityViewModels {
         ViewModelFactory.getInstance(requireContext())
     }
 
@@ -40,6 +42,7 @@ class HomeFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        isItemEmpty()
         getListFarm()
         processSearchBar()
 
@@ -52,11 +55,22 @@ class HomeFragment : Fragment() {
         _binding = null
     }
 
+    private fun isItemEmpty() {
+        viewModel.isItemEmpty.observe(viewLifecycleOwner) {
+            binding.tvEmptyItem.visibility = if (it) {
+                View.VISIBLE
+            } else {
+                View.GONE
+            }
+        }
+    }
+
     private fun processSearchBar() {
         binding.search.setOnEditorActionListener { _, actionId, _ ->
             if (actionId == EditorInfo.IME_ACTION_DONE) {
                 val enteredText = binding.search.text.toString()
                 setSearchFilter(enteredText)
+                viewModel.checkItem(homeAdapter.isDataEmpty())
                 true
             } else {
                 false

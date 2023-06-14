@@ -1,14 +1,14 @@
 # C23-PS221 - Bangkit Capstone Project (AyamHub)
 
 <p align="center">
-  <img width="35%" src="https://github.com/Bangkit-C23-PS221/AyamHub/blob/home/app/src/main/res/drawable/ic_apk.png" alt="AyamHub - Connecting the Chicken Industry"><br>
+  <img width="35%" src="https://github.com/Bangkit-C23-PS221/AyamHub/blob/master/app/src/main/res/drawable/ic_apk.png" alt="AyamHub - Connecting the Chicken Industry"><br>
   <h2 align="center">AyamHub - Connecting the Chicken Industry</h2>
 </p>
 
 ## About The Project
 
 <p align="center">
-  <img width="25%" src="https://github.com/Bangkit-C23-PS221/AyamHub/blob/home/app/src/main/res/drawable/app.gif"><br>
+  <img width="25%" src="https://github.com/Bangkit-C23-PS221/AyamHub/blob/master/app/src/main/res/drawable/app.gif"><br>
 </p>
 AyamHub is a mobile application that connect MSMEs and chicken farmers for better chance to improve their bussiness. AyamHub also provides an image processing feature using MobileNet that allows the users to detect chicken's illness.
 

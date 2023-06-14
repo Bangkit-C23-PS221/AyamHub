@@ -7,10 +7,9 @@ class RegisterViewModel(private val repository: UserRepository) : ViewModel() {
 
     fun signUp(
         name: String,
-        username: String,
         password: String,
         email: String,
         phoneNumber: String
-    ) = repository.signUpUmkm(name, username, password, email, phoneNumber)
+    ) = repository.signUp(name, password, email, phoneNumber)
 
 }

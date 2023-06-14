@@ -1,7 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-
-
-<ScrollView
+<RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
@@ -10,22 +8,23 @@
     android:background="@drawable/back"
     tools:context=".ui.register.RegisterActivity">
 
-<androidx.constraintlayout.widget.ConstraintLayout
-    android:layout_width="match_parent"
-    android:layout_height="match_parent">
-
-
     <ProgressBar
-        android:id="@+id/progress"
+        android:id="@+id/progressBar"
         style="?android:attr/progressBarStyle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:visibility="gone"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
+        android:elevation="3dp"
+        android:layout_centerInParent="true"
         tools:visibility="visible" />
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+<androidx.constraintlayout.widget.ConstraintLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
 
     <ImageView
         android:id="@+id/imageView"
@@ -49,6 +48,7 @@
         android:layout_marginEnd="32dp"
         android:text="@string/halo_workers"
         android:textColor="@color/black"
+        android:fontFamily="@font/roboto_bold"
         android:gravity="center"
         android:textSize="20sp"
         android:textStyle="bold"
@@ -62,6 +62,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="32dp"
+        android:fontFamily="@font/roboto_regular"
         android:layout_marginTop="17dp"
         android:text="@string/daftarkan_diri_kamu_yuk"
         android:textColor="@color/black"
@@ -95,6 +96,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="32dp"
         android:layout_marginTop="8dp"
+        android:fontFamily="@font/roboto_regular"
         android:text="@string/email"
         android:textColor="@color/black"
         app:layout_constraintStart_toStartOf="parent"
@@ -128,6 +130,7 @@
         android:layout_marginStart="32dp"
         android:layout_marginTop="8dp"
         android:text="@string/nope"
+        android:fontFamily="@font/roboto_regular"
         android:textColor="@color/black"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/emailEditTextLayout" />
@@ -142,7 +145,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/phoneTextView"
-        app:startIconDrawable="@drawable/email">
+        app:startIconDrawable="@drawable/phone">
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/ed_register_phone"
@@ -160,6 +163,7 @@
         android:layout_marginStart="32dp"
         android:layout_marginTop="8dp"
         android:text="@string/kata_sandi"
+        android:fontFamily="@font/roboto_regular"
         android:textColor="@color/black"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/phoneEditTextLayout" />
@@ -193,8 +197,10 @@
         android:layout_height="64dp"
         android:text="@string/daftar"
         android:layout_marginStart="32dp"
+        android:fontFamily="@font/roboto_bold"
         android:layout_marginTop="15dp"
         android:layout_marginEnd="32dp"
+        android:backgroundTint="@color/orange2"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/passwordEditTextLayout"/>
@@ -261,6 +267,7 @@
         android:layout_marginEnd="32dp"
         android:layout_marginTop="20dp"
         android:layout_marginBottom="8dp"
+        android:fontFamily="@font/roboto_bold"
         android:text="@string/bangkit_2023"
         android:textSize="14sp"
         app:layout_constraintTop_toBottomOf="@+id/messageSign"
@@ -270,3 +277,4 @@
 </androidx.constraintlayout.widget.ConstraintLayout>
 
 </ScrollView>
+</RelativeLayout>

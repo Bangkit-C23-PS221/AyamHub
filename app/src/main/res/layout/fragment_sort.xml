@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:id="@+id/sortTitle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="12dp"
+            android:layout_marginTop="12dp"
+            android:text="@string/sorting_berdasarkan"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <RadioGroup
+            android:id="@+id/rgSort"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="12dp"
+            android:layout_marginTop="12dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/sortTitle">
+
+            <RadioButton
+                android:id="@+id/rbName"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/nama" />
+
+            <RadioButton
+                android:id="@+id/rbPriceLow"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/harga_termurah" />
+
+            <RadioButton
+                android:id="@+id/rbPriceHigh"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/harga_termahal" />
+
+            <RadioButton
+                android:id="@+id/rbLatest"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/terbaru" />
+
+            <RadioButton
+                android:id="@+id/rbOldest"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/terlama" />
+
+        </RadioGroup>
+
+        <Button
+            android:id="@+id/btnSortConfirm"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="20dp"
+            android:layout_marginTop="8dp"
+            android:text="@string/terapkan_sorting"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/rgSort"/>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

@@ -4,9 +4,10 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_margin="20dp"
-    app:cardCornerRadius="20dp"
-    app:cardElevation="5dp">
+    android:layout_marginVertical="5dp"
+    android:layout_marginHorizontal="20dp"
+    app:cardCornerRadius="5dp"
+    app:cardElevation="2dp">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
@@ -15,25 +16,30 @@
         <androidx.constraintlayout.widget.Guideline
             android:id="@+id/startGuidelineVertical"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_height="64dp"
             android:orientation="vertical"
-            app:layout_constraintGuide_begin="8dp" />
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintGuide_percent="0.025"
+            app:layout_constraintStart_toStartOf="parent" />
 
         <androidx.constraintlayout.widget.Guideline
             android:id="@+id/endGuidelineVertical"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_height="64dp"
             android:orientation="vertical"
-            app:layout_constraintGuide_end="8dp" />
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintGuide_percent="0.975"
+            app:layout_constraintStart_toStartOf="parent" />
 
         <ImageView
-            android:id="@+id/storyImageView"
+            android:id="@+id/ImageView"
             android:layout_width="0dp"
             android:layout_height="0dp"
             android:cropToPadding="false"
             android:scaleType="centerCrop"
-            app:layout_constraintDimensionRatio="16:9"
+            app:layout_constraintDimensionRatio="16:8"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             tools:srcCompat="@tools:sample/backgrounds/scenic" />
@@ -42,20 +48,19 @@
             android:id="@+id/farmName"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginTop="14dp"
+            android:textSize="20sp"
             android:fontFamily="@font/roboto_bold"
             android:paddingVertical="6dp"
             android:textColor="@color/black"
             app:layout_constraintEnd_toStartOf="@id/endGuidelineVertical"
             app:layout_constraintStart_toEndOf="@id/startGuidelineVertical"
-            app:layout_constraintTop_toBottomOf="@id/storyImageView"
+            app:layout_constraintTop_toBottomOf="@id/ImageView"
             tools:text="Peternakan Rindang Jaya" />
 
         <ImageView
             android:id="@+id/location"
             android:layout_width="25dp"
             android:layout_height="25dp"
-            android:layout_marginTop="8dp"
             android:layout_marginBottom="16dp"
             app:layout_constraintStart_toEndOf="@id/startGuidelineVertical"
             app:layout_constraintTop_toBottomOf="@id/farmName"
@@ -63,15 +68,15 @@
 
         <TextView
             android:id="@+id/locFarm"
-            android:layout_width="0dp"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="4dp"
             android:fontFamily="@font/roboto_regular"
             android:textAlignment="viewStart"
             android:textAllCaps="false"
+            app:layout_constraintTop_toBottomOf="@id/farmName"
             android:textColor="@color/black"
             app:layout_constraintBottom_toBottomOf="@id/location"
-            app:layout_constraintEnd_toStartOf="@id/endGuidelineVertical"
             app:layout_constraintStart_toEndOf="@id/location"
             app:layout_constraintTop_toTopOf="@id/location"
             tools:text="Tangerang Selatan" />
@@ -96,7 +101,6 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="4dp"
             android:fontFamily="@font/roboto_regular"
-            android:paddingEnd="3dp"
             android:textAlignment="viewStart"
             android:textAllCaps="false"
             android:textColor="#D10000"
@@ -106,34 +110,37 @@
             tools:text="Rp. 23.000" />
 
         <TextView
-            android:id="@+id/status"
-            android:layout_width="0dp"
+            android:id="@+id/statusFarm"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="15dp"
-            android:backgroundTint="@color/orange2"
+            android:background="@drawable/bg_status"
             android:fontFamily="@font/roboto_regular"
+            android:paddingVertical="4dp"
+            android:paddingHorizontal="8dp"
             android:textAlignment="center"
             android:textAllCaps="false"
             android:textColor="#D10000"
-            app:layout_constraintEnd_toEndOf="@id/kg"
-            app:layout_constraintStart_toStartOf="@id/price"
             app:layout_constraintTop_toBottomOf="@id/kg"
+            app:layout_constraintEnd_toEndOf="@id/endGuidelineVertical"
+            app:layout_constraintTop_toTopOf="@id/chickenType"
             tools:text="Siap Panen" />
 
         <ImageView
             android:id="@+id/icAyam"
             android:layout_width="25dp"
             android:layout_height="25dp"
-            android:layout_marginTop="8dp"
+            android:layout_marginTop="1dp"
             android:layout_marginBottom="16dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toEndOf="@id/startGuidelineVertical"
             app:layout_constraintTop_toBottomOf="@id/locFarm"
             app:srcCompat="@drawable/ic_chicken" />
 
+
         <TextView
             android:id="@+id/chickenType"
-            android:layout_width="0dp"
+            android:layout_width="wrap_content"
+            android:gravity="start"
             android:layout_height="wrap_content"
             android:layout_marginStart="4dp"
             android:fontFamily="@font/roboto_regular"
@@ -141,7 +148,6 @@
             android:textAllCaps="false"
             android:textColor="@color/black"
             app:layout_constraintBottom_toBottomOf="@id/icAyam"
-            app:layout_constraintEnd_toStartOf="@id/endGuidelineVertical"
             app:layout_constraintStart_toEndOf="@id/icAyam"
             app:layout_constraintTop_toTopOf="@id/icAyam"
             tools:text="Broiler" />

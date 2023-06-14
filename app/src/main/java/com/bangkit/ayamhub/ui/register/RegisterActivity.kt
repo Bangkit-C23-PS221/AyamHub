@@ -28,16 +28,16 @@ class RegisterActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         binding.signupButton.setOnClickListener { validateInput() }
+        binding.daftar.setOnClickListener { finish() }
     }
 
     private fun signUp(
         name: String,
-        username: String,
         password: String,
         email: String,
         phoneNumber: String
     ) {
-        viewModel.signUp(name, username, password, email, phoneNumber).observe(this){ result ->
+        viewModel.signUp(name, password, email, phoneNumber).observe(this) { result ->
             if (result != null) {
                 when (result) {
                     is Result.Loading -> {
@@ -62,7 +62,6 @@ class RegisterActivity : AppCompatActivity() {
     private fun validateInput() {
         with (binding) {
             val name = edRegisterName.text.toString()
-//            val username = etUsername.text.toString()
             val password = edRegisterPassword.text.toString()
             val email = edRegisterEmail.text.toString()
             val phone = edRegisterPhone.text.toString()
@@ -71,9 +70,6 @@ class RegisterActivity : AppCompatActivity() {
                 name.isEmpty() -> {
                     edRegisterName.error = getString(R.string.form_email_error)
                 }
-//                username.isEmpty() -> {
-//                    etUsername.error = "Tolong isi usernamenya"
-//                }
                 email.isEmpty() || !Patterns.EMAIL_ADDRESS.matcher(email).matches() -> {
                     edRegisterEmail.error = "Form email tolong diisi dengan benar ya"
                 }
@@ -84,7 +80,7 @@ class RegisterActivity : AppCompatActivity() {
                     edRegisterPassword.error = getString(R.string.form_password_error)
                 }
                 else -> {
-                    signUp(name, name, password, email, phone)
+                    signUp(name, password, email, phone)
                 }
             }
         }
@@ -92,9 +88,9 @@ class RegisterActivity : AppCompatActivity() {
 
     private fun showLoading(show: Boolean) {
         if (show) {
-            binding.progress.visibility = View.VISIBLE
+            binding.progressBar.visibility = View.VISIBLE
         } else {
-            binding.progress.visibility = View.GONE
+            binding.progressBar.visibility = View.GONE
         }
     }
 }

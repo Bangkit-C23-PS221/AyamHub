@@ -1,19 +1,162 @@
 <?xml version="1.0" encoding="utf-8"?>
+
+
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.home.ui.home.HomeFragment">
+    tools:context=".ui.homepage.HomeActivity">
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/rv_peternak"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
+    <ProgressBar
+        android:id="@+id/progressBar"
+        style="?android:attr/progressBarStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:elevation="1dp"
+        android:visibility="gone"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        tools:visibility="visible" />
+
+    <TextView
+        android:id="@+id/tvEmptyItem"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:elevation="1dp"
+        android:textSize="20sp"
+        android:visibility="gone"
+        android:textColor="@color/black"
+        android:fontFamily="@font/roboto_regular"
+        android:text="@string/tidak_ada"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"/>
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:layout_editor_absoluteX="35dp"
+        tools:layout_editor_absoluteY="112dp">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/topItem"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:background="@color/orange2"
+                android:foregroundGravity="center_horizontal"
+                android:paddingTop="120dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
+
+
+                <TextView
+                    android:id="@+id/ayam"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="20dp"
+                    android:layout_marginBottom="20dp"
+                    android:fontFamily="@font/roboto_bold"
+                    android:text="@string/ayam"
+                    android:textColor="@color/white"
+                    android:textSize="35sp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="parent" />
+
+                <TextView
+                    android:id="@+id/hub"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="bottom"
+                    android:layout_marginBottom="20dp"
+                    android:fontFamily="@font/roboto_bold"
+                    android:text="@string/hub"
+                    android:textColor="#FFFF00"
+                    android:textSize="35sp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toEndOf="@+id/ayam"
+                    app:layout_constraintTop_toTopOf="@id/ayam" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <EditText
+                android:id="@+id/search"
+                android:layout_width="0dp"
+                android:layout_height="40dp"
+                android:layout_marginStart="15dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginEnd="5dp"
+                android:background="@drawable/back_search"
+                android:backgroundTint="@color/white"
+                android:drawableStart="@drawable/search"
+                android:drawablePadding="8dp"
+                android:fontFamily="@font/roboto_regular"
+                android:hint="@string/cari_peternakan"
+                android:imeOptions="actionDone"
+                android:inputType="text"
+                app:layout_constraintEnd_toStartOf="@id/btnFilter"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_goneMarginEnd="20dp" />
+
+            <ImageButton
+                android:id="@+id/btnFilter"
+                android:layout_width="35dp"
+                android:layout_height="35dp"
+                android:background="@drawable/ic_filter"
+                android:textSize="12sp"
+                android:layout_marginEnd="5dp"
+                app:layout_constraintStart_toEndOf="@+id/search"
+                app:layout_constraintEnd_toStartOf="@id/btnSort"
+                app:layout_constraintTop_toTopOf="@+id/search"
+                app:layout_constraintBottom_toBottomOf="@id/search"/>
+
+            <ImageButton
+                android:id="@+id/btnSort"
+                android:layout_marginEnd="15dp"
+                android:layout_width="35dp"
+                android:layout_height="35dp"
+                android:background="@drawable/ic_sort"
+                android:textSize="12sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/btnFilter"
+                app:layout_constraintBottom_toBottomOf="@id/btnFilter"/>
+
+            <ImageView
+                android:id="@+id/logo"
+                android:layout_width="200dp"
+                android:layout_height="150dp"
+                android:layout_marginTop="50dp"
+                android:background="@drawable/farmer"
+                android:scaleType="centerInside"
+                app:layout_constraintBottom_toBottomOf="@id/topItem"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/search" />
+
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rv_peternak"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/logo"
+                tools:listitem="@layout/item_rv" />
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.core.widget.NestedScrollView>
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

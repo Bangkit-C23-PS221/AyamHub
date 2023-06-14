@@ -3,6 +3,7 @@ package com.bangkit.ayamhub.ui.login
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.util.Patterns
 import android.view.View
 import androidx.activity.viewModels
@@ -11,7 +12,7 @@ import com.bangkit.ayamhub.data.network.Result
 import com.bangkit.ayamhub.databinding.ActivityLoginBinding
 import com.bangkit.ayamhub.helpers.Reusable
 import com.bangkit.ayamhub.helpers.viewmodelfactory.ViewModelFactory
-import com.bangkit.ayamhub.ui.home.HomeActivity
+import com.bangkit.ayamhub.ui.homepage.HomeActivity
 import com.bangkit.ayamhub.ui.register.RegisterActivity
 
 class LoginActivity : AppCompatActivity() {
@@ -21,10 +22,10 @@ class LoginActivity : AppCompatActivity() {
         ViewModelFactory.getInstance(this)
     }
     override fun onCreate(savedInstanceState: Bundle?) {
-        supportActionBar?.hide()
         super.onCreate(savedInstanceState)
         binding = ActivityLoginBinding.inflate(layoutInflater)
         setContentView(binding.root)
+        supportActionBar?.hide()
 
         binding.daftar.setOnClickListener { toRegister() }
         binding.loginButton.setOnClickListener { validateInput() }
@@ -62,7 +63,9 @@ class LoginActivity : AppCompatActivity() {
                     }
                     is Result.Success -> {
                         showLoading(false)
-                        viewModel.saveToken(result.data.accessToken)
+                        with(result.data) {
+                            saveData(accessToken, idUser.toString(), name, email, phone, userLevel)
+                        }
                         val intent = Intent(this, HomeActivity::class.java)
                         startActivity(intent)
                         finish()
@@ -70,9 +73,28 @@ class LoginActivity : AppCompatActivity() {
                     is Result.Error -> {
                         showLoading(false)
                         Reusable.showToast(this, "Oops gagal login")
+                        Log.e("LoginActivity", "On Failuer: ${result.error}")
                     }
                 }
             }
+        }
+    }
+
+    private fun saveData(
+        token: String,
+        id: String,
+        name: String,
+        email: String,
+        phone: String,
+        level: String
+    ) {
+        with(viewModel) {
+            setToken(token)
+            setId(id)
+            setName(name)
+            setEmail(email)
+            setPhone(phone)
+            setLevel(level)
         }
     }
 

@@ -158,18 +158,18 @@
 
        <Button
            android:id="@+id/loginButton"
-           android:layout_width="wrap_content"
-           android:layout_height="wrap_content"
+           android:layout_width="5dp"
+           android:layout_height="5dp"
            android:layout_marginBottom="42dp"
            android:textAllCaps="false"
-           android:textSize="27sp"
+           android:textSize="20sp"
            android:alpha="0"
-           android:background="@drawable/bg_button"
            android:fontFamily="@font/roboto_bold"
            android:text="@string/mulai"
-           app:layout_constraintTop_toBottomOf="@+id/titleMenu3"
+           app:layout_constraintStart_toStartOf="parent"
+           app:layout_constraintBottom_toTopOf="@+id/menu3"
            app:layout_constraintEnd_toEndOf="parent"
-           app:layout_constraintStart_toStartOf="parent" />
+           />
 
 
        <ImageView
